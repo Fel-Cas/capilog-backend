@@ -5,6 +5,13 @@
   "author": "",
   "private": true,
   "license": "UNLICENSED",
+  "contributors": [
+    {
+      "name": "Jhon Jairo Quitian Montoya",
+      "email": "quitian.j2010@udea.edu.co",
+      "url": "https://github.com/jhonquitian1305"
+    }
+  ],
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
