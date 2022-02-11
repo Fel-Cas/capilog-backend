@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {
   Body,
   Controller,
@@ -32,5 +33,14 @@ export class UsersController {
   @Delete(':id')
   delete(@Param('id') id: string) {
     return this.userService.delete(id);
+  }
+  @Put('passwords/:id')
+  updatePassword(@Param('id') id:string, @Body() content: EditUserDto) {
+    return this.userService.updatePassword(id,content); 
+  }
+
+  @Put('roles/:id')
+  updateRole(@Param('id') id:string, @Body() content: EditUserDto) {
+    return this.userService.updateRole(id,content); 
   }
 }

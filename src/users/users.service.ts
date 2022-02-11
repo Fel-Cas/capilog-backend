@@ -36,7 +36,7 @@ export class UsersService {
          where:{
              role:role,
          }
-        }) 
+        }); 
         if (!roleFound) throw new NotFoundException(`Role doesn't exists`);
         const user = new User();
         user.dni = dni;
@@ -62,6 +62,26 @@ export class UsersService {
     if (!user) throw new NotFoundException(`User doesn't exists`);
     return await this.userRepository.delete(id);
   }
+  
+  async updateRole(id: string, content: EditUserDto) {
+    const user = await this.userRepository.findOne(id,{relations: ['role'],})
+    if (!user) throw new NotFoundException(`User doesn't exits`);
+    const roleFound = await this.roleRepository.find({
+      where:{
+          role:content.role,
+      }
+     });
+    user.role=roleFound[0];
+    return await this.userRepository.save(user);
+  }
+  
+  async updatePassword(id: string, content: EditUserDto) {
+    const user = await this.userRepository.findOne(id);
+    if (!user) throw new NotFoundException(`User doesn't exits`);
+    user.password= await this.encryptPassword(content.password);
+    return await this.userRepository.save(user);
+  }
+
   async comparePasswords (password,encryptedPassword):Promise <boolean> {
     return await bcrypt.compare(password, encryptedPassword)
   }

@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn, UpdateDateColumn } from "typeorm";
 import { Role } from ".";
 
 @Entity('users')
@@ -25,4 +25,10 @@ export class User {
   @ManyToOne(()=>Role,role=>role.user)
   @JoinColumn({name: 'role' })
   role:Role;
+
+  @CreateDateColumn()
+  createAt:Date;
+
+  @UpdateDateColumn()
+  updatedAt:Date;
 }
