@@ -5,6 +5,23 @@
   "author": "",
   "private": true,
   "license": "UNLICENSED",
+  "contributors": [
+    {
+      "name": "Jhon Jairo Quitian Montoya",
+      "email": "jhon.quitian@udea.edu.co",
+      "url": "https://github.com/jhonquitian1305"
+    },
+    {
+      "name": "Andrés Felipe Castro Monsalve",
+      "email": "andres.castro3@udea.edu.co",
+      "url": "https://github.com/Fel-Cas"
+    },
+    {
+      "name": "Santiago Jaramillo Ocampo",
+      "email": "santiago.jaramillo12@udea.edu.co",
+      "url": "https://github.com/ZiberiaNn"
+    }
+  ],
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
