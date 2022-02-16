@@ -30,7 +30,7 @@ export class UsersService {
   }
   async create(content: CreateUserDto) {
    
-    const { dni, name, lastname, role, password, phone, email } = content;
+    const { role, ...rest } = content;
     const roleFound = await this.roleRepository.find({
       where:{
           role:role,
@@ -38,14 +38,9 @@ export class UsersService {
     }); 
     if (roleFound.length === 0) {
       throw new NotFoundException(`Role doesn't exists`);
-      }    
-    const user = new User();
-    user.dni = dni;
-    user.name = name;
-    user.lastname = lastname;
-    user.password = password
-    user.phone = phone;
-    user.email = email;
+      }
+    let user = new User();
+    user=Object.assign(user,rest);
     user.role = roleFound[0];
     const userCreated= await this.userRepository.save(user);
     delete userCreated.password;
