@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn, UpdateDateColumn } from "typeorm";
+import { hash } from "bcrypt";
+import { BeforeInsert, BeforeUpdate, Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn, UpdateDateColumn } from "typeorm";
 import { Role } from ".";
 
 @Entity('users')
@@ -13,7 +14,7 @@ export class User {
   @Column({type: 'varchar', length: 150, nullable: false})
   lastname: string;
 
-  @Column({type: 'varchar', length: 250, nullable: false})
+  @Column({type: 'varchar', length: 250, nullable: false, select: false })
   password: string;
 
   @Column({type: 'varchar', length: 20, nullable: false})
@@ -31,4 +32,13 @@ export class User {
 
   @UpdateDateColumn()
   updatedAt:Date;
+
+  @BeforeInsert()
+  @BeforeUpdate()
+  async hashPassword() {
+    if(!this.password){
+      return;
+    }
+    this.password = await hash(this.password,10);
+  }
 }

@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import {IsEmail, IsEnum, IsString} from 'class-validator';
+import {IsEmail, IsEnum, IsString, MaxLength, MinLength} from 'class-validator';
 import { EnumToString } from 'src/helpers/enumToString';
 import { UserRole } from '../enums/user-role.enum';
 export class CreateUserDto {
@@ -18,6 +18,8 @@ export class CreateUserDto {
   role: UserRole;
 
   @IsString()
+  @MinLength(8)
+  @MaxLength(128)
   password: string;
 
   @IsString()
