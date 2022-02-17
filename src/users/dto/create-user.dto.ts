@@ -1,6 +1,8 @@
 /* eslint-disable prettier/prettier */
 import {IsEmail, IsEnum, IsString, MaxLength, MinLength} from 'class-validator';
-import { EnumToString } from 'src/helpers/enumToString';
+import { CreateDateColumn } from 'typeorm';
+import { EnumToString } from '../../helpers/enumToString';
+
 import { UserRole } from '../enums/user-role.enum';
 export class CreateUserDto {
   @IsString()  
@@ -15,6 +17,8 @@ export class CreateUserDto {
   @IsEnum(UserRole,{
       message:`role invalido. Opciones válidas para rol son ${EnumToString(UserRole)}`
   })
+  // @IsString() //Provisional
+  // role: string;
   role: UserRole;
 
   @IsString()
@@ -27,5 +31,5 @@ export class CreateUserDto {
 
   @IsString()
   @IsEmail()
-  email: string;
+  email: string;  
 }
