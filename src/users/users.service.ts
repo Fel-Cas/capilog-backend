@@ -13,6 +13,7 @@ export class UsersService {
     @InjectRepository(Role)
     private readonly roleRepository: Repository<Role>,
   ) {}
+
   async getAll(): Promise<User[]> {
     const users = await this.userRepository.find({
       relations: ['role'],
@@ -21,6 +22,7 @@ export class UsersService {
       throw new NotFoundException(`There aren't users in database`);
     return users;
   }
+
   async getOne(id: string): Promise<User> {
     const user = await this.userRepository.findOne(id,{
         relations: ['role']
@@ -28,6 +30,7 @@ export class UsersService {
     if (!user) throw new NotFoundException(`user doesn't exits`);
     return user;
   }
+
   async create(content: CreateUserDto) {
    
     const { role, ...rest } = content;
@@ -44,22 +47,24 @@ export class UsersService {
     user.role = roleFound[0];
     const userCreated= await this.userRepository.save(user);
     delete userCreated.password;
-    return {message:'User created', userCreated};
+    return userCreated;
    
   }
+
   async update(id: string, content: EditUserDto) {
     const user = await this.userRepository.findOne(id);
     if (!user) throw new NotFoundException(`User doesn't exists`);
     const editedUser = Object.assign(user, content);
     const data= await this.userRepository.save(editedUser);
     delete data.password;
-    return {message:'User updated', data};
+    return data;
   }
+
   async delete(id: string) {
     const user = await this.userRepository.findOne(id);
     if (!user) throw new NotFoundException(`User doesn't exists`);
     const data= await this.userRepository.remove(user);
-    return {message:'User deleted', data};
+    return data;
   }
   
   async updateRole(id: string, content: EditUserDto) {
