@@ -26,4 +26,14 @@ export class UsersServiceMock {
         console.log(user);
         return Promise.resolve(user)
     }
+
+    /*
+    async getOne(id: number): Promise<User> {
+        let user = new User();
+        delete user.password;
+        return Promise.resolve({
+            id,
+            ...user
+        })
+    }*/
 }
