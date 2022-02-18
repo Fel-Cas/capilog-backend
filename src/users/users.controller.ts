@@ -15,27 +15,33 @@ import {
   export class UsersController {
     constructor(private readonly userService: UsersService) {}
     @Get()
-    getAll() {
-      return this.userService.getAll();
+    async getAll() {
+      const data=await this.userService.getAll();
+      return {message:'Users obtained', data};
     }
     @Get(':id')
-    getOne(@Param('id') id: string) {
-      return this.userService.getOne(id);
+    async getOne(@Param('id') id: string) {
+      const data=await this.userService.getOne(id);
+      return {message:'User obtained', data};
     }
     @Post()
-    create(@Body() content: CreateUserDto) {
-      return this.userService.create(content);
+    async create(@Body() content: CreateUserDto) {
+      const data=await this.userService.create(content);
+      return {message:'User created', data};
     }
     @Put(':id')
-    update(@Param('id') id: string, @Body() content: EditUserDto) {
-      return this.userService.update(id, content);
+    async update(@Param('id') id: string, @Body() content: EditUserDto) {
+      const data=await this.userService.update(id, content);
+      return {message:'User updated', data};
     }
     @Delete(':id')
-    delete(@Param('id') id: string) {
-      return this.userService.delete(id);
+    async delete(@Param('id') id: string) {
+      const data=await this.userService.delete(id);
+      return {message:'User deleted', data};
     }
     @Put('roles/:id')
-    updateRole(@Param('id') id:string, @Body() content: EditUserDto) {
-      return this.userService.updateRole(id,content); 
+    async updateRole(@Param('id') id:string, @Body() content: EditUserDto) {
+      const data=await this.userService.updateRole(id,content);
+      return {message:'Role updated', data}; 
     }
   }
