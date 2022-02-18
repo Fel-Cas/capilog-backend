@@ -1,8 +1,29 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { of } from 'rxjs';
 import { UserRole } from '../enums/user-role.enum';
 import { UsersController } from '../users.controller';
 import { UsersService } from '../users.service';
 import { UsersServiceMock } from './users-service-mock';
+
+
+const testUser = {
+  dni: '123',
+  name: 'name-user',
+  lastname: 'lastname-user',
+  role: 'role',
+  password: 'password-user',
+  phone: 'phone-user',
+  email: 'email-user'
+};
+
+const testUserUpdated = {
+  name: 'name-user-update',
+  lastname: 'lastname-user',
+  role: 'role',
+  password: 'password-user',
+  phone: 'phone-user',
+  email: 'email-user'
+};
 
 describe('UsersController', () => {
   let role: UserRole;
@@ -41,7 +62,13 @@ describe('UsersController', () => {
 
     const module: TestingModule = await Test.createTestingModule({
       controllers: [UsersController],
-      providers: [UsersService, UsersServiceProvider]
+      providers: [{
+        provide: UsersService,
+        useValue: {
+          create: jest.fn(() => of (testUser)),  
+        } 
+      },
+      UsersServiceProvider]
     })
       .overrideProvider(UsersService)
       .useClass(UsersServiceMock)
@@ -56,39 +83,26 @@ describe('UsersController', () => {
   });
 
   it('should create a user', async () => {
-    const createUserDto = {
-      dni: '123',
-      name: 'name-user',
-      lastname: 'lastname-user',
-      role: 'role',
-      password: 'password-user',
-      phone: 'phone-user',
-      email: 'email-user'
-    };
+    const createUserDto = testUser;
 
     expect(await controller.create(createUserDto));
   });
-/*
-  it('should update a user', () => {
-    const updateUserDto = {
-      dni: '123',
-      name: 'name-user',
-      lastname: 'lastname-user',
-      role: 'role',
-      password: 'password-user',
-      phone: 'phone-user',
-      email: 'email-user'
-    };
+
+  it('should update a user', async () => {
+    const updateUserDto = testUserUpdated
     const userId = '2';
 
-    expect(controller.update(userId, updateUserDto)).toEqual({
-      id: userId,
+    expect(await controller.update(userId, updateUserDto)).toEqual({
+      // id: userId,
       ...updateUserDto,
     });
 
-    expect(mockUserService.update).toHaveBeenCalledWith(userId, updateUserDto);
-  });
+    const updateSpy = jest.spyOn(service, 'update');
+    controller.update(userId, updateUserDto)
 
+    expect(updateSpy).toHaveBeenCalledWith(userId, updateUserDto);
+  });
+/*
   it('should get the users', () => {
     expect(controller.getAll())
   })
