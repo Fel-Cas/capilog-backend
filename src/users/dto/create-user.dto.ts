@@ -18,7 +18,7 @@ export class CreateUserDto {
   })
   @IsString() 
   role: string;
-
+  
   @IsString()
   @MinLength(8)
   @MaxLength(128)

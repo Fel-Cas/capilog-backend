@@ -12,4 +12,11 @@ export class Role {
 
   @OneToMany(()=>User, user=> user.role)
   user:User[];
+
+  constructor(role?: string)
+  constructor(role: string) {
+    this.id = Math.floor(Math.random() * 5 );
+    this.role = role;
+  }
+
 }
