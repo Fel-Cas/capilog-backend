@@ -16,8 +16,9 @@ export class CreateUserDto {
   @IsEnum(UserRole,{
       message:`role invalido. Opciones válidas para rol son ${EnumToString(UserRole)}`
   })
-  @IsString() //Provisional
+  @IsString() 
   role: string;
+  
   @IsString()
   @MinLength(8)
   @MaxLength(128)
