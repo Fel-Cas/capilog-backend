@@ -17,6 +17,7 @@ export class UsersService {
     @InjectRepository(Role)
     private readonly roleRepository: Repository<Role>,
   ) {}
+
   async getAll(): Promise<User[]> {
     const users = await this.userRepository.find({
       relations: ['role'],
@@ -25,6 +26,7 @@ export class UsersService {
       throw new NotFoundException(`There aren't users in database`);
     return users;
   }
+
   async getOne(dni: string): Promise<User> {
     const user = await this.userRepository.findOne(dni,{
         relations: ['role']
@@ -32,6 +34,7 @@ export class UsersService {
     if (!user) throw new NotFoundException(`user doesn't exits`);
     return user;
   }
+
   async create(content: CreateUserDto) {
    
     const { role, ...rest } = content;
@@ -59,6 +62,7 @@ export class UsersService {
     delete data.password;
     return data;
   }
+
   async delete(dni: string) {
     const user = await this.userRepository.findOne(dni);
     if (!user) throw new NotFoundException(`User doesn't exists`);

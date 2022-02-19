@@ -1,103 +1,94 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { of } from 'rxjs';
+import { CreateUserDto, EditUserDto } from '../dto';
 import { UserRole } from '../enums/user-role.enum';
 import { UsersController } from '../users.controller';
 import { UsersService } from '../users.service';
 import { UsersServiceMock } from './users-service-mock';
 
+
+const testUser = {
+  dni: '123',
+  name: 'name-user',
+  lastname: 'lastname-user',
+  role: 'role',
+  password: 'password-user',
+  phone: 'phone-user',
+  email: 'email-user'
+};
+
+const testUserUpdated = {
+  name: 'name-user-update',
+  lastname: 'lastname-user',
+  role: 'role',
+  password: 'password-user',
+  phone: 'phone-user',
+  email: 'email-user'
+};
+
 describe('UsersController', () => {
-  let role: UserRole;
   let controller: UsersController;
-  let service: UsersService;
-  /*let mockUserService = {
-     update: jest.fn((id, dto) => {
-      return {
-        id,
-        ...dto,
-      }
-    }),
-
-    getAll: jest.fn(() => {
-      return
-    }),
-
-    // getOne: jest.fn((id, dto) => {
-    //   return {
-    //     id,
-    //     ...dto
-    //   }
-    // })
-    getOne: jest.fn().mockImplementation((id, dto) => ({
-      id,
-      ...dto
-    }))
-  };*/
-
+  let spyService: UsersService;
   beforeEach(async () => {
     const UsersServiceProvider = { 
       provide: UsersService,
-      useClass: UsersServiceMock,
+      useFactory: () => ({
+        create: jest.fn(() => []),
+        update: jest.fn(() => {}),
+        updateRole: jest.fn(() => {}),
+        getOne: jest.fn(() => {}),
+        getAll: jest.fn(() => []),
+        delete: jest.fn(() => {})
+      })
     };
 
 
     const module: TestingModule = await Test.createTestingModule({
       controllers: [UsersController],
-      providers: [UsersService, UsersServiceProvider]
-    })
-      .overrideProvider(UsersService)
-      .useClass(UsersServiceMock)
-      .compile();
+      providers: [UsersService , UsersServiceProvider]
+    }).compile();
 
     controller = module.get<UsersController>(UsersController);
-    service = module.get<UsersService>(UsersService);
+    spyService = module.get<UsersService>(UsersService);
   });
 
   it('should be defined', () => {
     expect(controller).toBeDefined();
   });
 
-  it('should create a user', async () => {
-    const createUserDto = {
-      dni: '123',
-      name: 'name-user',
-      lastname: 'lastname-user',
-      role: 'role',
-      password: 'password-user',
-      phone: 'phone-user',
-      email: 'email-user'
-    };
-
-    expect(await controller.create(createUserDto));
+  it('should create a user', () => {
+    const createUserDto = new CreateUserDto();
+    controller.create(createUserDto);
+    expect(spyService.create).toHaveBeenCalled();
+    expect(spyService.create).toHaveBeenCalledWith(createUserDto);
   });
-/*
+
   it('should update a user', () => {
-    const updateUserDto = {
-      dni: '123',
-      name: 'name-user',
-      lastname: 'lastname-user',
-      role: 'role',
-      password: 'password-user',
-      phone: 'phone-user',
-      email: 'email-user'
-    };
-    const userId = '2';
-
-    expect(controller.update(userId, updateUserDto)).toEqual({
-      id: userId,
-      ...updateUserDto,
-    });
-
-    expect(mockUserService.update).toHaveBeenCalledWith(userId, updateUserDto);
+    const updateUserDto = new EditUserDto();
+    const id = '123';
+    controller.update(id, updateUserDto);
+    expect(spyService.update).toHaveBeenCalled();
+    expect(spyService.update).toHaveBeenCalledWith(id, updateUserDto);
   });
-
-  it('should get the users', () => {
-    expect(controller.getAll())
-  })
 
   it('should get a user', () => {
-    const userId = '2';
-    expect(controller.getOne(userId)).toEqual({
-      id: userId
-    })
-  })*/
+    const id = '1';
+    controller.getOne(id);
+    expect(spyService.getOne).toHaveBeenCalled();
+  });
+
+  it('should get all users', () => {
+    controller.getAll();
+    expect(spyService.getAll).toHaveBeenCalled();
+  });
+
+  it('should update a user,s role', () => {
+    const updateRoleUser = new EditUserDto();
+    const id = '123';
+    controller.updateRole(id, updateRoleUser);
+    expect(spyService.updateRole).toHaveBeenCalled();
+    expect(spyService.updateRole).toHaveBeenCalledWith(id, updateRoleUser);
+  })
+  
 
 });

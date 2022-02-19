@@ -1,4 +1,4 @@
-import { CreateUserDto } from "../dto"
+import { CreateUserDto, EditUserDto } from "../dto"
 import { Role, User } from "../entities"
 import { UserRole } from "../enums/user-role.enum";
 
@@ -14,8 +14,26 @@ export class UsersServiceMock {
         user.role = {
             ...role
         };
-        console.log(user);
         delete user.password;
         return Promise.resolve(user);
     }
+
+    async update(id: number, editUserDto: EditUserDto): Promise<User> {
+        let role = new Role();
+        let user = new User();
+        user = Object.assign(user, editUserDto);
+        role.id = id;
+        console.log(user);
+        return Promise.resolve(user)
+    }
+
+    /*
+    async getOne(id: number): Promise<User> {
+        let user = new User();
+        delete user.password;
+        return Promise.resolve({
+            id,
+            ...user
+        })
+    }*/
 }
