@@ -5,6 +5,10 @@ import { Repository } from 'typeorm';
 import { CreateUserDto, EditUserDto } from './dto';
 import { Role, User } from './entities';
 
+export interface UserFindOne {
+  dni?: string;
+}
+
 @Injectable()
 export class UsersService {
   constructor(
@@ -23,8 +27,8 @@ export class UsersService {
     return users;
   }
 
-  async getOne(id: string): Promise<User> {
-    const user = await this.userRepository.findOne(id,{
+  async getOne(dni: string): Promise<User> {
+    const user = await this.userRepository.findOne(dni,{
         relations: ['role']
     });
     if (!user) throw new NotFoundException(`user doesn't exits`);
@@ -50,9 +54,8 @@ export class UsersService {
     return userCreated;
    
   }
-
-  async update(id: string, content: EditUserDto) {
-    const user = await this.userRepository.findOne(id);
+  async update(dni: string, content: EditUserDto) {
+    const user = await this.userRepository.findOne(dni);
     if (!user) throw new NotFoundException(`User doesn't exists`);
     const editedUser = Object.assign(user, content);
     const data= await this.userRepository.save(editedUser);
@@ -60,15 +63,15 @@ export class UsersService {
     return data;
   }
 
-  async delete(id: string) {
-    const user = await this.userRepository.findOne(id);
+  async delete(dni: string) {
+    const user = await this.userRepository.findOne(dni);
     if (!user) throw new NotFoundException(`User doesn't exists`);
     const data= await this.userRepository.remove(user);
     return data;
   }
   
-  async updateRole(id: string, content: EditUserDto) {
-    const user = await this.userRepository.findOne(id,{relations: ['role'],})
+  async updateRole(dni: string, content: EditUserDto) {
+    const user = await this.userRepository.findOne(dni,{relations: ['role'],})
     if (!user) throw new NotFoundException(`User doesn't exits`);
     const roleFound = await this.roleRepository.find({
       where:{
@@ -76,7 +79,17 @@ export class UsersService {
       }
      });
     user.role=roleFound[0];
-    return await this.userRepository.save(user);
+
+    const data = await this.userRepository.save(user);
+    return data;
+  }
+
+  async findDni(data: UserFindOne) {
+    return await this.userRepository
+      .createQueryBuilder('user')
+      .where(data)
+      .addSelect('user.password')
+      .getOne();
   }
   
 }
