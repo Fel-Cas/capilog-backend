@@ -80,7 +80,7 @@ export class UsersService {
     return data;
   }
 
-  async findOne(data: UserFindOne) {
+  async findDni(data: UserFindOne) {
     return await this.userRepository
       .createQueryBuilder('user')
       .where(data)

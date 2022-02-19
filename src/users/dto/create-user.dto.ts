@@ -1,9 +1,8 @@
 /* eslint-disable prettier/prettier */
 import {IsEmail, IsEnum, IsString, MaxLength, MinLength} from 'class-validator';
-import { CreateDateColumn } from 'typeorm';
-import { EnumToString } from '../../helpers/enumToString';
-
+import { EnumToString } from '../../common/helpers/enumToString';
 import { UserRole } from '../enums/user-role.enum';
+
 export class CreateUserDto {
   @IsString()  
   dni: string;
