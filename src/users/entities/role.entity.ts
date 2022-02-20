@@ -15,7 +15,7 @@ export class Role {
 
   constructor(role?: string)
   constructor(role: string) {
-    this.id = Math.floor(Math.random() * 5 );
+    this.id = 1;
     this.role = role;
   }
 

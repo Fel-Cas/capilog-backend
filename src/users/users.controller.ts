@@ -37,11 +37,13 @@ import {
     @Delete(':id')
     async delete(@Param('id') id: string) {
       const userDeleted = await this.userService.delete(id);
+      delete userDeleted.password
       return { message: 'User deleted', userDeleted };
     }
     @Put('roles/:id')
     async updateRole(@Param('id') id:string, @Body() content: EditUserDto) {
       const userRoleUpdated = await this.userService.updateRole(id,content);
+      delete  userRoleUpdated.password;
       return { message:'User updated', userRoleUpdated }; 
     }
   }
