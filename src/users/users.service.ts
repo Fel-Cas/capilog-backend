@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateUserDto, EditUserDto } from './dto';
@@ -31,22 +31,25 @@ export class UsersService {
     const user = await this.userRepository.findOne(dni,{
         relations: ['role']
     });
-    if (!user) throw new NotFoundException(`user doesn't exits`);
+    if (!user) throw new NotFoundException(`User doesn't exists`);
     return user;
   }
 
-  async create(content: CreateUserDto) {
-   
+  async create(content: CreateUserDto) {   
     const { role, ...rest } = content;
+    let userFound = await this.userRepository.findOne(content.dni);
+    if( userFound ) throw new BadRequestException('Already exits one user with that dni');
+
     const roleFound = await this.roleRepository.find({
       where:{
           role:role,
       }
     }); 
+
     if (roleFound.length === 0) {
       throw new NotFoundException(`Role doesn't exists`);
       }
-    let user = new User();
+    let user = new User()
     user=Object.assign(user,rest);
     user.role = roleFound[0];
     const userCreated= await this.userRepository.save(user);
@@ -70,14 +73,15 @@ export class UsersService {
     return data;
   }
   
-  async updateRole(dni: string, content: EditUserDto) {
-    const user = await this.userRepository.findOne(dni,{relations: ['role'],})
-    if (!user) throw new NotFoundException(`User doesn't exits`);
+  async updateRole(id: string, content: EditUserDto) {
+    const user = await this.userRepository.findOne(id,{relations: ['role'],})
+    if (!user) throw new NotFoundException(`User doesn't exists`);
     const roleFound = await this.roleRepository.find({
       where:{
           role:content.role,
       }
      });
+    if(roleFound.length === 0) throw new NotFoundException(`Role doesn't exists`);
     user.role=roleFound[0];
 
     const data = await this.userRepository.save(user);
