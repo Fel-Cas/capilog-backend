@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { hash } from 'bcrypt';
 import {
     BeforeInsert,
@@ -81,7 +80,7 @@ export class User {
         this.phone = phone || null;
         this.email = email || null;
         this.role = new Role(role);
-        this.createdAt = createdAt || null;
-        this.updatedAt = updatedAt || null;
+        this.createdAt = new Date(Date.now());
+        this.updatedAt = new Date(Date.now());
     }
 }
