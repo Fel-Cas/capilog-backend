@@ -11,22 +11,22 @@ import { LocalStrategy, JwtStrategy } from './strategies';
 import { UsersModule } from 'src/users/users.module';
 
 @Module({
-  imports: [
-    PassportModule.register({
-      defaultStrategy: 'jwt',
-    }),
+    imports: [
+        PassportModule.register({
+            defaultStrategy: 'jwt',
+        }),
 
-    JwtModule.registerAsync({
-      inject: [ConfigService],
-      useFactory: (config: ConfigService) => ({
-        secret: config.get<string>(JWT_SECRET),
-        signOptions: { expiresIn: '60m' },
-      }),
-    }),
+        JwtModule.registerAsync({
+            inject: [ConfigService],
+            useFactory: (config: ConfigService) => ({
+                secret: config.get<string>(JWT_SECRET),
+                signOptions: { expiresIn: '60m' },
+            }),
+        }),
 
-    UsersModule,
-  ],
-  providers: [AuthService, LocalStrategy, JwtStrategy],
-  controllers: [AuthController],
+        UsersModule,
+    ],
+    providers: [AuthService, LocalStrategy, JwtStrategy],
+    controllers: [AuthController],
 })
 export class AuthModule {}
