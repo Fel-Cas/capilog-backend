@@ -23,11 +23,10 @@ import { UsersModule } from 'src/users/users.module';
         signOptions: { expiresIn: '60m' },
       }),
     }),
-    
+
     UsersModule,
   ],
   providers: [AuthService, LocalStrategy, JwtStrategy],
   controllers: [AuthController],
-  
 })
 export class AuthModule {}

@@ -6,7 +6,6 @@ import { UsersController } from '../users.controller';
 import { UsersService } from '../users.service';
 import { UsersServiceMock } from './users-service-mock';
 
-
 const testUser = {
   dni: '123',
   name: 'name-user',
@@ -14,7 +13,7 @@ const testUser = {
   role: 'role',
   password: 'password-user',
   phone: 'phone-user',
-  email: 'email-user'
+  email: 'email-user',
 };
 
 const testUserUpdated = {
@@ -23,14 +22,14 @@ const testUserUpdated = {
   role: 'role',
   password: 'password-user',
   phone: 'phone-user',
-  email: 'email-user'
+  email: 'email-user',
 };
 
 describe('UsersController', () => {
   let controller: UsersController;
   let spyService: UsersService;
   beforeEach(async () => {
-    const UsersServiceProvider = { 
+    const UsersServiceProvider = {
       provide: UsersService,
       useFactory: () => ({
         create: jest.fn(() => []),
@@ -38,14 +37,13 @@ describe('UsersController', () => {
         updateRole: jest.fn(() => {}),
         getOne: jest.fn(() => {}),
         getAll: jest.fn(() => []),
-        delete: jest.fn(() => {})
-      })
+        delete: jest.fn(() => {}),
+      }),
     };
-
 
     const module: TestingModule = await Test.createTestingModule({
       controllers: [UsersController],
-      providers: [UsersService , UsersServiceProvider]
+      providers: [UsersService, UsersServiceProvider],
     }).compile();
 
     controller = module.get<UsersController>(UsersController);
@@ -88,7 +86,5 @@ describe('UsersController', () => {
     controller.updateRole(id, updateRoleUser);
     expect(spyService.updateRole).toHaveBeenCalled();
     expect(spyService.updateRole).toHaveBeenCalledWith(id, updateRoleUser);
-  })
-  
-
+  });
 });

@@ -7,15 +7,15 @@ import { compare } from 'bcrypt';
 
 @Injectable()
 export class AuthService {
-    constructor(
-        private readonly usersService: UsersService,
-        private readonly jwtService: JwtService,
-      ) {}
+  constructor(
+    private readonly usersService: UsersService,
+    private readonly jwtService: JwtService,
+  ) {}
 
   async validateUser(dni: string, passwordUser: string): Promise<any> {
-    const user = await this.usersService.findDni({dni});
-    if (user &&  await compare(passwordUser, user.password)) {
-     delete user.password;
+    const user = await this.usersService.findDni({ dni });
+    if (user && (await compare(passwordUser, user.password))) {
+      delete user.password;
       return user;
     }
     return null;

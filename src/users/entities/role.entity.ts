@@ -7,16 +7,15 @@ export class Role {
   @PrimaryGeneratedColumn('increment')
   id: number;
 
-  @Column({type: 'varchar', length: 200, nullable: false})
+  @Column({ type: 'varchar', length: 200, nullable: false })
   role: string;
 
-  @OneToMany(()=>User, user=> user.role)
-  user:User[];
+  @OneToMany(() => User, (user) => user.role)
+  user: User[];
 
-  constructor(role?: string)
+  constructor(role?: string);
   constructor(role: string) {
     this.id = 1;
     this.role = role;
   }
-
 }

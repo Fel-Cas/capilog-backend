@@ -1,10 +1,16 @@
 /* eslint-disable prettier/prettier */
-import {IsEmail, IsEnum, IsString, MaxLength, MinLength} from 'class-validator';
+import {
+  IsEmail,
+  IsEnum,
+  IsString,
+  MaxLength,
+  MinLength,
+} from 'class-validator';
 import { EnumToString } from '../../common/helpers/enumToString';
 import { UserRole } from '../enums/user-role.enum';
 
 export class CreateUserDto {
-  @IsString()  
+  @IsString()
   dni: string;
 
   @IsString()
@@ -13,12 +19,14 @@ export class CreateUserDto {
   @IsString()
   lastname: string;
 
-  @IsEnum(UserRole,{
-      message:`role invalido. Opciones válidas para rol son ${EnumToString(UserRole)}`
+  @IsEnum(UserRole, {
+    message: `role invalido. Opciones válidas para rol son ${EnumToString(
+      UserRole,
+    )}`,
   })
-  @IsString() 
+  @IsString()
   role: string;
-  
+
   @IsString()
   @MinLength(8)
   @MaxLength(128)
@@ -29,5 +37,5 @@ export class CreateUserDto {
 
   @IsString()
   @IsEmail()
-  email: string;  
+  email: string;
 }
