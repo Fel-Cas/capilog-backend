@@ -36,7 +36,7 @@ export class UsersService {
 
     async create(content: CreateUserDto) {
         const { role, ...rest } = content;
-        let userFound = await this.userRepository.findOne(content.dni);
+        const userFound = await this.userRepository.findOne(content.dni);
         if (userFound) throw new BadRequestException('Already exits one user with that dni');
 
         const roleFound = await this.roleRepository.find({

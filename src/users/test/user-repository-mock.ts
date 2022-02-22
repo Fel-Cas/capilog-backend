@@ -1,31 +1,33 @@
 /* eslint-disable prettier/prettier */
-import { User } from '../entities';
+import { User, Role } from '../entities';
 
 export class UserRepositoryMock {
-    users: User[] = [
-        new User(
-            '123',
-            'Juan',
-            'Ricardo',
-            'COORDINADOR DE TRANSPORTE',
-            'carlos12345',
-            '3124325678',
-            'andres@gmail.com',
-            new Date(Date.now()),
-            new Date(Date.now())
-        ),
-        new User(
-            '567',
-            'Roberto',
-            'Gutierrez',
-            'COORDINADOR DE PROCESOS',
-            'roberto12345',
-            '3124325678',
-            'roberto@gmail.com',
-            new Date(Date.now()),
-            new Date(Date.now())
-        ),
+    userInfo = [
+        {
+            dni: '123',
+            name: 'Juan',
+            lastname: 'Ricardo',
+            role: 'COORDINADOR DE TRANSPORTE',
+            password: 'carlos12345',
+            phone: '3124325678',
+            email: 'andres@gmail.com',
+        },
+        {
+            dni: '567',
+            name: 'Roberto',
+            lastname: 'Gutierrez',
+            role: 'COORDINADOR DE PROCESOS',
+            password: 'roberto12345',
+            phone: '3124325678',
+            email: 'roberto@gmail.com',
+        },
     ];
+    users: User[] = [];
+
+    constructor() {
+        this.createUsers();
+    }
+
     find(): Promise<User[]> {
         const users = this.users;
         return Promise.resolve(users);
@@ -48,5 +50,25 @@ export class UserRepositoryMock {
     remove(user: User): Promise<User | null> {
         this.users.splice(this.users.indexOf(user), 1);
         return Promise.resolve(user);
+    }
+
+    create(content) {
+        let user = new User();
+        user.role = this.createRole(content.role);
+        user = Object.assign(user, content);
+        return user;
+    }
+
+    createRole(role) {
+        const roleCreated = new Role();
+        roleCreated.id = 1;
+        roleCreated.role = role;
+        return role;
+    }
+
+    createUsers() {
+        for (const user of this.userInfo) {
+            this.users.push(this.create(user));
+        }
     }
 }

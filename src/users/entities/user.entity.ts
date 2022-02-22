@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { hash } from 'bcrypt';
 import {
     BeforeInsert,
@@ -49,38 +50,5 @@ export class User {
             return;
         }
         this.password = await hash(this.password, 10);
-    }
-
-    constructor(
-        dni?: string,
-        name?: string,
-        lastname?: string,
-        password?: string,
-        phone?: string,
-        email?: string,
-        role?: string,
-        createdAt?: Date,
-        updatedAt?: Date
-    );
-    constructor(
-        dni: string,
-        name: string,
-        lastname: string,
-        password: string,
-        phone: string,
-        email: string,
-        role: string,
-        createdAt: Date,
-        updatedAt: Date
-    ) {
-        this.dni = dni || null;
-        this.name = name || null;
-        this.lastname = lastname || null;
-        this.password = password || null;
-        this.phone = phone || null;
-        this.email = email || null;
-        this.role = new Role(role);
-        this.createdAt = new Date(Date.now());
-        this.updatedAt = new Date(Date.now());
     }
 }
