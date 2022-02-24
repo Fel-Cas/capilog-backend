@@ -909,3 +909,64 @@
 [2022-02-24T04:00:03.269Z][QUERY]: INSERT INTO `capilog_database`.`migrations_typeorm`(`timestamp`, `name`) VALUES (?, ?) -- PARAMETERS: [1645674672574,"initialSatate1645674672574"]
 [2022-02-24T04:00:03.278Z]Migration initialSatate1645674672574 has been executed successfully.
 [2022-02-24T04:00:03.280Z][QUERY]: COMMIT
+[2022-02-24T16:39:11.276Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T16:39:11.388Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T16:39:11.403Z]1 migrations are already loaded in the database.
+[2022-02-24T16:39:11.407Z]initialSatate1645674672574 is the last executed migration. It was executed on Wed Feb 23 2022 22:51:12 GMT-0500 (hora estándar de Colombia).
+[2022-02-24T16:39:11.408Z]Now reverting it...
+[2022-02-24T16:39:11.410Z][QUERY]: START TRANSACTION
+[2022-02-24T16:39:11.416Z][QUERY]: ALTER TABLE `users` DROP FOREIGN KEY `FK_ace513fa30d485cfd25c11a9e4a`
+[2022-02-24T16:39:11.449Z][QUERY]: DROP TABLE `users`
+[2022-02-24T16:39:11.474Z][QUERY]: DROP TABLE `roles`
+[2022-02-24T16:39:11.530Z][QUERY]: DELETE FROM `capilog_database`.`migrations_typeorm` WHERE `timestamp` = ? AND `name` = ? -- PARAMETERS: [1645674672574,"initialSatate1645674672574"]
+[2022-02-24T16:39:11.542Z]Migration initialSatate1645674672574 has been reverted successfully.
+[2022-02-24T16:39:11.544Z][QUERY]: COMMIT
+[2022-02-24T16:39:26.668Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T16:39:26.680Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T16:39:26.684Z]0 migrations are already loaded in the database.
+[2022-02-24T16:39:26.684Z]1 migrations were found in the source code.
+[2022-02-24T16:39:26.685Z]1 migrations are new migrations that needs to be executed.
+[2022-02-24T16:39:26.686Z][QUERY]: START TRANSACTION
+[2022-02-24T16:39:26.689Z][QUERY]: CREATE TABLE `users` (`dni` varchar(255) NOT NULL, `name` varchar(150) NOT NULL, `lastname` varchar(150) NOT NULL, `password` varchar(250) NOT NULL, `phone` varchar(20) NOT NULL, `email` varchar(250) NOT NULL, `createdAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), `updatedAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), `role` int NULL, PRIMARY KEY (`dni`)) ENGINE=InnoDB
+[2022-02-24T16:39:26.716Z][QUERY]: CREATE TABLE `roles` (`id` int NOT NULL AUTO_INCREMENT, `role` varchar(200) NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB
+[2022-02-24T16:39:26.760Z][QUERY]: ALTER TABLE `users` ADD CONSTRAINT `FK_ace513fa30d485cfd25c11a9e4a` FOREIGN KEY (`role`) REFERENCES `roles`(`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+[2022-02-24T16:39:26.821Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["PORTERO"]
+[2022-02-24T16:39:26.854Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["COORDINADOR DE FINCA"]
+[2022-02-24T16:39:26.862Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["COORDINADOR DE PROCESOS"]
+[2022-02-24T16:39:26.867Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["ADMIN"]
+[2022-02-24T16:39:26.876Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["COORDINADOR DE TRANSPORTE"]
+[2022-02-24T16:39:26.882Z][QUERY]: INSERT INTO `capilog_database`.`migrations_typeorm`(`timestamp`, `name`) VALUES (?, ?) -- PARAMETERS: [1645674672574,"initialSatate1645674672574"]
+[2022-02-24T16:39:26.886Z]Migration initialSatate1645674672574 has been executed successfully.
+[2022-02-24T16:39:26.887Z][QUERY]: COMMIT
+[2022-02-24T16:56:28.587Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T16:56:28.600Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T16:58:17.927Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T16:58:17.937Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T16:58:17.949Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?), (DEFAULT, ?), (DEFAULT, ?), (DEFAULT, ?), (DEFAULT, ?) -- PARAMETERS: ["ADMIN","COORDINADOR DE TRANSPORTE","COORDINADOR DE PROCESO","PORTERO","COORDINADOR DE FINCA"]
+[2022-02-24T17:00:33.970Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T17:00:33.983Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T17:00:33.986Z]1 migrations are already loaded in the database.
+[2022-02-24T17:00:33.988Z]initialSatate1645674672574 is the last executed migration. It was executed on Wed Feb 23 2022 22:51:12 GMT-0500 (hora estándar de Colombia).
+[2022-02-24T17:00:33.988Z]Now reverting it...
+[2022-02-24T17:00:33.990Z][QUERY]: START TRANSACTION
+[2022-02-24T17:00:33.993Z][QUERY]: ALTER TABLE `users` DROP FOREIGN KEY `FK_ace513fa30d485cfd25c11a9e4a`
+[2022-02-24T17:00:34.002Z][QUERY]: DROP TABLE `users`
+[2022-02-24T17:00:34.010Z][QUERY]: DROP TABLE `roles`
+[2022-02-24T17:00:34.035Z][QUERY]: DELETE FROM `capilog_database`.`migrations_typeorm` WHERE `timestamp` = ? AND `name` = ? -- PARAMETERS: [1645674672574,"initialSatate1645674672574"]
+[2022-02-24T17:00:34.042Z]Migration initialSatate1645674672574 has been reverted successfully.
+[2022-02-24T17:00:34.043Z][QUERY]: COMMIT
+[2022-02-24T17:02:26.677Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T17:02:26.687Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T17:02:26.691Z]0 migrations are already loaded in the database.
+[2022-02-24T17:02:26.691Z]1 migrations were found in the source code.
+[2022-02-24T17:02:26.692Z]1 migrations are new migrations that needs to be executed.
+[2022-02-24T17:02:26.693Z][QUERY]: START TRANSACTION
+[2022-02-24T17:02:26.697Z][QUERY]: CREATE TABLE `users` (`dni` varchar(255) NOT NULL, `name` varchar(150) NOT NULL, `lastname` varchar(150) NOT NULL, `password` varchar(250) NOT NULL, `phone` varchar(20) NOT NULL, `email` varchar(250) NOT NULL, `createdAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), `updatedAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), `role` int NULL, PRIMARY KEY (`dni`)) ENGINE=InnoDB
+[2022-02-24T17:02:27.311Z][QUERY]: CREATE TABLE `roles` (`id` int NOT NULL AUTO_INCREMENT, `role` varchar(200) NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB
+[2022-02-24T17:02:27.461Z][QUERY]: ALTER TABLE `users` ADD CONSTRAINT `FK_ace513fa30d485cfd25c11a9e4a` FOREIGN KEY (`role`) REFERENCES `roles`(`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+[2022-02-24T17:02:27.748Z][QUERY]: INSERT INTO `capilog_database`.`migrations_typeorm`(`timestamp`, `name`) VALUES (?, ?) -- PARAMETERS: [1645674672574,"initialSatate1645674672574"]
+[2022-02-24T17:02:28.063Z]Migration initialSatate1645674672574 has been executed successfully.
+[2022-02-24T17:02:28.064Z][QUERY]: COMMIT
+[2022-02-24T17:03:07.375Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T17:03:07.386Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T17:03:07.399Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?), (DEFAULT, ?), (DEFAULT, ?), (DEFAULT, ?), (DEFAULT, ?) -- PARAMETERS: ["ADMIN","COORDINADOR DE TRANSPORTE","COORDINADOR DE PROCESO","PORTERO","COORDINADOR DE FINCA"]

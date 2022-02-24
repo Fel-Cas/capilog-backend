@@ -41,7 +41,11 @@
     "db:migration:generate": "npx typeorm migration:generate -n",
     "db:migration:create": "npx typeorm migration:create -n",
     "db:migration:run": "npx typeorm migration:run",
-    "db:migration:revert": "npx typeorm migration:revert"
+    "db:migration:revert": "npx typeorm migration:revert",
+    "seed:config": "ts-node ./node_modules/typeorm-seeding/dist/cli.js config",
+    "seed:run": "ts-node ./node_modules/typeorm-seeding/dist/cli.js  seed",
+    "schema:drop": "ts-node ./node_modules/typeorm/cli.js schema:drop",
+    "schema:sync": "ts-node ./node_modules/typeorm/cli.js schema:sync"
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",
@@ -65,7 +69,8 @@
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
     "swagger-ui-express": "^4.3.0",
-    "typeorm": "^0.2.41"
+    "typeorm": "^0.2.41",
+    "typeorm-seeding": "^1.6.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^8.0.0",
@@ -73,6 +78,7 @@
     "@nestjs/testing": "^8.0.0",
     "@types/bcrypt": "^5.0.0",
     "@types/express": "^4.17.13",
+    "@types/faker": "^6.6.9",
     "@types/jest": "27.0.2",
     "@types/node": "^16.0.0",
     "@types/passport-jwt": "^3.0.6",
