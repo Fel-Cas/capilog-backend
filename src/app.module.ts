@@ -1,12 +1,24 @@
 /* eslint-disable prettier/prettier */
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
-import { DatabaseModule } from './database/database.module';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { TYPEORM_CONFIG } from './config/constants';
+import databaseConfig from './config/database.config';
 
 @Module({
-    imports: [ConfigModule.forRoot({ isGlobal: true }), DatabaseModule, UsersModule, AuthModule],
+    imports: [
+        TypeOrmModule.forRootAsync({
+            inject: [ConfigService],
+            useFactory: (config: ConfigService) => config.get(TYPEORM_CONFIG),
+        }),
+        ConfigModule.forRoot({
+            isGlobal: true,
+            load: [databaseConfig]
+        }), 
+        UsersModule, 
+        AuthModule],
     controllers: [],
     providers: [],
 })

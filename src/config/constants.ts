@@ -7,3 +7,4 @@ export const DB_PASSWORD = 'DB_PASSWORD';
 export const DB_LOGGING = 'DB_LOGGING';
 export const JWT_SECRET = 'JWT_SECRET';
 export const PORT = 'PORT';
+export const TYPEORM_CONFIG = 'database.config';

@@ -1,0 +1,911 @@
+[2022-02-24T02:25:31.116Z][QUERY]: START TRANSACTION
+[2022-02-24T02:25:31.125Z][QUERY]: SELECT DATABASE() AS `db_name`
+[2022-02-24T02:25:31.132Z][QUERY]: 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'users'
+                     UNION 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'roles'
+                    
+[2022-02-24T02:25:31.137Z][QUERY]: 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'users'
+                 UNION 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'roles'
+                
+[2022-02-24T02:25:31.138Z][QUERY]: SELECT * FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'roles'
+            ) `kcu` WHERE `CONSTRAINT_NAME` = 'PRIMARY'
+[2022-02-24T02:25:31.139Z][QUERY]: 
+            SELECT
+                `SCHEMA_NAME`,
+                `DEFAULT_CHARACTER_SET_NAME` as `CHARSET`,
+                `DEFAULT_COLLATION_NAME` AS `COLLATION`
+            FROM `INFORMATION_SCHEMA`.`SCHEMATA`
+            
+[2022-02-24T02:25:31.140Z][QUERY]: 
+            SELECT
+                `s`.*
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'users'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'roles'
+            ) `s`
+            LEFT JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'users'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'roles'
+            ) `rc`
+                ON
+                    `s`.`INDEX_NAME` = `rc`.`CONSTRAINT_NAME`
+                    AND
+                    `s`.`TABLE_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA`
+            WHERE
+                `s`.`INDEX_NAME` != 'PRIMARY'
+                AND
+                `rc`.`CONSTRAINT_NAME` IS NULL
+            
+[2022-02-24T02:25:31.140Z][QUERY]: 
+            SELECT
+                `kcu`.`TABLE_SCHEMA`,
+                `kcu`.`TABLE_NAME`,
+                `kcu`.`CONSTRAINT_NAME`,
+                `kcu`.`COLUMN_NAME`,
+                `kcu`.`REFERENCED_TABLE_SCHEMA`,
+                `kcu`.`REFERENCED_TABLE_NAME`,
+                `kcu`.`REFERENCED_COLUMN_NAME`,
+                `rc`.`DELETE_RULE` `ON_DELETE`,
+                `rc`.`UPDATE_RULE` `ON_UPDATE`
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'roles'
+            ) `kcu`
+            INNER JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'users'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'roles'
+            ) `rc`
+                ON
+                    `rc`.`CONSTRAINT_SCHEMA` = `kcu`.`CONSTRAINT_SCHEMA`
+                    AND
+                    `rc`.`TABLE_NAME` = `kcu`.`TABLE_NAME`
+                    AND
+                    `rc`.`CONSTRAINT_NAME` = `kcu`.`CONSTRAINT_NAME`
+            
+[2022-02-24T02:25:31.171Z][QUERY]: SELECT VERSION() AS `version`
+[2022-02-24T02:25:31.179Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'typeorm_metadata'
+[2022-02-24T02:25:31.202Z][QUERY]: COMMIT
+[2022-02-24T02:26:21.061Z][QUERY]: START TRANSACTION
+[2022-02-24T02:26:21.068Z][QUERY]: SELECT DATABASE() AS `db_name`
+[2022-02-24T02:26:21.074Z][QUERY]: 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'users'
+                     UNION 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'roles'
+                    
+[2022-02-24T02:26:21.079Z][QUERY]: 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'users'
+                 UNION 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'roles'
+                
+[2022-02-24T02:26:21.080Z][QUERY]: SELECT * FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'roles'
+            ) `kcu` WHERE `CONSTRAINT_NAME` = 'PRIMARY'
+[2022-02-24T02:26:21.081Z][QUERY]: 
+            SELECT
+                `SCHEMA_NAME`,
+                `DEFAULT_CHARACTER_SET_NAME` as `CHARSET`,
+                `DEFAULT_COLLATION_NAME` AS `COLLATION`
+            FROM `INFORMATION_SCHEMA`.`SCHEMATA`
+            
+[2022-02-24T02:26:21.081Z][QUERY]: 
+            SELECT
+                `s`.*
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'users'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'roles'
+            ) `s`
+            LEFT JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'users'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'roles'
+            ) `rc`
+                ON
+                    `s`.`INDEX_NAME` = `rc`.`CONSTRAINT_NAME`
+                    AND
+                    `s`.`TABLE_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA`
+            WHERE
+                `s`.`INDEX_NAME` != 'PRIMARY'
+                AND
+                `rc`.`CONSTRAINT_NAME` IS NULL
+            
+[2022-02-24T02:26:21.082Z][QUERY]: 
+            SELECT
+                `kcu`.`TABLE_SCHEMA`,
+                `kcu`.`TABLE_NAME`,
+                `kcu`.`CONSTRAINT_NAME`,
+                `kcu`.`COLUMN_NAME`,
+                `kcu`.`REFERENCED_TABLE_SCHEMA`,
+                `kcu`.`REFERENCED_TABLE_NAME`,
+                `kcu`.`REFERENCED_COLUMN_NAME`,
+                `rc`.`DELETE_RULE` `ON_DELETE`,
+                `rc`.`UPDATE_RULE` `ON_UPDATE`
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'roles'
+            ) `kcu`
+            INNER JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'users'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'roles'
+            ) `rc`
+                ON
+                    `rc`.`CONSTRAINT_SCHEMA` = `kcu`.`CONSTRAINT_SCHEMA`
+                    AND
+                    `rc`.`TABLE_NAME` = `kcu`.`TABLE_NAME`
+                    AND
+                    `rc`.`CONSTRAINT_NAME` = `kcu`.`CONSTRAINT_NAME`
+            
+[2022-02-24T02:26:21.098Z][QUERY]: SELECT VERSION() AS `version`
+[2022-02-24T02:26:21.105Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'typeorm_metadata'
+[2022-02-24T02:26:21.117Z][QUERY]: COMMIT
+[2022-02-24T02:26:51.275Z][QUERY]: START TRANSACTION
+[2022-02-24T02:26:51.281Z][QUERY]: SELECT DATABASE() AS `db_name`
+[2022-02-24T02:26:51.286Z][QUERY]: 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'users'
+                     UNION 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'roles'
+                    
+[2022-02-24T02:26:51.290Z][QUERY]: 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'users'
+                 UNION 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'roles'
+                
+[2022-02-24T02:26:51.291Z][QUERY]: SELECT * FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'roles'
+            ) `kcu` WHERE `CONSTRAINT_NAME` = 'PRIMARY'
+[2022-02-24T02:26:51.292Z][QUERY]: 
+            SELECT
+                `SCHEMA_NAME`,
+                `DEFAULT_CHARACTER_SET_NAME` as `CHARSET`,
+                `DEFAULT_COLLATION_NAME` AS `COLLATION`
+            FROM `INFORMATION_SCHEMA`.`SCHEMATA`
+            
+[2022-02-24T02:26:51.293Z][QUERY]: 
+            SELECT
+                `s`.*
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'users'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'roles'
+            ) `s`
+            LEFT JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'users'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'roles'
+            ) `rc`
+                ON
+                    `s`.`INDEX_NAME` = `rc`.`CONSTRAINT_NAME`
+                    AND
+                    `s`.`TABLE_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA`
+            WHERE
+                `s`.`INDEX_NAME` != 'PRIMARY'
+                AND
+                `rc`.`CONSTRAINT_NAME` IS NULL
+            
+[2022-02-24T02:26:51.293Z][QUERY]: 
+            SELECT
+                `kcu`.`TABLE_SCHEMA`,
+                `kcu`.`TABLE_NAME`,
+                `kcu`.`CONSTRAINT_NAME`,
+                `kcu`.`COLUMN_NAME`,
+                `kcu`.`REFERENCED_TABLE_SCHEMA`,
+                `kcu`.`REFERENCED_TABLE_NAME`,
+                `kcu`.`REFERENCED_COLUMN_NAME`,
+                `rc`.`DELETE_RULE` `ON_DELETE`,
+                `rc`.`UPDATE_RULE` `ON_UPDATE`
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'roles'
+            ) `kcu`
+            INNER JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'users'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'roles'
+            ) `rc`
+                ON
+                    `rc`.`CONSTRAINT_SCHEMA` = `kcu`.`CONSTRAINT_SCHEMA`
+                    AND
+                    `rc`.`TABLE_NAME` = `kcu`.`TABLE_NAME`
+                    AND
+                    `rc`.`CONSTRAINT_NAME` = `kcu`.`CONSTRAINT_NAME`
+            
+[2022-02-24T02:26:51.307Z][QUERY]: SELECT VERSION() AS `version`
+[2022-02-24T02:26:51.313Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'typeorm_metadata'
+[2022-02-24T02:26:51.325Z][QUERY]: COMMIT
+[2022-02-24T02:26:51.331Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T02:26:51.336Z][QUERY]: CREATE TABLE `migrations_typeorm` (`id` int NOT NULL AUTO_INCREMENT, `timestamp` bigint NOT NULL, `name` varchar(255) NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB
+[2022-02-24T02:26:51.381Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T02:27:02.829Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T02:27:02.842Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T02:29:55.628Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T02:29:55.645Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T02:29:55.649Z][QUERY]: START TRANSACTION
+[2022-02-24T02:29:55.653Z][QUERY]: CREATE TABLE `users` (`dni` varchar(255) NOT NULL, `name` varchar(150) NOT NULL, `lastname` varchar(150) NOT NULL, `password` varchar(250) NOT NULL, `phone` varchar(20) NOT NULL, `email` varchar(250) NOT NULL, `createdAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), `updatedAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), `role` int NULL, PRIMARY KEY (`dni`)) ENGINE=InnoDB
+[2022-02-24T02:29:55.804Z][QUERY]: CREATE TABLE `roles` (`id` int NOT NULL AUTO_INCREMENT, `role` varchar(200) NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB
+[2022-02-24T02:29:56.001Z][QUERY]: ALTER TABLE `users` ADD CONSTRAINT `FK_ace513fa30d485cfd25c11a9e4a` FOREIGN KEY (`role`) REFERENCES `roles`(`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+[2022-02-24T02:29:56.124Z][QUERY]: INSERT INTO `capilog_database`.`migrations_typeorm`(`timestamp`, `name`) VALUES (?, ?) -- PARAMETERS: [1645669746277,"initialMigration1645669746277"]
+[2022-02-24T02:29:56.178Z][QUERY]: COMMIT
+[2022-02-24T03:07:57.630Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:07:57.651Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:07:57.657Z][QUERY]: START TRANSACTION
+[2022-02-24T03:07:57.709Z]Migration "rolesContent1645671298987" has been failed, error: No metadata for "PORTERO" was found.
+[2022-02-24T03:07:57.711Z][QUERY]: ROLLBACK
+[2022-02-24T03:08:01.203Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:08:01.209Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:08:01.213Z][QUERY]: START TRANSACTION
+[2022-02-24T03:08:01.217Z]Migration "rolesContent1645671298987" has been failed, error: No metadata for "PORTERO" was found.
+[2022-02-24T03:08:01.217Z][QUERY]: ROLLBACK
+[2022-02-24T03:08:04.272Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:08:04.276Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:08:04.280Z][QUERY]: START TRANSACTION
+[2022-02-24T03:08:04.283Z]Migration "rolesContent1645671298987" has been failed, error: No metadata for "PORTERO" was found.
+[2022-02-24T03:08:04.283Z][QUERY]: ROLLBACK
+[2022-02-24T03:08:07.352Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:08:07.358Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:08:07.362Z][QUERY]: START TRANSACTION
+[2022-02-24T03:08:07.366Z]Migration "rolesContent1645671298987" has been failed, error: No metadata for "PORTERO" was found.
+[2022-02-24T03:08:07.367Z][QUERY]: ROLLBACK
+[2022-02-24T03:09:10.856Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:09:10.870Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:09:10.876Z][QUERY]: START TRANSACTION
+[2022-02-24T03:09:10.888Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["PORTERO"]
+[2022-02-24T03:09:10.895Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["COORDINADOR DE FINCA"]
+[2022-02-24T03:09:10.900Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["COORDINADOR DE PROCESOS"]
+[2022-02-24T03:09:10.903Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["ADMIN"]
+[2022-02-24T03:09:10.907Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["COORDINADOR DE TRANSPORTE"]
+[2022-02-24T03:09:10.911Z][QUERY]: INSERT INTO `capilog_database`.`migrations_typeorm`(`timestamp`, `name`) VALUES (?, ?) -- PARAMETERS: [1645671298987,"rolesContent1645671298987"]
+[2022-02-24T03:09:10.915Z][QUERY]: COMMIT
+[2022-02-24T03:09:45.639Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:09:45.652Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:11:16.371Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:11:16.385Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:11:46.154Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:11:46.166Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:11:46.169Z]2 migrations are already loaded in the database.
+[2022-02-24T03:11:46.171Z]rolesContent1645671298987 is the last executed migration. It was executed on Wed Feb 23 2022 21:54:58 GMT-0500 (hora estándar de Colombia).
+[2022-02-24T03:11:46.171Z]Now reverting it...
+[2022-02-24T03:11:46.172Z][QUERY]: START TRANSACTION
+[2022-02-24T03:11:46.175Z][QUERY]: DELTE * FROM  roles
+[2022-02-24T03:11:46.180Z][FAILED QUERY]: DELTE * FROM  roles
+[2022-02-24T03:11:46.180Z][QUERY ERROR]: Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DELTE * FROM  roles' at line 1
+[2022-02-24T03:11:46.182Z][QUERY]: ROLLBACK
+[2022-02-24T03:12:30.040Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:12:30.053Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:12:30.056Z]2 migrations are already loaded in the database.
+[2022-02-24T03:12:30.058Z]rolesContent1645671298987 is the last executed migration. It was executed on Wed Feb 23 2022 21:54:58 GMT-0500 (hora estándar de Colombia).
+[2022-02-24T03:12:30.058Z]Now reverting it...
+[2022-02-24T03:12:30.060Z][QUERY]: START TRANSACTION
+[2022-02-24T03:12:30.063Z][QUERY]: DELTE * FROM  roles
+[2022-02-24T03:12:30.067Z][FAILED QUERY]: DELTE * FROM  roles
+[2022-02-24T03:12:30.067Z][QUERY ERROR]: Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DELTE * FROM  roles' at line 1
+[2022-02-24T03:12:30.069Z][QUERY]: ROLLBACK
+[2022-02-24T03:13:09.629Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:13:09.641Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:13:09.645Z]No migrations are pending
+[2022-02-24T03:13:26.857Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:13:26.869Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:13:26.873Z]2 migrations are already loaded in the database.
+[2022-02-24T03:13:26.875Z]rolesContent1645671298987 is the last executed migration. It was executed on Wed Feb 23 2022 21:54:58 GMT-0500 (hora estándar de Colombia).
+[2022-02-24T03:13:26.875Z]Now reverting it...
+[2022-02-24T03:13:26.876Z][QUERY]: START TRANSACTION
+[2022-02-24T03:13:26.879Z][QUERY]: DELTE * FROM  roles
+[2022-02-24T03:13:26.884Z][FAILED QUERY]: DELTE * FROM  roles
+[2022-02-24T03:13:26.884Z][QUERY ERROR]: Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DELTE * FROM  roles' at line 1
+[2022-02-24T03:13:26.885Z][QUERY]: ROLLBACK
+[2022-02-24T03:14:48.935Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:14:48.950Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:14:52.133Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:14:52.139Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:15:50.502Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:15:50.516Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:16:23.391Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:16:23.403Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:16:23.440Z]2 migrations are already loaded in the database.
+[2022-02-24T03:16:23.442Z]rolesContent1645671298987 is the last executed migration. It was executed on Wed Feb 23 2022 21:54:58 GMT-0500 (hora estándar de Colombia).
+[2022-02-24T03:16:23.443Z]Now reverting it...
+[2022-02-24T03:16:23.444Z][QUERY]: START TRANSACTION
+[2022-02-24T03:16:23.447Z][QUERY]: DELETE * FROM  roles
+[2022-02-24T03:16:23.451Z][FAILED QUERY]: DELETE * FROM  roles
+[2022-02-24T03:16:23.451Z][QUERY ERROR]: Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* FROM  roles' at line 1
+[2022-02-24T03:16:23.452Z][QUERY]: ROLLBACK
+[2022-02-24T03:20:04.058Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:20:04.070Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:20:04.074Z]2 migrations are already loaded in the database.
+[2022-02-24T03:20:04.076Z]rolesContent1645671298987 is the last executed migration. It was executed on Wed Feb 23 2022 21:54:58 GMT-0500 (hora estándar de Colombia).
+[2022-02-24T03:20:04.076Z]Now reverting it...
+[2022-02-24T03:20:04.077Z][QUERY]: START TRANSACTION
+[2022-02-24T03:20:04.080Z][QUERY]: DELETE * FROM capilog_database.roles
+[2022-02-24T03:20:04.085Z][FAILED QUERY]: DELETE * FROM capilog_database.roles
+[2022-02-24T03:20:04.085Z][QUERY ERROR]: Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* FROM capilog_database.roles' at line 1
+[2022-02-24T03:20:04.087Z][QUERY]: ROLLBACK
+[2022-02-24T03:20:44.196Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:20:44.205Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:20:44.209Z]2 migrations are already loaded in the database.
+[2022-02-24T03:20:44.211Z]rolesContent1645671298987 is the last executed migration. It was executed on Wed Feb 23 2022 21:54:58 GMT-0500 (hora estándar de Colombia).
+[2022-02-24T03:20:44.212Z]Now reverting it...
+[2022-02-24T03:20:44.214Z][QUERY]: START TRANSACTION
+[2022-02-24T03:20:44.217Z][QUERY]: DELETE  capilog_database.roles
+[2022-02-24T03:20:44.221Z][FAILED QUERY]: DELETE  capilog_database.roles
+[2022-02-24T03:20:44.221Z][QUERY ERROR]: Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+[2022-02-24T03:20:44.223Z][QUERY]: ROLLBACK
+[2022-02-24T03:24:54.553Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:24:54.569Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:24:54.573Z]2 migrations are already loaded in the database.
+[2022-02-24T03:24:54.574Z]rolesContent1645671298987 is the last executed migration. It was executed on Wed Feb 23 2022 21:54:58 GMT-0500 (hora estándar de Colombia).
+[2022-02-24T03:24:54.575Z]Now reverting it...
+[2022-02-24T03:24:54.576Z][QUERY]: START TRANSACTION
+[2022-02-24T03:24:54.587Z][QUERY]: DELETE FROM `roles`
+[2022-02-24T03:24:54.640Z][QUERY]: DELETE FROM `capilog_database`.`migrations_typeorm` WHERE `timestamp` = ? AND `name` = ? -- PARAMETERS: [1645671298987,"rolesContent1645671298987"]
+[2022-02-24T03:24:54.645Z]Migration rolesContent1645671298987 has been reverted successfully.
+[2022-02-24T03:24:54.646Z][QUERY]: COMMIT
+[2022-02-24T03:26:09.456Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:26:09.470Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:26:09.476Z][QUERY]: START TRANSACTION
+[2022-02-24T03:26:09.489Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["PORTERO"]
+[2022-02-24T03:26:09.497Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["COORDINADOR DE FINCA"]
+[2022-02-24T03:26:09.502Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["COORDINADOR DE PROCESOS"]
+[2022-02-24T03:26:09.506Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["ADMIN"]
+[2022-02-24T03:26:09.510Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["COORDINADOR DE TRANSPORTE"]
+[2022-02-24T03:26:09.515Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["AGUATERO"]
+[2022-02-24T03:26:09.520Z][QUERY]: INSERT INTO `capilog_database`.`migrations_typeorm`(`timestamp`, `name`) VALUES (?, ?) -- PARAMETERS: [1645671298987,"rolesContent1645671298987"]
+[2022-02-24T03:26:09.523Z][QUERY]: COMMIT
+[2022-02-24T03:27:36.285Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:27:36.298Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:27:36.335Z]2 migrations are already loaded in the database.
+[2022-02-24T03:27:36.337Z]rolesContent1645671298987 is the last executed migration. It was executed on Wed Feb 23 2022 21:54:58 GMT-0500 (hora estándar de Colombia).
+[2022-02-24T03:27:36.337Z]Now reverting it...
+[2022-02-24T03:27:36.338Z][QUERY]: START TRANSACTION
+[2022-02-24T03:27:36.341Z][QUERY]: DELTE * FROM `roles`
+[2022-02-24T03:27:36.346Z][FAILED QUERY]: DELTE * FROM `roles`
+[2022-02-24T03:27:36.346Z][QUERY ERROR]: Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DELTE * FROM `roles`' at line 1
+[2022-02-24T03:27:36.347Z][QUERY]: ROLLBACK
+[2022-02-24T03:28:21.116Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:28:21.127Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:28:21.130Z]2 migrations are already loaded in the database.
+[2022-02-24T03:28:21.132Z]rolesContent1645671298987 is the last executed migration. It was executed on Wed Feb 23 2022 21:54:58 GMT-0500 (hora estándar de Colombia).
+[2022-02-24T03:28:21.133Z]Now reverting it...
+[2022-02-24T03:28:21.134Z][QUERY]: START TRANSACTION
+[2022-02-24T03:28:21.137Z][QUERY]: DELETE * FROM `roles`
+[2022-02-24T03:28:21.142Z][FAILED QUERY]: DELETE * FROM `roles`
+[2022-02-24T03:28:21.142Z][QUERY ERROR]: Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* FROM `roles`' at line 1
+[2022-02-24T03:28:21.144Z][QUERY]: ROLLBACK
+[2022-02-24T03:29:14.554Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:29:14.565Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:29:14.569Z]2 migrations are already loaded in the database.
+[2022-02-24T03:29:14.572Z]rolesContent1645671298987 is the last executed migration. It was executed on Wed Feb 23 2022 21:54:58 GMT-0500 (hora estándar de Colombia).
+[2022-02-24T03:29:14.572Z]Now reverting it...
+[2022-02-24T03:29:14.573Z][QUERY]: START TRANSACTION
+[2022-02-24T03:29:14.576Z][QUERY]: DELETE * FROM `roles`
+[2022-02-24T03:29:14.580Z][FAILED QUERY]: DELETE * FROM `roles`
+[2022-02-24T03:29:14.580Z][QUERY ERROR]: Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* FROM `roles`' at line 1
+[2022-02-24T03:29:14.582Z][QUERY]: ROLLBACK
+[2022-02-24T03:29:36.626Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:29:36.638Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:29:36.642Z]2 migrations are already loaded in the database.
+[2022-02-24T03:29:36.644Z]rolesContent1645671298987 is the last executed migration. It was executed on Wed Feb 23 2022 21:54:58 GMT-0500 (hora estándar de Colombia).
+[2022-02-24T03:29:36.644Z]Now reverting it...
+[2022-02-24T03:29:36.645Z][QUERY]: START TRANSACTION
+[2022-02-24T03:29:36.649Z][QUERY]: delete from  `roles`
+[2022-02-24T03:29:36.656Z][QUERY]: DELETE FROM `capilog_database`.`migrations_typeorm` WHERE `timestamp` = ? AND `name` = ? -- PARAMETERS: [1645671298987,"rolesContent1645671298987"]
+[2022-02-24T03:29:36.659Z]Migration rolesContent1645671298987 has been reverted successfully.
+[2022-02-24T03:29:36.660Z][QUERY]: COMMIT
+[2022-02-24T03:31:20.730Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:31:20.740Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:31:20.744Z]1 migrations are already loaded in the database.
+[2022-02-24T03:31:20.745Z]initialMigration1645669746277 is the last executed migration. It was executed on Wed Feb 23 2022 21:29:06 GMT-0500 (hora estándar de Colombia).
+[2022-02-24T03:31:20.746Z]Now reverting it...
+[2022-02-24T03:31:20.747Z][QUERY]: START TRANSACTION
+[2022-02-24T03:31:20.750Z][QUERY]: ALTER TABLE `users` DROP FOREIGN KEY `FK_ace513fa30d485cfd25c11a9e4a`
+[2022-02-24T03:31:20.754Z][FAILED QUERY]: ALTER TABLE `users` DROP FOREIGN KEY `FK_ace513fa30d485cfd25c11a9e4a`
+[2022-02-24T03:31:20.754Z][QUERY ERROR]: Error: ER_NO_SUCH_TABLE: Table 'capilog_database.users' doesn't exist
+[2022-02-24T03:31:20.756Z][QUERY]: ROLLBACK
+[2022-02-24T03:31:36.179Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:31:36.191Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:31:36.196Z][QUERY]: START TRANSACTION
+[2022-02-24T03:31:36.208Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["PORTERO"]
+[2022-02-24T03:31:36.308Z][FAILED QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["PORTERO"]
+[2022-02-24T03:31:36.308Z][QUERY ERROR]: Error: ER_NO_SUCH_TABLE: Table 'capilog_database.roles' doesn't exist
+[2022-02-24T03:31:36.309Z]Migration "rolesContent1645671298987" has been failed, error: ER_NO_SUCH_TABLE: Table 'capilog_database.roles' doesn't exist
+[2022-02-24T03:31:36.310Z][QUERY]: ROLLBACK
+[2022-02-24T03:31:39.392Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:31:39.398Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:31:39.402Z][QUERY]: START TRANSACTION
+[2022-02-24T03:31:39.405Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["PORTERO"]
+[2022-02-24T03:31:39.409Z][FAILED QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["PORTERO"]
+[2022-02-24T03:31:39.409Z][QUERY ERROR]: Error: ER_NO_SUCH_TABLE: Table 'capilog_database.roles' doesn't exist
+[2022-02-24T03:31:39.411Z]Migration "rolesContent1645671298987" has been failed, error: ER_NO_SUCH_TABLE: Table 'capilog_database.roles' doesn't exist
+[2022-02-24T03:31:39.412Z][QUERY]: ROLLBACK
+[2022-02-24T03:31:42.457Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:31:42.464Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:31:42.467Z][QUERY]: START TRANSACTION
+[2022-02-24T03:31:42.471Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["PORTERO"]
+[2022-02-24T03:31:42.475Z][FAILED QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["PORTERO"]
+[2022-02-24T03:31:42.475Z][QUERY ERROR]: Error: ER_NO_SUCH_TABLE: Table 'capilog_database.roles' doesn't exist
+[2022-02-24T03:31:42.476Z]Migration "rolesContent1645671298987" has been failed, error: ER_NO_SUCH_TABLE: Table 'capilog_database.roles' doesn't exist
+[2022-02-24T03:31:42.477Z][QUERY]: ROLLBACK
+[2022-02-24T03:33:08.620Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:33:08.633Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:33:08.638Z][QUERY]: START TRANSACTION
+[2022-02-24T03:33:08.653Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["PORTERO"]
+[2022-02-24T03:33:08.723Z][FAILED QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["PORTERO"]
+[2022-02-24T03:33:08.723Z][QUERY ERROR]: Error: ER_NO_SUCH_TABLE: Table 'capilog_database.roles' doesn't exist
+[2022-02-24T03:33:08.724Z]Migration "rolesContent1645671298987" has been failed, error: ER_NO_SUCH_TABLE: Table 'capilog_database.roles' doesn't exist
+[2022-02-24T03:33:08.726Z][QUERY]: ROLLBACK
+[2022-02-24T03:33:11.797Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:33:11.802Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:33:11.806Z][QUERY]: START TRANSACTION
+[2022-02-24T03:33:11.809Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["PORTERO"]
+[2022-02-24T03:33:11.813Z][FAILED QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["PORTERO"]
+[2022-02-24T03:33:11.813Z][QUERY ERROR]: Error: ER_NO_SUCH_TABLE: Table 'capilog_database.roles' doesn't exist
+[2022-02-24T03:33:11.814Z]Migration "rolesContent1645671298987" has been failed, error: ER_NO_SUCH_TABLE: Table 'capilog_database.roles' doesn't exist
+[2022-02-24T03:33:11.814Z][QUERY]: ROLLBACK
+[2022-02-24T03:33:14.871Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:33:14.875Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:33:14.878Z][QUERY]: START TRANSACTION
+[2022-02-24T03:33:14.882Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["PORTERO"]
+[2022-02-24T03:33:14.886Z][FAILED QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["PORTERO"]
+[2022-02-24T03:33:14.886Z][QUERY ERROR]: Error: ER_NO_SUCH_TABLE: Table 'capilog_database.roles' doesn't exist
+[2022-02-24T03:33:14.886Z]Migration "rolesContent1645671298987" has been failed, error: ER_NO_SUCH_TABLE: Table 'capilog_database.roles' doesn't exist
+[2022-02-24T03:33:14.887Z][QUERY]: ROLLBACK
+[2022-02-24T03:34:43.136Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:34:43.155Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:34:43.161Z][QUERY]: START TRANSACTION
+[2022-02-24T03:34:43.178Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["PORTERO"]
+[2022-02-24T03:34:43.266Z][FAILED QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["PORTERO"]
+[2022-02-24T03:34:43.266Z][QUERY ERROR]: Error: ER_NO_SUCH_TABLE: Table 'capilog_database.roles' doesn't exist
+[2022-02-24T03:34:43.269Z]Migration "rolesContent1645671298987" has been failed, error: ER_NO_SUCH_TABLE: Table 'capilog_database.roles' doesn't exist
+[2022-02-24T03:34:43.272Z][QUERY]: ROLLBACK
+[2022-02-24T03:34:46.335Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:34:46.339Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:34:46.343Z][QUERY]: START TRANSACTION
+[2022-02-24T03:34:46.346Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["PORTERO"]
+[2022-02-24T03:34:46.350Z][FAILED QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["PORTERO"]
+[2022-02-24T03:34:46.350Z][QUERY ERROR]: Error: ER_NO_SUCH_TABLE: Table 'capilog_database.roles' doesn't exist
+[2022-02-24T03:34:46.352Z]Migration "rolesContent1645671298987" has been failed, error: ER_NO_SUCH_TABLE: Table 'capilog_database.roles' doesn't exist
+[2022-02-24T03:34:46.352Z][QUERY]: ROLLBACK
+[2022-02-24T03:35:27.242Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:35:27.250Z][QUERY]: CREATE TABLE `migrations_typeorm` (`id` int NOT NULL AUTO_INCREMENT, `timestamp` bigint NOT NULL, `name` varchar(255) NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB
+[2022-02-24T03:35:27.283Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:35:27.287Z]0 migrations are already loaded in the database.
+[2022-02-24T03:35:27.288Z]2 migrations were found in the source code.
+[2022-02-24T03:35:27.289Z]2 migrations are new migrations that needs to be executed.
+[2022-02-24T03:35:27.290Z][QUERY]: START TRANSACTION
+[2022-02-24T03:35:27.303Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["PORTERO"]
+[2022-02-24T03:35:27.308Z][FAILED QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["PORTERO"]
+[2022-02-24T03:35:27.308Z][QUERY ERROR]: Error: ER_NO_SUCH_TABLE: Table 'capilog_database.roles' doesn't exist
+[2022-02-24T03:35:27.309Z]Migration "rolesContent1645671298987" has been failed, error: ER_NO_SUCH_TABLE: Table 'capilog_database.roles' doesn't exist
+[2022-02-24T03:35:27.310Z][QUERY]: ROLLBACK
+[2022-02-24T03:41:12.428Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:41:12.441Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:41:12.446Z][QUERY]: START TRANSACTION
+[2022-02-24T03:41:12.450Z][QUERY]: CREATE TABLE `users` (`dni` varchar(255) NOT NULL, `name` varchar(150) NOT NULL, `lastname` varchar(150) NOT NULL, `password` varchar(250) NOT NULL, `phone` varchar(20) NOT NULL, `email` varchar(250) NOT NULL, `createdAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), `updatedAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), `role` int NULL, PRIMARY KEY (`dni`)) ENGINE=InnoDB
+[2022-02-24T03:41:12.506Z][QUERY]: CREATE TABLE `roles` (`id` int NOT NULL AUTO_INCREMENT, `role` varchar(200) NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB
+[2022-02-24T03:41:12.575Z][QUERY]: ALTER TABLE `users` ADD CONSTRAINT `FK_ace513fa30d485cfd25c11a9e4a` FOREIGN KEY (`role`) REFERENCES `roles`(`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+[2022-02-24T03:41:12.668Z][QUERY]: INSERT INTO `capilog_database`.`migrations_typeorm`(`timestamp`, `name`) VALUES (?, ?) -- PARAMETERS: [1645673543594,"initialSatate1645673543594"]
+[2022-02-24T03:41:12.678Z][QUERY]: COMMIT
+[2022-02-24T03:42:51.860Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:42:51.878Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:42:51.885Z][QUERY]: START TRANSACTION
+[2022-02-24T03:42:51.899Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["PORTERO"]
+[2022-02-24T03:42:51.915Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["COORDINADOR DE FINCA"]
+[2022-02-24T03:42:51.922Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["COORDINADOR DE PROCESOS"]
+[2022-02-24T03:42:51.930Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["ADMIN"]
+[2022-02-24T03:42:51.936Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["COORDINADOR DE TRANSPORTE"]
+[2022-02-24T03:42:51.942Z][QUERY]: INSERT INTO `capilog_database`.`migrations_typeorm`(`timestamp`, `name`) VALUES (?, ?) -- PARAMETERS: [1645671298987,"rolesContent1645671298987"]
+[2022-02-24T03:42:51.947Z][QUERY]: COMMIT
+[2022-02-24T03:43:16.008Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:43:16.030Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:43:16.038Z]2 migrations are already loaded in the database.
+[2022-02-24T03:43:16.042Z]rolesContent1645671298987 is the last executed migration. It was executed on Wed Feb 23 2022 21:54:58 GMT-0500 (hora estándar de Colombia).
+[2022-02-24T03:43:16.043Z]Now reverting it...
+[2022-02-24T03:43:16.046Z][QUERY]: START TRANSACTION
+[2022-02-24T03:43:16.052Z][QUERY]: delete from  `roles`
+[2022-02-24T03:43:16.065Z][QUERY]: DELETE FROM `capilog_database`.`migrations_typeorm` WHERE `timestamp` = ? AND `name` = ? -- PARAMETERS: [1645671298987,"rolesContent1645671298987"]
+[2022-02-24T03:43:16.072Z]Migration rolesContent1645671298987 has been reverted successfully.
+[2022-02-24T03:43:16.074Z][QUERY]: COMMIT
+[2022-02-24T03:45:43.303Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:45:43.318Z][QUERY]: CREATE TABLE `migrations_typeorm` (`id` int NOT NULL AUTO_INCREMENT, `timestamp` bigint NOT NULL, `name` varchar(255) NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB
+[2022-02-24T03:45:43.366Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:45:43.374Z]0 migrations are already loaded in the database.
+[2022-02-24T03:45:43.376Z]2 migrations were found in the source code.
+[2022-02-24T03:45:43.377Z]2 migrations are new migrations that needs to be executed.
+[2022-02-24T03:45:43.379Z][QUERY]: START TRANSACTION
+[2022-02-24T03:45:43.399Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["PORTERO"]
+[2022-02-24T03:45:43.411Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["COORDINADOR DE FINCA"]
+[2022-02-24T03:45:43.418Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["COORDINADOR DE PROCESOS"]
+[2022-02-24T03:45:43.424Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["ADMIN"]
+[2022-02-24T03:45:43.431Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["COORDINADOR DE TRANSPORTE"]
+[2022-02-24T03:45:43.439Z][QUERY]: INSERT INTO `capilog_database`.`migrations_typeorm`(`timestamp`, `name`) VALUES (?, ?) -- PARAMETERS: [1645671298987,"rolesContent1645671298987"]
+[2022-02-24T03:45:43.445Z]Migration rolesContent1645671298987 has been executed successfully.
+[2022-02-24T03:45:43.446Z][QUERY]: CREATE TABLE `users` (`dni` varchar(255) NOT NULL, `name` varchar(150) NOT NULL, `lastname` varchar(150) NOT NULL, `password` varchar(250) NOT NULL, `phone` varchar(20) NOT NULL, `email` varchar(250) NOT NULL, `createdAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), `updatedAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), `role` int NULL, PRIMARY KEY (`dni`)) ENGINE=InnoDB
+[2022-02-24T03:45:43.482Z][QUERY]: CREATE TABLE `roles` (`id` int NOT NULL AUTO_INCREMENT, `role` varchar(200) NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB
+[2022-02-24T03:45:43.489Z][FAILED QUERY]: CREATE TABLE `roles` (`id` int NOT NULL AUTO_INCREMENT, `role` varchar(200) NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB
+[2022-02-24T03:45:43.489Z][QUERY ERROR]: Error: ER_TABLE_EXISTS_ERROR: Table 'roles' already exists
+[2022-02-24T03:45:43.492Z]Migration "initialSatate1645673543594" has been failed, error: ER_TABLE_EXISTS_ERROR: Table 'roles' already exists
+[2022-02-24T03:45:43.493Z][QUERY]: ROLLBACK
+[2022-02-24T03:46:33.461Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:46:33.480Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:46:33.488Z]1 migrations are already loaded in the database.
+[2022-02-24T03:46:33.489Z]2 migrations were found in the source code.
+[2022-02-24T03:46:33.491Z]rolesContent1645671298987 is the last executed migration. It was executed on Wed Feb 23 2022 21:54:58 GMT-0500 (hora estándar de Colombia).
+[2022-02-24T03:46:33.492Z]1 migrations are new migrations that needs to be executed.
+[2022-02-24T03:46:33.495Z][QUERY]: START TRANSACTION
+[2022-02-24T03:46:33.503Z][QUERY]: CREATE TABLE `users` (`dni` varchar(255) NOT NULL, `name` varchar(150) NOT NULL, `lastname` varchar(150) NOT NULL, `password` varchar(250) NOT NULL, `phone` varchar(20) NOT NULL, `email` varchar(250) NOT NULL, `createdAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), `updatedAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), `role` int NULL, PRIMARY KEY (`dni`)) ENGINE=InnoDB
+[2022-02-24T03:46:33.514Z][FAILED QUERY]: CREATE TABLE `users` (`dni` varchar(255) NOT NULL, `name` varchar(150) NOT NULL, `lastname` varchar(150) NOT NULL, `password` varchar(250) NOT NULL, `phone` varchar(20) NOT NULL, `email` varchar(250) NOT NULL, `createdAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), `updatedAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), `role` int NULL, PRIMARY KEY (`dni`)) ENGINE=InnoDB
+[2022-02-24T03:46:33.514Z][QUERY ERROR]: Error: ER_TABLE_EXISTS_ERROR: Table 'users' already exists
+[2022-02-24T03:46:33.517Z]Migration "initialSatate1645673543594" has been failed, error: ER_TABLE_EXISTS_ERROR: Table 'users' already exists
+[2022-02-24T03:46:33.520Z][QUERY]: ROLLBACK
+[2022-02-24T03:47:31.134Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:47:31.159Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:47:31.166Z]1 migrations are already loaded in the database.
+[2022-02-24T03:47:31.168Z]2 migrations were found in the source code.
+[2022-02-24T03:47:31.172Z]rolesContent1645671298987 is the last executed migration. It was executed on Wed Feb 23 2022 21:54:58 GMT-0500 (hora estándar de Colombia).
+[2022-02-24T03:47:31.173Z]1 migrations are new migrations that needs to be executed.
+[2022-02-24T03:47:31.175Z][QUERY]: START TRANSACTION
+[2022-02-24T03:47:31.182Z][QUERY]: CREATE TABLE `users` (`dni` varchar(255) NOT NULL, `name` varchar(150) NOT NULL, `lastname` varchar(150) NOT NULL, `password` varchar(250) NOT NULL, `phone` varchar(20) NOT NULL, `email` varchar(250) NOT NULL, `createdAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), `updatedAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), `role` int NULL, PRIMARY KEY (`dni`)) ENGINE=InnoDB
+[2022-02-24T03:47:31.191Z][FAILED QUERY]: CREATE TABLE `users` (`dni` varchar(255) NOT NULL, `name` varchar(150) NOT NULL, `lastname` varchar(150) NOT NULL, `password` varchar(250) NOT NULL, `phone` varchar(20) NOT NULL, `email` varchar(250) NOT NULL, `createdAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), `updatedAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), `role` int NULL, PRIMARY KEY (`dni`)) ENGINE=InnoDB
+[2022-02-24T03:47:31.191Z][QUERY ERROR]: Error: ER_TABLE_EXISTS_ERROR: Table 'users' already exists
+[2022-02-24T03:47:31.194Z]Migration "initialSatate1645673543594" has been failed, error: ER_TABLE_EXISTS_ERROR: Table 'users' already exists
+[2022-02-24T03:47:31.196Z][QUERY]: ROLLBACK
+[2022-02-24T03:48:09.847Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:48:09.862Z][QUERY]: CREATE TABLE `migrations_typeorm` (`id` int NOT NULL AUTO_INCREMENT, `timestamp` bigint NOT NULL, `name` varchar(255) NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB
+[2022-02-24T03:48:09.907Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:48:09.914Z]0 migrations are already loaded in the database.
+[2022-02-24T03:48:09.915Z]2 migrations were found in the source code.
+[2022-02-24T03:48:09.916Z]2 migrations are new migrations that needs to be executed.
+[2022-02-24T03:48:09.918Z][QUERY]: START TRANSACTION
+[2022-02-24T03:48:09.936Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["PORTERO"]
+[2022-02-24T03:48:09.944Z][FAILED QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["PORTERO"]
+[2022-02-24T03:48:09.944Z][QUERY ERROR]: Error: ER_NO_SUCH_TABLE: Table 'capilog_database.roles' doesn't exist
+[2022-02-24T03:48:09.946Z]Migration "rolesContent1645671298987" has been failed, error: ER_NO_SUCH_TABLE: Table 'capilog_database.roles' doesn't exist
+[2022-02-24T03:48:09.948Z][QUERY]: ROLLBACK
+[2022-02-24T03:50:58.719Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:50:58.737Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:53:08.765Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:53:08.783Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:53:08.790Z]0 migrations are already loaded in the database.
+[2022-02-24T03:53:08.791Z]1 migrations were found in the source code.
+[2022-02-24T03:53:08.792Z]1 migrations are new migrations that needs to be executed.
+[2022-02-24T03:53:08.795Z][QUERY]: START TRANSACTION
+[2022-02-24T03:53:08.800Z][QUERY]: CREATE TABLE `users` (`dni` varchar(255) NOT NULL, `name` varchar(150) NOT NULL, `lastname` varchar(150) NOT NULL, `password` varchar(250) NOT NULL, `phone` varchar(20) NOT NULL, `email` varchar(250) NOT NULL, `createdAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), `updatedAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), `role` int NULL, PRIMARY KEY (`dni`)) ENGINE=InnoDB
+[2022-02-24T03:53:08.847Z][QUERY]: CREATE TABLE `roles` (`id` int NOT NULL AUTO_INCREMENT, `role` varchar(200) NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB
+[2022-02-24T03:53:08.922Z][QUERY]: ALTER TABLE `users` ADD CONSTRAINT `FK_ace513fa30d485cfd25c11a9e4a` FOREIGN KEY (`role`) REFERENCES `roles`(`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+[2022-02-24T03:53:09.057Z][QUERY]: INSERT INTO `capilog_database`.`migrations_typeorm`(`timestamp`, `name`) VALUES (?, ?) -- PARAMETERS: [1645674672574,"initialSatate1645674672574"]
+[2022-02-24T03:53:09.068Z]Migration initialSatate1645674672574 has been executed successfully.
+[2022-02-24T03:53:09.070Z][QUERY]: COMMIT
+[2022-02-24T03:53:46.808Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:53:46.829Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:53:46.838Z]1 migrations are already loaded in the database.
+[2022-02-24T03:53:46.841Z]initialSatate1645674672574 is the last executed migration. It was executed on Wed Feb 23 2022 22:51:12 GMT-0500 (hora estándar de Colombia).
+[2022-02-24T03:53:46.842Z]Now reverting it...
+[2022-02-24T03:53:46.845Z][QUERY]: START TRANSACTION
+[2022-02-24T03:53:46.852Z][QUERY]: ALTER TABLE `users` DROP FOREIGN KEY `FK_ace513fa30d485cfd25c11a9e4a`
+[2022-02-24T03:53:46.869Z][QUERY]: DROP TABLE `users`
+[2022-02-24T03:53:46.888Z][QUERY]: DROP TABLE `roles`
+[2022-02-24T03:53:46.917Z][QUERY]: DELETE FROM `capilog_database`.`migrations_typeorm` WHERE `timestamp` = ? AND `name` = ? -- PARAMETERS: [1645674672574,"initialSatate1645674672574"]
+[2022-02-24T03:53:46.928Z]Migration initialSatate1645674672574 has been reverted successfully.
+[2022-02-24T03:53:46.930Z][QUERY]: COMMIT
+[2022-02-24T03:55:04.737Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:55:04.755Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:55:04.761Z]0 migrations are already loaded in the database.
+[2022-02-24T03:55:04.762Z]2 migrations were found in the source code.
+[2022-02-24T03:55:04.763Z]2 migrations are new migrations that needs to be executed.
+[2022-02-24T03:55:04.767Z][QUERY]: START TRANSACTION
+[2022-02-24T03:55:04.790Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["PORTERO"]
+[2022-02-24T03:55:04.799Z][FAILED QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["PORTERO"]
+[2022-02-24T03:55:04.799Z][QUERY ERROR]: Error: ER_NO_SUCH_TABLE: Table 'capilog_database.roles' doesn't exist
+[2022-02-24T03:55:04.804Z]Migration "rolesContent1645671298987" has been failed, error: ER_NO_SUCH_TABLE: Table 'capilog_database.roles' doesn't exist
+[2022-02-24T03:55:04.806Z][QUERY]: ROLLBACK
+[2022-02-24T03:57:00.736Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:57:00.771Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:57:00.779Z][QUERY]: START TRANSACTION
+[2022-02-24T03:57:00.798Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["PORTERO"]
+[2022-02-24T03:57:00.909Z][FAILED QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["PORTERO"]
+[2022-02-24T03:57:00.909Z][QUERY ERROR]: Error: ER_NO_SUCH_TABLE: Table 'capilog_database.roles' doesn't exist
+[2022-02-24T03:57:00.911Z]Migration "rolesContent1645671298987" has been failed, error: ER_NO_SUCH_TABLE: Table 'capilog_database.roles' doesn't exist
+[2022-02-24T03:57:00.913Z][QUERY]: ROLLBACK
+[2022-02-24T03:59:17.391Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:59:17.407Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:59:17.415Z][QUERY]: START TRANSACTION
+[2022-02-24T03:59:17.420Z][QUERY]: CREATE TABLE `users` (`dni` varchar(255) NOT NULL, `name` varchar(150) NOT NULL, `lastname` varchar(150) NOT NULL, `password` varchar(250) NOT NULL, `phone` varchar(20) NOT NULL, `email` varchar(250) NOT NULL, `createdAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), `updatedAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), `role` int NULL, PRIMARY KEY (`dni`)) ENGINE=InnoDB
+[2022-02-24T03:59:17.488Z][QUERY]: CREATE TABLE `roles` (`id` int NOT NULL AUTO_INCREMENT, `role` varchar(200) NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB
+[2022-02-24T03:59:17.542Z][QUERY]: ALTER TABLE `users` ADD CONSTRAINT `FK_ace513fa30d485cfd25c11a9e4a` FOREIGN KEY (`role`) REFERENCES `roles`(`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+[2022-02-24T03:59:17.672Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["PORTERO"]
+[2022-02-24T03:59:17.708Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["COORDINADOR DE FINCA"]
+[2022-02-24T03:59:17.719Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["COORDINADOR DE PROCESOS"]
+[2022-02-24T03:59:17.729Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["ADMIN"]
+[2022-02-24T03:59:17.739Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["COORDINADOR DE TRANSPORTE"]
+[2022-02-24T03:59:17.748Z][QUERY]: INSERT INTO `capilog_database`.`migrations_typeorm`(`timestamp`, `name`) VALUES (?, ?) -- PARAMETERS: [1645674672574,"initialSatate1645674672574"]
+[2022-02-24T03:59:17.757Z][QUERY]: COMMIT
+[2022-02-24T03:59:40.687Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T03:59:40.705Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T03:59:40.711Z]1 migrations are already loaded in the database.
+[2022-02-24T03:59:40.714Z]initialSatate1645674672574 is the last executed migration. It was executed on Wed Feb 23 2022 22:51:12 GMT-0500 (hora estándar de Colombia).
+[2022-02-24T03:59:40.715Z]Now reverting it...
+[2022-02-24T03:59:40.717Z][QUERY]: START TRANSACTION
+[2022-02-24T03:59:40.723Z][QUERY]: ALTER TABLE `users` DROP FOREIGN KEY `FK_ace513fa30d485cfd25c11a9e4a`
+[2022-02-24T03:59:40.736Z][QUERY]: DROP TABLE `users`
+[2022-02-24T03:59:40.752Z][QUERY]: DROP TABLE `roles`
+[2022-02-24T03:59:40.786Z][QUERY]: DELETE FROM `capilog_database`.`migrations_typeorm` WHERE `timestamp` = ? AND `name` = ? -- PARAMETERS: [1645674672574,"initialSatate1645674672574"]
+[2022-02-24T03:59:40.799Z]Migration initialSatate1645674672574 has been reverted successfully.
+[2022-02-24T03:59:40.803Z][QUERY]: COMMIT
+[2022-02-24T04:00:02.868Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-02-24T04:00:02.891Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-02-24T04:00:02.898Z]0 migrations are already loaded in the database.
+[2022-02-24T04:00:02.900Z]1 migrations were found in the source code.
+[2022-02-24T04:00:02.901Z]1 migrations are new migrations that needs to be executed.
+[2022-02-24T04:00:02.903Z][QUERY]: START TRANSACTION
+[2022-02-24T04:00:02.911Z][QUERY]: CREATE TABLE `users` (`dni` varchar(255) NOT NULL, `name` varchar(150) NOT NULL, `lastname` varchar(150) NOT NULL, `password` varchar(250) NOT NULL, `phone` varchar(20) NOT NULL, `email` varchar(250) NOT NULL, `createdAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), `updatedAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), `role` int NULL, PRIMARY KEY (`dni`)) ENGINE=InnoDB
+[2022-02-24T04:00:03.028Z][QUERY]: CREATE TABLE `roles` (`id` int NOT NULL AUTO_INCREMENT, `role` varchar(200) NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB
+[2022-02-24T04:00:03.111Z][QUERY]: ALTER TABLE `users` ADD CONSTRAINT `FK_ace513fa30d485cfd25c11a9e4a` FOREIGN KEY (`role`) REFERENCES `roles`(`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+[2022-02-24T04:00:03.199Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["PORTERO"]
+[2022-02-24T04:00:03.226Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["COORDINADOR DE FINCA"]
+[2022-02-24T04:00:03.238Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["COORDINADOR DE PROCESOS"]
+[2022-02-24T04:00:03.249Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["ADMIN"]
+[2022-02-24T04:00:03.259Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["COORDINADOR DE TRANSPORTE"]
+[2022-02-24T04:00:03.269Z][QUERY]: INSERT INTO `capilog_database`.`migrations_typeorm`(`timestamp`, `name`) VALUES (?, ?) -- PARAMETERS: [1645674672574,"initialSatate1645674672574"]
+[2022-02-24T04:00:03.278Z]Migration initialSatate1645674672574 has been executed successfully.
+[2022-02-24T04:00:03.280Z][QUERY]: COMMIT
