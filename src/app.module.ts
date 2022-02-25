@@ -15,10 +15,11 @@ import databaseConfig from './config/database.config';
         }),
         ConfigModule.forRoot({
             isGlobal: true,
-            load: [databaseConfig]
-        }), 
-        UsersModule, 
-        AuthModule],
+            load: [databaseConfig],
+        }),
+        UsersModule,
+        AuthModule,
+    ],
     controllers: [],
     providers: [],
 })

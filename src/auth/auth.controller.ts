@@ -2,7 +2,7 @@
 import { Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { User as UserEntity } from '../users/entities/user.entity';
-import { LocalAuthGuard } from './guards';
+import { LocalAuthGuard, JwtAuthGuard } from './guards';
 import { User } from 'src/common/decorators';
 
 @Controller('auth')
@@ -20,6 +20,7 @@ export class AuthController {
     }
 
     @Get('refresh')
+    @UseGuards(JwtAuthGuard)
     refreshToken(@User() user: UserEntity) {
         const data = this.authService.login(user);
         return {
