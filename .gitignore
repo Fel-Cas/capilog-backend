@@ -4,7 +4,4 @@
 
 # Environments variables
 .env
-
-# Database configuration 
 ormconfig.json
-ormlogs.log

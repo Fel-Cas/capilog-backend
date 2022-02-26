@@ -5,6 +5,7 @@ import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TYPEORM_CONFIG } from './config/constants';
+import { AbilityModule } from './ability/ability.module';
 import databaseConfig from './config/database.config';
 
 @Module({
@@ -19,6 +20,7 @@ import databaseConfig from './config/database.config';
         }),
         UsersModule,
         AuthModule,
+        AbilityModule,
     ],
     controllers: [],
     providers: [],
