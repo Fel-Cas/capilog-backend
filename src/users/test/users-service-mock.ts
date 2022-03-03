@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { CreateUserDto, EditUserDto } from '../dto';
-import { Role, User } from '../entities';
+import { User } from '../entities';
+import { Role } from 'src/roles/entities';
 import { UserRole } from '../enums/user-role.enum';
 
 export class UsersServiceMock {

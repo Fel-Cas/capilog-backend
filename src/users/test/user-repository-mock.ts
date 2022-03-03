@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { User, Role } from '../entities';
+import { User } from '../entities';
+import { Role } from 'src/roles/entities';
 
 export class UserRepositoryMock {
     userInfo = [

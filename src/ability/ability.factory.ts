@@ -1,21 +1,21 @@
 /* eslint-disable prettier/prettier */
 import { Ability, AbilityBuilder, AbilityClass, ExtractSubjectType, InferSubjects } from '@casl/ability';
 import { Injectable } from '@nestjs/common';
+import { Role } from 'src/roles/entities';
 import { User } from 'src/users/entities';
 import { Action } from './enums/actions.enums';
 
-export type Subjects = InferSubjects<typeof User> | 'all';
+export type Subjects = InferSubjects<typeof User | typeof Role> | 'all';
 export type AppAbility = Ability<[Action, Subjects]>;
 @Injectable()
 export class AbilityFactory {
     defineAbility(user: User) {
         // define rules
-        const roles = ['COORDINADOR DE TRANSPORTE', 'COORDINADOR DE PROCESOS', 'PORTERO', 'COORDINADOR DE FINCA'];
         const { can, cannot, build } = new AbilityBuilder(Ability as AbilityClass<AppAbility>);
         if (user.role.role === 'ADMIN') {
-            can(Action.Manage, User);
+            can(Action.Manage, 'all');
         }
-        if (roles.indexOf(user.role.role) !== -1) {
+        if (user.role.role !== 'ADMIN') {
             can(Action.ReadOne, User, { dni: { $eq: user.dni } });
             can(Action.Update, User, { dni: { $eq: user.dni } });
 

@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Role } from '../entities';
+import { Role } from '../../roles/entities';
 
 export class RoleRepositoryMock {
     rolesInfo = ['COORDINADOR DE TRANSPORTE', 'PORTERO', 'COORDINADOR DE PROCESOS'];

@@ -1,9 +1,10 @@
 /* eslint-disable prettier/prettier */
 import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { RolesService } from 'src/roles/roles.service';
 import { Repository } from 'typeorm';
 import { CreateUserDto, EditUserDto } from './dto';
-import { Role, User } from './entities';
+import { User } from './entities';
 
 export interface UserFindOne {
     dni?: string;
@@ -14,8 +15,7 @@ export class UsersService {
     constructor(
         @InjectRepository(User)
         private readonly userRepository: Repository<User>,
-        @InjectRepository(Role)
-        private readonly roleRepository: Repository<Role>
+        private readonly roleService: RolesService
     ) {}
 
     async getAll(): Promise<User[]> {
@@ -39,21 +39,16 @@ export class UsersService {
         const userFound = await this.userRepository.findOne(content.dni);
         if (userFound) throw new BadRequestException('Already exits one user with that dni');
 
-        const roleFound = await this.roleRepository.find({
-            where: {
-                role: role,
-            },
-        });
-
-        if (roleFound.length === 0) {
+        const roleFound = await this.roleService.findByName(role);
+        if (!roleFound) {
             throw new NotFoundException(`Role doesn't exists`);
         }
         let user = new User();
         user = Object.assign(user, rest);
-        user.role = roleFound[0];
+        user.role = roleFound;
         const userCreated = await this.userRepository.save(user);
         delete userCreated.password;
-        return userCreated;
+        return user;
     }
     async update(dni: string, content: EditUserDto) {
         const user = await this.userRepository.findOne(dni);
@@ -74,13 +69,9 @@ export class UsersService {
     async updateRole(id: string, content: EditUserDto) {
         const user = await this.userRepository.findOne(id, { relations: ['role'] });
         if (!user) throw new NotFoundException(`User doesn't exists`);
-        const roleFound = await this.roleRepository.find({
-            where: {
-                role: content.role,
-            },
-        });
-        if (roleFound.length === 0) throw new NotFoundException(`Role doesn't exists`);
-        user.role = roleFound[0];
+        const roleFound = await this.roleService.findByName(content.role);
+        if (!roleFound) throw new NotFoundException(`Role doesn't exists`);
+        user.role = roleFound;
 
         const data = await this.userRepository.save(user);
         return data;

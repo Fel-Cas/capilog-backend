@@ -1,5 +1,4 @@
 /* eslint-disable prettier/prettier */
-import { Role } from 'src/users/entities';
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
 export class initialSatate1645674672574 implements MigrationInterface {

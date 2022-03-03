@@ -14,8 +14,8 @@ export class AuthController {
     async login(@User() user: UserEntity) {
         const data = await this.authService.login(user);
         return {
-            message: 'Login exitoso',
-            data,
+            meta: [{ message: 'Login exitoso' }],
+            data: [{ data }],
         };
     }
 
@@ -24,8 +24,8 @@ export class AuthController {
     refreshToken(@User() user: UserEntity) {
         const data = this.authService.login(user);
         return {
-            message: 'Refresh exitoso',
-            data,
+            meta: [{ message: 'Refresh exitoso' }],
+            data: [{ data }],
         };
     }
 }

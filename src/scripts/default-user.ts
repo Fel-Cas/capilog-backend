@@ -1,7 +1,8 @@
 /* eslint-disable prettier/prettier */
 import { getRepository } from 'typeorm';
 import { ConfigService } from '@nestjs/config';
-import { User, Role } from 'src/users/entities';
+import { User } from 'src/users/entities';
+import { Role } from 'src/roles/entities';
 import {
     USER_DNI,
     USER_EMAIL,
