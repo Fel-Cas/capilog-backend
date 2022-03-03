@@ -18,18 +18,16 @@ export class UsersController {
     @CheckAbilities({ action: Action.Read, subject: UserEntity })
     async getAll() {
         const users = await this.userService.getAll();
-        return { message: 'All users', users };
+        return { meta: [{ message: 'All users' }], data: [{ type: 'User', users }] };
     }
     @Get(':id')
     @UseGuards(JwtAuthGuard)
     async getOne(@Param('id') id: string, @User() user: UserEntity) {
         const ability = this.abilityFactory.defineAbility(user);
         try {
-            console.log(user);
             const data = await this.userService.getOne(id);
-            console.log(data);
             ForbiddenError.from(ability).throwUnlessCan(Action.ReadOne, data);
-            return { message: 'User', data };
+            return { meta: [{ message: 'One user' }], data: [{ type: 'User', ...data }] };
         } catch (error) {
             if (error instanceof ForbiddenError) throw new ForbiddenException(error.message);
         }
@@ -39,7 +37,7 @@ export class UsersController {
     @CheckAbilities({ action: Action.Create, subject: UserEntity })
     async create(@Body() content: CreateUserDto) {
         const userCreated = await this.userService.create(content);
-        return { message: 'User created', userCreated };
+        return { meta: [{ message: 'User created' }], data: [{ ...userCreated }] };
     }
     @Put(':id')
     @UseGuards(JwtAuthGuard)
@@ -49,7 +47,7 @@ export class UsersController {
             const data = await this.userService.getOne(id);
             ForbiddenError.from(ability).throwUnlessCan(Action.Update, data);
             const userUpdated = await this.userService.update(id, content);
-            return { message: 'User updated', userUpdated };
+            return { meta: [{ message: 'User updated' }], data: [{ ...userUpdated }] };
         } catch (error) {
             if (error instanceof ForbiddenError) throw new ForbiddenException(error.message);
         }
@@ -58,9 +56,8 @@ export class UsersController {
     @UseGuards(JwtAuthGuard, AbilitiesGuard)
     @CheckAbilities({ action: Action.Delete, subject: UserEntity })
     async delete(@Param('id') id: string) {
-        const userDeleted = await this.userService.delete(id);
-        delete userDeleted.password;
-        return { message: 'User deleted', userDeleted };
+        await this.userService.delete(id);
+        return { meta: [{ message: 'User deleted' }] };
     }
     @Put('roles/:id')
     @UseGuards(JwtAuthGuard, AbilitiesGuard)
@@ -68,6 +65,6 @@ export class UsersController {
     async updateRole(@Param('id') id: string, @Body() content: EditUserDto) {
         const userRoleUpdated = await this.userService.updateRole(id, content);
         delete userRoleUpdated.password;
-        return { message: 'User updated', userRoleUpdated };
+        return { meta: [{ message: 'User updated' }], data: [{ ...userRoleUpdated }] };
     }
 }
