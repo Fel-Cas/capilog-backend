@@ -3,6 +3,7 @@ import { Injectable, NotFoundException, BadRequestException } from '@nestjs/comm
 import { InjectRepository } from '@nestjs/typeorm';
 import { RolesService } from 'src/roles/roles.service';
 import { Repository } from 'typeorm';
+import { IPaginationOptions, paginate, Pagination } from 'nestjs-typeorm-paginate';
 import { CreateUserDto, EditUserDto } from './dto';
 import { User } from './entities';
 
@@ -18,12 +19,8 @@ export class UsersService {
         private readonly roleService: RolesService
     ) {}
 
-    async getAll(): Promise<User[]> {
-        const users = await this.userRepository.find({
-            relations: ['role'],
-        });
-        if (users.length === 0) throw new NotFoundException(`There aren't users in database`);
-        return users;
+    async getAll(option:IPaginationOptions): Promise<Pagination<User>> {
+        return paginate(this.userRepository, option);
     }
 
     async getOne(dni: string): Promise<User> {
