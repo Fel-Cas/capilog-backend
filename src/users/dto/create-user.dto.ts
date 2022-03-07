@@ -30,4 +30,7 @@ export class CreateUserDto {
     @IsString()
     @IsEmail()
     email: string;
+
+    @IsString()
+    farm: string;
 }

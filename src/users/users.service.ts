@@ -6,6 +6,7 @@ import { Repository } from 'typeorm';
 import { IPaginationOptions, paginate, Pagination } from 'nestjs-typeorm-paginate';
 import { CreateUserDto, EditUserDto } from './dto';
 import { User } from './entities';
+import { FarmsService } from '../farms/farms.service';
 
 export interface UserFindOne {
     dni?: string;
@@ -16,7 +17,8 @@ export class UsersService {
     constructor(
         @InjectRepository(User)
         private readonly userRepository: Repository<User>,
-        private readonly roleService: RolesService
+        private readonly roleService: RolesService,
+        private readonly farmService: FarmsService,
     ) {}
 
     async getAll(option:IPaginationOptions): Promise<Pagination<User>> {
@@ -25,26 +27,39 @@ export class UsersService {
 
     async getOne(dni: string): Promise<User> {
         const user = await this.userRepository.findOne(dni, {
-            relations: ['role'],
+            relations: [
+                'role',
+                'farm'
+            ],
         });
-        if (!user) throw new NotFoundException(`User doesn't exists`);
+        if (!user) throw new NotFoundException(`User doesn't exists`);                
+        delete user.farm.createdAt;
+        delete user.farm.updatedAt;
         return user;
     }
 
     async create(content: CreateUserDto) {
-        const { role, ...rest } = content;
+        const { role, farm, ...rest } = content;
         const userFound = await this.userRepository.findOne(content.dni);
-        if (userFound) throw new BadRequestException('Already exits one user with that dni');
+        if (userFound) throw new BadRequestException('Already exists one user with that dni');
 
         const roleFound = await this.roleService.findByName(role);
+        if (!roleFound) {
+            throw new NotFoundException(`Role doesn't exists`);
+        }
+
+        const farmFound = await this.farmService.findByName(farm);
         if (!roleFound) {
             throw new NotFoundException(`Role doesn't exists`);
         }
         let user = new User();
         user = Object.assign(user, rest);
         user.role = roleFound;
+        user.farm = farmFound;
         const userCreated = await this.userRepository.save(user);
-        delete userCreated.password;
+        delete userCreated.password;        
+        delete userCreated.farm.createdAt;
+        delete userCreated.farm.updatedAt;
         return user;
     }
     async update(dni: string, content: EditUserDto) {
@@ -69,6 +84,17 @@ export class UsersService {
         const roleFound = await this.roleService.findByName(content.role);
         if (!roleFound) throw new NotFoundException(`Role doesn't exists`);
         user.role = roleFound;
+
+        const data = await this.userRepository.save(user);
+        return data;
+    }
+
+    async updateFarm(id: string, content: EditUserDto) {
+        const user = await this.userRepository.findOne(id, { relations: ['farm']});
+        if (!user) throw new NotFoundException(`User doesn't exists`);
+        const farmFound = await this.farmService.findByName(content.farm);
+        if(!farmFound) throw new NotFoundException(`Farm doesn't exists`);
+        user.farm = farmFound;
 
         const data = await this.userRepository.save(user);
         return data;

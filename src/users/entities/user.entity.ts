@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { hash } from 'bcrypt';
+import { Farm } from 'src/farms/entities';
 import {
     BeforeInsert,
     BeforeUpdate,
@@ -36,6 +37,10 @@ export class User {
     @ManyToOne(() => Role, (role) => role.user)
     @JoinColumn({ name: 'role' })
     role: Role;
+
+    @ManyToOne(() => Farm, (farm) => farm.user)
+    @JoinColumn( { name: 'farm' })
+    farm: Farm;
 
     @CreateDateColumn()
     createdAt: Date;
