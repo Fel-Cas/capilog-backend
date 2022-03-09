@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Module } from '@nestjs/common';
+import {  Module } from '@nestjs/common';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
@@ -9,6 +9,7 @@ import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
 import { LocalStrategy, JwtStrategy } from './strategies';
 import { UsersModule } from 'src/users/users.module';
+import { CacheModule } from 'src/cache/cache.module';
 
 @Module({
     imports: [
@@ -25,6 +26,7 @@ import { UsersModule } from 'src/users/users.module';
         }),
 
         UsersModule,
+        CacheModule
     ],
     providers: [AuthService, LocalStrategy, JwtStrategy],
     controllers: [AuthController],

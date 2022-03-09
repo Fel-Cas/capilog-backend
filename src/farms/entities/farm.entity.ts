@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { User } from "../../users/entities";
 import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 

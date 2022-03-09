@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { paginate, Pagination, IPaginationOptions } from 'nestjs-typeorm-paginate';
@@ -32,7 +33,6 @@ export class FarmsService {
 
   async findByName(farm: string) {
     const farmFound = await this.farmRepository.findOne({ where: {farm}});
-    //if(!farmFound) throw new NotFoundException(`Farm doesn't exists`);
     return farmFound;
   }
 

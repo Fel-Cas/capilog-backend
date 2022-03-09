@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
@@ -9,7 +9,9 @@ import { AbilityModule } from './ability/ability.module';
 import { RolesModule } from './roles/roles.module';
 import { FarmsModule } from './farms/farms.module';
 import { ProcessesModule } from './processes/processes.module';
+import { CacheModule } from './cache/cache.module';
 import databaseConfig from './config/database.config';
+import { VerifyTokenMiddleware } from './common/middleware/verify-token.middleware';
 
 @Module({
     imports: [
@@ -27,8 +29,13 @@ import databaseConfig from './config/database.config';
         RolesModule,
         FarmsModule,
         ProcessesModule,
+        CacheModule,
     ],
     controllers: [],
     providers: [],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+    configure(consumer: MiddlewareConsumer) {
+        consumer.apply(VerifyTokenMiddleware).forRoutes('*');
+    }
+}

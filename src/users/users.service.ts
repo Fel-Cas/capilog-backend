@@ -32,9 +32,7 @@ export class UsersService {
                 'farm'
             ],
         });
-        if (!user) throw new NotFoundException(`User doesn't exists`);                
-        delete user.farm.createdAt;
-        delete user.farm.updatedAt;
+        if (!user) throw new NotFoundException(`User doesn't exists`);  
         return user;
     }
 
@@ -49,17 +47,15 @@ export class UsersService {
         }
 
         const farmFound = await this.farmService.findByName(farm);
-        if (!roleFound) {
-            throw new NotFoundException(`Role doesn't exists`);
+        if (!farmFound) {
+            throw new NotFoundException(`farm doesn't exists`);
         }
         let user = new User();
         user = Object.assign(user, rest);
         user.role = roleFound;
         user.farm = farmFound;
         const userCreated = await this.userRepository.save(user);
-        delete userCreated.password;        
-        delete userCreated.farm.createdAt;
-        delete userCreated.farm.updatedAt;
+        delete userCreated.password;       
         return user;
     }
     async update(dni: string, content: EditUserDto) {
