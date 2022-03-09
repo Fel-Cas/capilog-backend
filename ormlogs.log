@@ -1,0 +1,3 @@
+[2022-03-09T04:14:30.476Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
+[2022-03-09T04:14:30.495Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
+[2022-03-09T04:14:30.615Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
