@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { ForbiddenError } from '@casl/ability';
-import { Body, Controller, DefaultValuePipe, Delete, ForbiddenException, Get, Param, ParseIntPipe, Post, Put, Query, UseGuards } from '@nestjs/common';
+import { Body, Controller, DefaultValuePipe, Delete, ForbiddenException, Get, Param, ParseIntPipe, Patch, Post, Put, Query, UseGuards } from '@nestjs/common';
 import { Pagination } from 'nestjs-typeorm-paginate';
 import { AbilityFactory } from 'src/ability/ability.factory';
 import { Action } from 'src/ability/enums/actions.enums';
@@ -40,9 +40,9 @@ export class UsersController {
             if (error instanceof ForbiddenError) throw new ForbiddenException(error.message);
         }
     }
-    @Post()
     @UseGuards(JwtAuthGuard, AbilitiesGuard)
     @CheckAbilities({ action: Action.Create, subject: UserEntity })
+    @Post()
     async create(@Body() content: CreateUserDto) {
         const userCreated = await this.userService.create(content);
         return { meta:{ message: 'User created' }, data: { ...userCreated } };
@@ -74,5 +74,15 @@ export class UsersController {
         const userRoleUpdated = await this.userService.updateRole(id, content);
         delete userRoleUpdated.password;
         return { meta: { message: 'User updated' }, data: { ...userRoleUpdated } };
+    }
+    @Patch('farms/:id')
+    @UseGuards(JwtAuthGuard, AbilitiesGuard)
+    @CheckAbilities({ action: Action.UpdateFarm, subject: UserEntity })
+    async updateFarm(@Param('id') id: string, @Body() content: EditUserDto) {
+        const userFarmUpdated = await this.userService.updateFarm(id, content);
+        delete userFarmUpdated.password;
+        delete userFarmUpdated.farm.createdAt;
+        delete userFarmUpdated.farm.updatedAt;
+        return { meta: { message: 'User updated' }, data: { ...userFarmUpdated } };
     }
 }

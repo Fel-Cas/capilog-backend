@@ -1,11 +1,13 @@
 /* eslint-disable prettier/prettier */
 import { Ability, AbilityBuilder, AbilityClass, ExtractSubjectType, InferSubjects } from '@casl/ability';
 import { Injectable } from '@nestjs/common';
+import { Farm } from 'src/farms/entities';
+import { Process } from 'src/processes/entities';
 import { Role } from 'src/roles/entities';
 import { User } from 'src/users/entities';
 import { Action } from './enums/actions.enums';
 
-export type Subjects = InferSubjects<typeof User | typeof Role> | 'all';
+export type Subjects = InferSubjects<typeof User | typeof Role| typeof Farm| typeof Process>| 'all';
 export type AppAbility = Ability<[Action, Subjects]>;
 @Injectable()
 export class AbilityFactory {
@@ -23,6 +25,8 @@ export class AbilityFactory {
             cannot(Action.Create, User).because('Only admins can create  users');
             cannot(Action.Delete, User).because('Only admins can delete  users');
             cannot(Action.UpdateRole, User).because('Only admins can update role of users');
+            cannot(Action.UpdateUserFarm, User).because('Only admins can update farm of users');
+
         }
         return build({
             detectSubjectType: (item) => item.constructor as ExtractSubjectType<Subjects>,

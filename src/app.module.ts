@@ -7,6 +7,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { TYPEORM_CONFIG } from './config/constants';
 import { AbilityModule } from './ability/ability.module';
 import { RolesModule } from './roles/roles.module';
+import { FarmsModule } from './farms/farms.module';
+import { ProcessesModule } from './processes/processes.module';
 import databaseConfig from './config/database.config';
 
 @Module({
@@ -23,6 +25,8 @@ import databaseConfig from './config/database.config';
         AuthModule,
         AbilityModule,
         RolesModule,
+        FarmsModule,
+        ProcessesModule,
     ],
     controllers: [],
     providers: [],

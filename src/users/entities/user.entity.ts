@@ -1,5 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { hash } from 'bcrypt';
+import { Farm } from '../../farms/entities';
+import { Process } from '../../processes/entities';
 import {
     BeforeInsert,
     BeforeUpdate,
@@ -7,6 +9,8 @@ import {
     CreateDateColumn,
     Entity,
     JoinColumn,
+    JoinTable,
+    ManyToMany,
     ManyToOne,
     PrimaryColumn,
     UpdateDateColumn,
@@ -36,6 +40,14 @@ export class User {
     @ManyToOne(() => Role, (role) => role.user)
     @JoinColumn({ name: 'role' })
     role: Role;
+
+    @ManyToOne(() => Farm, (farm) => farm.user)
+    @JoinColumn( { name: 'farm' })
+    farm: Farm;
+
+    @ManyToMany(() => Process, process => process.users)
+    @JoinTable({name:'processes_users'})
+    processes: Process[];
 
     @CreateDateColumn()
     createdAt: Date;
