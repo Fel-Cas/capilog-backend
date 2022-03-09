@@ -1,16 +1,16 @@
 /* eslint-disable prettier/prettier */
-import { User } from "../../users/entities";
-import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { User } from '../../users/entities';
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity('farms')
 export class Farm {
     @PrimaryGeneratedColumn()
     idFarm: number;
 
-    @Column({ type: 'varchar'})
+    @Column({ type: 'varchar' })
     farm: string;
 
-    @Column({type:'varchar'})
+    @Column({ type: 'varchar' })
     location: string;
 
     @OneToMany(() => User, (user) => user.farm)

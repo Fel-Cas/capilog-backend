@@ -11,8 +11,8 @@ export class RolesService {
         @InjectRepository(Role)
         private readonly roleRepository: Repository<Role>
     ) {}
-    async findAll(option:IPaginationOptions): Promise<Pagination<Role>> {
-        return  paginate( this.roleRepository,option);
+    async findAll(option: IPaginationOptions): Promise<Pagination<Role>> {
+        return paginate(this.roleRepository, option);
     }
 
     async findByName(role: string) {

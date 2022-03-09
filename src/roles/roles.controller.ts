@@ -17,14 +17,13 @@ export class RolesController {
     @CheckAbilities({ action: Action.Read, subject: Role })
     async findAll(
         @Query('page', new DefaultValuePipe(1), ParseIntPipe) page = 1,
-        @Query('limit', new DefaultValuePipe(10), ParseIntPipe) _limit =3,
+        @Query('limit', new DefaultValuePipe(10), ParseIntPipe) _limit = 3
     ): Promise<Pagination<Role>> {
         const limit = _limit;
         return this.rolesService.findAll({
-        page,
-        limit,
-        route: 'http://localhost:8000/roles',
+            page,
+            limit,
+            route: 'http://localhost:8000/roles',
         });
     }
-
 }

@@ -42,11 +42,11 @@ export class User {
     role: Role;
 
     @ManyToOne(() => Farm, (farm) => farm.user)
-    @JoinColumn( { name: 'farm' })
+    @JoinColumn({ name: 'farm' })
     farm: Farm;
 
-    @ManyToMany(() => Process, process => process.users)
-    @JoinTable({name:'processes_users'})
+    @ManyToMany(() => Process, (process) => process.users)
+    @JoinTable({ name: 'processes_users' })
     processes: Process[];
 
     @CreateDateColumn()

@@ -7,7 +7,7 @@ import { Role } from 'src/roles/entities';
 import { User } from 'src/users/entities';
 import { Action } from './enums/actions.enums';
 
-export type Subjects = InferSubjects<typeof User | typeof Role| typeof Farm| typeof Process>| 'all';
+export type Subjects = InferSubjects<typeof User | typeof Role | typeof Farm | typeof Process> | 'all';
 export type AppAbility = Ability<[Action, Subjects]>;
 @Injectable()
 export class AbilityFactory {
@@ -26,7 +26,6 @@ export class AbilityFactory {
             cannot(Action.Delete, User).because('Only admins can delete  users');
             cannot(Action.UpdateRole, User).because('Only admins can update role of users');
             cannot(Action.UpdateUserFarm, User).because('Only admins can update farm of users');
-
         }
         return build({
             detectSubjectType: (item) => item.constructor as ExtractSubjectType<Subjects>,

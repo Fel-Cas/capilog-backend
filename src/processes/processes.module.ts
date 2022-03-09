@@ -7,10 +7,9 @@ import { AbilityModule } from 'src/ability/ability.module';
 import { FarmsService } from 'src/farms/farms.service';
 
 @Module({
-  imports:[TypeOrmModule.forFeature([Process]), AbilityModule],
-  controllers: [ProcessesController],
-  providers: [ProcessesService],
-  exports: [ProcessesService]
+    imports: [TypeOrmModule.forFeature([Process]), AbilityModule],
+    controllers: [ProcessesController],
+    providers: [ProcessesService],
+    exports: [ProcessesService],
 })
 export class ProcessesModule {}
-

@@ -8,45 +8,45 @@ import { Process } from './entities';
 
 @Injectable()
 export class ProcessesService {
-  constructor(
-    @InjectRepository(Process)
-    private readonly processRepository: Repository<Process>
-  ) { }
+    constructor(
+        @InjectRepository(Process)
+        private readonly processRepository: Repository<Process>
+    ) {}
 
-  async create(createProcessDto: CreateProcessDto) {
-    const process = this.processRepository.create(createProcessDto);
+    async create(createProcessDto: CreateProcessDto) {
+        const process = this.processRepository.create(createProcessDto);
 
-    return await this.processRepository.save(process);
-  }
+        return await this.processRepository.save(process);
+    }
 
-  async getAll(option: IPaginationOptions): Promise<Pagination<Process>> {
-    return paginate(this.processRepository, option);
-  }
+    async getAll(option: IPaginationOptions): Promise<Pagination<Process>> {
+        return paginate(this.processRepository, option);
+    }
 
-  async getOne(id: number): Promise<Process> {
-    const user = await this.processRepository.findOne(id);
-    if (!user) throw new NotFoundException(`Process doesn't exists`);
-    return user;
-  }
+    async getOne(id: number): Promise<Process> {
+        const user = await this.processRepository.findOne(id);
+        if (!user) throw new NotFoundException(`Process doesn't exists`);
+        return user;
+    }
 
-  async findByName(name: string) {
-    const processFound = await this.processRepository.findOne({ name });
-    if(!processFound) throw new NotFoundException(`Process doesn't exists`);
-    return processFound;
-  }
+    async findByName(name: string) {
+        const processFound = await this.processRepository.findOne({ name });
+        if (!processFound) throw new NotFoundException(`Process doesn't exists`);
+        return processFound;
+    }
 
-  async update(id: number, updateProcessDto: UpdateProcessDto) {
-    const process = await this.processRepository.findOne(id);
-    if (!process) throw new NotFoundException(`Process doesn't exists`)
-    const processEdit = Object.assign(process, updateProcessDto);
-    const data = await this.processRepository.save(processEdit)
-    return data;
-  }
+    async update(id: number, updateProcessDto: UpdateProcessDto) {
+        const process = await this.processRepository.findOne(id);
+        if (!process) throw new NotFoundException(`Process doesn't exists`);
+        const processEdit = Object.assign(process, updateProcessDto);
+        const data = await this.processRepository.save(processEdit);
+        return data;
+    }
 
-  async remove(id: number) {
-    const process = await this.processRepository.findOne(id);
-    if (!process) throw new NotFoundException(`Process doesn't exists`);
-    const data = await this.processRepository.delete(id)
-    return data;
-  }
+    async remove(id: number) {
+        const process = await this.processRepository.findOne(id);
+        if (!process) throw new NotFoundException(`Process doesn't exists`);
+        const data = await this.processRepository.delete(id);
+        return data;
+    }
 }

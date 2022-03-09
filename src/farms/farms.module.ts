@@ -6,9 +6,9 @@ import { Farm } from './entities';
 import { AbilityModule } from '../ability/ability.module';
 
 @Module({
-  imports:[TypeOrmModule.forFeature([Farm]), AbilityModule],
-  controllers: [FarmsController],
-  providers: [FarmsService],
-  exports: [FarmsService]
+    imports: [TypeOrmModule.forFeature([Farm]), AbilityModule],
+    controllers: [FarmsController],
+    providers: [FarmsService],
+    exports: [FarmsService],
 })
 export class FarmsModule {}

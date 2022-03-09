@@ -1,6 +1,20 @@
 /* eslint-disable prettier/prettier */
 import { ForbiddenError } from '@casl/ability';
-import { Body, Controller, DefaultValuePipe, Delete, ForbiddenException, Get, Param, ParseIntPipe, Patch, Post, Put, Query, UseGuards } from '@nestjs/common';
+import {
+    Body,
+    Controller,
+    DefaultValuePipe,
+    Delete,
+    ForbiddenException,
+    Get,
+    Param,
+    ParseIntPipe,
+    Patch,
+    Post,
+    Put,
+    Query,
+    UseGuards,
+} from '@nestjs/common';
 import { Pagination } from 'nestjs-typeorm-paginate';
 import { AbilityFactory } from 'src/ability/ability.factory';
 import { Action } from 'src/ability/enums/actions.enums';
@@ -20,13 +34,13 @@ export class UsersController {
     @CheckAbilities({ action: Action.Read, subject: UserEntity })
     async getAll(
         @Query('page', new DefaultValuePipe(1), ParseIntPipe) page = 1,
-        @Query('limit', new DefaultValuePipe(10), ParseIntPipe) _limit =3,
+        @Query('limit', new DefaultValuePipe(10), ParseIntPipe) _limit = 3
     ): Promise<Pagination<UserEntity>> {
         const limit = _limit;
         return this.userService.getAll({
-        page,
-        limit,
-        route: 'http://localhost:8000/users',
+            page,
+            limit,
+            route: 'http://localhost:8000/users',
         });
     }
     @Get(':id')
@@ -46,7 +60,7 @@ export class UsersController {
     @Post()
     async create(@Body() content: CreateUserDto) {
         const userCreated = await this.userService.create(content);
-        return { meta:{ message: USER_CREATED}, data: { ...userCreated } };
+        return { meta: { message: USER_CREATED }, data: { ...userCreated } };
     }
     @Put(':id')
     @UseGuards(JwtAuthGuard)
@@ -56,7 +70,7 @@ export class UsersController {
             const data = await this.userService.getOne(id);
             ForbiddenError.from(ability).throwUnlessCan(Action.Update, data);
             const userUpdated = await this.userService.update(id, content);
-            return { meta:{ message: USER_UPDATED }, data: { ...userUpdated } };
+            return { meta: { message: USER_UPDATED }, data: { ...userUpdated } };
         } catch (error) {
             if (error instanceof ForbiddenError) throw new ForbiddenException(error.message);
         }
@@ -66,7 +80,7 @@ export class UsersController {
     @CheckAbilities({ action: Action.Delete, subject: UserEntity })
     async delete(@Param('id') id: string) {
         await this.userService.delete(id);
-        return { meta: { message: USER_DELETED} };
+        return { meta: { message: USER_DELETED } };
     }
     @Put('roles/:id')
     @UseGuards(JwtAuthGuard, AbilitiesGuard)

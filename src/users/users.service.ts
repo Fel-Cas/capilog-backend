@@ -18,21 +18,18 @@ export class UsersService {
         @InjectRepository(User)
         private readonly userRepository: Repository<User>,
         private readonly roleService: RolesService,
-        private readonly farmService: FarmsService,
+        private readonly farmService: FarmsService
     ) {}
 
-    async getAll(option:IPaginationOptions): Promise<Pagination<User>> {
+    async getAll(option: IPaginationOptions): Promise<Pagination<User>> {
         return paginate(this.userRepository, option);
     }
 
     async getOne(dni: string): Promise<User> {
         const user = await this.userRepository.findOne(dni, {
-            relations: [
-                'role',
-                'farm'
-            ],
+            relations: ['role', 'farm'],
         });
-        if (!user) throw new NotFoundException(`User doesn't exists`);  
+        if (!user) throw new NotFoundException(`User doesn't exists`);
         return user;
     }
 
@@ -55,7 +52,7 @@ export class UsersService {
         user.role = roleFound;
         user.farm = farmFound;
         const userCreated = await this.userRepository.save(user);
-        delete userCreated.password;       
+        delete userCreated.password;
         return user;
     }
     async update(dni: string, content: EditUserDto) {
@@ -86,10 +83,10 @@ export class UsersService {
     }
 
     async updateFarm(id: string, content: EditUserDto) {
-        const user = await this.userRepository.findOne(id, { relations: ['farm']});
+        const user = await this.userRepository.findOne(id, { relations: ['farm'] });
         if (!user) throw new NotFoundException(`User doesn't exists`);
         const farmFound = await this.farmService.findByName(content.farm);
-        if(!farmFound) throw new NotFoundException(`Farm doesn't exists`);
+        if (!farmFound) throw new NotFoundException(`Farm doesn't exists`);
         user.farm = farmFound;
 
         const data = await this.userRepository.save(user);

@@ -9,7 +9,7 @@
     "C:\\Users\\Andres\\Documents\\proyecto_integrador\\capilog-backend\\dist\\**\\**\\*entity{.ts,.js}"
   ],
   "autoLoadEntities": true,
-  "migrationsRun": true,
+  "migrationsRun": false,
   "migrations": [
     "C:\\Users\\Andres\\Documents\\proyecto_integrador\\capilog-backend\\dist\\migration\\**\\*{.ts,.js}"
   ],
