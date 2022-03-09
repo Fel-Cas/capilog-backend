@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Ability, AbilityBuilder, AbilityClass, ExtractSubjectType, InferSubjects } from '@casl/ability';
 import { Injectable } from '@nestjs/common';
+import { USER_CREATE_USER_ERROR, USER_DELETE_USER_ERROR, USER_READ_ALL_USERS_ERROR, USER_UPDATE_USER_ERROR } from 'src/common/errors';
 import { Role } from 'src/roles/entities';
 import { User } from 'src/users/entities';
 import { Action } from './enums/actions.enums';
@@ -19,10 +20,10 @@ export class AbilityFactory {
             can(Action.ReadOne, User, { dni: { $eq: user.dni } });
             can(Action.Update, User, { dni: { $eq: user.dni } });
 
-            cannot(Action.Read, User).because('Only admins can read all users');
-            cannot(Action.Create, User).because('Only admins can create  users');
-            cannot(Action.Delete, User).because('Only admins can delete  users');
-            cannot(Action.UpdateRole, User).because('Only admins can update role of users');
+            cannot(Action.Read, User).because(USER_READ_ALL_USERS_ERROR);
+            cannot(Action.Create, User).because(USER_CREATE_USER_ERROR);
+            cannot(Action.Delete, User).because(USER_DELETE_USER_ERROR);
+            cannot(Action.UpdateRole, User).because(USER_UPDATE_USER_ERROR);
         }
         return build({
             detectSubjectType: (item) => item.constructor as ExtractSubjectType<Subjects>,

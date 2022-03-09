@@ -7,6 +7,7 @@ import { Action } from 'src/ability/enums/actions.enums';
 import { AbilitiesGuard } from 'src/ability/guards/abilities.guard';
 import { JwtAuthGuard } from 'src/auth/guards';
 import { CheckAbilities, User } from 'src/common/decorators';
+import { ONE_USER, USER_CREATED, USER_DELETED, USER_UPDATED } from 'src/common/errors';
 import { CreateUserDto, EditUserDto } from './dto';
 import { User as UserEntity } from './entities';
 import { UsersService } from './users.service';
@@ -35,7 +36,7 @@ export class UsersController {
         try {
             const data = await this.userService.getOne(id);
             ForbiddenError.from(ability).throwUnlessCan(Action.ReadOne, data);
-            return { meta: { message: 'One user' }, data: { ...data } };
+            return { meta: { message: ONE_USER}, data: { ...data } };
         } catch (error) {
             if (error instanceof ForbiddenError) throw new ForbiddenException(error.message);
         }
@@ -45,7 +46,7 @@ export class UsersController {
     @CheckAbilities({ action: Action.Create, subject: UserEntity })
     async create(@Body() content: CreateUserDto) {
         const userCreated = await this.userService.create(content);
-        return { meta:{ message: 'User created' }, data: { ...userCreated } };
+        return { meta:{ message: USER_CREATED }, data: { ...userCreated } };
     }
     @Put(':id')
     @UseGuards(JwtAuthGuard)
@@ -55,7 +56,7 @@ export class UsersController {
             const data = await this.userService.getOne(id);
             ForbiddenError.from(ability).throwUnlessCan(Action.Update, data);
             const userUpdated = await this.userService.update(id, content);
-            return { meta:{ message: 'User updated' }, data: { ...userUpdated } };
+            return { meta:{ message: USER_UPDATED}, data: { ...userUpdated } };
         } catch (error) {
             if (error instanceof ForbiddenError) throw new ForbiddenException(error.message);
         }
@@ -65,7 +66,7 @@ export class UsersController {
     @CheckAbilities({ action: Action.Delete, subject: UserEntity })
     async delete(@Param('id') id: string) {
         await this.userService.delete(id);
-        return { meta: { message: 'User deleted' } };
+        return { meta: { message: USER_DELETED } };
     }
     @Put('roles/:id')
     @UseGuards(JwtAuthGuard, AbilitiesGuard)
@@ -73,6 +74,6 @@ export class UsersController {
     async updateRole(@Param('id') id: string, @Body() content: EditUserDto) {
         const userRoleUpdated = await this.userService.updateRole(id, content);
         delete userRoleUpdated.password;
-        return { meta: { message: 'User updated' }, data: { ...userRoleUpdated } };
+        return { meta: { message: USER_UPDATED }, data: { ...userRoleUpdated } };
     }
 }
