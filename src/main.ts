@@ -23,7 +23,7 @@ async function bootstrap() {
     );
     generateTypeormConfigFile(config);
 
-    setDefaultUser(config);
+    //setDefaultUser(config);
     await app.listen(port);
     logger.log(`Server is running in ${await app.getUrl()}`);
 }

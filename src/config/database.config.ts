@@ -19,7 +19,7 @@ function typeormModuleOptions(): TypeOrmModuleOptions {
          *  * https://typeorm.io/#/migrations
          */
 
-        migrationsRun: true,
+        migrationsRun: false,
         migrations: [join(__dirname, '../migration/**/*{.ts,.js}')],
         migrationsTableName: 'migrations_typeorm',
         cli: {
@@ -27,7 +27,7 @@ function typeormModuleOptions(): TypeOrmModuleOptions {
         },
 
         // Activar SOLO MANUALMENTE en DESARROLLO SI ES NECESARIO (DESACTIVAR EN PRODUCCION).
-        synchronize: true,
+        synchronize: false,
         logging: true,
         logger: 'file',
     };
