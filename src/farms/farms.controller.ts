@@ -63,7 +63,7 @@ export class FarmsController {
 
   @Delete(':id')
   @UseGuards(JwtAuthGuard, AbilitiesGuard)
-  @CheckAbilities({ action: Action.DeleteFarm, subject: UserEntity })
+  @CheckAbilities({ action: Action.Delete, subject: FarmEntity })
   async remove(@Param('id') id: number) {
     const data = this.farmService.getOne(id);
     if(!data) throw new BadRequestException(`Farm with ${id} doesn't exists`);

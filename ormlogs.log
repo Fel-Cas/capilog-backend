@@ -1,500 +1,325 @@
-[2022-02-26T02:56:11.715Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T02:56:11.853Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T03:02:40.159Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T03:02:40.172Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T03:02:40.185Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?), (DEFAULT, ?), (DEFAULT, ?), (DEFAULT, ?), (DEFAULT, ?) -- PARAMETERS: ["ADMIN","COORDINADOR DE TRANSPORTE","COORDINADOR DE PROCESO","PORTERO","COORDINADOR DE FINCA"]
-[2022-02-26T03:03:03.734Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T03:03:03.745Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T03:03:03.750Z]1 migrations are already loaded in the database.
-[2022-02-26T03:03:03.806Z]initialSatate1645674672574 is the last executed migration. It was executed on Wed Feb 23 2022 22:51:12 GMT-0500 (hora estándar de Colombia).
-[2022-02-26T03:03:03.807Z]Now reverting it...
-[2022-02-26T03:03:03.809Z][QUERY]: START TRANSACTION
-[2022-02-26T03:03:03.815Z][QUERY]: ALTER TABLE `users` DROP FOREIGN KEY `FK_ace513fa30d485cfd25c11a9e4a`
-[2022-02-26T03:03:03.829Z][QUERY]: DROP TABLE `users`
-[2022-02-26T03:03:03.860Z][QUERY]: DROP TABLE `roles`
-[2022-02-26T03:03:03.892Z][QUERY]: DELETE FROM `capilog_database`.`migrations_typeorm` WHERE `timestamp` = ? AND `name` = ? -- PARAMETERS: [1645674672574,"initialSatate1645674672574"]
-[2022-02-26T03:03:03.906Z]Migration initialSatate1645674672574 has been reverted successfully.
-[2022-02-26T03:03:03.908Z][QUERY]: COMMIT
-[2022-02-26T03:24:18.885Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T03:24:18.958Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T03:24:18.964Z]0 migrations are already loaded in the database.
-[2022-02-26T03:24:18.965Z]1 migrations were found in the source code.
-[2022-02-26T03:24:18.966Z]1 migrations are new migrations that needs to be executed.
-[2022-02-26T03:24:18.968Z][QUERY]: START TRANSACTION
-[2022-02-26T03:24:18.974Z][QUERY]: CREATE TABLE `users` (`dni` varchar(255) NOT NULL, `name` varchar(150) NOT NULL, `lastname` varchar(150) NOT NULL, `password` varchar(250) NOT NULL, `phone` varchar(20) NOT NULL, `email` varchar(250) NOT NULL, `createdAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), `updatedAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), `role` int NULL, PRIMARY KEY (`dni`)) ENGINE=InnoDB
-[2022-02-26T03:24:19.032Z][QUERY]: CREATE TABLE `roles` (`id` int NOT NULL AUTO_INCREMENT, `role` varchar(200) NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB
-[2022-02-26T03:24:19.097Z][QUERY]: ALTER TABLE `users` ADD CONSTRAINT `FK_ace513fa30d485cfd25c11a9e4a` FOREIGN KEY (`role`) REFERENCES `roles`(`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-[2022-02-26T03:24:19.288Z][QUERY]: INSERT INTO `capilog_database`.`migrations_typeorm`(`timestamp`, `name`) VALUES (?, ?) -- PARAMETERS: [1645674672574,"initialSatate1645674672574"]
-[2022-02-26T03:24:19.298Z]Migration initialSatate1645674672574 has been executed successfully.
-[2022-02-26T03:24:19.300Z][QUERY]: COMMIT
-[2022-02-26T03:24:48.253Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T03:24:48.273Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T03:24:48.297Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?), (DEFAULT, ?), (DEFAULT, ?), (DEFAULT, ?), (DEFAULT, ?) -- PARAMETERS: ["ADMIN","COORDINADOR DE TRANSPORTE","COORDINADOR DE PROCESO","PORTERO","COORDINADOR DE FINCA"]
-[2022-02-26T03:55:03.676Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T03:55:03.699Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T03:55:03.705Z]1 migrations are already loaded in the database.
-[2022-02-26T03:55:03.808Z]initialSatate1645674672574 is the last executed migration. It was executed on Wed Feb 23 2022 22:51:12 GMT-0500 (hora estándar de Colombia).
-[2022-02-26T03:55:03.809Z]Now reverting it...
-[2022-02-26T03:55:03.811Z][QUERY]: START TRANSACTION
-[2022-02-26T03:55:03.817Z][QUERY]: ALTER TABLE `users` DROP FOREIGN KEY `FK_ace513fa30d485cfd25c11a9e4a`
-[2022-02-26T03:55:03.891Z][QUERY]: DROP TABLE `users`
-[2022-02-26T03:55:04.470Z][QUERY]: DROP TABLE `roles`
-[2022-02-26T03:55:04.876Z][QUERY]: DELETE FROM `capilog_database`.`migrations_typeorm` WHERE `timestamp` = ? AND `name` = ? -- PARAMETERS: [1645674672574,"initialSatate1645674672574"]
-[2022-02-26T03:55:04.923Z]Migration initialSatate1645674672574 has been reverted successfully.
-[2022-02-26T03:55:04.925Z][QUERY]: COMMIT
-[2022-02-26T03:56:29.179Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T03:56:29.198Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T03:56:29.203Z]0 migrations are already loaded in the database.
-[2022-02-26T03:56:29.204Z]1 migrations were found in the source code.
-[2022-02-26T03:56:29.205Z]1 migrations are new migrations that needs to be executed.
-[2022-02-26T03:56:29.206Z][QUERY]: START TRANSACTION
-[2022-02-26T03:56:29.211Z][QUERY]: CREATE TABLE `users` (`dni` varchar(255) NOT NULL, `name` varchar(150) NOT NULL, `lastname` varchar(150) NOT NULL, `password` varchar(250) NOT NULL, `phone` varchar(20) NOT NULL, `email` varchar(250) NOT NULL, `createdAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), `updatedAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), `role` int NULL, PRIMARY KEY (`dni`)) ENGINE=InnoDB
-[2022-02-26T03:56:29.352Z][QUERY]: CREATE TABLE `roles` (`id` int NOT NULL AUTO_INCREMENT, `role` varchar(200) NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB
-[2022-02-26T03:56:29.449Z][QUERY]: ALTER TABLE `users` ADD CONSTRAINT `FK_ace513fa30d485cfd25c11a9e4a` FOREIGN KEY (`role`) REFERENCES `roles`(`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-[2022-02-26T03:56:29.547Z][QUERY]: INSERT INTO `capilog_database`.`migrations_typeorm`(`timestamp`, `name`) VALUES (?, ?) -- PARAMETERS: [1645674672574,"initialSatate1645674672574"]
-[2022-02-26T03:56:29.578Z]Migration initialSatate1645674672574 has been executed successfully.
-[2022-02-26T03:56:29.580Z][QUERY]: COMMIT
-[2022-02-26T03:57:15.978Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T03:57:15.993Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T03:57:16.011Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?), (DEFAULT, ?), (DEFAULT, ?), (DEFAULT, ?), (DEFAULT, ?) -- PARAMETERS: ["ADMIN","COORDINADOR DE TRANSPORTE","COORDINADOR DE PROCESO","PORTERO","COORDINADOR DE FINCA"]
-[2022-02-26T03:58:31.933Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T03:58:31.945Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T04:04:04.196Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T04:04:04.244Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T04:05:26.929Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T04:05:26.940Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T04:06:47.145Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T04:06:47.154Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T04:07:10.179Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T04:07:10.191Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T04:07:10.256Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = :dni
-[2022-02-26T04:07:10.672Z][FAILED QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = :dni
-[2022-02-26T04:07:10.672Z][QUERY ERROR]: Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ':dni' at line 1
-[2022-02-26T04:07:11.444Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role`
-[2022-02-26T04:08:45.536Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T04:08:45.547Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T04:08:45.614Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-02-26T04:08:45.625Z][QUERY]: SELECT `Role`.`id` AS `Role_id`, `Role`.`role` AS `Role_role` FROM `roles` `Role` WHERE `Role`.`role` = ? -- PARAMETERS: ["ADMIN"]
-[2022-02-26T04:08:45.636Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
-[2022-02-26T04:08:45.642Z][QUERY]: START TRANSACTION
-[2022-02-26T04:08:45.915Z][QUERY]: INSERT INTO `users`(`dni`, `name`, `lastname`, `password`, `phone`, `email`, `createdAt`, `updatedAt`, `role`) VALUES (?, ?, ?, ?, ?, ?, DEFAULT, DEFAULT, ?) -- PARAMETERS: ["1","Admin","1","$2b$10$b0Lvrw1FyrC7sx1DZACC3.WxKeMhMFU5gf5M5FuogGEc5FqFwmmyq","1","1",1]
-[2022-02-26T04:08:45.921Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt` FROM `users` `User` WHERE `User`.`dni` = ? -- PARAMETERS: ["1"]
-[2022-02-26T04:08:45.956Z][QUERY]: COMMIT
-[2022-02-26T04:09:13.992Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role`
-[2022-02-26T04:10:42.582Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T04:10:42.592Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T04:10:42.647Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-02-26T04:11:28.188Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T04:11:28.198Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T04:11:28.201Z]1 migrations are already loaded in the database.
-[2022-02-26T04:11:28.335Z]initialSatate1645674672574 is the last executed migration. It was executed on Wed Feb 23 2022 22:51:12 GMT-0500 (hora estándar de Colombia).
-[2022-02-26T04:11:28.336Z]Now reverting it...
-[2022-02-26T04:11:28.337Z][QUERY]: START TRANSACTION
-[2022-02-26T04:11:28.340Z][QUERY]: ALTER TABLE `users` DROP FOREIGN KEY `FK_ace513fa30d485cfd25c11a9e4a`
-[2022-02-26T04:11:28.386Z][QUERY]: DROP TABLE `users`
-[2022-02-26T04:11:28.449Z][QUERY]: DROP TABLE `roles`
-[2022-02-26T04:11:28.742Z][QUERY]: DELETE FROM `capilog_database`.`migrations_typeorm` WHERE `timestamp` = ? AND `name` = ? -- PARAMETERS: [1645674672574,"initialSatate1645674672574"]
-[2022-02-26T04:11:28.843Z]Migration initialSatate1645674672574 has been reverted successfully.
-[2022-02-26T04:11:28.844Z][QUERY]: COMMIT
-[2022-02-26T04:11:49.105Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T04:11:49.117Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T04:11:49.121Z]0 migrations are already loaded in the database.
-[2022-02-26T04:11:49.121Z]1 migrations were found in the source code.
-[2022-02-26T04:11:49.122Z]1 migrations are new migrations that needs to be executed.
-[2022-02-26T04:11:49.123Z][QUERY]: START TRANSACTION
-[2022-02-26T04:11:49.126Z][QUERY]: CREATE TABLE `users` (`dni` varchar(255) NOT NULL, `name` varchar(150) NOT NULL, `lastname` varchar(150) NOT NULL, `password` varchar(250) NOT NULL, `phone` varchar(20) NOT NULL, `email` varchar(250) NOT NULL, `createdAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), `updatedAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), `role` int NULL, PRIMARY KEY (`dni`)) ENGINE=InnoDB
-[2022-02-26T04:11:49.183Z][QUERY]: CREATE TABLE `roles` (`id` int NOT NULL AUTO_INCREMENT, `role` varchar(200) NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB
-[2022-02-26T04:11:49.259Z][QUERY]: ALTER TABLE `users` ADD CONSTRAINT `FK_ace513fa30d485cfd25c11a9e4a` FOREIGN KEY (`role`) REFERENCES `roles`(`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-[2022-02-26T04:11:50.028Z][QUERY]: INSERT INTO `capilog_database`.`migrations_typeorm`(`timestamp`, `name`) VALUES (?, ?) -- PARAMETERS: [1645674672574,"initialSatate1645674672574"]
-[2022-02-26T04:11:50.164Z]Migration initialSatate1645674672574 has been executed successfully.
-[2022-02-26T04:11:50.165Z][QUERY]: COMMIT
-[2022-02-26T04:12:42.297Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T04:12:42.309Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T04:12:42.323Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?), (DEFAULT, ?), (DEFAULT, ?), (DEFAULT, ?), (DEFAULT, ?) -- PARAMETERS: ["ADMIN","COORDINADOR DE TRANSPORTE","COORDINADOR DE PROCESO","PORTERO","COORDINADOR DE FINCA"]
-[2022-02-26T04:13:43.962Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T04:13:43.973Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T04:13:44.232Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-02-26T04:13:44.244Z][QUERY]: SELECT `Role`.`id` AS `Role_id`, `Role`.`role` AS `Role_role` FROM `roles` `Role` WHERE `Role`.`role` = ? -- PARAMETERS: ["ADMIN"]
-[2022-02-26T04:13:44.254Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
-[2022-02-26T04:13:44.259Z][QUERY]: START TRANSACTION
-[2022-02-26T04:13:44.353Z][QUERY]: INSERT INTO `users`(`dni`, `name`, `lastname`, `password`, `phone`, `email`, `createdAt`, `updatedAt`, `role`) VALUES (?, ?, ?, ?, ?, ?, DEFAULT, DEFAULT, ?) -- PARAMETERS: ["1","Admin","Capilog,","$2b$10$3A7orRKNPpGyxM4nOf.XFOr7uGz/wMhbJaOkQw/kbBCwwMtn48./u","0000000000","capilog37@gmail.com",1]
-[2022-02-26T04:13:44.357Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt` FROM `users` `User` WHERE `User`.`dni` = ? -- PARAMETERS: ["1"]
-[2022-02-26T04:13:44.363Z][QUERY]: COMMIT
-[2022-02-26T04:54:34.399Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T04:54:34.417Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T04:54:34.507Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-02-26T04:54:39.728Z][QUERY]: SELECT `user`.`dni` AS `user_dni`, `user`.`name` AS `user_name`, `user`.`lastname` AS `user_lastname`, `user`.`phone` AS `user_phone`, `user`.`email` AS `user_email`, `user`.`createdAt` AS `user_createdAt`, `user`.`updatedAt` AS `user_updatedAt`, `user`.`role` AS `user_role`, `user`.`password` AS `user_password`, `user`.`password` FROM `users` `user` WHERE `user`.`dni` = ? -- PARAMETERS: ["1"]
-[2022-02-26T04:55:10.978Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
-[2022-02-26T04:55:10.997Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T04:55:11.003Z][QUERY]: SELECT `Role`.`id` AS `Role_id`, `Role`.`role` AS `Role_role` FROM `roles` `Role` WHERE `Role`.`role` = ? -- PARAMETERS: ["PORTERO"]
-[2022-02-26T04:55:11.012Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T04:55:11.017Z][QUERY]: START TRANSACTION
-[2022-02-26T04:55:11.091Z][QUERY]: INSERT INTO `users`(`dni`, `name`, `lastname`, `password`, `phone`, `email`, `createdAt`, `updatedAt`, `role`) VALUES (?, ?, ?, ?, ?, ?, DEFAULT, DEFAULT, ?) -- PARAMETERS: ["67890","Melani","Ricardo","$2b$10$ciXaVv.0Gnm0k2Kpu9QjHeBtyoMoKeoVcXMQkT6fG01DqaSwIITq.","3124325678","andres@gmail.com",4]
-[2022-02-26T04:55:11.097Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt` FROM `users` `User` WHERE `User`.`dni` = ? -- PARAMETERS: ["67890"]
-[2022-02-26T04:55:11.102Z][QUERY]: COMMIT
-[2022-02-26T04:57:10.703Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T04:57:10.720Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T04:57:10.793Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-02-26T05:01:55.036Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T05:01:55.052Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T05:01:55.325Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-02-26T05:02:49.390Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T05:02:49.405Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T05:02:49.472Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-02-26T05:04:01.476Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T05:04:01.490Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T05:04:01.558Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-02-26T05:05:28.162Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T05:05:28.175Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T05:05:28.239Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-02-26T05:05:32.407Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
-[2022-02-26T05:05:32.438Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67891"]
-[2022-02-26T05:05:32.445Z][QUERY]: SELECT `Role`.`id` AS `Role_id`, `Role`.`role` AS `Role_role` FROM `roles` `Role` WHERE `Role`.`role` = ? -- PARAMETERS: ["COORDINADOR DE TRANSPORTE"]
-[2022-02-26T05:05:32.454Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67891"]
-[2022-02-26T05:05:32.459Z][QUERY]: START TRANSACTION
-[2022-02-26T05:05:32.544Z][QUERY]: INSERT INTO `users`(`dni`, `name`, `lastname`, `password`, `phone`, `email`, `createdAt`, `updatedAt`, `role`) VALUES (?, ?, ?, ?, ?, ?, DEFAULT, DEFAULT, ?) -- PARAMETERS: ["67891","Melani","Ricardo","$2b$10$J8A8z/g/Y09ukI7mLjSQ4OrB8/WpDildm8/IZxHeJDkGVCEvsEQXe","3124325678","andres@gmail.com",2]
-[2022-02-26T05:05:32.550Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt` FROM `users` `User` WHERE `User`.`dni` = ? -- PARAMETERS: ["67891"]
-[2022-02-26T05:05:32.557Z][QUERY]: COMMIT
-[2022-02-26T05:06:00.407Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T05:06:00.418Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T05:06:00.483Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-02-26T05:06:29.984Z][QUERY]: SELECT `user`.`dni` AS `user_dni`, `user`.`name` AS `user_name`, `user`.`lastname` AS `user_lastname`, `user`.`phone` AS `user_phone`, `user`.`email` AS `user_email`, `user`.`createdAt` AS `user_createdAt`, `user`.`updatedAt` AS `user_updatedAt`, `user`.`role` AS `user_role`, `user`.`password` AS `user_password`, `user`.`password` FROM `users` `user` WHERE `user`.`dni` = ? -- PARAMETERS: ["67891"]
-[2022-02-26T05:06:49.927Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67891"]
-[2022-02-26T05:10:43.822Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T05:10:43.833Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T05:10:43.949Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-02-26T05:10:45.859Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67891"]
-[2022-02-26T05:10:50.954Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67891"]
-[2022-02-26T05:11:36.172Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T05:11:36.183Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T05:11:36.254Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-02-26T05:12:23.041Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T05:12:23.052Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T05:12:23.119Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-02-26T05:12:47.865Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67891"]
-[2022-02-26T05:12:49.256Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67891"]
-[2022-02-26T05:14:14.720Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T05:14:14.732Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T05:14:14.850Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-02-26T05:14:57.156Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T05:14:57.167Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T05:14:57.228Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-02-26T05:15:01.560Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67891"]
-[2022-02-26T05:15:04.941Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67891"]
-[2022-02-26T05:15:33.712Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T05:15:33.724Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T05:15:33.785Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-02-26T05:16:01.508Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67891"]
-[2022-02-26T05:16:18.538Z][QUERY]: SELECT `user`.`dni` AS `user_dni`, `user`.`name` AS `user_name`, `user`.`lastname` AS `user_lastname`, `user`.`phone` AS `user_phone`, `user`.`email` AS `user_email`, `user`.`createdAt` AS `user_createdAt`, `user`.`updatedAt` AS `user_updatedAt`, `user`.`role` AS `user_role`, `user`.`password` AS `user_password`, `user`.`password` FROM `users` `user` WHERE `user`.`dni` = ? -- PARAMETERS: ["1"]
-[2022-02-26T05:16:32.604Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
-[2022-02-26T05:16:32.611Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role`
-[2022-02-26T05:17:15.608Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T05:17:15.620Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T05:17:15.688Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-02-26T05:17:34.498Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T05:17:34.509Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T05:17:34.601Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-02-26T05:18:32.449Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T05:18:32.465Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T05:18:32.531Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-02-26T05:19:57.250Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T05:19:57.262Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T05:19:57.323Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-02-26T05:26:28.603Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T05:26:28.614Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T05:26:28.682Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-02-26T05:26:38.706Z][QUERY]: SELECT `user`.`dni` AS `user_dni`, `user`.`name` AS `user_name`, `user`.`lastname` AS `user_lastname`, `user`.`phone` AS `user_phone`, `user`.`email` AS `user_email`, `user`.`createdAt` AS `user_createdAt`, `user`.`updatedAt` AS `user_updatedAt`, `user`.`role` AS `user_role`, `user`.`password` AS `user_password`, `user`.`password` FROM `users` `user` WHERE `user`.`dni` = ? -- PARAMETERS: ["67890"]
-[2022-02-26T05:28:10.718Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T05:28:10.730Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T05:28:10.794Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-02-26T05:28:14.461Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T05:28:14.473Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67891"]
-[2022-02-26T05:29:40.994Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T05:29:41.006Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T05:29:41.066Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-02-26T05:29:43.958Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T05:29:43.969Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67891"]
-[2022-02-26T05:31:07.506Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T05:31:07.517Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T05:31:07.633Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-02-26T05:32:33.482Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T05:32:33.492Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T05:32:33.554Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-02-26T05:33:00.257Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T05:33:00.269Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T05:33:03.574Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T05:33:03.581Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T05:33:26.994Z][QUERY]: SELECT `user`.`dni` AS `user_dni`, `user`.`name` AS `user_name`, `user`.`lastname` AS `user_lastname`, `user`.`phone` AS `user_phone`, `user`.`email` AS `user_email`, `user`.`createdAt` AS `user_createdAt`, `user`.`updatedAt` AS `user_updatedAt`, `user`.`role` AS `user_role`, `user`.`password` AS `user_password`, `user`.`password` FROM `users` `user` WHERE `user`.`dni` = ? -- PARAMETERS: ["67890"]
-[2022-02-26T05:33:41.110Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T05:33:41.118Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T05:35:03.652Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T05:35:03.664Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T05:35:03.735Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-02-26T05:35:24.732Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T05:35:24.743Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T05:35:24.803Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-02-26T05:35:27.034Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T05:35:27.051Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T05:40:05.512Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T05:40:05.526Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T05:40:33.427Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T05:40:33.439Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T05:40:33.517Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-02-26T05:40:45.481Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T05:40:45.492Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T05:40:45.565Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-02-26T05:40:54.348Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T05:40:54.358Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T05:40:54.419Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-02-26T05:40:58.810Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T05:40:58.824Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T05:41:00.038Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T05:41:00.057Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T05:42:25.890Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T05:42:25.903Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T05:42:25.970Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-02-26T05:42:34.663Z][QUERY]: SELECT `user`.`dni` AS `user_dni`, `user`.`name` AS `user_name`, `user`.`lastname` AS `user_lastname`, `user`.`phone` AS `user_phone`, `user`.`email` AS `user_email`, `user`.`createdAt` AS `user_createdAt`, `user`.`updatedAt` AS `user_updatedAt`, `user`.`role` AS `user_role`, `user`.`password` AS `user_password`, `user`.`password` FROM `users` `user` WHERE `user`.`dni` = ? -- PARAMETERS: ["67890"]
-[2022-02-26T05:42:55.550Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T05:42:55.563Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T05:46:18.724Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T05:46:18.735Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T05:46:18.820Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-02-26T05:46:19.288Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T05:46:19.303Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T05:46:22.070Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T05:46:22.078Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T05:46:23.062Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T05:46:23.070Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T05:46:23.747Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T05:46:23.755Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T05:46:24.332Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T05:46:24.340Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T05:46:24.790Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T05:46:24.797Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T05:46:47.469Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T05:46:47.480Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T05:46:47.567Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-02-26T05:46:49.904Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T05:46:49.921Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T05:47:03.725Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T05:47:03.735Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T05:47:03.785Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-02-26T05:47:07.543Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-02-26T05:47:07.552Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-02-26T05:47:07.600Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-02-26T05:47:12.620Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T05:47:12.635Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T05:47:12.643Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T05:47:12.655Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T05:47:12.662Z][QUERY]: START TRANSACTION
-[2022-02-26T05:47:12.670Z][QUERY]: UPDATE `users` SET `name` = ?, `updatedAt` = CURRENT_TIMESTAMP WHERE `dni` IN (?) -- PARAMETERS: ["Jairo","67890"]
-[2022-02-26T05:47:12.674Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`updatedAt` AS `User_updatedAt` FROM `users` `User` WHERE `User`.`dni` = ? -- PARAMETERS: ["67890"]
-[2022-02-26T05:47:12.679Z][QUERY]: COMMIT
-[2022-02-26T05:47:36.018Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-02-26T05:50:12.709Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67890"]
-[2022-03-03T18:09:55.150Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-03-03T18:09:55.319Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-03-03T18:09:55.411Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-03-03T18:11:14.552Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-03-03T18:11:14.564Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-03-03T18:11:14.662Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-03-03T18:11:57.920Z][QUERY]: SELECT `user`.`dni` AS `user_dni`, `user`.`name` AS `user_name`, `user`.`lastname` AS `user_lastname`, `user`.`phone` AS `user_phone`, `user`.`email` AS `user_email`, `user`.`createdAt` AS `user_createdAt`, `user`.`updatedAt` AS `user_updatedAt`, `user`.`role` AS `user_role`, `user`.`password` AS `user_password`, `user`.`password` FROM `users` `user` WHERE `user`.`dni` = ? -- PARAMETERS: ["1"]
-[2022-03-03T18:12:24.199Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
-[2022-03-03T18:12:24.286Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role`
-[2022-03-03T18:13:33.896Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-03-03T18:13:33.908Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-03-03T18:13:34.002Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-03-03T18:14:51.816Z][QUERY]: SELECT `Role`.`id` AS `Role_id`, `Role`.`role` AS `Role_role` FROM `roles` `Role`
-[2022-03-03T18:15:57.464Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-03-03T18:15:57.477Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-03-03T18:15:57.555Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-03-03T18:16:58.394Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-03-03T18:16:58.408Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-03-03T18:16:58.490Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-03-03T18:17:16.888Z][QUERY]: SELECT `Role`.`id` AS `Role_id`, `Role`.`role` AS `Role_role` FROM `roles` `Role` WHERE `Role`.`id` IN (?) -- PARAMETERS: [1]
-[2022-03-03T18:17:16.903Z][QUERY]: SELECT `Role`.`id` AS `Role_id`, `Role`.`role` AS `Role_role` FROM `roles` `Role` WHERE `Role`.`role` = ? LIMIT 1 -- PARAMETERS: ["ADMIN"]
-[2022-03-03T18:17:47.836Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-03-03T18:17:47.849Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-03-03T18:17:47.930Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-03-03T18:19:19.648Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-03-03T18:19:19.661Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-03-03T18:19:19.749Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-03-03T18:19:26.380Z][QUERY]: SELECT `user`.`dni` AS `user_dni`, `user`.`name` AS `user_name`, `user`.`lastname` AS `user_lastname`, `user`.`phone` AS `user_phone`, `user`.`email` AS `user_email`, `user`.`createdAt` AS `user_createdAt`, `user`.`updatedAt` AS `user_updatedAt`, `user`.`role` AS `user_role`, `user`.`password` AS `user_password`, `user`.`password` FROM `users` `user` WHERE `user`.`dni` = ? -- PARAMETERS: ["1"]
-[2022-03-03T18:19:48.092Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
-[2022-03-03T18:19:48.112Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["67891"]
-[2022-03-03T18:19:54.930Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
-[2022-03-03T18:19:54.945Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["34"]
-[2022-03-03T18:19:54.957Z][QUERY]: SELECT `Role`.`id` AS `Role_id`, `Role`.`role` AS `Role_role` FROM `roles` `Role` WHERE `Role`.`role` = ? LIMIT 1 -- PARAMETERS: ["COORDINADOR DE TRANSPORTE"]
-[2022-03-03T18:20:15.398Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-03-03T18:20:15.410Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-03-03T18:20:15.491Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-03-03T18:20:52.125Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-03-03T18:20:52.137Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-03-03T18:20:52.213Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-03-03T18:20:52.849Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
-[2022-03-03T18:20:52.872Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["34"]
-[2022-03-03T18:20:52.879Z][QUERY]: SELECT `Role`.`id` AS `Role_id`, `Role`.`role` AS `Role_role` FROM `roles` `Role` WHERE `Role`.`role` = ? LIMIT 1 -- PARAMETERS: ["PORTERA"]
-[2022-03-03T18:21:41.365Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-03-03T18:21:41.376Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-03-03T18:21:41.465Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-03-03T18:21:49.154Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-03-03T18:21:49.167Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-03-03T18:21:49.252Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-03-03T18:22:00.138Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
-[2022-03-03T18:22:00.161Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["34"]
-[2022-03-03T18:22:00.168Z][QUERY]: SELECT `Role`.`id` AS `Role_id`, `Role`.`role` AS `Role_role` FROM `roles` `Role` WHERE `Role`.`role` = ? LIMIT 1 -- PARAMETERS: ["PORTERO"]
-[2022-03-03T18:22:00.178Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["34"]
-[2022-03-03T18:22:00.184Z][QUERY]: START TRANSACTION
-[2022-03-03T18:22:00.283Z][QUERY]: INSERT INTO `users`(`dni`, `name`, `lastname`, `password`, `phone`, `email`, `createdAt`, `updatedAt`, `role`) VALUES (?, ?, ?, ?, ?, ?, DEFAULT, DEFAULT, ?) -- PARAMETERS: ["34","Melani","Ricardo","$2b$10$D.45WYsxbXJtbh1VnWrDVu.YFSu.trgy4vLZx0SPxRX9zhWOls6Ii","3124325678","andres@gmail.com",4]
-[2022-03-03T18:22:00.310Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt` FROM `users` `User` WHERE `User`.`dni` = ? -- PARAMETERS: ["34"]
-[2022-03-03T18:22:00.316Z][QUERY]: COMMIT
-[2022-03-03T20:41:12.970Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-03-03T20:41:13.008Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-03-03T20:41:13.208Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-03-03T20:41:57.649Z][QUERY]: SELECT `user`.`dni` AS `user_dni`, `user`.`name` AS `user_name`, `user`.`lastname` AS `user_lastname`, `user`.`phone` AS `user_phone`, `user`.`email` AS `user_email`, `user`.`createdAt` AS `user_createdAt`, `user`.`updatedAt` AS `user_updatedAt`, `user`.`role` AS `user_role`, `user`.`password` AS `user_password`, `user`.`password` FROM `users` `user` WHERE `user`.`dni` = ? -- PARAMETERS: ["1"]
-[2022-03-03T20:43:18.282Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-03-03T20:43:18.303Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-03-03T20:43:18.454Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-03-03T20:43:23.812Z][QUERY]: SELECT `user`.`dni` AS `user_dni`, `user`.`name` AS `user_name`, `user`.`lastname` AS `user_lastname`, `user`.`phone` AS `user_phone`, `user`.`email` AS `user_email`, `user`.`createdAt` AS `user_createdAt`, `user`.`updatedAt` AS `user_updatedAt`, `user`.`role` AS `user_role`, `user`.`password` AS `user_password`, `user`.`password` FROM `users` `user` WHERE `user`.`dni` = ? -- PARAMETERS: ["1"]
-[2022-03-03T20:43:47.975Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
-[2022-03-03T20:43:47.998Z][QUERY]: SELECT `Role`.`id` AS `Role_id`, `Role`.`role` AS `Role_role` FROM `roles` `Role`
-[2022-03-03T20:47:18.786Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
-[2022-03-03T20:47:18.819Z][QUERY]: SELECT `Role`.`id` AS `Role_id`, `Role`.`role` AS `Role_role` FROM `roles` `Role` WHERE `Role`.`role` = ? LIMIT 1 -- PARAMETERS: ["CONDUCTOR"]
-[2022-03-03T20:47:18.841Z][QUERY]: START TRANSACTION
-[2022-03-03T20:47:18.857Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?) -- PARAMETERS: ["CONDUCTOR"]
-[2022-03-03T20:47:18.872Z][QUERY]: COMMIT
-[2022-03-03T20:48:02.409Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
-[2022-03-03T20:48:02.423Z][QUERY]: SELECT `Role`.`id` AS `Role_id`, `Role`.`role` AS `Role_role` FROM `roles` `Role` WHERE `Role`.`id` IN (?) -- PARAMETERS: [6]
-[2022-03-03T20:48:02.434Z][QUERY]: SELECT `Role`.`id` AS `Role_id`, `Role`.`role` AS `Role_role` FROM `roles` `Role` WHERE `Role`.`id` IN (?) -- PARAMETERS: [6]
-[2022-03-03T20:48:02.441Z][QUERY]: START TRANSACTION
-[2022-03-03T20:48:02.452Z][QUERY]: UPDATE `roles` SET `role` = ? WHERE `id` IN (?) -- PARAMETERS: ["CONDUCTOR DE CAMION",6]
-[2022-03-03T20:48:02.458Z][QUERY]: COMMIT
-[2022-03-03T20:48:11.078Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
-[2022-03-03T20:48:11.096Z][QUERY]: SELECT `Role`.`id` AS `Role_id`, `Role`.`role` AS `Role_role` FROM `roles` `Role`
-[2022-03-03T20:48:31.125Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
-[2022-03-03T20:48:31.139Z][QUERY]: SELECT `Role`.`id` AS `Role_id`, `Role`.`role` AS `Role_role` FROM `roles` `Role` WHERE `Role`.`id` IN (?) -- PARAMETERS: [6]
-[2022-03-03T20:48:31.152Z][QUERY]: SELECT `Role`.`id` AS `Role_id`, `Role`.`role` AS `Role_role` FROM `roles` `Role` WHERE `Role`.`id` IN (?) -- PARAMETERS: [6]
-[2022-03-03T20:48:31.159Z][QUERY]: START TRANSACTION
-[2022-03-03T20:48:31.177Z][QUERY]: DELETE FROM `roles` WHERE `id` = ? -- PARAMETERS: [6]
-[2022-03-03T20:48:31.186Z][QUERY]: COMMIT
-[2022-03-04T02:54:33.491Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-03-04T02:54:33.503Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-03-04T02:54:33.606Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-03-04T02:54:52.556Z][QUERY]: SELECT `user`.`dni` AS `user_dni`, `user`.`name` AS `user_name`, `user`.`lastname` AS `user_lastname`, `user`.`phone` AS `user_phone`, `user`.`email` AS `user_email`, `user`.`createdAt` AS `user_createdAt`, `user`.`updatedAt` AS `user_updatedAt`, `user`.`role` AS `user_role`, `user`.`password` AS `user_password`, `user`.`password` FROM `users` `user` WHERE `user`.`dni` = ? -- PARAMETERS: ["1"]
-[2022-03-04T02:55:29.315Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
-[2022-03-04T02:55:29.325Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
-[2022-03-04T02:55:29.338Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
-[2022-03-04T02:55:29.345Z][QUERY]: START TRANSACTION
-[2022-03-04T02:55:29.354Z][QUERY]: DELETE FROM `users` WHERE `dni` = ? -- PARAMETERS: ["1"]
-[2022-03-04T02:55:29.359Z][QUERY]: COMMIT
-[2022-03-04T02:55:46.185Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-03-04T02:55:46.197Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-03-04T02:55:46.278Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-03-04T02:55:46.289Z][QUERY]: SELECT `Role`.`id` AS `Role_id`, `Role`.`role` AS `Role_role` FROM `roles` `Role` WHERE `Role`.`role` = ? -- PARAMETERS: ["ADMIN"]
-[2022-03-04T02:55:46.308Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
-[2022-03-04T02:55:46.314Z][QUERY]: START TRANSACTION
-[2022-03-04T02:55:46.416Z][QUERY]: INSERT INTO `users`(`dni`, `name`, `lastname`, `password`, `phone`, `email`, `createdAt`, `updatedAt`, `role`) VALUES (?, ?, ?, ?, ?, ?, DEFAULT, DEFAULT, ?) -- PARAMETERS: ["1","Admin","Capilog","$2b$10$8h/dNJ1xOCi/E1xwvCOMEeqei.RIJDVIWs7lQtGH7/ZjXmUWiQy9u","0000000000","capilog37@gmail.com",1]
-[2022-03-04T02:55:46.459Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt` FROM `users` `User` WHERE `User`.`dni` = ? -- PARAMETERS: ["1"]
-[2022-03-04T02:55:46.465Z][QUERY]: COMMIT
-[2022-03-04T02:56:11.563Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
-[2022-03-04T02:56:11.574Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
-[2022-03-04T02:56:11.581Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
-[2022-03-04T02:56:11.586Z][QUERY]: START TRANSACTION
-[2022-03-04T02:56:11.591Z][QUERY]: DELETE FROM `users` WHERE `dni` = ? -- PARAMETERS: ["1"]
-[2022-03-04T02:56:11.594Z][QUERY]: COMMIT
-[2022-03-04T02:56:24.177Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-03-04T02:56:24.200Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-03-04T02:56:24.276Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-03-04T02:56:24.286Z][QUERY]: SELECT `Role`.`id` AS `Role_id`, `Role`.`role` AS `Role_role` FROM `roles` `Role` WHERE `Role`.`role` = ? -- PARAMETERS: ["ADMIN"]
-[2022-03-04T02:56:24.297Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
-[2022-03-04T02:56:24.303Z][QUERY]: START TRANSACTION
-[2022-03-04T02:56:24.384Z][QUERY]: INSERT INTO `users`(`dni`, `name`, `lastname`, `password`, `phone`, `email`, `createdAt`, `updatedAt`, `role`) VALUES (?, ?, ?, ?, ?, ?, DEFAULT, DEFAULT, ?) -- PARAMETERS: ["1","Admin","Capilog","$2b$10$QV00jMjqTbtMsbHGArvBQeK1y6EsNVO87XOybLusOF6T22s.zoPBG","0000000000","capilog37@gmail.com",1]
-[2022-03-04T02:56:24.389Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt` FROM `users` `User` WHERE `User`.`dni` = ? -- PARAMETERS: ["1"]
-[2022-03-04T02:56:24.394Z][QUERY]: COMMIT
-[2022-03-04T03:08:02.373Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-03-04T03:08:02.385Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-03-04T03:08:02.455Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-03-04T03:08:41.520Z][QUERY]: SELECT `user`.`dni` AS `user_dni`, `user`.`name` AS `user_name`, `user`.`lastname` AS `user_lastname`, `user`.`phone` AS `user_phone`, `user`.`email` AS `user_email`, `user`.`createdAt` AS `user_createdAt`, `user`.`updatedAt` AS `user_updatedAt`, `user`.`role` AS `user_role`, `user`.`password` AS `user_password`, `user`.`password` FROM `users` `user` WHERE `user`.`dni` = ? -- PARAMETERS: ["1"]
-[2022-03-04T03:09:00.430Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
-[2022-03-04T03:09:00.443Z][QUERY]: SELECT `Role`.`id` AS `Role_id`, `Role`.`role` AS `Role_role` FROM `roles` `Role` LIMIT 10
-[2022-03-04T03:09:00.452Z][QUERY]: SELECT COUNT(1) AS `cnt` FROM `roles` `Role`
-[2022-03-04T03:12:29.252Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-03-04T03:12:29.265Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-03-04T03:12:29.365Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-03-04T03:12:42.806Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
-[2022-03-04T03:12:42.821Z][QUERY]: SELECT `Role`.`id` AS `Role_id`, `Role`.`role` AS `Role_role` FROM `roles` `Role` LIMIT 2
-[2022-03-04T03:12:42.829Z][QUERY]: SELECT COUNT(1) AS `cnt` FROM `roles` `Role`
-[2022-03-04T03:14:27.623Z][QUERY]: SELECT `user`.`dni` AS `user_dni`, `user`.`name` AS `user_name`, `user`.`lastname` AS `user_lastname`, `user`.`phone` AS `user_phone`, `user`.`email` AS `user_email`, `user`.`createdAt` AS `user_createdAt`, `user`.`updatedAt` AS `user_updatedAt`, `user`.`role` AS `user_role`, `user`.`password` AS `user_password`, `user`.`password` FROM `users` `user` WHERE `user`.`dni` = ? -- PARAMETERS: ["1"]
-[2022-03-04T03:15:15.286Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
-[2022-03-04T03:15:15.293Z][QUERY]: SELECT `Role`.`id` AS `Role_id`, `Role`.`role` AS `Role_role` FROM `roles` `Role` LIMIT 2
-[2022-03-04T03:15:15.295Z][QUERY]: SELECT COUNT(1) AS `cnt` FROM `roles` `Role`
-[2022-03-04T03:15:53.172Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
-[2022-03-04T03:15:53.179Z][QUERY]: SELECT `Role`.`id` AS `Role_id`, `Role`.`role` AS `Role_role` FROM `roles` `Role` LIMIT 2
-[2022-03-04T03:15:53.180Z][QUERY]: SELECT COUNT(1) AS `cnt` FROM `roles` `Role`
-[2022-03-04T03:16:08.400Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
-[2022-03-04T03:16:08.408Z][QUERY]: SELECT `Role`.`id` AS `Role_id`, `Role`.`role` AS `Role_role` FROM `roles` `Role` LIMIT 2 OFFSET 2
-[2022-03-04T03:16:08.409Z][QUERY]: SELECT COUNT(1) AS `cnt` FROM `roles` `Role`
-[2022-03-04T03:16:31.523Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-03-04T03:16:31.536Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-03-04T03:16:31.617Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-03-04T03:16:33.071Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
-[2022-03-04T03:16:33.087Z][QUERY]: SELECT `Role`.`id` AS `Role_id`, `Role`.`role` AS `Role_role` FROM `roles` `Role` LIMIT 2 OFFSET 2
-[2022-03-04T03:16:33.093Z][QUERY]: SELECT COUNT(1) AS `cnt` FROM `roles` `Role`
-[2022-03-04T03:16:38.990Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
-[2022-03-04T03:16:38.998Z][QUERY]: SELECT `Role`.`id` AS `Role_id`, `Role`.`role` AS `Role_role` FROM `roles` `Role` LIMIT 2
-[2022-03-04T03:16:39.000Z][QUERY]: SELECT COUNT(1) AS `cnt` FROM `roles` `Role`
-[2022-03-04T03:16:51.724Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
-[2022-03-04T03:16:51.732Z][QUERY]: SELECT `Role`.`id` AS `Role_id`, `Role`.`role` AS `Role_role` FROM `roles` `Role` LIMIT 2 OFFSET 2
-[2022-03-04T03:16:51.734Z][QUERY]: SELECT COUNT(1) AS `cnt` FROM `roles` `Role`
-[2022-03-04T03:18:56.748Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-03-04T03:18:56.760Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-03-04T03:18:56.848Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-03-04T03:19:20.682Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-03-04T03:19:20.697Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-03-04T03:19:20.768Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-03-04T03:19:44.754Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-03-04T03:19:44.765Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-03-04T03:19:44.844Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-03-04T03:20:12.322Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-03-04T03:20:12.335Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-03-04T03:20:12.405Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-03-04T03:20:27.447Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-03-04T03:20:27.460Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-03-04T03:20:27.532Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-03-04T03:25:07.789Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-03-04T03:25:07.802Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-03-04T03:25:07.869Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-03-04T03:29:08.065Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-03-04T03:29:08.079Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-03-04T03:29:08.162Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-03-04T03:29:54.535Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
-[2022-03-04T03:29:54.548Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` LIMIT 3
-[2022-03-04T03:29:54.555Z][QUERY]: SELECT COUNT(1) AS `cnt` FROM `users` `User`
-[2022-03-04T03:31:50.174Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-03-04T03:31:50.189Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-03-04T03:31:50.264Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-03-04T03:32:04.639Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-03-04T03:32:04.650Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-03-04T03:32:04.723Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-03-04T03:33:52.666Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-03-04T03:33:52.678Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-03-04T03:33:52.751Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-03-04T03:34:24.114Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-03-04T03:34:24.130Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-03-04T03:34:24.214Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-03-04T03:34:31.327Z][QUERY]: SELECT `user`.`dni` AS `user_dni`, `user`.`name` AS `user_name`, `user`.`lastname` AS `user_lastname`, `user`.`phone` AS `user_phone`, `user`.`email` AS `user_email`, `user`.`createdAt` AS `user_createdAt`, `user`.`updatedAt` AS `user_updatedAt`, `user`.`role` AS `user_role`, `user`.`password` AS `user_password`, `user`.`password` FROM `users` `user` WHERE `user`.`dni` = ? -- PARAMETERS: ["1"]
-[2022-03-04T03:35:04.557Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-03-04T03:35:04.567Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-03-04T03:35:04.661Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-03-04T03:35:18.891Z][QUERY]: SELECT `user`.`dni` AS `user_dni`, `user`.`name` AS `user_name`, `user`.`lastname` AS `user_lastname`, `user`.`phone` AS `user_phone`, `user`.`email` AS `user_email`, `user`.`createdAt` AS `user_createdAt`, `user`.`updatedAt` AS `user_updatedAt`, `user`.`role` AS `user_role`, `user`.`password` AS `user_password`, `user`.`password` FROM `users` `user` WHERE `user`.`dni` = ? -- PARAMETERS: ["1"]
-[2022-03-04T03:35:58.198Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-03-04T03:35:58.209Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-03-04T03:35:58.277Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-03-04T03:36:16.723Z][QUERY]: SELECT `user`.`dni` AS `user_dni`, `user`.`name` AS `user_name`, `user`.`lastname` AS `user_lastname`, `user`.`phone` AS `user_phone`, `user`.`email` AS `user_email`, `user`.`createdAt` AS `user_createdAt`, `user`.`updatedAt` AS `user_updatedAt`, `user`.`role` AS `user_role`, `user`.`password` AS `user_password`, `user`.`password` FROM `users` `user` WHERE `user`.`dni` = ? -- PARAMETERS: ["1"]
-[2022-03-04T03:39:00.100Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-03-04T03:39:00.112Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-03-04T03:39:00.183Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
-[2022-03-04T03:39:16.321Z][QUERY]: SELECT `user`.`dni` AS `user_dni`, `user`.`name` AS `user_name`, `user`.`lastname` AS `user_lastname`, `user`.`phone` AS `user_phone`, `user`.`email` AS `user_email`, `user`.`createdAt` AS `user_createdAt`, `user`.`updatedAt` AS `user_updatedAt`, `user`.`role` AS `user_role`, `user`.`password` AS `user_password`, `user`.`password` FROM `users` `user` WHERE `user`.`dni` = ? -- PARAMETERS: ["1"]
-[2022-03-04T03:42:51.398Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'migrations_typeorm'
-[2022-03-04T03:42:51.409Z][QUERY]: SELECT * FROM `capilog_database`.`migrations_typeorm` `migrations_typeorm` ORDER BY `id` DESC
-[2022-03-04T03:42:51.491Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["1"]
+[2022-03-09T04:00:08.054Z][QUERY]: START TRANSACTION
+[2022-03-09T04:00:08.061Z][QUERY]: SELECT DATABASE() AS `db_name`
+[2022-03-09T04:00:08.066Z][QUERY]: 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'processes'
+                     UNION 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'roles'
+                     UNION 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'users'
+                     UNION 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'farms'
+                     UNION 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'processes_users'
+                    
+[2022-03-09T04:00:08.074Z][QUERY]: 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'processes'
+                 UNION 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'roles'
+                 UNION 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'users'
+                 UNION 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'farms'
+                 UNION 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'processes_users'
+                
+[2022-03-09T04:00:08.075Z][QUERY]: SELECT * FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'processes'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'roles'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'farms'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'processes_users'
+            ) `kcu` WHERE `CONSTRAINT_NAME` = 'PRIMARY'
+[2022-03-09T04:00:08.076Z][QUERY]: 
+            SELECT
+                `SCHEMA_NAME`,
+                `DEFAULT_CHARACTER_SET_NAME` as `CHARSET`,
+                `DEFAULT_COLLATION_NAME` AS `COLLATION`
+            FROM `INFORMATION_SCHEMA`.`SCHEMATA`
+            
+[2022-03-09T04:00:08.076Z][QUERY]: 
+            SELECT
+                `s`.*
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'processes'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'roles'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'users'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'farms'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'processes_users'
+            ) `s`
+            LEFT JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'processes'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'roles'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'users'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'farms'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'processes_users'
+            ) `rc`
+                ON
+                    `s`.`INDEX_NAME` = `rc`.`CONSTRAINT_NAME`
+                    AND
+                    `s`.`TABLE_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA`
+            WHERE
+                `s`.`INDEX_NAME` != 'PRIMARY'
+                AND
+                `rc`.`CONSTRAINT_NAME` IS NULL
+            
+[2022-03-09T04:00:08.077Z][QUERY]: 
+            SELECT
+                `kcu`.`TABLE_SCHEMA`,
+                `kcu`.`TABLE_NAME`,
+                `kcu`.`CONSTRAINT_NAME`,
+                `kcu`.`COLUMN_NAME`,
+                `kcu`.`REFERENCED_TABLE_SCHEMA`,
+                `kcu`.`REFERENCED_TABLE_NAME`,
+                `kcu`.`REFERENCED_COLUMN_NAME`,
+                `rc`.`DELETE_RULE` `ON_DELETE`,
+                `rc`.`UPDATE_RULE` `ON_UPDATE`
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'processes'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'roles'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'farms'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'processes_users'
+            ) `kcu`
+            INNER JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'processes'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'roles'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'users'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'farms'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'processes_users'
+            ) `rc`
+                ON
+                    `rc`.`CONSTRAINT_SCHEMA` = `kcu`.`CONSTRAINT_SCHEMA`
+                    AND
+                    `rc`.`TABLE_NAME` = `kcu`.`TABLE_NAME`
+                    AND
+                    `rc`.`CONSTRAINT_NAME` = `kcu`.`CONSTRAINT_NAME`
+            
+[2022-03-09T04:00:08.103Z][QUERY]: SELECT VERSION() AS `version`
+[2022-03-09T04:00:08.109Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'typeorm_metadata'
+[2022-03-09T04:00:08.119Z][QUERY]: COMMIT
+[2022-03-09T04:00:08.130Z][QUERY]: INSERT INTO `roles`(`id`, `role`) VALUES (DEFAULT, ?), (DEFAULT, ?), (DEFAULT, ?), (DEFAULT, ?), (DEFAULT, ?) -- PARAMETERS: ["ADMIN","COORDINADOR DE TRANSPORTE","COORDINADOR DE PROCESO","PORTERO","COORDINADOR DE FINCA"]
