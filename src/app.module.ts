@@ -13,6 +13,7 @@ import { CacheModule } from './cache/cache.module';
 import databaseConfig from './config/database.config';
 import { VerifyTokenMiddleware } from './common/middleware/verify-token.middleware';
 import { OrdersModule } from './orders/orders.module';
+import { OrderStatementsModule } from './order-statements/order-statements.module';
 
 @Module({
     imports: [
@@ -32,6 +33,7 @@ import { OrdersModule } from './orders/orders.module';
         ProcessesModule,
         CacheModule,
         OrdersModule,
+        OrderStatementsModule,
     ],
     controllers: [],
     providers: [],
