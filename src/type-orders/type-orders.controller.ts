@@ -5,30 +5,30 @@ import { UpdateTypeOrderDto } from './dto/update-type-order.dto';
 
 @Controller('type-orders')
 export class TypeOrdersController {
-  constructor(private readonly typeOrdersService: TypeOrdersService) {}
+    constructor(private readonly typeOrdersService: TypeOrdersService) {}
 
-  @Post()
-  create(@Body() createTypeOrderDto: CreateTypeOrderDto) {
-    return this.typeOrdersService.create(createTypeOrderDto);
-  }
+    @Post()
+    create(@Body() createTypeOrderDto: CreateTypeOrderDto) {
+        return this.typeOrdersService.create(createTypeOrderDto);
+    }
 
-  @Get()
-  findAll() {
-    return this.typeOrdersService.findAll();
-  }
+    @Get()
+    findAll() {
+        return this.typeOrdersService.findAll();
+    }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.typeOrdersService.findOne(+id);
-  }
+    @Get(':id')
+    findOne(@Param('id') id: string) {
+        return this.typeOrdersService.findOne(+id);
+    }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTypeOrderDto: UpdateTypeOrderDto) {
-    return this.typeOrdersService.update(+id, updateTypeOrderDto);
-  }
+    @Patch(':id')
+    update(@Param('id') id: string, @Body() updateTypeOrderDto: UpdateTypeOrderDto) {
+        return this.typeOrdersService.update(+id, updateTypeOrderDto);
+    }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.typeOrdersService.remove(+id);
-  }
+    @Delete(':id')
+    remove(@Param('id') id: string) {
+        return this.typeOrdersService.remove(+id);
+    }
 }
