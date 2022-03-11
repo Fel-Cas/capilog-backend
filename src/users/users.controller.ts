@@ -34,9 +34,8 @@ export class UsersController {
     @CheckAbilities({ action: Action.Read, subject: UserEntity })
     async getAll(
         @Query('page', new DefaultValuePipe(1), ParseIntPipe) page = 1,
-        @Query('limit', new DefaultValuePipe(10), ParseIntPipe) _limit = 3
+        @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit = 10
     ): Promise<Pagination<UserEntity>> {
-        const limit = _limit;
         return this.userService.getAll({
             page,
             limit,

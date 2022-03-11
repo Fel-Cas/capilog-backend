@@ -14,6 +14,7 @@ import databaseConfig from './config/database.config';
 import { VerifyTokenMiddleware } from './common/middleware/verify-token.middleware';
 import { OrdersModule } from './orders/orders.module';
 import { OrderStatementsModule } from './order-statements/order-statements.module';
+import { TrucksModule } from './trucks/trucks.module';
 
 @Module({
     imports: [
@@ -34,6 +35,7 @@ import { OrderStatementsModule } from './order-statements/order-statements.modul
         CacheModule,
         OrdersModule,
         OrderStatementsModule,
+        TrucksModule
     ],
     controllers: [],
     providers: [],
