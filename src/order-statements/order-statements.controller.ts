@@ -1,4 +1,5 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+/* eslint-disable prettier/prettier */
+import { Controller, Get, Post, Body, Param, Delete, Query, DefaultValuePipe, ParseIntPipe, Put } from '@nestjs/common';
 import { OrderStatementsService } from './order-statements.service';
 import { CreateOrderStatementDto } from './dto/create-order-statement.dto';
 import { UpdateOrderStatementDto } from './dto/update-order-statement.dto';
@@ -8,27 +9,38 @@ export class OrderStatementsController {
   constructor(private readonly orderStatementsService: OrderStatementsService) {}
 
   @Post()
-  create(@Body() createOrderStatementDto: CreateOrderStatementDto) {
-    return this.orderStatementsService.create(createOrderStatementDto);
+  async create(@Body() createOrderStatementDto: CreateOrderStatementDto) {
+    const data= await this.orderStatementsService.create(createOrderStatementDto);
+    return {meta:{message:'Orders satatement created'}, data:{...data}};
   }
 
   @Get()
-  findAll() {
-    return this.orderStatementsService.findAll();
+  async findAll(
+    @Query('page', new DefaultValuePipe(1), ParseIntPipe) page=1,
+    @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit=10
+  ) {
+    return this.orderStatementsService.findAll({
+      page,
+      limit,
+      route: 'http://localhost:8000/order-statements'
+    })
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.orderStatementsService.findOne(+id);
+  async findOne(@Param('id') id: string) {
+    const data= await this.orderStatementsService.findOne(+id);
+    return {meta:{message:'One order statement'}, data:{...data}};
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateOrderStatementDto: UpdateOrderStatementDto) {
-    return this.orderStatementsService.update(+id, updateOrderStatementDto);
+  @Put(':id')
+  async update(@Param('id') id: string, @Body() updateOrderStatementDto: UpdateOrderStatementDto) {
+    const data= await this.orderStatementsService.update(+id, updateOrderStatementDto);
+    return {meta:{message:'order statement updated'}, data:{...data}}
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.orderStatementsService.remove(+id);
+  async remove(@Param('id') id: string) {
+    await this.orderStatementsService.remove(+id);
+    return {meta:{message:'order statement deleted'}}
   }
 }
