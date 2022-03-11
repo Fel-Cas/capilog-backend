@@ -8,11 +8,22 @@ export default class CreateRoles implements Seeder {
             .insert()
             .into('roles')
             .values([
-                { role: 'ADMIN' },
-                { role: 'COORDINADOR DE TRANSPORTE' },
-                { role: 'COORDINADOR DE PROCESO' },
-                { role: 'PORTERO' },
-                { role: 'COORDINADOR DE FINCA' },
+                { role: 'Admin'.toUpperCase() },
+                { role: 'Portero'.toUpperCase() },
+                { role: 'Secretario Logistica'.toUpperCase() },
+                { role: 'Almacenista'.toUpperCase() },
+                { role: 'Supervisor'.toUpperCase() },
+                { role: 'Director Produccion'.toUpperCase() },
+                { role: 'Coordinadora'.toUpperCase() },
+                { role: 'Analista'.toUpperCase() },
+                { role: 'Coordinador'.toUpperCase() },
+                { role: 'Jefe de compras'.toUpperCase() },
+                { role: 'Jefe Logistica'.toUpperCase() },
+                { role: 'Jefe de mantenimiento'.toUpperCase() },
+                { role: 'Asistente T.I'.toUpperCase() },
+                { role: 'Auxiliar'.toUpperCase() },
+                { role: 'Supervisor Consolidados'.toUpperCase() },
+                
             ])
             .execute();
     }
