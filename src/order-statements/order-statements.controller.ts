@@ -27,20 +27,20 @@ export class OrderStatementsController {
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: string) {
-    const data= await this.orderStatementsService.findOne(+id);
+  async findOne(@Param('id', ParseIntPipe) id: number) {
+    const data= await this.orderStatementsService.findOne(id);
     return {meta:{message:'One order statement'}, data:{...data}};
   }
 
   @Put(':id')
-  async update(@Param('id') id: string, @Body() updateOrderStatementDto: UpdateOrderStatementDto) {
+  async update(@Param('id', ParseIntPipe) id: number, @Body() updateOrderStatementDto: UpdateOrderStatementDto) {
     const data= await this.orderStatementsService.update(+id, updateOrderStatementDto);
     return {meta:{message:'order statement updated'}, data:{...data}}
   }
 
   @Delete(':id')
-  async remove(@Param('id') id: string) {
-    await this.orderStatementsService.remove(+id);
+  async remove(@Param('id', ParseIntPipe) id: number) {
+    await this.orderStatementsService.remove(id);
     return {meta:{message:'order statement deleted'}}
   }
 }

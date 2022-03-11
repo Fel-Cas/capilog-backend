@@ -4,7 +4,7 @@ import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateCol
 @Entity('order-statements')
 export class OrderStatement {
     @PrimaryGeneratedColumn('increment')
-    idOrderStatements: number;
+    idOrderStatement: number;
 
     @Column({ type: 'varchar' })
     description: string;
