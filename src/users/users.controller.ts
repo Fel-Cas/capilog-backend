@@ -90,7 +90,7 @@ export class UsersController {
         delete userRoleUpdated.password;
         return { meta: { message: USER_UPDATED }, data: { ...userRoleUpdated } };
     }
-    @Patch('farms/:id')
+    @Put('farms/:id')
     @UseGuards(JwtAuthGuard, AbilitiesGuard)
     @CheckAbilities({ action: Action.UpdateFarm, subject: UserEntity })
     async updateFarm(@Param('id') id: string, @Body() content: EditUserDto) {

@@ -7,9 +7,5 @@ export enum Action {
     Update = 'update',
     Delete = 'delete',
     UpdateRole = 'updaterole',
-    UpdateUserFarm = 'updateuserfarm',
-    CreateFarm = 'createfarm',
-    ReadFarm = 'readfarm',
     UpdateFarm = 'updatefarm',
-    DeleteFarm = 'deletefarm',
 }

@@ -25,7 +25,11 @@ export class AbilityFactory {
             cannot(Action.Create, User).because('Only admins can create  users');
             cannot(Action.Delete, User).because('Only admins can delete  users');
             cannot(Action.UpdateRole, User).because('Only admins can update role of users');
-            cannot(Action.UpdateUserFarm, User).because('Only admins can update farm of users');
+            cannot(Action.UpdateFarm, User).because('Only admins can update farm of users');
+            cannot(Action.Read, Farm).because('Only admins can read farms');
+            cannot(Action.Create, Farm).because('Only admins can create farms');
+            cannot(Action.Update, Farm).because('Only admins can update farms');
+            cannot(Action.Delete, Farm).because('Only admins can delete farms');
         }
         return build({
             detectSubjectType: (item) => item.constructor as ExtractSubjectType<Subjects>,
