@@ -1,20 +1,7 @@
-import {
-    Controller,
-    Get,
-    Post,
-    Body,
-    Patch,
-    Param,
-    Delete,
-    UseGuards,
-    Query,
-    DefaultValuePipe,
-    ParseIntPipe,
-    BadRequestException,
-} from '@nestjs/common';
-import { ProcessesService } from './processes.service';
-import { CreateProcessDto } from './dto/create-process.dto';
-import { UpdateProcessDto } from './dto/update-process.dto';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Query, DefaultValuePipe, ParseIntPipe, BadRequestException } from '@nestjs/common';
+import { RoutesService } from './routes.service';
+import { CreateRouteDto } from './dto/create-route.dto';
+import { UpdateRouteDto } from './dto/update-route.dto';
 import { AbilityFactory } from 'src/ability/ability.factory';
 import { JwtAuthGuard } from 'src/auth/guards';
 import { AbilitiesGuard } from 'src/ability/guards/abilities.guard';
@@ -22,18 +9,18 @@ import { CheckAbilities } from 'src/common/decorators';
 import { Action } from 'src/ability/enums/actions.enums';
 import { User as UserEntity } from '../users/entities';
 import { Pagination } from 'nestjs-typeorm-paginate';
-import { Process as ProcessEntity } from './entities';
+import { Route as RouteEntity } from './entities';
 
-@Controller('processes')
-export class ProcessesController {
-    constructor(private readonly processService: ProcessesService, private abilityFactory: AbilityFactory) {}
+@Controller('routes')
+export class RoutesController {
+    constructor(private readonly routeService: RoutesService, private abilityFactory: AbilityFactory) {}
 
     @Post()
     @UseGuards(JwtAuthGuard, AbilitiesGuard)
     @CheckAbilities({ action: Action.Create, subject: UserEntity })
-    async create(@Body() createProcessDto: CreateProcessDto) {
-        const processCreated = await this.processService.create(createProcessDto);
-        return { data: { ...processCreated }, meta: { message: 'Process created' } };
+    async create(@Body() createRouteDto: CreateRouteDto) {
+        const routeCreated = await this.routeService.create(createRouteDto);
+        return { data: { ...routeCreated }, meta: { message: 'Route created' } };
     }
 
     @Get()
@@ -42,12 +29,12 @@ export class ProcessesController {
     async getAll(
         @Query('page', new DefaultValuePipe(1), ParseIntPipe) page = 1,
         @Query('limit', new DefaultValuePipe(10), ParseIntPipe) _limit = 3
-    ): Promise<Pagination<ProcessEntity>> {
+    ): Promise<Pagination<RouteEntity>> {
         const limit = _limit;
-        return this.processService.getAll({
+        return this.routeService.getAll({
             page,
             limit,
-            route: 'http://localhost:8000/processes',
+            route: 'http://localhost:8000/routes',
         });
     }
 
@@ -55,27 +42,27 @@ export class ProcessesController {
     @UseGuards(JwtAuthGuard, AbilitiesGuard)
     @CheckAbilities({ action: Action.Read, subject: UserEntity })
     async getOne(@Param('id') id: number) {
-        const process = await this.processService.getOne(id);
-        return { data: { ...process }, meta: { message: 'One process' } };
+        const route = await this.routeService.getOne(id);
+        return { data: { ...route }, meta: { message: 'One route' } };
     }
 
     @Patch(':id')
     @UseGuards(JwtAuthGuard, AbilitiesGuard)
     @CheckAbilities({ action: Action.Update, subject: UserEntity })
-    async update(@Param('id') id: number, @Body() editProcessDto: UpdateProcessDto) {
-        const data = this.processService.getOne(id);
+    async update(@Param('id') id: number, @Body() editRouteDto: UpdateRouteDto) {
+        const data = this.routeService.getOne(id);
         if (!data) throw new BadRequestException(`Route with ${id} doesn't exists`);
-        const processUpdate = await this.processService.update(id, editProcessDto);
-        return { data: { ...processUpdate }, meta: { message: 'Route updated' } };
+        const routeUpdate = await this.routeService.update(id, editRouteDto);
+        return { data: { ...routeUpdate }, meta: { message: 'Route updated' } };
     }
 
     @Delete(':id')
     @UseGuards(JwtAuthGuard, AbilitiesGuard)
     @CheckAbilities({ action: Action.Delete, subject: UserEntity })
     async remove(@Param('id') id: number) {
-        const data = this.processService.getOne(id);
+        const data = this.routeService.getOne(id);
         if (!data) throw new BadRequestException(`Route with ${id} doesn't exists`);
-        await this.processService.remove(id);
+        await this.routeService.remove(id);
         return { meta: { message: 'Route deleted' } };
     }
 }

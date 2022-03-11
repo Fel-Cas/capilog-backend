@@ -24,9 +24,9 @@ export class ProcessesService {
     }
 
     async getOne(id: number): Promise<Process> {
-        const user = await this.processRepository.findOne(id);
-        if (!user) throw new NotFoundException(`Process doesn't exists`);
-        return user;
+        const process = await this.processRepository.findOne(id);
+        if (!process) throw new NotFoundException(`Process doesn't exists`);
+        return process;
     }
 
     async findByName(name: string) {
