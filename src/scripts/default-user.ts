@@ -20,7 +20,7 @@ const setDefaultUser = async (config: ConfigService) => {
     const defaultUser = await userRepository
         .createQueryBuilder()
         .where('dni = :dni', {
-            dni: '1',
+            dni: '123456789',
         })
         .getOne();
 
