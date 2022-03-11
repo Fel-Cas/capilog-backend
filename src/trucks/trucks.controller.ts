@@ -1,34 +1,47 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+/* eslint-disable prettier/prettier */
+import { Controller, Get, Post, Body, Param, Delete, Query, DefaultValuePipe, ParseIntPipe, Put } from '@nestjs/common';
 import { TrucksService } from './trucks.service';
 import { CreateTruckDto } from './dto/create-truck.dto';
 import { UpdateTruckDto } from './dto/update-truck.dto';
 
 @Controller('trucks')
 export class TrucksController {
-  constructor(private readonly trucksService: TrucksService) {}
+    constructor(private readonly trucksService: TrucksService) {}
 
-  @Post()
-  create(@Body() createTruckDto: CreateTruckDto) {
-    return this.trucksService.create(createTruckDto);
-  }
+    @Post()
+    async create(@Body() createTruckDto: CreateTruckDto) {
+      createTruckDto.license=createTruckDto.license.toLocaleUpperCase();
+      const data= await this.trucksService.create(createTruckDto);
+      return{meta:{message:'Truck created'}, data:{...data}};
+    }
 
-  @Get()
-  findAll() {
-    return this.trucksService.findAll();
-  }
+    @Get()
+    async findAll(
+      @Query('page', new DefaultValuePipe(1), ParseIntPipe ) page=1,
+      @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit=10
+    ) {
+       return this.trucksService.findAll({
+         page,
+         limit,
+         route:'http://localhost:8000/trucks'
+       })
+    }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.trucksService.findOne(+id);
-  }
+    @Get(':id')
+    async findOne(@Param('id') id:string) {
+      const data= await this.trucksService.findOne(id);
+      return{meta:{message:'one truck'}, data:{...data}};
+    }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTruckDto: UpdateTruckDto) {
-    return this.trucksService.update(+id, updateTruckDto);
-  }
+    @Put(':id')
+    async update(@Param('id') id: string, @Body() updateTruckDto: UpdateTruckDto) {
+        const data = await this.trucksService.update(id, updateTruckDto);
+        return {meta:{message:'truck updated'}, data:{...data}};
+    }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.trucksService.remove(+id);
-  }
+    @Delete(':id')
+    async remove(@Param('id') id: string) {
+      await this.trucksService.remove(id);
+      return {meta:{message:'truck deleted'}};
+    }
 }
