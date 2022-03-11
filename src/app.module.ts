@@ -15,6 +15,7 @@ import { VerifyTokenMiddleware } from './common/middleware/verify-token.middlewa
 import { OrdersModule } from './orders/orders.module';
 import { OrderStatementsModule } from './order-statements/order-statements.module';
 import { TrucksModule } from './trucks/trucks.module';
+import { TypeOrdersModule } from './type-orders/type-orders.module';
 
 @Module({
     imports: [
@@ -35,7 +36,8 @@ import { TrucksModule } from './trucks/trucks.module';
         CacheModule,
         OrdersModule,
         OrderStatementsModule,
-        TrucksModule
+        TrucksModule,
+        TypeOrdersModule
     ],
     controllers: [],
     providers: [],

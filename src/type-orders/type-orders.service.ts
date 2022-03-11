@@ -1,26 +1,47 @@
-import { Injectable } from '@nestjs/common';
+/* eslint-disable prettier/prettier */
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { IPaginationOptions, paginate, Pagination } from 'nestjs-typeorm-paginate';
+import { Repository } from 'typeorm';
 import { CreateTypeOrderDto } from './dto/create-type-order.dto';
 import { UpdateTypeOrderDto } from './dto/update-type-order.dto';
+import { TypeOrder } from './entities';
 
 @Injectable()
 export class TypeOrdersService {
-  create(createTypeOrderDto: CreateTypeOrderDto) {
-    return 'This action adds a new typeOrder';
+  constructor(
+    @InjectRepository(TypeOrder)
+    private readonly typeOrderRepository: Repository<TypeOrder>
+  ){}
+  async create(createTypeOrderDto: CreateTypeOrderDto) {
+    const typeOrderFound = await this.findByName(createTypeOrderDto.description);
+    if(typeOrderFound) throw new BadRequestException();
+    const typeOrderCreated = this.typeOrderRepository.create(createTypeOrderDto);
+    return await this.typeOrderRepository.save(typeOrderCreated);
   }
 
-  findAll() {
-    return `This action returns all typeOrders`;
+  findAll(options: IPaginationOptions): Promise<Pagination<TypeOrder>> {
+    return paginate(this.typeOrderRepository, options);
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} typeOrder`;
+  async findOne(id: number) {
+   const typeOrderFound = await this.typeOrderRepository.findOne(id);
+   if(!typeOrderFound) throw new NotFoundException();
+   return typeOrderFound;
   }
 
-  update(id: number, updateTypeOrderDto: UpdateTypeOrderDto) {
-    return `This action updates a #${id} typeOrder`;
+  async update(id: number, updateTypeOrderDto: UpdateTypeOrderDto) {
+    const typeOrderFound= await this.findOne(id);
+    const typeOrderUpdated= Object.assign(typeOrderFound, updateTypeOrderDto);
+    return await this.typeOrderRepository.save(typeOrderUpdated);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} typeOrder`;
+  async remove(id: number) {
+    const typeOrderFound= await this.findOne(id);
+    await this.typeOrderRepository.remove(typeOrderFound);
+  }
+
+  async findByName(typeOrder: string){
+    return await this.typeOrderRepository.findOne({where:{description:typeOrder}});
   }
 }

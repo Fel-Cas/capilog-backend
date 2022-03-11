@@ -17,7 +17,7 @@
   "cli": {
     "migrationsDir": "src/migration"
   },
-  "synchronize": false,
+  "synchronize": true,
   "logging": true,
   "logger": "file"
 }
