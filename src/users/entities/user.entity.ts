@@ -12,10 +12,12 @@ import {
     JoinTable,
     ManyToMany,
     ManyToOne,
+    OneToMany,
     PrimaryColumn,
     UpdateDateColumn,
 } from 'typeorm';
 import { Role } from '../../roles/entities';
+import { Order } from 'src/orders/entities';
 
 @Entity('users')
 export class User {
@@ -48,6 +50,9 @@ export class User {
     @ManyToMany(() => Process, (process) => process.users)
     @JoinTable({ name: 'processes_users' })
     processes: Process[];
+
+    @OneToMany(()=> Order, order=> order.requestUser)
+    order:Order;
 
     @CreateDateColumn()
     createdAt: Date;

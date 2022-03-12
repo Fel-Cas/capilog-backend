@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from 'typeorm';
+import { Order } from 'src/orders/entities';
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity('trucks')
 export class Truck {
@@ -10,6 +11,9 @@ export class Truck {
 
     @Column({ type: 'varchar' })
     dniDriver: string;
+
+    @OneToMany(() => Order, (order) => order.truck)
+    order: Order;
 
     @CreateDateColumn()
     createdAt: Date;
