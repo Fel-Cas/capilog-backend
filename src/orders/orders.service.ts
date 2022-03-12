@@ -29,7 +29,7 @@ export class OrdersService {
     const lastFarm= await this.farmsService.findByName(createOrderDto.lastFarm);
     const state= await this.ordersStatementService.getByName(createOrderDto.state);
     const typeOrder= await this.typeOrdersService.findByName(createOrderDto.typeOrder);
-    if (!state || typeOrder) throw new NotFoundException();
+    if (!state || !typeOrder) throw new NotFoundException();
     let orderCreated = new Order();
     orderCreated= Object.assign(orderCreated, createOrderDto);
     orderCreated.requestUser= user;

@@ -1,3 +1,4 @@
+import { Type } from 'class-transformer';
 import { IsBoolean, IsDate, IsNumber, IsOptional, IsString, Min } from 'class-validator';
 
 export class CreateOrderDto {
@@ -7,6 +8,7 @@ export class CreateOrderDto {
     @IsString()
     lastFarm: string;
 
+    @Type(() => Date)
     @IsDate()
     startDate: Date;
 
@@ -22,18 +24,22 @@ export class CreateOrderDto {
     securitySeal: string;
 
     @IsOptional()
+    @Type(() => Date)
     @IsDate()
     arriveDate: Date;
 
     @IsOptional()
+    @Type(() => Date)
     @IsDate()
     exitDate: Date;
 
     @IsOptional()
+    @Type(() => Date)
     @IsDate()
     destinationArriveDate: Date;
 
     @IsOptional()
+    @Type(() => Date)
     @IsDate()
     finishDate: Date;
 

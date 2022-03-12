@@ -10,7 +10,7 @@ export class TypeOrder {
     @Column({type:'varchar'})
     description: string;
 
-    @OneToMany(()=>Order, order=> order.typeOrder, {cascade: true})
+    @OneToMany(()=>Order, order=> order.typeOrder)
     order:Order;
 
     @CreateDateColumn()

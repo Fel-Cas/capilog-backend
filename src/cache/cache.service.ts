@@ -6,7 +6,7 @@ export class CacheService {
     constructor(@Inject(CACHE_MANAGER) private cacheManager: Cache) {}
 
     async addToCache(token: string) {
-        await this.cacheManager.set(token, token, { ttl: 60000 });
+        await this.cacheManager.set(token, token);
     }
 
     async verifyToken(token: string) {
