@@ -43,10 +43,12 @@ export class Order {
     @Column({ type: 'date', nullable:true})
     finishDate: Date;
 
-    @Column({ nullable:true})
-    state:OrderStatement;
+    @ManyToOne(()=> OrderStatement, orderStatement=> orderStatement.order,{cascade: true})
+    @JoinColumn({name:'order_statement'})
+    statement:OrderStatement;
 
     @ManyToOne(()=> User, user=> user.order, {cascade: true})
+    @JoinColumn({name:'user'})
     requestUser:User;
 
     @ManyToOne(()=> Truck, truck=> truck.order, {cascade:true})

@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Order } from "src/orders/entities";
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity('order-statements')
 export class OrderStatement {
@@ -8,6 +9,9 @@ export class OrderStatement {
 
     @Column({ type: 'varchar' })
     description: string;
+
+    @OneToMany(()=> Order, order=> order.statement)
+    order: Order;
 
     @CreateDateColumn()
     createdAt: Date;
