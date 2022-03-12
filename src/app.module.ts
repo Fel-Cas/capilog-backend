@@ -12,6 +12,10 @@ import { ProcessesModule } from './processes/processes.module';
 import { CacheModule } from './cache/cache.module';
 import databaseConfig from './config/database.config';
 import { VerifyTokenMiddleware } from './common/middleware/verify-token.middleware';
+import { OrdersModule } from './orders/orders.module';
+import { OrderStatementsModule } from './order-statements/order-statements.module';
+import { TrucksModule } from './trucks/trucks.module';
+import { TypeOrdersModule } from './type-orders/type-orders.module';
 
 @Module({
     imports: [
@@ -30,6 +34,10 @@ import { VerifyTokenMiddleware } from './common/middleware/verify-token.middlewa
         FarmsModule,
         ProcessesModule,
         CacheModule,
+        OrdersModule,
+        OrderStatementsModule,
+        TrucksModule,
+        TypeOrdersModule
     ],
     controllers: [],
     providers: [],

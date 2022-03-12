@@ -10,6 +10,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
         const request = ctx.getRequest<Request>();
         const status = exception.getStatus();
         const message = exception.message;
+        const info= exception.getResponse()['message']
 
         response.status(status).json({
             errors: [
@@ -17,6 +18,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
                     statusCode: status,
                     message: message,
                     path: request.url,
+                    information: info,
                 },
             ],
         });
