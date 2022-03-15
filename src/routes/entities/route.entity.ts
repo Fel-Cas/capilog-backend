@@ -3,7 +3,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 @Entity('routes')
 export class Route {
     @PrimaryGeneratedColumn('increment')
-    id: number;
+    idroutes: number;
 
     @Column({ type: 'varchar', length: 200, nullable: false })
     name: string;
