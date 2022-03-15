@@ -16,6 +16,7 @@ import { OrdersModule } from './orders/orders.module';
 import { OrderStatementsModule } from './order-statements/order-statements.module';
 import { TrucksModule } from './trucks/trucks.module';
 import { TypeOrdersModule } from './type-orders/type-orders.module';
+import { RoutesModule } from './routes/routes.module';
 
 @Module({
     imports: [
@@ -37,7 +38,8 @@ import { TypeOrdersModule } from './type-orders/type-orders.module';
         OrdersModule,
         OrderStatementsModule,
         TrucksModule,
-        TypeOrdersModule
+        TypeOrdersModule,
+        RoutesModule,
     ],
     controllers: [],
     providers: [],
