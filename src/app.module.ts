@@ -17,6 +17,7 @@ import { OrderStatementsModule } from './order-statements/order-statements.modul
 import { TrucksModule } from './trucks/trucks.module';
 import { TypeOrdersModule } from './type-orders/type-orders.module';
 import { RoutesModule } from './routes/routes.module';
+import { RouteOrdersModule } from './route-orders/route-orders.module';
 
 @Module({
     imports: [
@@ -40,6 +41,7 @@ import { RoutesModule } from './routes/routes.module';
         TrucksModule,
         TypeOrdersModule,
         RoutesModule,
+        RouteOrdersModule,
     ],
     controllers: [],
     providers: [],

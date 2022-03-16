@@ -26947,3 +26947,1952 @@
 [2022-03-12T04:17:29.763Z][QUERY]: SELECT DISTINCT `distinctAlias`.`Order_idOrder` as "ids_Order_idOrder" FROM (SELECT `Order`.`idOrder` AS `Order_idOrder`, `Order`.`startDate` AS `Order_startDate`, `Order`.`quantity` AS `Order_quantity`, `Order`.`description` AS `Order_description`, `Order`.`securitySeal` AS `Order_securitySeal`, `Order`.`arriveDate` AS `Order_arriveDate`, `Order`.`exitDate` AS `Order_exitDate`, `Order`.`destinationArriveDate` AS `Order_destinationArriveDate`, `Order`.`finishDate` AS `Order_finishDate`, `Order`.`isBill` AS `Order_isBill`, `Order`.`first_farm` AS `Order_first_farm`, `Order`.`last_farm` AS `Order_last_farm`, `Order`.`order_statement` AS `Order_order_statement`, `Order`.`user` AS `Order_user`, `Order`.`truck` AS `Order_truck`, `Order`.`typeOrderIdTypeOrder` AS `Order_typeOrderIdTypeOrder`, `Order_firstFarm`.`idFarm` AS `Order_firstFarm_idFarm`, `Order_firstFarm`.`farm` AS `Order_firstFarm_farm`, `Order_firstFarm`.`location` AS `Order_firstFarm_location`, `Order_firstFarm`.`createdAt` AS `Order_firstFarm_createdAt`, `Order_firstFarm`.`updatedAt` AS `Order_firstFarm_updatedAt`, `Order_lastFarm`.`idFarm` AS `Order_lastFarm_idFarm`, `Order_lastFarm`.`farm` AS `Order_lastFarm_farm`, `Order_lastFarm`.`location` AS `Order_lastFarm_location`, `Order_lastFarm`.`createdAt` AS `Order_lastFarm_createdAt`, `Order_lastFarm`.`updatedAt` AS `Order_lastFarm_updatedAt`, `Order_statement`.`idOrderStatement` AS `Order_statement_idOrderStatement`, `Order_statement`.`description` AS `Order_statement_description`, `Order_statement`.`createdAt` AS `Order_statement_createdAt`, `Order_statement`.`updatedAt` AS `Order_statement_updatedAt`, `Order_requestUser`.`dni` AS `Order_requestUser_dni`, `Order_requestUser`.`name` AS `Order_requestUser_name`, `Order_requestUser`.`lastname` AS `Order_requestUser_lastname`, `Order_requestUser`.`phone` AS `Order_requestUser_phone`, `Order_requestUser`.`email` AS `Order_requestUser_email`, `Order_requestUser`.`createdAt` AS `Order_requestUser_createdAt`, `Order_requestUser`.`updatedAt` AS `Order_requestUser_updatedAt`, `Order_requestUser`.`role` AS `Order_requestUser_role`, `Order_requestUser`.`farm` AS `Order_requestUser_farm`, `Order_truck`.`license` AS `Order_truck_license`, `Order_truck`.`driverName` AS `Order_truck_driverName`, `Order_truck`.`dniDriver` AS `Order_truck_dniDriver`, `Order_truck`.`createdAt` AS `Order_truck_createdAt`, `Order_truck`.`updatedAt` AS `Order_truck_updatedAt`, `Order_typeOrder`.`idTypeOrder` AS `Order_typeOrder_idTypeOrder`, `Order_typeOrder`.`description` AS `Order_typeOrder_description`, `Order_typeOrder`.`createdAt` AS `Order_typeOrder_createdAt`, `Order_typeOrder`.`updatedAt` AS `Order_typeOrder_updatedAt` FROM `order` `Order` LEFT JOIN `farms` `Order_firstFarm` ON `Order_firstFarm`.`idFarm`=`Order`.`first_farm`  LEFT JOIN `farms` `Order_lastFarm` ON `Order_lastFarm`.`idFarm`=`Order`.`last_farm`  LEFT JOIN `order-statements` `Order_statement` ON `Order_statement`.`idOrderStatement`=`Order`.`order_statement`  LEFT JOIN `users` `Order_requestUser` ON `Order_requestUser`.`dni`=`Order`.`user`  LEFT JOIN `trucks` `Order_truck` ON `Order_truck`.`license`=`Order`.`truck`  LEFT JOIN `type-orders` `Order_typeOrder` ON `Order_typeOrder`.`idTypeOrder`=`Order`.`typeOrderIdTypeOrder`) `distinctAlias` ORDER BY `Order_idOrder` ASC LIMIT 10
 [2022-03-12T04:17:29.764Z][QUERY]: SELECT COUNT(1) AS `cnt` FROM `order` `Order`
 [2022-03-12T04:17:29.770Z][QUERY]: SELECT `Order`.`idOrder` AS `Order_idOrder`, `Order`.`startDate` AS `Order_startDate`, `Order`.`quantity` AS `Order_quantity`, `Order`.`description` AS `Order_description`, `Order`.`securitySeal` AS `Order_securitySeal`, `Order`.`arriveDate` AS `Order_arriveDate`, `Order`.`exitDate` AS `Order_exitDate`, `Order`.`destinationArriveDate` AS `Order_destinationArriveDate`, `Order`.`finishDate` AS `Order_finishDate`, `Order`.`isBill` AS `Order_isBill`, `Order`.`first_farm` AS `Order_first_farm`, `Order`.`last_farm` AS `Order_last_farm`, `Order`.`order_statement` AS `Order_order_statement`, `Order`.`user` AS `Order_user`, `Order`.`truck` AS `Order_truck`, `Order`.`typeOrderIdTypeOrder` AS `Order_typeOrderIdTypeOrder`, `Order_firstFarm`.`idFarm` AS `Order_firstFarm_idFarm`, `Order_firstFarm`.`farm` AS `Order_firstFarm_farm`, `Order_firstFarm`.`location` AS `Order_firstFarm_location`, `Order_firstFarm`.`createdAt` AS `Order_firstFarm_createdAt`, `Order_firstFarm`.`updatedAt` AS `Order_firstFarm_updatedAt`, `Order_lastFarm`.`idFarm` AS `Order_lastFarm_idFarm`, `Order_lastFarm`.`farm` AS `Order_lastFarm_farm`, `Order_lastFarm`.`location` AS `Order_lastFarm_location`, `Order_lastFarm`.`createdAt` AS `Order_lastFarm_createdAt`, `Order_lastFarm`.`updatedAt` AS `Order_lastFarm_updatedAt`, `Order_statement`.`idOrderStatement` AS `Order_statement_idOrderStatement`, `Order_statement`.`description` AS `Order_statement_description`, `Order_statement`.`createdAt` AS `Order_statement_createdAt`, `Order_statement`.`updatedAt` AS `Order_statement_updatedAt`, `Order_requestUser`.`dni` AS `Order_requestUser_dni`, `Order_requestUser`.`name` AS `Order_requestUser_name`, `Order_requestUser`.`lastname` AS `Order_requestUser_lastname`, `Order_requestUser`.`phone` AS `Order_requestUser_phone`, `Order_requestUser`.`email` AS `Order_requestUser_email`, `Order_requestUser`.`createdAt` AS `Order_requestUser_createdAt`, `Order_requestUser`.`updatedAt` AS `Order_requestUser_updatedAt`, `Order_requestUser`.`role` AS `Order_requestUser_role`, `Order_requestUser`.`farm` AS `Order_requestUser_farm`, `Order_truck`.`license` AS `Order_truck_license`, `Order_truck`.`driverName` AS `Order_truck_driverName`, `Order_truck`.`dniDriver` AS `Order_truck_dniDriver`, `Order_truck`.`createdAt` AS `Order_truck_createdAt`, `Order_truck`.`updatedAt` AS `Order_truck_updatedAt`, `Order_typeOrder`.`idTypeOrder` AS `Order_typeOrder_idTypeOrder`, `Order_typeOrder`.`description` AS `Order_typeOrder_description`, `Order_typeOrder`.`createdAt` AS `Order_typeOrder_createdAt`, `Order_typeOrder`.`updatedAt` AS `Order_typeOrder_updatedAt` FROM `order` `Order` LEFT JOIN `farms` `Order_firstFarm` ON `Order_firstFarm`.`idFarm`=`Order`.`first_farm`  LEFT JOIN `farms` `Order_lastFarm` ON `Order_lastFarm`.`idFarm`=`Order`.`last_farm`  LEFT JOIN `order-statements` `Order_statement` ON `Order_statement`.`idOrderStatement`=`Order`.`order_statement`  LEFT JOIN `users` `Order_requestUser` ON `Order_requestUser`.`dni`=`Order`.`user`  LEFT JOIN `trucks` `Order_truck` ON `Order_truck`.`license`=`Order`.`truck`  LEFT JOIN `type-orders` `Order_typeOrder` ON `Order_typeOrder`.`idTypeOrder`=`Order`.`typeOrderIdTypeOrder` WHERE `Order`.`idOrder` IN (2)
+[2022-03-15T01:47:07.493Z][QUERY]: START TRANSACTION
+[2022-03-15T01:47:07.497Z][QUERY]: SELECT DATABASE() AS `db_name`
+[2022-03-15T01:47:07.501Z][QUERY]: 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'processes'
+                     UNION 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'roles'
+                     UNION 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'order-statements'
+                     UNION 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'trucks'
+                     UNION 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'type-orders'
+                     UNION 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'order'
+                     UNION 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'users'
+                     UNION 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'farms'
+                     UNION 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'routes'
+                     UNION 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'processes_users'
+                    
+[2022-03-15T01:47:07.505Z][QUERY]: 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'processes'
+                 UNION 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'roles'
+                 UNION 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'order-statements'
+                 UNION 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'trucks'
+                 UNION 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'type-orders'
+                 UNION 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'order'
+                 UNION 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'users'
+                 UNION 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'farms'
+                 UNION 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'routes'
+                 UNION 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'processes_users'
+                
+[2022-03-15T01:47:07.506Z][QUERY]: SELECT * FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'processes'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'roles'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'order-statements'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'trucks'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'type-orders'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'order'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'farms'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'routes'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'processes_users'
+            ) `kcu` WHERE `CONSTRAINT_NAME` = 'PRIMARY'
+[2022-03-15T01:47:07.507Z][QUERY]: 
+            SELECT
+                `SCHEMA_NAME`,
+                `DEFAULT_CHARACTER_SET_NAME` as `CHARSET`,
+                `DEFAULT_COLLATION_NAME` AS `COLLATION`
+            FROM `INFORMATION_SCHEMA`.`SCHEMATA`
+            
+[2022-03-15T01:47:07.507Z][QUERY]: 
+            SELECT
+                `s`.*
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'processes'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'roles'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'order-statements'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'trucks'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'type-orders'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'order'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'users'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'farms'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'routes'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'processes_users'
+            ) `s`
+            LEFT JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'processes'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'roles'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'order-statements'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'trucks'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'type-orders'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'order'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'users'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'farms'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'routes'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'processes_users'
+            ) `rc`
+                ON
+                    `s`.`INDEX_NAME` = `rc`.`CONSTRAINT_NAME`
+                    AND
+                    `s`.`TABLE_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA`
+            WHERE
+                `s`.`INDEX_NAME` != 'PRIMARY'
+                AND
+                `rc`.`CONSTRAINT_NAME` IS NULL
+            
+[2022-03-15T01:47:07.508Z][QUERY]: 
+            SELECT
+                `kcu`.`TABLE_SCHEMA`,
+                `kcu`.`TABLE_NAME`,
+                `kcu`.`CONSTRAINT_NAME`,
+                `kcu`.`COLUMN_NAME`,
+                `kcu`.`REFERENCED_TABLE_SCHEMA`,
+                `kcu`.`REFERENCED_TABLE_NAME`,
+                `kcu`.`REFERENCED_COLUMN_NAME`,
+                `rc`.`DELETE_RULE` `ON_DELETE`,
+                `rc`.`UPDATE_RULE` `ON_UPDATE`
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'processes'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'roles'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'order-statements'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'trucks'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'type-orders'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'order'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'farms'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'routes'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'processes_users'
+            ) `kcu`
+            INNER JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'processes'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'roles'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'order-statements'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'trucks'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'type-orders'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'order'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'users'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'farms'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'routes'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'processes_users'
+            ) `rc`
+                ON
+                    `rc`.`CONSTRAINT_SCHEMA` = `kcu`.`CONSTRAINT_SCHEMA`
+                    AND
+                    `rc`.`TABLE_NAME` = `kcu`.`TABLE_NAME`
+                    AND
+                    `rc`.`CONSTRAINT_NAME` = `kcu`.`CONSTRAINT_NAME`
+            
+[2022-03-15T01:47:07.529Z][QUERY]: SELECT VERSION() AS `version`
+[2022-03-15T01:47:07.535Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'typeorm_metadata'
+[2022-03-15T01:47:07.548Z][QUERY]: ALTER TABLE `order` CHANGE `startDate` `startDate` timestamp NOT NULL
+[2022-03-15T01:47:07.563Z][QUERY]: COMMIT
+[2022-03-15T01:47:07.673Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User`.`farm` AS `User_farm` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["123456789"]
+[2022-03-15T01:47:07.680Z][QUERY]: SELECT `Role`.`id` AS `Role_id`, `Role`.`role` AS `Role_role` FROM `roles` `Role` WHERE `Role`.`role` = ? -- PARAMETERS: ["ADMIN"]
+[2022-03-15T01:47:07.689Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User`.`farm` AS `User_farm` FROM `users` `User` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
+[2022-03-15T01:47:07.694Z][QUERY]: START TRANSACTION
+[2022-03-15T01:47:07.769Z][QUERY]: UPDATE `users` SET `password` = ?, `updatedAt` = CURRENT_TIMESTAMP WHERE `dni` IN (?) -- PARAMETERS: ["$2b$10$ZPTckdFubb2kUVMOo3aQzOL9zEvNniV/.gg4/4xXWX8plhlfY3VWO","1"]
+[2022-03-15T01:47:07.773Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`updatedAt` AS `User_updatedAt` FROM `users` `User` WHERE `User`.`dni` = ? -- PARAMETERS: ["1"]
+[2022-03-15T01:47:07.777Z][QUERY]: COMMIT
+[2022-03-15T01:47:10.653Z][QUERY]: SELECT `user`.`dni` AS `user_dni`, `user`.`name` AS `user_name`, `user`.`lastname` AS `user_lastname`, `user`.`phone` AS `user_phone`, `user`.`email` AS `user_email`, `user`.`createdAt` AS `user_createdAt`, `user`.`updatedAt` AS `user_updatedAt`, `user`.`role` AS `user_role`, `user`.`farm` AS `user_farm`, `user`.`password` AS `user_password`, `user`.`password` FROM `users` `user` WHERE `user`.`dni` = ? -- PARAMETERS: ["1"]
+[2022-03-15T01:47:18.011Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User`.`farm` AS `User_farm`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role`, `User__farm`.`idFarm` AS `User__farm_idFarm`, `User__farm`.`farm` AS `User__farm_farm`, `User__farm`.`location` AS `User__farm_location`, `User__farm`.`createdAt` AS `User__farm_createdAt`, `User__farm`.`updatedAt` AS `User__farm_updatedAt` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role`  LEFT JOIN `farms` `User__farm` ON `User__farm`.`idFarm`=`User`.`farm` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
+[2022-03-15T01:47:18.021Z][QUERY]: SELECT `Route`.`idroutes` AS `Route_idroutes`, `Route`.`name` AS `Route_name`, `Route`.`observations` AS `Route_observations` FROM `routes` `Route` WHERE `Route`.`idroutes` IN (?) -- PARAMETERS: [1]
+[2022-03-15T01:47:20.294Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User`.`farm` AS `User_farm`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role`, `User__farm`.`idFarm` AS `User__farm_idFarm`, `User__farm`.`farm` AS `User__farm_farm`, `User__farm`.`location` AS `User__farm_location`, `User__farm`.`createdAt` AS `User__farm_createdAt`, `User__farm`.`updatedAt` AS `User__farm_updatedAt` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role`  LEFT JOIN `farms` `User__farm` ON `User__farm`.`idFarm`=`User`.`farm` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
+[2022-03-15T01:47:20.299Z][QUERY]: SELECT `Route`.`idroutes` AS `Route_idroutes`, `Route`.`name` AS `Route_name`, `Route`.`observations` AS `Route_observations` FROM `routes` `Route` WHERE `Route`.`idroutes` IN (?) -- PARAMETERS: [1]
+[2022-03-16T18:24:04.176Z][QUERY]: START TRANSACTION
+[2022-03-16T18:24:04.190Z][QUERY]: SELECT DATABASE() AS `db_name`
+[2022-03-16T18:24:04.195Z][QUERY]: 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'processes'
+                     UNION 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'roles'
+                     UNION 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'order-statements'
+                     UNION 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'trucks'
+                     UNION 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'type-orders'
+                     UNION 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'order'
+                     UNION 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'users'
+                     UNION 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'farms'
+                     UNION 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'routes'
+                     UNION 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'routeOrders'
+                     UNION 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'processes_users'
+                    
+[2022-03-16T18:24:04.203Z][QUERY]: 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'processes'
+                 UNION 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'roles'
+                 UNION 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'order-statements'
+                 UNION 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'trucks'
+                 UNION 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'type-orders'
+                 UNION 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'order'
+                 UNION 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'users'
+                 UNION 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'farms'
+                 UNION 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'routes'
+                 UNION 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'processes_users'
+                
+[2022-03-16T18:24:04.204Z][QUERY]: SELECT * FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'processes'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'roles'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'order-statements'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'trucks'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'type-orders'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'order'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'farms'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'routes'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'processes_users'
+            ) `kcu` WHERE `CONSTRAINT_NAME` = 'PRIMARY'
+[2022-03-16T18:24:04.204Z][QUERY]: 
+            SELECT
+                `SCHEMA_NAME`,
+                `DEFAULT_CHARACTER_SET_NAME` as `CHARSET`,
+                `DEFAULT_COLLATION_NAME` AS `COLLATION`
+            FROM `INFORMATION_SCHEMA`.`SCHEMATA`
+            
+[2022-03-16T18:24:04.205Z][QUERY]: 
+            SELECT
+                `s`.*
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'processes'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'roles'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'order-statements'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'trucks'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'type-orders'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'order'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'users'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'farms'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'routes'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'processes_users'
+            ) `s`
+            LEFT JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'processes'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'roles'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'order-statements'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'trucks'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'type-orders'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'order'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'users'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'farms'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'routes'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'processes_users'
+            ) `rc`
+                ON
+                    `s`.`INDEX_NAME` = `rc`.`CONSTRAINT_NAME`
+                    AND
+                    `s`.`TABLE_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA`
+            WHERE
+                `s`.`INDEX_NAME` != 'PRIMARY'
+                AND
+                `rc`.`CONSTRAINT_NAME` IS NULL
+            
+[2022-03-16T18:24:04.206Z][QUERY]: 
+            SELECT
+                `kcu`.`TABLE_SCHEMA`,
+                `kcu`.`TABLE_NAME`,
+                `kcu`.`CONSTRAINT_NAME`,
+                `kcu`.`COLUMN_NAME`,
+                `kcu`.`REFERENCED_TABLE_SCHEMA`,
+                `kcu`.`REFERENCED_TABLE_NAME`,
+                `kcu`.`REFERENCED_COLUMN_NAME`,
+                `rc`.`DELETE_RULE` `ON_DELETE`,
+                `rc`.`UPDATE_RULE` `ON_UPDATE`
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'processes'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'roles'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'order-statements'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'trucks'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'type-orders'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'order'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'farms'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'routes'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'processes_users'
+            ) `kcu`
+            INNER JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'processes'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'roles'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'order-statements'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'trucks'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'type-orders'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'order'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'users'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'farms'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'routes'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'processes_users'
+            ) `rc`
+                ON
+                    `rc`.`CONSTRAINT_SCHEMA` = `kcu`.`CONSTRAINT_SCHEMA`
+                    AND
+                    `rc`.`TABLE_NAME` = `kcu`.`TABLE_NAME`
+                    AND
+                    `rc`.`CONSTRAINT_NAME` = `kcu`.`CONSTRAINT_NAME`
+            
+[2022-03-16T18:24:04.228Z][QUERY]: SELECT VERSION() AS `version`
+[2022-03-16T18:24:04.234Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'typeorm_metadata'
+[2022-03-16T18:24:04.241Z][QUERY]: CREATE TABLE `routeOrders` (`idrouteOrder` int NOT NULL AUTO_INCREMENT, `startDate` timestamp NULL, `finishDate` timestamp NULL, `state` varchar(45) NOT NULL, `isBill` tinyint NULL, `createdAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), `updatedAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), `routeIdroutes` int NULL, `truckLicense` varchar(255) NULL, UNIQUE INDEX `REL_f176effe3b2aae5a4b3a04ee77` (`routeIdroutes`), UNIQUE INDEX `REL_c3fda306aa7c5cb4e17ba0db9e` (`truckLicense`), PRIMARY KEY (`idrouteOrder`)) ENGINE=InnoDB
+[2022-03-16T18:24:04.261Z][QUERY]: ALTER TABLE `routes` ADD `createdAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6)
+[2022-03-16T18:24:04.318Z][QUERY]: ALTER TABLE `routes` ADD `updatedAt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)
+[2022-03-16T18:24:04.375Z][QUERY]: ALTER TABLE `order` CHANGE `startDate` `startDate` timestamp NOT NULL
+[2022-03-16T18:24:04.383Z][QUERY]: ALTER TABLE `routeOrders` ADD CONSTRAINT `FK_f176effe3b2aae5a4b3a04ee77e` FOREIGN KEY (`routeIdroutes`) REFERENCES `routes`(`idroutes`) ON DELETE NO ACTION ON UPDATE NO ACTION
+[2022-03-16T18:24:04.384Z][QUERY]: ALTER TABLE `routeOrders` ADD CONSTRAINT `FK_c3fda306aa7c5cb4e17ba0db9eb` FOREIGN KEY (`truckLicense`) REFERENCES `trucks`(`license`) ON DELETE NO ACTION ON UPDATE NO ACTION
+[2022-03-16T18:24:04.436Z][QUERY]: COMMIT
+[2022-03-16T18:24:04.548Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User`.`farm` AS `User_farm` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["123456789"]
+[2022-03-16T18:24:04.559Z][QUERY]: SELECT `Role`.`id` AS `Role_id`, `Role`.`role` AS `Role_role` FROM `roles` `Role` WHERE `Role`.`role` = ? -- PARAMETERS: ["ADMIN"]
+[2022-03-16T18:24:04.572Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User`.`farm` AS `User_farm` FROM `users` `User` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
+[2022-03-16T18:24:04.580Z][QUERY]: START TRANSACTION
+[2022-03-16T18:24:04.654Z][QUERY]: UPDATE `users` SET `password` = ?, `updatedAt` = CURRENT_TIMESTAMP WHERE `dni` IN (?) -- PARAMETERS: ["$2b$10$4VjVTMSU0P.tuXyv2gdDk.jaQdUwj1zaQGbTTDGY.5sT8YdMILsai","1"]
+[2022-03-16T18:24:04.659Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`updatedAt` AS `User_updatedAt` FROM `users` `User` WHERE `User`.`dni` = ? -- PARAMETERS: ["1"]
+[2022-03-16T18:24:04.662Z][QUERY]: COMMIT
+[2022-03-16T18:25:38.361Z][QUERY]: START TRANSACTION
+[2022-03-16T18:25:38.366Z][QUERY]: SELECT DATABASE() AS `db_name`
+[2022-03-16T18:25:38.369Z][QUERY]: 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'processes'
+                     UNION 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'roles'
+                     UNION 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'order-statements'
+                     UNION 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'trucks'
+                     UNION 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'type-orders'
+                     UNION 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'order'
+                     UNION 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'users'
+                     UNION 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'farms'
+                     UNION 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'routes'
+                     UNION 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'routeOrders'
+                     UNION 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'capilog_database'
+                          AND `TABLE_NAME` = 'processes_users'
+                    
+[2022-03-16T18:25:38.373Z][QUERY]: 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'processes'
+                 UNION 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'roles'
+                 UNION 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'order-statements'
+                 UNION 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'trucks'
+                 UNION 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'type-orders'
+                 UNION 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'order'
+                 UNION 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'users'
+                 UNION 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'farms'
+                 UNION 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'routes'
+                 UNION 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'routeOrders'
+                 UNION 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'processes_users'
+                
+[2022-03-16T18:25:38.374Z][QUERY]: SELECT * FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'processes'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'roles'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'order-statements'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'trucks'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'type-orders'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'order'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'farms'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'routes'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'routeOrders'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'processes_users'
+            ) `kcu` WHERE `CONSTRAINT_NAME` = 'PRIMARY'
+[2022-03-16T18:25:38.375Z][QUERY]: 
+            SELECT
+                `SCHEMA_NAME`,
+                `DEFAULT_CHARACTER_SET_NAME` as `CHARSET`,
+                `DEFAULT_COLLATION_NAME` AS `COLLATION`
+            FROM `INFORMATION_SCHEMA`.`SCHEMATA`
+            
+[2022-03-16T18:25:38.375Z][QUERY]: 
+            SELECT
+                `s`.*
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'processes'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'roles'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'order-statements'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'trucks'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'type-orders'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'order'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'users'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'farms'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'routes'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'routeOrders'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'processes_users'
+            ) `s`
+            LEFT JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'processes'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'roles'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'order-statements'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'trucks'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'type-orders'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'order'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'users'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'farms'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'routes'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'routeOrders'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'processes_users'
+            ) `rc`
+                ON
+                    `s`.`INDEX_NAME` = `rc`.`CONSTRAINT_NAME`
+                    AND
+                    `s`.`TABLE_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA`
+            WHERE
+                `s`.`INDEX_NAME` != 'PRIMARY'
+                AND
+                `rc`.`CONSTRAINT_NAME` IS NULL
+            
+[2022-03-16T18:25:38.376Z][QUERY]: 
+            SELECT
+                `kcu`.`TABLE_SCHEMA`,
+                `kcu`.`TABLE_NAME`,
+                `kcu`.`CONSTRAINT_NAME`,
+                `kcu`.`COLUMN_NAME`,
+                `kcu`.`REFERENCED_TABLE_SCHEMA`,
+                `kcu`.`REFERENCED_TABLE_NAME`,
+                `kcu`.`REFERENCED_COLUMN_NAME`,
+                `rc`.`DELETE_RULE` `ON_DELETE`,
+                `rc`.`UPDATE_RULE` `ON_UPDATE`
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'processes'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'roles'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'order-statements'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'trucks'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'type-orders'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'order'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'users'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'farms'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'routes'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'routeOrders'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'capilog_database'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'processes_users'
+            ) `kcu`
+            INNER JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'processes'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'roles'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'order-statements'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'trucks'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'type-orders'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'order'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'users'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'farms'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'routes'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'routeOrders'
+             UNION 
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'capilog_database'
+                    AND
+                    `TABLE_NAME` = 'processes_users'
+            ) `rc`
+                ON
+                    `rc`.`CONSTRAINT_SCHEMA` = `kcu`.`CONSTRAINT_SCHEMA`
+                    AND
+                    `rc`.`TABLE_NAME` = `kcu`.`TABLE_NAME`
+                    AND
+                    `rc`.`CONSTRAINT_NAME` = `kcu`.`CONSTRAINT_NAME`
+            
+[2022-03-16T18:25:38.397Z][QUERY]: SELECT VERSION() AS `version`
+[2022-03-16T18:25:38.414Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'capilog_database' AND `TABLE_NAME` = 'typeorm_metadata'
+[2022-03-16T18:25:38.437Z][QUERY]: ALTER TABLE `order` CHANGE `startDate` `startDate` timestamp NOT NULL
+[2022-03-16T18:25:38.447Z][QUERY]: COMMIT
+[2022-03-16T18:25:38.548Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User`.`farm` AS `User_farm` FROM `users` `User` WHERE dni = ? -- PARAMETERS: ["123456789"]
+[2022-03-16T18:25:38.555Z][QUERY]: SELECT `Role`.`id` AS `Role_id`, `Role`.`role` AS `Role_role` FROM `roles` `Role` WHERE `Role`.`role` = ? -- PARAMETERS: ["ADMIN"]
+[2022-03-16T18:25:38.562Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User`.`farm` AS `User_farm` FROM `users` `User` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
+[2022-03-16T18:25:38.567Z][QUERY]: START TRANSACTION
+[2022-03-16T18:25:38.641Z][QUERY]: UPDATE `users` SET `password` = ?, `updatedAt` = CURRENT_TIMESTAMP WHERE `dni` IN (?) -- PARAMETERS: ["$2b$10$8WES2KVAZnWkbI0ZMDqxYOWvgSPgjT9L0poRpjzjTpFag2q2fAVAq","1"]
+[2022-03-16T18:25:38.645Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`updatedAt` AS `User_updatedAt` FROM `users` `User` WHERE `User`.`dni` = ? -- PARAMETERS: ["1"]
+[2022-03-16T18:25:38.650Z][QUERY]: COMMIT
+[2022-03-16T18:25:55.670Z][QUERY]: SELECT `user`.`dni` AS `user_dni`, `user`.`name` AS `user_name`, `user`.`lastname` AS `user_lastname`, `user`.`phone` AS `user_phone`, `user`.`email` AS `user_email`, `user`.`createdAt` AS `user_createdAt`, `user`.`updatedAt` AS `user_updatedAt`, `user`.`role` AS `user_role`, `user`.`farm` AS `user_farm`, `user`.`password` AS `user_password`, `user`.`password` FROM `users` `user` WHERE `user`.`dni` = ? -- PARAMETERS: ["1"]
+[2022-03-16T18:26:02.901Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User`.`farm` AS `User_farm`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role`, `User__farm`.`idFarm` AS `User__farm_idFarm`, `User__farm`.`farm` AS `User__farm_farm`, `User__farm`.`location` AS `User__farm_location`, `User__farm`.`createdAt` AS `User__farm_createdAt`, `User__farm`.`updatedAt` AS `User__farm_updatedAt` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role`  LEFT JOIN `farms` `User__farm` ON `User__farm`.`idFarm`=`User`.`farm` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
+[2022-03-16T18:26:02.911Z][QUERY]: SELECT `RouteOrder`.`idrouteOrder` AS `RouteOrder_idrouteOrder`, `RouteOrder`.`startDate` AS `RouteOrder_startDate`, `RouteOrder`.`finishDate` AS `RouteOrder_finishDate`, `RouteOrder`.`state` AS `RouteOrder_state`, `RouteOrder`.`isBill` AS `RouteOrder_isBill`, `RouteOrder`.`createdAt` AS `RouteOrder_createdAt`, `RouteOrder`.`updatedAt` AS `RouteOrder_updatedAt`, `RouteOrder`.`routeIdroutes` AS `RouteOrder_routeIdroutes`, `RouteOrder`.`truckLicense` AS `RouteOrder_truckLicense` FROM `routeOrders` `RouteOrder` LIMIT 10
+[2022-03-16T18:26:02.916Z][QUERY]: SELECT COUNT(1) AS `cnt` FROM `routeOrders` `RouteOrder`
+[2022-03-16T18:26:39.511Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User`.`farm` AS `User_farm`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role`, `User__farm`.`idFarm` AS `User__farm_idFarm`, `User__farm`.`farm` AS `User__farm_farm`, `User__farm`.`location` AS `User__farm_location`, `User__farm`.`createdAt` AS `User__farm_createdAt`, `User__farm`.`updatedAt` AS `User__farm_updatedAt` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role`  LEFT JOIN `farms` `User__farm` ON `User__farm`.`idFarm`=`User`.`farm` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
+[2022-03-16T18:26:39.521Z][QUERY]: START TRANSACTION
+[2022-03-16T18:26:39.526Z][QUERY]: INSERT INTO `routeOrders`(`idrouteOrder`, `startDate`, `finishDate`, `state`, `isBill`, `createdAt`, `updatedAt`, `routeIdroutes`, `truckLicense`) VALUES (DEFAULT, DEFAULT, DEFAULT, ?, DEFAULT, DEFAULT, DEFAULT, ?, ?) -- PARAMETERS: ["oes","1","123"]
+[2022-03-16T18:26:39.582Z][FAILED QUERY]: INSERT INTO `routeOrders`(`idrouteOrder`, `startDate`, `finishDate`, `state`, `isBill`, `createdAt`, `updatedAt`, `routeIdroutes`, `truckLicense`) VALUES (DEFAULT, DEFAULT, DEFAULT, ?, DEFAULT, DEFAULT, DEFAULT, ?, ?) -- PARAMETERS: ["oes","1","123"]
+[2022-03-16T18:26:39.582Z][QUERY ERROR]: Error: ER_NO_REFERENCED_ROW_2: Cannot add or update a child row: a foreign key constraint fails (`capilog_database`.`routeOrders`, CONSTRAINT `FK_c3fda306aa7c5cb4e17ba0db9eb` FOREIGN KEY (`truckLicense`) REFERENCES `trucks` (`license`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+[2022-03-16T18:26:39.583Z][QUERY]: ROLLBACK
+[2022-03-16T18:28:13.936Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User`.`farm` AS `User_farm`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role`, `User__farm`.`idFarm` AS `User__farm_idFarm`, `User__farm`.`farm` AS `User__farm_farm`, `User__farm`.`location` AS `User__farm_location`, `User__farm`.`createdAt` AS `User__farm_createdAt`, `User__farm`.`updatedAt` AS `User__farm_updatedAt` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role`  LEFT JOIN `farms` `User__farm` ON `User__farm`.`idFarm`=`User`.`farm` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
+[2022-03-16T18:28:19.261Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User`.`farm` AS `User_farm`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role`, `User__farm`.`idFarm` AS `User__farm_idFarm`, `User__farm`.`farm` AS `User__farm_farm`, `User__farm`.`location` AS `User__farm_location`, `User__farm`.`createdAt` AS `User__farm_createdAt`, `User__farm`.`updatedAt` AS `User__farm_updatedAt` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role`  LEFT JOIN `farms` `User__farm` ON `User__farm`.`idFarm`=`User`.`farm` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
+[2022-03-16T18:28:19.266Z][QUERY]: SELECT `Truck`.`license` AS `Truck_license`, `Truck`.`driverName` AS `Truck_driverName`, `Truck`.`dniDriver` AS `Truck_dniDriver`, `Truck`.`createdAt` AS `Truck_createdAt`, `Truck`.`updatedAt` AS `Truck_updatedAt` FROM `trucks` `Truck` WHERE `Truck`.`license` IN (?) -- PARAMETERS: ["AAA123"]
+[2022-03-16T18:28:19.271Z][QUERY]: SELECT `Truck`.`license` AS `Truck_license`, `Truck`.`driverName` AS `Truck_driverName`, `Truck`.`dniDriver` AS `Truck_dniDriver`, `Truck`.`createdAt` AS `Truck_createdAt`, `Truck`.`updatedAt` AS `Truck_updatedAt` FROM `trucks` `Truck` WHERE `Truck`.`license` IN (?) -- PARAMETERS: ["AAA123"]
+[2022-03-16T18:28:19.273Z][QUERY]: START TRANSACTION
+[2022-03-16T18:28:19.275Z][QUERY]: INSERT INTO `trucks`(`license`, `driverName`, `dniDriver`, `createdAt`, `updatedAt`) VALUES (?, ?, ?, DEFAULT, DEFAULT) -- PARAMETERS: ["AAA123","elsanti","111"]
+[2022-03-16T18:28:19.279Z][QUERY]: SELECT `Truck`.`license` AS `Truck_license`, `Truck`.`createdAt` AS `Truck_createdAt`, `Truck`.`updatedAt` AS `Truck_updatedAt` FROM `trucks` `Truck` WHERE `Truck`.`license` = ? -- PARAMETERS: ["AAA123"]
+[2022-03-16T18:28:19.282Z][QUERY]: COMMIT
+[2022-03-16T18:28:25.463Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User`.`farm` AS `User_farm`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role`, `User__farm`.`idFarm` AS `User__farm_idFarm`, `User__farm`.`farm` AS `User__farm_farm`, `User__farm`.`location` AS `User__farm_location`, `User__farm`.`createdAt` AS `User__farm_createdAt`, `User__farm`.`updatedAt` AS `User__farm_updatedAt` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role`  LEFT JOIN `farms` `User__farm` ON `User__farm`.`idFarm`=`User`.`farm` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
+[2022-03-16T18:28:25.469Z][QUERY]: START TRANSACTION
+[2022-03-16T18:28:25.472Z][QUERY]: INSERT INTO `routeOrders`(`idrouteOrder`, `startDate`, `finishDate`, `state`, `isBill`, `createdAt`, `updatedAt`, `routeIdroutes`, `truckLicense`) VALUES (DEFAULT, DEFAULT, DEFAULT, ?, DEFAULT, DEFAULT, DEFAULT, ?, ?) -- PARAMETERS: ["oes","1","aaa123"]
+[2022-03-16T18:28:25.476Z][QUERY]: SELECT `RouteOrder`.`idrouteOrder` AS `RouteOrder_idrouteOrder`, `RouteOrder`.`createdAt` AS `RouteOrder_createdAt`, `RouteOrder`.`updatedAt` AS `RouteOrder_updatedAt` FROM `routeOrders` `RouteOrder` WHERE `RouteOrder`.`idrouteOrder` = ? -- PARAMETERS: [2]
+[2022-03-16T18:28:25.479Z][QUERY]: COMMIT
+[2022-03-16T18:29:57.713Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User`.`farm` AS `User_farm`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role`, `User__farm`.`idFarm` AS `User__farm_idFarm`, `User__farm`.`farm` AS `User__farm_farm`, `User__farm`.`location` AS `User__farm_location`, `User__farm`.`createdAt` AS `User__farm_createdAt`, `User__farm`.`updatedAt` AS `User__farm_updatedAt` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role`  LEFT JOIN `farms` `User__farm` ON `User__farm`.`idFarm`=`User`.`farm` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
+[2022-03-16T18:29:57.719Z][QUERY]: START TRANSACTION
+[2022-03-16T18:29:57.721Z][QUERY]: INSERT INTO `routeOrders`(`idrouteOrder`, `startDate`, `finishDate`, `state`, `isBill`, `createdAt`, `updatedAt`, `routeIdroutes`, `truckLicense`) VALUES (DEFAULT, ?, ?, ?, ?, DEFAULT, DEFAULT, ?, ?) -- PARAMETERS: ["2022-03-16T23:28:25.475Z","2022-03-16T23:58:25.475Z","oesjaja",true,"1","aaa123"]
+[2022-03-16T18:29:57.725Z][FAILED QUERY]: INSERT INTO `routeOrders`(`idrouteOrder`, `startDate`, `finishDate`, `state`, `isBill`, `createdAt`, `updatedAt`, `routeIdroutes`, `truckLicense`) VALUES (DEFAULT, ?, ?, ?, ?, DEFAULT, DEFAULT, ?, ?) -- PARAMETERS: ["2022-03-16T23:28:25.475Z","2022-03-16T23:58:25.475Z","oesjaja",true,"1","aaa123"]
+[2022-03-16T18:29:57.725Z][QUERY ERROR]: Error: ER_DUP_ENTRY: Duplicate entry '1' for key 'REL_f176effe3b2aae5a4b3a04ee77'
+[2022-03-16T18:29:57.726Z][QUERY]: ROLLBACK
+[2022-03-16T18:30:16.239Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User`.`farm` AS `User_farm`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role`, `User__farm`.`idFarm` AS `User__farm_idFarm`, `User__farm`.`farm` AS `User__farm_farm`, `User__farm`.`location` AS `User__farm_location`, `User__farm`.`createdAt` AS `User__farm_createdAt`, `User__farm`.`updatedAt` AS `User__farm_updatedAt` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role`  LEFT JOIN `farms` `User__farm` ON `User__farm`.`idFarm`=`User`.`farm` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
+[2022-03-16T18:30:16.247Z][QUERY]: START TRANSACTION
+[2022-03-16T18:30:16.249Z][QUERY]: INSERT INTO `routeOrders`(`idrouteOrder`, `startDate`, `finishDate`, `state`, `isBill`, `createdAt`, `updatedAt`, `routeIdroutes`, `truckLicense`) VALUES (DEFAULT, ?, ?, ?, ?, DEFAULT, DEFAULT, ?, ?) -- PARAMETERS: ["2022-03-16T23:28:25.475Z","2022-03-16T23:58:25.475Z","oesjaja",true,"1123","aaa123"]
+[2022-03-16T18:30:16.253Z][FAILED QUERY]: INSERT INTO `routeOrders`(`idrouteOrder`, `startDate`, `finishDate`, `state`, `isBill`, `createdAt`, `updatedAt`, `routeIdroutes`, `truckLicense`) VALUES (DEFAULT, ?, ?, ?, ?, DEFAULT, DEFAULT, ?, ?) -- PARAMETERS: ["2022-03-16T23:28:25.475Z","2022-03-16T23:58:25.475Z","oesjaja",true,"1123","aaa123"]
+[2022-03-16T18:30:16.253Z][QUERY ERROR]: Error: ER_NO_REFERENCED_ROW_2: Cannot add or update a child row: a foreign key constraint fails (`capilog_database`.`routeOrders`, CONSTRAINT `FK_f176effe3b2aae5a4b3a04ee77e` FOREIGN KEY (`routeIdroutes`) REFERENCES `routes` (`idroutes`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+[2022-03-16T18:30:16.254Z][QUERY]: ROLLBACK
+[2022-03-16T18:32:22.216Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User`.`farm` AS `User_farm`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role`, `User__farm`.`idFarm` AS `User__farm_idFarm`, `User__farm`.`farm` AS `User__farm_farm`, `User__farm`.`location` AS `User__farm_location`, `User__farm`.`createdAt` AS `User__farm_createdAt`, `User__farm`.`updatedAt` AS `User__farm_updatedAt` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role`  LEFT JOIN `farms` `User__farm` ON `User__farm`.`idFarm`=`User`.`farm` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
+[2022-03-16T18:32:22.222Z][QUERY]: START TRANSACTION
+[2022-03-16T18:32:22.224Z][QUERY]: INSERT INTO `routeOrders`(`idrouteOrder`, `startDate`, `finishDate`, `state`, `isBill`, `createdAt`, `updatedAt`, `routeIdroutes`, `truckLicense`) VALUES (DEFAULT, ?, ?, ?, ?, DEFAULT, DEFAULT, ?, ?) -- PARAMETERS: ["2022-03-16T23:28:25.475Z","2022-03-16T23:58:25.475Z","oesjaja",true,"1","aaa123"]
+[2022-03-16T18:32:22.227Z][QUERY]: SELECT `RouteOrder`.`idrouteOrder` AS `RouteOrder_idrouteOrder`, `RouteOrder`.`createdAt` AS `RouteOrder_createdAt`, `RouteOrder`.`updatedAt` AS `RouteOrder_updatedAt` FROM `routeOrders` `RouteOrder` WHERE `RouteOrder`.`idrouteOrder` = ? -- PARAMETERS: [1]
+[2022-03-16T18:32:22.230Z][QUERY]: COMMIT
+[2022-03-16T18:33:48.899Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User`.`farm` AS `User_farm`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role`, `User__farm`.`idFarm` AS `User__farm_idFarm`, `User__farm`.`farm` AS `User__farm_farm`, `User__farm`.`location` AS `User__farm_location`, `User__farm`.`createdAt` AS `User__farm_createdAt`, `User__farm`.`updatedAt` AS `User__farm_updatedAt` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role`  LEFT JOIN `farms` `User__farm` ON `User__farm`.`idFarm`=`User`.`farm` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
+[2022-03-16T18:33:48.908Z][QUERY]: SELECT `RouteOrder`.`idrouteOrder` AS `RouteOrder_idrouteOrder`, `RouteOrder`.`startDate` AS `RouteOrder_startDate`, `RouteOrder`.`finishDate` AS `RouteOrder_finishDate`, `RouteOrder`.`state` AS `RouteOrder_state`, `RouteOrder`.`isBill` AS `RouteOrder_isBill`, `RouteOrder`.`createdAt` AS `RouteOrder_createdAt`, `RouteOrder`.`updatedAt` AS `RouteOrder_updatedAt`, `RouteOrder`.`routeIdroutes` AS `RouteOrder_routeIdroutes`, `RouteOrder`.`truckLicense` AS `RouteOrder_truckLicense` FROM `routeOrders` `RouteOrder` WHERE `RouteOrder`.`idrouteOrder` IN (?) -- PARAMETERS: [1]
+[2022-03-16T18:33:48.910Z][QUERY]: SELECT `RouteOrder`.`idrouteOrder` AS `RouteOrder_idrouteOrder`, `RouteOrder`.`startDate` AS `RouteOrder_startDate`, `RouteOrder`.`finishDate` AS `RouteOrder_finishDate`, `RouteOrder`.`state` AS `RouteOrder_state`, `RouteOrder`.`isBill` AS `RouteOrder_isBill`, `RouteOrder`.`createdAt` AS `RouteOrder_createdAt`, `RouteOrder`.`updatedAt` AS `RouteOrder_updatedAt`, `RouteOrder`.`routeIdroutes` AS `RouteOrder_routeIdroutes`, `RouteOrder`.`truckLicense` AS `RouteOrder_truckLicense` FROM `routeOrders` `RouteOrder` WHERE `RouteOrder`.`idrouteOrder` IN (?) -- PARAMETERS: [1]
+[2022-03-16T18:33:48.915Z][QUERY]: SELECT `RouteOrder`.`idrouteOrder` AS `RouteOrder_idrouteOrder`, `RouteOrder`.`startDate` AS `RouteOrder_startDate`, `RouteOrder`.`finishDate` AS `RouteOrder_finishDate`, `RouteOrder`.`state` AS `RouteOrder_state`, `RouteOrder`.`isBill` AS `RouteOrder_isBill`, `RouteOrder`.`createdAt` AS `RouteOrder_createdAt`, `RouteOrder`.`updatedAt` AS `RouteOrder_updatedAt`, `RouteOrder`.`routeIdroutes` AS `RouteOrder_routeIdroutes`, `RouteOrder`.`truckLicense` AS `RouteOrder_truckLicense` FROM `routeOrders` `RouteOrder` WHERE `RouteOrder`.`idrouteOrder` IN (?) -- PARAMETERS: [1]
+[2022-03-16T18:33:48.918Z][QUERY]: START TRANSACTION
+[2022-03-16T18:33:48.921Z][QUERY]: UPDATE `routeOrders` SET `startDate` = ?, `finishDate` = ?, `state` = ?, `routeIdroutes` = ?, `truckLicense` = ?, `updatedAt` = CURRENT_TIMESTAMP WHERE `idrouteOrder` IN (?) -- PARAMETERS: ["2022-03-16T23:28:25.475Z","2022-03-16T23:58:25.475Z","oes","1","aaa123",1]
+[2022-03-16T18:33:48.924Z][QUERY]: SELECT `RouteOrder`.`idrouteOrder` AS `RouteOrder_idrouteOrder`, `RouteOrder`.`updatedAt` AS `RouteOrder_updatedAt` FROM `routeOrders` `RouteOrder` WHERE `RouteOrder`.`idrouteOrder` = ? -- PARAMETERS: [1]
+[2022-03-16T18:33:48.926Z][QUERY]: COMMIT
+[2022-03-16T18:33:54.310Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User`.`farm` AS `User_farm`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role`, `User__farm`.`idFarm` AS `User__farm_idFarm`, `User__farm`.`farm` AS `User__farm_farm`, `User__farm`.`location` AS `User__farm_location`, `User__farm`.`createdAt` AS `User__farm_createdAt`, `User__farm`.`updatedAt` AS `User__farm_updatedAt` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role`  LEFT JOIN `farms` `User__farm` ON `User__farm`.`idFarm`=`User`.`farm` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
+[2022-03-16T18:33:54.316Z][QUERY]: SELECT `RouteOrder`.`idrouteOrder` AS `RouteOrder_idrouteOrder`, `RouteOrder`.`startDate` AS `RouteOrder_startDate`, `RouteOrder`.`finishDate` AS `RouteOrder_finishDate`, `RouteOrder`.`state` AS `RouteOrder_state`, `RouteOrder`.`isBill` AS `RouteOrder_isBill`, `RouteOrder`.`createdAt` AS `RouteOrder_createdAt`, `RouteOrder`.`updatedAt` AS `RouteOrder_updatedAt`, `RouteOrder`.`routeIdroutes` AS `RouteOrder_routeIdroutes`, `RouteOrder`.`truckLicense` AS `RouteOrder_truckLicense` FROM `routeOrders` `RouteOrder` WHERE `RouteOrder`.`idrouteOrder` IN (?) -- PARAMETERS: [1]
+[2022-03-16T18:33:57.706Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User`.`farm` AS `User_farm`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role`, `User__farm`.`idFarm` AS `User__farm_idFarm`, `User__farm`.`farm` AS `User__farm_farm`, `User__farm`.`location` AS `User__farm_location`, `User__farm`.`createdAt` AS `User__farm_createdAt`, `User__farm`.`updatedAt` AS `User__farm_updatedAt` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role`  LEFT JOIN `farms` `User__farm` ON `User__farm`.`idFarm`=`User`.`farm` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
+[2022-03-16T18:33:57.712Z][QUERY]: SELECT `RouteOrder`.`idrouteOrder` AS `RouteOrder_idrouteOrder`, `RouteOrder`.`startDate` AS `RouteOrder_startDate`, `RouteOrder`.`finishDate` AS `RouteOrder_finishDate`, `RouteOrder`.`state` AS `RouteOrder_state`, `RouteOrder`.`isBill` AS `RouteOrder_isBill`, `RouteOrder`.`createdAt` AS `RouteOrder_createdAt`, `RouteOrder`.`updatedAt` AS `RouteOrder_updatedAt`, `RouteOrder`.`routeIdroutes` AS `RouteOrder_routeIdroutes`, `RouteOrder`.`truckLicense` AS `RouteOrder_truckLicense` FROM `routeOrders` `RouteOrder` WHERE `RouteOrder`.`idrouteOrder` IN (?) -- PARAMETERS: [1]
+[2022-03-16T18:33:57.714Z][QUERY]: SELECT `RouteOrder`.`idrouteOrder` AS `RouteOrder_idrouteOrder`, `RouteOrder`.`startDate` AS `RouteOrder_startDate`, `RouteOrder`.`finishDate` AS `RouteOrder_finishDate`, `RouteOrder`.`state` AS `RouteOrder_state`, `RouteOrder`.`isBill` AS `RouteOrder_isBill`, `RouteOrder`.`createdAt` AS `RouteOrder_createdAt`, `RouteOrder`.`updatedAt` AS `RouteOrder_updatedAt`, `RouteOrder`.`routeIdroutes` AS `RouteOrder_routeIdroutes`, `RouteOrder`.`truckLicense` AS `RouteOrder_truckLicense` FROM `routeOrders` `RouteOrder` WHERE `RouteOrder`.`idrouteOrder` IN (?) -- PARAMETERS: [1]
+[2022-03-16T18:33:57.720Z][QUERY]: DELETE FROM `routeOrders` WHERE `idrouteOrder` IN (?) -- PARAMETERS: [1]
+[2022-03-16T18:34:01.192Z][QUERY]: SELECT `User`.`dni` AS `User_dni`, `User`.`name` AS `User_name`, `User`.`lastname` AS `User_lastname`, `User`.`phone` AS `User_phone`, `User`.`email` AS `User_email`, `User`.`createdAt` AS `User_createdAt`, `User`.`updatedAt` AS `User_updatedAt`, `User`.`role` AS `User_role`, `User`.`farm` AS `User_farm`, `User__role`.`id` AS `User__role_id`, `User__role`.`role` AS `User__role_role`, `User__farm`.`idFarm` AS `User__farm_idFarm`, `User__farm`.`farm` AS `User__farm_farm`, `User__farm`.`location` AS `User__farm_location`, `User__farm`.`createdAt` AS `User__farm_createdAt`, `User__farm`.`updatedAt` AS `User__farm_updatedAt` FROM `users` `User` LEFT JOIN `roles` `User__role` ON `User__role`.`id`=`User`.`role`  LEFT JOIN `farms` `User__farm` ON `User__farm`.`idFarm`=`User`.`farm` WHERE `User`.`dni` IN (?) -- PARAMETERS: ["1"]
+[2022-03-16T18:34:01.197Z][QUERY]: SELECT `RouteOrder`.`idrouteOrder` AS `RouteOrder_idrouteOrder`, `RouteOrder`.`startDate` AS `RouteOrder_startDate`, `RouteOrder`.`finishDate` AS `RouteOrder_finishDate`, `RouteOrder`.`state` AS `RouteOrder_state`, `RouteOrder`.`isBill` AS `RouteOrder_isBill`, `RouteOrder`.`createdAt` AS `RouteOrder_createdAt`, `RouteOrder`.`updatedAt` AS `RouteOrder_updatedAt`, `RouteOrder`.`routeIdroutes` AS `RouteOrder_routeIdroutes`, `RouteOrder`.`truckLicense` AS `RouteOrder_truckLicense` FROM `routeOrders` `RouteOrder` LIMIT 10
+[2022-03-16T18:34:01.198Z][QUERY]: SELECT COUNT(1) AS `cnt` FROM `routeOrders` `RouteOrder`
