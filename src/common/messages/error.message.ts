@@ -9,5 +9,7 @@ export const TYPE_ORDER_NOT_EXISTS=`type order doesn't exists`;
 export const ORDER_STATEMENT_NOT_EXISTS=`order statement doesn't exists`;
 export const ORDER_STATEMENT_ALREADY_EXISTS=`Already exists one order statement with that description`;
 export const PROCESS_NOT_EXISTS=`process doesn't exists`;
-export const ROUTE_NOT_EXISTS=`route doesn't exists`
+export const ROUTE_NOT_EXISTS=`route doesn't exists`;
+export const ROUTE_ORDER_NOT_EXISTS=`route order doesn't exists`
+
 

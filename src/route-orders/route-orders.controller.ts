@@ -11,6 +11,7 @@ import { Action } from 'src/ability/enums/actions.enums';
 import { User as UserEntity } from '../users/entities';
 import { Pagination } from 'nestjs-typeorm-paginate';
 import { RouteOrder as RouteOrderEntity } from './entities';
+import { ONE_ROUTE_ORDER, ROUTE_ORDER_CREATED, ROUTE_ORDER_DELETED, ROUTE_ORDER_UPDATED } from 'src/common/messages';
 @Controller('route-orders')
 export class RouteOrdersController {
   constructor(private readonly routeOrderService: RouteOrdersService, private abilityFactory: AbilityFactory) { }
@@ -20,7 +21,7 @@ export class RouteOrdersController {
   @CheckAbilities({ action: Action.Create, subject: UserEntity })
   async create(@Body() createRouteOrderDto: CreateRouteOrderDto) {
     const routeOrderCreated = await this.routeOrderService.create(createRouteOrderDto);
-    return { data: { ...routeOrderCreated }, meta: { message: 'Route Order created' } };
+    return { data: { ...routeOrderCreated }, meta: { message: ROUTE_ORDER_CREATED } };
   }
 
   @Get()
@@ -43,7 +44,7 @@ export class RouteOrdersController {
   @CheckAbilities({ action: Action.Read, subject: UserEntity })
   async getOne(@Param('id') id: number) {
     const routeOrder = await this.routeOrderService.getOne(id);
-    return { data: { ...routeOrder }, meta: { message: 'One route order' } };
+    return { data: { ...routeOrder }, meta: { message: ONE_ROUTE_ORDER} };
   }
 
   @Patch(':id')
@@ -53,7 +54,7 @@ export class RouteOrdersController {
     const data = this.routeOrderService.getOne(id);
     if (!data) throw new BadRequestException(`Route Order with ${id} doesn't exists`);
     const routeOrderUpdate = await this.routeOrderService.update(id, editRouteOrderDto);
-    return { data: { ...routeOrderUpdate }, meta: { message: 'Route Order updated' } };
+    return { data: { ...routeOrderUpdate }, meta: { message: ROUTE_ORDER_UPDATED } };
   }
 
   @Delete(':id')
@@ -63,6 +64,6 @@ export class RouteOrdersController {
     const data = this.routeOrderService.getOne(id);
     if (!data) throw new BadRequestException(`Route Order with ${id} doesn't exists`);
     await this.routeOrderService.remove(id);
-    return { meta: { message: 'Route Order deleted' } };
+    return { meta: { message: ROUTE_ORDER_DELETED } };
   }
 }

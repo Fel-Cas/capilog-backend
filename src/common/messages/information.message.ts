@@ -43,3 +43,8 @@ export const ROUTE_CREATED='route created';
 export const ONE_ROUTE='one route';
 export const ROUTE_UPDATED='route updated';
 export const ROUTE_DELETED='route deleted';
+
+export const ROUTE_ORDER_CREATED='route order created';
+export const ONE_ROUTE_ORDER='one route order';
+export const ROUTE_ORDER_UPDATED='route order updated';
+export const ROUTE_ORDER_DELETED='route order deleted';
