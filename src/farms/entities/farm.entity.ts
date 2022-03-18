@@ -5,7 +5,7 @@ import { Order } from '../../orders/entities';
 
 @Entity('farms')
 export class Farm {
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn('increment')
     idFarm: number;
 
     @Column({ type: 'varchar' })
@@ -17,10 +17,10 @@ export class Farm {
     @OneToMany(() => User, (user) => user.farm)
     user: User;
 
-    @OneToMany(()=> Order, order => order.firstFarm)
+    @OneToMany(()=> Order, (order) => order.firstFarm)
     firstFarmOrder: Order;
 
-    @OneToMany(()=> Order, order => order.lastFarm)
+    @OneToMany(()=> Order, (order) => order.lastFarm)
     lastFarmOrder: Order;
 
     @CreateDateColumn()
