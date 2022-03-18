@@ -1,13 +1,18 @@
 /* eslint-disable prettier/prettier */
 import { Ability, AbilityBuilder, AbilityClass, ExtractSubjectType, InferSubjects } from '@casl/ability';
 import { Injectable } from '@nestjs/common';
+import { FARM_PERMISSONS, USER_PERMISSONS } from 'src/common/messages';
 import { Farm } from 'src/farms/entities';
+import { OrderStatement } from 'src/order-statements/entities';
+import { Order } from 'src/orders/entities';
 import { Process } from 'src/processes/entities';
 import { Role } from 'src/roles/entities';
+import { Truck } from 'src/trucks/entities';
+import { TypeOrder } from 'src/type-orders/entities';
 import { User } from 'src/users/entities';
 import { Action } from './enums/actions.enums';
 
-export type Subjects = InferSubjects<typeof User | typeof Role | typeof Farm | typeof Process> | 'all';
+export type Subjects = InferSubjects<typeof User | typeof Role | typeof Farm | typeof Process | typeof Truck | typeof TypeOrder | typeof OrderStatement | typeof Order> | 'all';
 export type AppAbility = Ability<[Action, Subjects]>;
 @Injectable()
 export class AbilityFactory {
@@ -21,15 +26,15 @@ export class AbilityFactory {
             can(Action.ReadOne, User, { dni: { $eq: user.dni } });
             can(Action.Update, User, { dni: { $eq: user.dni } });
 
-            cannot(Action.Read, User).because('Only admins can read all users');
-            cannot(Action.Create, User).because('Only admins can create  users');
-            cannot(Action.Delete, User).because('Only admins can delete  users');
-            cannot(Action.UpdateRole, User).because('Only admins can update role of users');
-            cannot(Action.UpdateFarm, User).because('Only admins can update farm of users');
-            cannot(Action.Read, Farm).because('Only admins can read farms');
-            cannot(Action.Create, Farm).because('Only admins can create farms');
-            cannot(Action.Update, Farm).because('Only admins can update farms');
-            cannot(Action.Delete, Farm).because('Only admins can delete farms');
+            cannot(Action.Read, User).because(USER_PERMISSONS);
+            cannot(Action.Create, User).because(USER_PERMISSONS);
+            cannot(Action.Delete, User).because(USER_PERMISSONS);
+            cannot(Action.UpdateRole, User).because(USER_PERMISSONS);
+            cannot(Action.UpdateFarm, User).because(USER_PERMISSONS);
+            cannot(Action.Read, Farm).because(FARM_PERMISSONS);
+            cannot(Action.Create, Farm).because(FARM_PERMISSONS);
+            cannot(Action.Update, Farm).because(FARM_PERMISSONS);
+            cannot(Action.Delete, Farm).because(FARM_PERMISSONS);
         }
         return build({
             detectSubjectType: (item) => item.constructor as ExtractSubjectType<Subjects>,

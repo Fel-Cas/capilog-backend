@@ -11,5 +11,7 @@ export const ORDER_STATEMENT_ALREADY_EXISTS=`Already exists one order statement 
 export const PROCESS_NOT_EXISTS=`process doesn't exists`;
 export const ROUTE_NOT_EXISTS=`route doesn't exists`;
 export const ROUTE_ORDER_NOT_EXISTS=`route order doesn't exists`
+export const FARM_PERMISSONS='Only admins can manipulate users information';
+export const USER_PERMISSONS='Only admins can manipulate farms information';
 
 
