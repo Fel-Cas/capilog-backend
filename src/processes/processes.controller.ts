@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {
     Controller,
     Get,
@@ -23,6 +24,7 @@ import { Action } from 'src/ability/enums/actions.enums';
 import { User as UserEntity } from '../users/entities';
 import { Pagination } from 'nestjs-typeorm-paginate';
 import { Process as ProcessEntity } from './entities';
+import { ONE_PROCESS, PROCESS_CREATED, PROCESS_DELETED, PROCESS_UPDATED } from 'src/common/messages';
 
 @Controller('processes')
 export class ProcessesController {
@@ -33,7 +35,7 @@ export class ProcessesController {
     @CheckAbilities({ action: Action.Create, subject: UserEntity })
     async create(@Body() createProcessDto: CreateProcessDto) {
         const processCreated = await this.processService.create(createProcessDto);
-        return { data: { ...processCreated }, meta: { message: 'Process created' } };
+        return { data: { ...processCreated }, meta: { message: PROCESS_CREATED } };
     }
 
     @Get()
@@ -56,7 +58,7 @@ export class ProcessesController {
     @CheckAbilities({ action: Action.Read, subject: UserEntity })
     async getOne(@Param('id') id: number) {
         const process = await this.processService.getOne(id);
-        return { data: { ...process }, meta: { message: 'One process' } };
+        return { data: { ...process }, meta: { message: ONE_PROCESS } };
     }
 
     @Patch(':id')
@@ -66,7 +68,7 @@ export class ProcessesController {
         const data = this.processService.getOne(id);
         if (!data) throw new BadRequestException(`Route with ${id} doesn't exists`);
         const processUpdate = await this.processService.update(id, editProcessDto);
-        return { data: { ...processUpdate }, meta: { message: 'Route updated' } };
+        return { data: { ...processUpdate }, meta: { message: PROCESS_UPDATED } };
     }
 
     @Delete(':id')
@@ -76,6 +78,6 @@ export class ProcessesController {
         const data = this.processService.getOne(id);
         if (!data) throw new BadRequestException(`Route with ${id} doesn't exists`);
         await this.processService.remove(id);
-        return { meta: { message: 'Route deleted' } };
+        return { meta: { message: PROCESS_DELETED } };
     }
 }

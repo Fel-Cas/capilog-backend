@@ -33,3 +33,8 @@ export const ORDER_CREATED='order created';
 export const ONE_ORDER='one order';
 export const ORDER_UPDATED='order updated';
 export const ORDER_DELETED='order deleted';
+
+export const PROCESS_CREATED='process created';
+export const ONE_PROCESS='one process';
+export const PROCESS_UPDATED='process updated';
+export const PROCESS_DELETED='process deleted';

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Query, DefaultValuePipe, ParseIntPipe, BadRequestException } from '@nestjs/common';
 import { RouteOrdersService } from './route-orders.service';
 import { CreateRouteOrderDto } from './dto/create-route-order.dto';
