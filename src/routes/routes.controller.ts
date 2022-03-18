@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Query, DefaultValuePipe, ParseIntPipe, BadRequestException } from '@nestjs/common';
 import { RoutesService } from './routes.service';
 import { CreateRouteDto } from './dto/create-route.dto';
@@ -10,6 +11,7 @@ import { Action } from 'src/ability/enums/actions.enums';
 import { User as UserEntity } from '../users/entities';
 import { Pagination } from 'nestjs-typeorm-paginate';
 import { Route as RouteEntity } from './entities';
+import { ONE_ROUTE, ROUTE_CREATED, ROUTE_DELETED, ROUTE_UPDATED } from 'src/common/messages';
 
 @Controller('routes')
 export class RoutesController {
@@ -20,7 +22,7 @@ export class RoutesController {
     @CheckAbilities({ action: Action.Create, subject: UserEntity })
     async create(@Body() createRouteDto: CreateRouteDto) {
         const routeCreated = await this.routeService.create(createRouteDto);
-        return { data: { ...routeCreated }, meta: { message: 'Route created' } };
+        return { data: { ...routeCreated }, meta: { message: ROUTE_CREATED } };
     }
 
     @Get()
@@ -43,7 +45,7 @@ export class RoutesController {
     @CheckAbilities({ action: Action.Read, subject: UserEntity })
     async getOne(@Param('id') id: number) {
         const route = await this.routeService.getOne(id);
-        return { data: { ...route }, meta: { message: 'One route' } };
+        return { data: { ...route }, meta: { message: ONE_ROUTE} };
     }
 
     @Patch(':id')
@@ -53,7 +55,7 @@ export class RoutesController {
         const data = this.routeService.getOne(id);
         if (!data) throw new BadRequestException(`Route with ${id} doesn't exists`);
         const routeUpdate = await this.routeService.update(id, editRouteDto);
-        return { data: { ...routeUpdate }, meta: { message: 'Route updated' } };
+        return { data: { ...routeUpdate }, meta: { message: ROUTE_UPDATED } };
     }
 
     @Delete(':id')
@@ -63,6 +65,6 @@ export class RoutesController {
         const data = this.routeService.getOne(id);
         if (!data) throw new BadRequestException(`Route with ${id} doesn't exists`);
         await this.routeService.remove(id);
-        return { meta: { message: 'Route deleted' } };
+        return { meta: { message: ROUTE_DELETED } };
     }
 }

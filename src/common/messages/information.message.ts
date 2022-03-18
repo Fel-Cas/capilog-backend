@@ -38,3 +38,8 @@ export const PROCESS_CREATED='process created';
 export const ONE_PROCESS='one process';
 export const PROCESS_UPDATED='process updated';
 export const PROCESS_DELETED='process deleted';
+
+export const ROUTE_CREATED='route created';
+export const ONE_ROUTE='one route';
+export const ROUTE_UPDATED='route updated';
+export const ROUTE_DELETED='route deleted';
