@@ -24,4 +24,7 @@ export const ONE_FARM='one farm';
 export const FARM_UPDATED='Farm updated';
 export const FARM_DELETED='Farm deleted';
 
-
+export const ORDER_STATEMENT_CREATED='order statement created';
+export const ONE_ORDER_STATEMENT='one order statement';
+export const ORDER_STATEMENT_UPDATED='order statement updated';
+export const ORDER_STATEMENT_DELETED='order statement deleted';

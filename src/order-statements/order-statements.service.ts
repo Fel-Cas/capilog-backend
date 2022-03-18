@@ -2,6 +2,7 @@
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { IPaginationOptions, paginate, Pagination } from 'nestjs-typeorm-paginate';
+import { ORDER_STATEMENT_ALREADY_EXISTS, ORDER_STATEMENT_NOT_EXISTS } from 'src/common/messages';
 import { Repository } from 'typeorm';
 import { CreateOrderStatementDto } from './dto/create-order-statement.dto';
 import { UpdateOrderStatementDto } from './dto/update-order-statement.dto';
@@ -15,7 +16,7 @@ export class OrderStatementsService {
     ) {}
     async create(createOrderStatementDto: CreateOrderStatementDto) {
         const orderStatementFound = await this.getByName(createOrderStatementDto.description);
-        if (orderStatementFound) throw new BadRequestException();
+        if (orderStatementFound) throw new BadRequestException(ORDER_STATEMENT_ALREADY_EXISTS);
         const orderStatementCreated = this.orderStatementRepository.create(createOrderStatementDto);
         return await this.orderStatementRepository.save(orderStatementCreated);
     }
@@ -26,7 +27,7 @@ export class OrderStatementsService {
 
     async findOne(id: number) {
         const orderStatementFound= await this.orderStatementRepository.findOne(id);
-        if(!orderStatementFound) throw new NotFoundException();
+        if(!orderStatementFound) throw new NotFoundException(ORDER_STATEMENT_NOT_EXISTS);
         return orderStatementFound;
     }
 
