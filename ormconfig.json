@@ -1,23 +1,23 @@
 {
   "type": "mysql",
   "host": "localhost",
-  "port": 3307,
-  "username": "capilog_user",
-  "password": "capilog_password",
+  "port": 3306,
+  "username": "root",
+  "password": "root",
   "database": "capilog_database",
   "entities": [
-    "C:\\Users\\Santiago\\Documents\\GitHub\\capilog-backend\\dist\\**\\**\\*entity{.ts,.js}"
+    "C:\\Users\\Andres\\Documents\\proyecto_integrador\\capilog-backend\\dist\\**\\**\\*entity{.ts,.js}"
   ],
   "autoLoadEntities": true,
   "migrationsRun": false,
   "migrations": [
-    "C:\\Users\\Santiago\\Documents\\GitHub\\capilog-backend\\dist\\migration\\**\\*{.ts,.js}"
+    "C:\\Users\\Andres\\Documents\\proyecto_integrador\\capilog-backend\\dist\\migration\\**\\*{.ts,.js}"
   ],
   "migrationsTableName": "migrations_typeorm",
   "cli": {
     "migrationsDir": "src/migration"
   },
-  "synchronize": true,
+  "synchronize": false,
   "logging": true,
   "logger": "file"
 }

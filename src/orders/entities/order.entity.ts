@@ -1,9 +1,9 @@
 /* eslint-disable prettier/prettier */
-import { Farm } from "src/farms/entities";
-import { OrderStatement } from "src/order-statements/entities";
-import { Truck } from "src/trucks/entities";
-import { TypeOrder } from "src/type-orders/entities";
-import { User } from "src/users/entities";
+import { Farm } from "../../farms/entities";
+import { OrderStatement } from "../../order-statements/entities";
+import { Truck } from "../../trucks/entities";
+import { TypeOrder } from "../../type-orders/entities";
+import { User } from "../../users/entities";
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
