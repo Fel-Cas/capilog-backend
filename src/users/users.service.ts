@@ -26,9 +26,7 @@ export class UsersService {
     }
 
     async getOne(dni: string): Promise<User> {
-        const user = await this.userRepository.findOne(dni, {
-            relations: ['role', 'farm'],
-        });
+        const user = await this.userRepository.findOne(dni);
         if (!user) throw new NotFoundException(`User doesn't exists`);
         return user;
     }
@@ -94,6 +92,6 @@ export class UsersService {
     }
 
     async findDni(data: UserFindOne) {
-        return await this.userRepository.createQueryBuilder('user').where(data).addSelect('user.password').getOne();
+        return await this.userRepository.createQueryBuilder('User').leftJoinAndSelect("User.role","role").where("User.dni = :dni", data).addSelect('User.password').getOne();
     }
 }

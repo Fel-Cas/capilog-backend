@@ -39,15 +39,15 @@ export class User {
     @Column({ type: 'varchar', length: 250, nullable: false })
     email: string;
 
-    @ManyToOne(() => Role, (role) => role.user)
+    @ManyToOne(() => Role, (role) => role.user, {eager: true})
     @JoinColumn({ name: 'role' })
     role: Role;
 
-    @ManyToOne(() => Farm, (farm) => farm.user)
+    @ManyToOne(() => Farm, (farm) => farm.user, {eager: true})
     @JoinColumn({ name: 'farm' })
     farm: Farm;
 
-    @ManyToMany(() => Process, (process) => process.users)
+    @ManyToMany(() => Process, (process) => process.users, {eager: true})
     @JoinTable({ name: 'processes_users' })
     processes: Process[];
 
