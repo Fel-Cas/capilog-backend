@@ -16,6 +16,7 @@ import { TypeOrdersService } from './type-orders.service';
 import { CreateTypeOrderDto } from './dto/create-type-order.dto';
 import { UpdateTypeOrderDto } from './dto/update-type-order.dto';
 import { JwtAuthGuard } from 'src/auth/guards';
+import { TYPE_ORDER, TYPE_ORDER_CREATED, TYPE_ORDER_DELETED, TYPE_ORDER_UPDATED } from 'src/common/messages';
 
 @Controller('type-orders')
 export class TypeOrdersController {
@@ -25,7 +26,7 @@ export class TypeOrdersController {
     @UseGuards(JwtAuthGuard)
     async create(@Body() createTypeOrderDto: CreateTypeOrderDto) {
         const data = await this.typeOrdersService.create(createTypeOrderDto);
-        return {meta:{message:'type order created'}, data:{...data}};
+        return {meta:{message:TYPE_ORDER_CREATED}, data:{...data}};
     }
 
     @Get()
@@ -45,20 +46,20 @@ export class TypeOrdersController {
     @UseGuards(JwtAuthGuard)
     async findOne(@Param('id', ParseIntPipe) id: number) {
         const data = await this.typeOrdersService.findOne(id);
-        return {meta:{message:'one type order'}, data:{...data}};
+        return {meta:{message: TYPE_ORDER}, data:{...data}};
     }
 
     @Put(':id')
     @UseGuards(JwtAuthGuard)
     async update(@Param('id', ParseIntPipe) id: number, @Body() updateTypeOrderDto: UpdateTypeOrderDto) {
         const data = await this.typeOrdersService.update(id, updateTypeOrderDto);
-        return {meta:{message:'type order updated'}, data:{...data}};
+        return {meta:{message:TYPE_ORDER_UPDATED}, data:{...data}};
     }
 
     @Delete(':id')
     @UseGuards(JwtAuthGuard)
     async remove(@Param('id', ParseIntPipe) id: number) {
       await  this.typeOrdersService.remove(id);
-      return {meta:{message:'type order deleted'}}
+      return {meta:{message: TYPE_ORDER_DELETED}}
     }
 }
