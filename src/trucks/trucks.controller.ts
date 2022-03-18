@@ -4,6 +4,7 @@ import { TrucksService } from './trucks.service';
 import { CreateTruckDto } from './dto/create-truck.dto';
 import { UpdateTruckDto } from './dto/update-truck.dto';
 import { JwtAuthGuard } from 'src/auth/guards';
+import { ONE_TRUCK, TRUCK_CREATED, TRUCK_DELETED, TRUCK_UPDATED } from 'src/common/messages';
 
 @Controller('trucks')
 export class TrucksController {
@@ -14,7 +15,7 @@ export class TrucksController {
     async create(@Body() createTruckDto: CreateTruckDto) {
       createTruckDto.license=createTruckDto.license.toLocaleUpperCase();
       const data= await this.trucksService.create(createTruckDto);
-      return{meta:{message:'Truck created'}, data:{...data}};
+      return{meta:{message: TRUCK_CREATED}, data:{...data}};
     }
 
     @Get()
@@ -34,20 +35,20 @@ export class TrucksController {
     @UseGuards(JwtAuthGuard)
     async findOne(@Param('id') id:string) {
       const data= await this.trucksService.findOne(id);
-      return{meta:{message:'one truck'}, data:{...data}};
+      return{meta:{message:ONE_TRUCK}, data:{...data}};
     }
 
     @Put(':id')
     @UseGuards(JwtAuthGuard)
     async update(@Param('id') id: string, @Body() updateTruckDto: UpdateTruckDto) {
         const data = await this.trucksService.update(id, updateTruckDto);
-        return {meta:{message:'truck updated'}, data:{...data}};
+        return {meta:{message:TRUCK_UPDATED}, data:{...data}};
     }
 
     @Delete(':id')
     @UseGuards(JwtAuthGuard)
     async remove(@Param('id') id: string) {
       await this.trucksService.remove(id);
-      return {meta:{message:'truck deleted'}};
+      return {meta:{message: TRUCK_DELETED}};
     }
 }

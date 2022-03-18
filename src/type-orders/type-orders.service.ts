@@ -2,6 +2,7 @@
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { IPaginationOptions, paginate, Pagination } from 'nestjs-typeorm-paginate';
+import { TYPE_ORDER_NOT_EXISTS } from 'src/common/messages';
 import { Repository } from 'typeorm';
 import { CreateTypeOrderDto } from './dto/create-type-order.dto';
 import { UpdateTypeOrderDto } from './dto/update-type-order.dto';
@@ -26,7 +27,7 @@ export class TypeOrdersService {
 
   async findOne(id: number) {
    const typeOrderFound = await this.typeOrderRepository.findOne(id);
-   if(!typeOrderFound) throw new NotFoundException();
+   if(!typeOrderFound) throw new NotFoundException(TYPE_ORDER_NOT_EXISTS);
    return typeOrderFound;
   }
 

@@ -2,6 +2,7 @@
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { IPaginationOptions, paginate, Pagination } from 'nestjs-typeorm-paginate';
+import { TRUCK_NOT_EXISTS } from 'src/common/messages';
 import { Repository } from 'typeorm';
 import { CreateTruckDto } from './dto/create-truck.dto';
 import { UpdateTruckDto } from './dto/update-truck.dto';
@@ -26,7 +27,7 @@ export class TrucksService {
 
     async findOne(license: string) {
       const truckFound= await this.truckRepository.findOne(license);
-      if(!truckFound) throw new NotFoundException();
+      if(!truckFound) throw new NotFoundException(TRUCK_NOT_EXISTS);
       return truckFound;
     }
 
