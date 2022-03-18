@@ -7,6 +7,7 @@ import { IPaginationOptions, paginate, Pagination } from 'nestjs-typeorm-paginat
 import { CreateUserDto, EditUserDto } from './dto';
 import { User } from './entities';
 import { FarmsService } from '../farms/farms.service';
+import { FARM_NOT_EXISTS, ROLE_NOT_EXISTS, USER_ALREADY_EXISTS, USER_NOT_EXISTS } from 'src/common/messages';
 
 export interface UserFindOne {
     dni?: string;
@@ -27,23 +28,23 @@ export class UsersService {
 
     async getOne(dni: string): Promise<User> {
         const user = await this.userRepository.findOne(dni);
-        if (!user) throw new NotFoundException(`User doesn't exists`);
+        if (!user) throw new NotFoundException(USER_NOT_EXISTS);
         return user;
     }
 
     async create(content: CreateUserDto) {
         const { role, farm, ...rest } = content;
         const userFound = await this.userRepository.findOne(content.dni);
-        if (userFound) throw new BadRequestException('Already exists one user with that dni');
+        if (userFound) throw new BadRequestException(USER_ALREADY_EXISTS);
 
         const roleFound = await this.roleService.findByName(role);
         if (!roleFound) {
-            throw new NotFoundException(`Role doesn't exists`);
+            throw new NotFoundException(ROLE_NOT_EXISTS);
         }
 
         const farmFound = await this.farmService.findByName(farm);
         if (!farmFound) {
-            throw new NotFoundException(`farm doesn't exists`);
+            throw new NotFoundException(FARM_NOT_EXISTS);
         }
         let user = new User();
         user = Object.assign(user, rest);
@@ -55,7 +56,7 @@ export class UsersService {
     }
     async update(dni: string, content: EditUserDto) {
         const user = await this.userRepository.findOne(dni);
-        if (!user) throw new NotFoundException(`User doesn't exists`);
+        if (!user) throw new NotFoundException(USER_NOT_EXISTS);
         const editedUser = Object.assign(user, content);
         const data = await this.userRepository.save(editedUser);
         delete data.password;
@@ -64,16 +65,16 @@ export class UsersService {
 
     async delete(dni: string) {
         const user = await this.userRepository.findOne(dni);
-        if (!user) throw new NotFoundException(`User doesn't exists`);
+        if (!user) throw new NotFoundException(USER_NOT_EXISTS);
         const data = await this.userRepository.remove(user);
         return data;
     }
 
     async updateRole(id: string, content: EditUserDto) {
         const user = await this.userRepository.findOne(id, { relations: ['role'] });
-        if (!user) throw new NotFoundException(`User doesn't exists`);
+        if (!user) throw new NotFoundException(FARM_NOT_EXISTS);
         const roleFound = await this.roleService.findByName(content.role);
-        if (!roleFound) throw new NotFoundException(`Role doesn't exists`);
+        if (!roleFound) throw new NotFoundException(ROLE_NOT_EXISTS);
         user.role = roleFound;
 
         const data = await this.userRepository.save(user);
@@ -82,9 +83,9 @@ export class UsersService {
 
     async updateFarm(id: string, content: EditUserDto) {
         const user = await this.userRepository.findOne(id, { relations: ['farm'] });
-        if (!user) throw new NotFoundException(`User doesn't exists`);
+        if (!user) throw new NotFoundException(USER_NOT_EXISTS);
         const farmFound = await this.farmService.findByName(content.farm);
-        if (!farmFound) throw new NotFoundException(`Farm doesn't exists`);
+        if (!farmFound) throw new NotFoundException(FARM_NOT_EXISTS);
         user.farm = farmFound;
 
         const data = await this.userRepository.save(user);
