@@ -1,1 +1,1 @@
-export {TypeOrder} from './type-order.entity' ;
+export { TypeOrder } from './type-order.entity';

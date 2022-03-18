@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { Type } from 'class-transformer';
-import {  IsDate, IsOptional, IsString } from 'class-validator';
+import { IsDate, IsOptional, IsString } from 'class-validator';
 
 export class CreateOrderDto {
     @IsString()
@@ -25,6 +25,4 @@ export class CreateOrderDto {
     @IsOptional()
     @IsString()
     truck: string;
-
-    
 }

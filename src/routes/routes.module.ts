@@ -6,7 +6,7 @@ import { Route } from './entities';
 import { AbilityModule } from 'src/ability/ability.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Route]), AbilityModule],
+    imports: [TypeOrmModule.forFeature([Route]), AbilityModule],
     controllers: [RoutesController],
     providers: [RoutesService],
     exports: [RoutesService],

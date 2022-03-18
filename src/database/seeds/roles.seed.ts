@@ -23,7 +23,6 @@ export default class CreateRoles implements Seeder {
                 { role: 'Asistente T.I'.toUpperCase() },
                 { role: 'Auxiliar'.toUpperCase() },
                 { role: 'Supervisor Consolidados'.toUpperCase() },
-                
             ])
             .execute();
     }

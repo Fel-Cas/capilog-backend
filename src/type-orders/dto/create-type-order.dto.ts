@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { IsString } from "class-validator";
+import { IsString } from 'class-validator';
 
 export class CreateTypeOrderDto {
     @IsString()

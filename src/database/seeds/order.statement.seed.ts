@@ -8,19 +8,18 @@ export default class CreateOrderStatement implements Seeder {
             .insert()
             .into('order-statements')
             .values([
-                { 
+                {
                     description: 'pedida'.toUpperCase(),
                 },
-                { 
+                {
                     description: 'terminada'.toUpperCase(),
                 },
-                { 
+                {
                     description: 'cancelada'.toUpperCase(),
                 },
-                { 
+                {
                     description: 'asignada'.toUpperCase(),
-                }
-                
+                },
             ])
             .execute();
     }

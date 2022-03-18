@@ -1,6 +1,14 @@
-import { Route } from "src/routes/entities";
-import { Truck } from "src/trucks/entities";
-import { Column, CreateDateColumn, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Route } from 'src/routes/entities';
+import { Truck } from 'src/trucks/entities';
+import {
+    Column,
+    CreateDateColumn,
+    Entity,
+    JoinColumn,
+    OneToOne,
+    PrimaryGeneratedColumn,
+    UpdateDateColumn,
+} from 'typeorm';
 
 @Entity('routeOrders')
 export class RouteOrder {
@@ -11,10 +19,10 @@ export class RouteOrder {
     @JoinColumn()
     route: Route;
 
-    @Column({ type: 'timestamp', nullable: true})
+    @Column({ type: 'timestamp', nullable: true })
     startDate: Date;
 
-    @Column({ type: 'timestamp', nullable: true})
+    @Column({ type: 'timestamp', nullable: true })
     finishDate: Date;
 
     @Column({ type: 'varchar', length: 45, nullable: false })
@@ -32,5 +40,4 @@ export class RouteOrder {
 
     @UpdateDateColumn()
     updatedAt: Date;
-    
 }

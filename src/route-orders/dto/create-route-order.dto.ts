@@ -1,7 +1,7 @@
-import { Type } from "class-transformer";
-import { IsBoolean, IsDate, IsOptional, IsString } from "class-validator";
-import { Route } from "src/routes/entities";
-import { Truck } from "src/trucks/entities";
+import { Type } from 'class-transformer';
+import { IsBoolean, IsDate, IsOptional, IsString } from 'class-validator';
+import { Route } from 'src/routes/entities';
+import { Truck } from 'src/trucks/entities';
 
 export class CreateRouteOrderDto {
     @IsString()
@@ -26,7 +26,4 @@ export class CreateRouteOrderDto {
     @IsOptional()
     @IsBoolean()
     isBill: boolean;
-
 }
-
-

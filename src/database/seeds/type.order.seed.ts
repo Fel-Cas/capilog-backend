@@ -8,16 +8,15 @@ export default class CreateOrderStatement implements Seeder {
             .insert()
             .into('type-orders')
             .values([
-                { 
-                    description: 'Finca a Finca'
+                {
+                    description: 'Finca a Finca',
                 },
-                { 
-                    description: 'Finca a Aeropuerto'
+                {
+                    description: 'Finca a Aeropuerto',
                 },
-                { 
-                    description: 'Finca a Puerto'
-                }
-                
+                {
+                    description: 'Finca a Puerto',
+                },
             ])
             .execute();
     }

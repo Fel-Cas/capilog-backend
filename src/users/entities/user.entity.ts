@@ -39,20 +39,20 @@ export class User {
     @Column({ type: 'varchar', length: 250, nullable: false })
     email: string;
 
-    @ManyToOne(() => Role, (role) => role.user, {eager: true})
+    @ManyToOne(() => Role, (role) => role.user, { eager: true })
     @JoinColumn({ name: 'role' })
     role: Role;
 
-    @ManyToOne(() => Farm, (farm) => farm.user, {eager: true})
+    @ManyToOne(() => Farm, (farm) => farm.user, { eager: true })
     @JoinColumn({ name: 'farm' })
     farm: Farm;
 
-    @ManyToMany(() => Process, (process) => process.users, {eager: true})
+    @ManyToMany(() => Process, (process) => process.users, { eager: true })
     @JoinTable({ name: 'processes_users' })
     processes: Process[];
 
-    @OneToMany(()=> Order, order=> order.requestUser)
-    order:Order;
+    @OneToMany(() => Order, (order) => order.requestUser)
+    order: Order;
 
     @CreateDateColumn()
     createdAt: Date;

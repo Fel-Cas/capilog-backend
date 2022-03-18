@@ -93,6 +93,11 @@ export class UsersService {
     }
 
     async findDni(data: UserFindOne) {
-        return await this.userRepository.createQueryBuilder('User').leftJoinAndSelect("User.role","role").where("User.dni = :dni", data).addSelect('User.password').getOne();
+        return await this.userRepository
+            .createQueryBuilder('User')
+            .leftJoinAndSelect('User.role', 'role')
+            .where('User.dni = :dni', data)
+            .addSelect('User.password')
+            .getOne();
     }
 }

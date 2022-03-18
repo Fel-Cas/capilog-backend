@@ -1,17 +1,15 @@
 /* eslint-disable prettier/prettier */
 export const UNAUTHORIZED = 'unauthorized';
-export const USER_NOT_EXISTS=`User doesn't exists`;
-export const FARM_NOT_EXISTS=`Farm doesn't exists`;
-export const ROLE_NOT_EXISTS=`Role doesn't exists`
-export const USER_ALREADY_EXISTS='Already exists one user with that dni';
-export const TRUCK_NOT_EXISTS='Truck doesnt exists';
-export const TYPE_ORDER_NOT_EXISTS=`type order doesn't exists`;
-export const ORDER_STATEMENT_NOT_EXISTS=`order statement doesn't exists`;
-export const ORDER_STATEMENT_ALREADY_EXISTS=`Already exists one order statement with that description`;
-export const PROCESS_NOT_EXISTS=`process doesn't exists`;
-export const ROUTE_NOT_EXISTS=`route doesn't exists`;
-export const ROUTE_ORDER_NOT_EXISTS=`route order doesn't exists`
-export const FARM_PERMISSONS='Only admins can manipulate users information';
-export const USER_PERMISSONS='Only admins can manipulate farms information';
-
-
+export const USER_NOT_EXISTS = `User doesn't exists`;
+export const FARM_NOT_EXISTS = `Farm doesn't exists`;
+export const ROLE_NOT_EXISTS = `Role doesn't exists`;
+export const USER_ALREADY_EXISTS = 'Already exists one user with that dni';
+export const TRUCK_NOT_EXISTS = 'Truck doesnt exists';
+export const TYPE_ORDER_NOT_EXISTS = `type order doesn't exists`;
+export const ORDER_STATEMENT_NOT_EXISTS = `order statement doesn't exists`;
+export const ORDER_STATEMENT_ALREADY_EXISTS = `Already exists one order statement with that description`;
+export const PROCESS_NOT_EXISTS = `process doesn't exists`;
+export const ROUTE_NOT_EXISTS = `route doesn't exists`;
+export const ROUTE_ORDER_NOT_EXISTS = `route order doesn't exists`;
+export const FARM_PERMISSONS = 'Only admins can manipulate users information';
+export const USER_PERMISSONS = 'Only admins can manipulate farms information';

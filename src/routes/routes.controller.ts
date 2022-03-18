@@ -1,5 +1,18 @@
 /* eslint-disable prettier/prettier */
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Query, DefaultValuePipe, ParseIntPipe, BadRequestException } from '@nestjs/common';
+import {
+    Controller,
+    Get,
+    Post,
+    Body,
+    Patch,
+    Param,
+    Delete,
+    UseGuards,
+    Query,
+    DefaultValuePipe,
+    ParseIntPipe,
+    BadRequestException,
+} from '@nestjs/common';
 import { RoutesService } from './routes.service';
 import { CreateRouteDto } from './dto/create-route.dto';
 import { UpdateRouteDto } from './dto/update-route.dto';
@@ -45,7 +58,7 @@ export class RoutesController {
     @CheckAbilities({ action: Action.Read, subject: UserEntity })
     async getOne(@Param('id') id: number) {
         const route = await this.routeService.getOne(id);
-        return { data: { ...route }, meta: { message: ONE_ROUTE} };
+        return { data: { ...route }, meta: { message: ONE_ROUTE } };
     }
 
     @Patch(':id')

@@ -31,7 +31,7 @@ export class TypeOrdersController {
     @CheckAbilities({ action: Action.Create, subject: TypeOrder })
     async create(@Body() createTypeOrderDto: CreateTypeOrderDto) {
         const data = await this.typeOrdersService.create(createTypeOrderDto);
-        return {meta:{message:TYPE_ORDER_CREATED}, data:{...data}};
+        return { meta: { message: TYPE_ORDER_CREATED }, data: { ...data } };
     }
 
     @Get()
@@ -53,7 +53,7 @@ export class TypeOrdersController {
     @CheckAbilities({ action: Action.ReadOne, subject: TypeOrder })
     async findOne(@Param('id', ParseIntPipe) id: number) {
         const data = await this.typeOrdersService.findOne(id);
-        return {meta:{message: TYPE_ORDER}, data:{...data}};
+        return { meta: { message: TYPE_ORDER }, data: { ...data } };
     }
 
     @Put(':id')
@@ -61,14 +61,14 @@ export class TypeOrdersController {
     @CheckAbilities({ action: Action.Update, subject: TypeOrder })
     async update(@Param('id', ParseIntPipe) id: number, @Body() updateTypeOrderDto: UpdateTypeOrderDto) {
         const data = await this.typeOrdersService.update(id, updateTypeOrderDto);
-        return {meta:{message:TYPE_ORDER_UPDATED}, data:{...data}};
+        return { meta: { message: TYPE_ORDER_UPDATED }, data: { ...data } };
     }
 
     @Delete(':id')
     @UseGuards(JwtAuthGuard, AbilitiesGuard)
     @CheckAbilities({ action: Action.Delete, subject: TypeOrder })
     async remove(@Param('id', ParseIntPipe) id: number) {
-      await  this.typeOrdersService.remove(id);
-      return {meta:{message: TYPE_ORDER_DELETED}}
+        await this.typeOrdersService.remove(id);
+        return { meta: { message: TYPE_ORDER_DELETED } };
     }
 }

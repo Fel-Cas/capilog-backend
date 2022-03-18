@@ -12,7 +12,18 @@ import { TypeOrder } from 'src/type-orders/entities';
 import { User } from 'src/users/entities';
 import { Action } from './enums/actions.enums';
 
-export type Subjects = InferSubjects<typeof User | typeof Role | typeof Farm | typeof Process | typeof Truck | typeof TypeOrder | typeof OrderStatement | typeof Order> | 'all';
+export type Subjects =
+    | InferSubjects<
+          | typeof User
+          | typeof Role
+          | typeof Farm
+          | typeof Process
+          | typeof Truck
+          | typeof TypeOrder
+          | typeof OrderStatement
+          | typeof Order
+      >
+    | 'all';
 export type AppAbility = Ability<[Action, Subjects]>;
 @Injectable()
 export class AbilityFactory {

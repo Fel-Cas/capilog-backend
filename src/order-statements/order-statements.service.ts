@@ -26,20 +26,20 @@ export class OrderStatementsService {
     }
 
     async findOne(id: number) {
-        const orderStatementFound= await this.orderStatementRepository.findOne(id);
-        if(!orderStatementFound) throw new NotFoundException(ORDER_STATEMENT_NOT_EXISTS);
+        const orderStatementFound = await this.orderStatementRepository.findOne(id);
+        if (!orderStatementFound) throw new NotFoundException(ORDER_STATEMENT_NOT_EXISTS);
         return orderStatementFound;
     }
 
     async update(id: number, updateOrderStatementDto: UpdateOrderStatementDto) {
-       const orderStatementFound = await this.findOne(id);
-       const orderStatementUpdated= Object.assign(orderStatementFound, updateOrderStatementDto);
-       return await this.orderStatementRepository.save(orderStatementUpdated);
+        const orderStatementFound = await this.findOne(id);
+        const orderStatementUpdated = Object.assign(orderStatementFound, updateOrderStatementDto);
+        return await this.orderStatementRepository.save(orderStatementUpdated);
     }
 
     async remove(id: number) {
-      const orderStatementFound= await this.findOne(id);
-      await this.orderStatementRepository.remove(orderStatementFound);  
+        const orderStatementFound = await this.findOne(id);
+        await this.orderStatementRepository.remove(orderStatementFound);
     }
 
     async getByName(orderStatement: string) {

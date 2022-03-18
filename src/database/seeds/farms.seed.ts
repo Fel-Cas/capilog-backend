@@ -8,33 +8,33 @@ export default class CreateFarms implements Seeder {
             .insert()
             .into('farms')
             .values([
-                { 
+                {
                     farm: 'alhambra'.toUpperCase(),
-                    location: 'La Ceja'
+                    location: 'La Ceja',
                 },
-                { 
+                {
                     farm: 'bouquetera'.toUpperCase(),
-                    location: 'La Ceja'
+                    location: 'La Ceja',
                 },
-                { 
+                {
                     farm: 'bochica'.toUpperCase(),
-                    location: 'La Ceja'
+                    location: 'La Ceja',
                 },
-                { 
+                {
                     farm: 'la ceja'.toUpperCase(),
-                    location: 'La Ceja'
+                    location: 'La Ceja',
                 },
-                { 
+                {
                     farm: 'padua'.toUpperCase(),
-                    location: 'La Ceja'
+                    location: 'La Ceja',
                 },
-                { 
+                {
                     farm: 'san sebastián'.toUpperCase(),
-                    location: 'La Ceja' 
+                    location: 'La Ceja',
                 },
-                { 
+                {
                     farm: 'valley'.toUpperCase(),
-                    location: 'La Ceja'
+                    location: 'La Ceja',
                 },
             ])
             .execute();

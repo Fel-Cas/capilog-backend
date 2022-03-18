@@ -10,39 +10,39 @@ import { TypeOrder } from './entities';
 
 @Injectable()
 export class TypeOrdersService {
-  constructor(
-    @InjectRepository(TypeOrder)
-    private readonly typeOrderRepository: Repository<TypeOrder>
-  ){}
-  async create(createTypeOrderDto: CreateTypeOrderDto) {
-    const typeOrderFound = await this.findByName(createTypeOrderDto.description);
-    if(typeOrderFound) throw new BadRequestException();
-    const typeOrderCreated = this.typeOrderRepository.create(createTypeOrderDto);
-    return await this.typeOrderRepository.save(typeOrderCreated);
-  }
+    constructor(
+        @InjectRepository(TypeOrder)
+        private readonly typeOrderRepository: Repository<TypeOrder>
+    ) {}
+    async create(createTypeOrderDto: CreateTypeOrderDto) {
+        const typeOrderFound = await this.findByName(createTypeOrderDto.description);
+        if (typeOrderFound) throw new BadRequestException();
+        const typeOrderCreated = this.typeOrderRepository.create(createTypeOrderDto);
+        return await this.typeOrderRepository.save(typeOrderCreated);
+    }
 
-  findAll(options: IPaginationOptions): Promise<Pagination<TypeOrder>> {
-    return paginate(this.typeOrderRepository, options);
-  }
+    findAll(options: IPaginationOptions): Promise<Pagination<TypeOrder>> {
+        return paginate(this.typeOrderRepository, options);
+    }
 
-  async findOne(id: number) {
-   const typeOrderFound = await this.typeOrderRepository.findOne(id);
-   if(!typeOrderFound) throw new NotFoundException(TYPE_ORDER_NOT_EXISTS);
-   return typeOrderFound;
-  }
+    async findOne(id: number) {
+        const typeOrderFound = await this.typeOrderRepository.findOne(id);
+        if (!typeOrderFound) throw new NotFoundException(TYPE_ORDER_NOT_EXISTS);
+        return typeOrderFound;
+    }
 
-  async update(id: number, updateTypeOrderDto: UpdateTypeOrderDto) {
-    const typeOrderFound= await this.findOne(id);
-    const typeOrderUpdated= Object.assign(typeOrderFound, updateTypeOrderDto);
-    return await this.typeOrderRepository.save(typeOrderUpdated);
-  }
+    async update(id: number, updateTypeOrderDto: UpdateTypeOrderDto) {
+        const typeOrderFound = await this.findOne(id);
+        const typeOrderUpdated = Object.assign(typeOrderFound, updateTypeOrderDto);
+        return await this.typeOrderRepository.save(typeOrderUpdated);
+    }
 
-  async remove(id: number) {
-    const typeOrderFound= await this.findOne(id);
-    await this.typeOrderRepository.remove(typeOrderFound);
-  }
+    async remove(id: number) {
+        const typeOrderFound = await this.findOne(id);
+        await this.typeOrderRepository.remove(typeOrderFound);
+    }
 
-  async findByName(typeOrder: string){
-    return await this.typeOrderRepository.findOne({where:{description:typeOrder}});
-  }
+    async findByName(typeOrder: string) {
+        return await this.typeOrderRepository.findOne({ where: { description: typeOrder } });
+    }
 }

@@ -10,45 +10,45 @@ import { Route } from './entities';
 
 @Injectable()
 export class RoutesService {
-  constructor(
-    @InjectRepository(Route)
-    private readonly routeRepository: Repository<Route>
-) {}
+    constructor(
+        @InjectRepository(Route)
+        private readonly routeRepository: Repository<Route>
+    ) {}
 
-async create(createRouteDto: CreateRouteDto) {
-    const route = this.routeRepository.create(createRouteDto);
+    async create(createRouteDto: CreateRouteDto) {
+        const route = this.routeRepository.create(createRouteDto);
 
-    return await this.routeRepository.save(route);
-}
+        return await this.routeRepository.save(route);
+    }
 
-async getAll(option: IPaginationOptions): Promise<Pagination<Route>> {
-    return paginate(this.routeRepository, option);
-}
+    async getAll(option: IPaginationOptions): Promise<Pagination<Route>> {
+        return paginate(this.routeRepository, option);
+    }
 
-async getOne(id: number): Promise<Route> {
-    const route = await this.routeRepository.findOne(id);
-    if (!route) throw new NotFoundException(ROUTE_NOT_EXISTS);
-    return route;
-}
+    async getOne(id: number): Promise<Route> {
+        const route = await this.routeRepository.findOne(id);
+        if (!route) throw new NotFoundException(ROUTE_NOT_EXISTS);
+        return route;
+    }
 
-async findByName(name: string) {
-    const routeFound = await this.routeRepository.findOne({ name });
-    if (!routeFound) throw new NotFoundException(ROUTE_NOT_EXISTS);
-    return routeFound;
-}
+    async findByName(name: string) {
+        const routeFound = await this.routeRepository.findOne({ name });
+        if (!routeFound) throw new NotFoundException(ROUTE_NOT_EXISTS);
+        return routeFound;
+    }
 
-async update(id: number, updateRouteDto: UpdateRouteDto) {
-    const route = await this.routeRepository.findOne(id);
-    if (!route) throw new NotFoundException(ROUTE_NOT_EXISTS);
-    const routeEdit = Object.assign(route, updateRouteDto);
-    const data = await this.routeRepository.save(routeEdit);
-    return data;
-}
+    async update(id: number, updateRouteDto: UpdateRouteDto) {
+        const route = await this.routeRepository.findOne(id);
+        if (!route) throw new NotFoundException(ROUTE_NOT_EXISTS);
+        const routeEdit = Object.assign(route, updateRouteDto);
+        const data = await this.routeRepository.save(routeEdit);
+        return data;
+    }
 
-async remove(id: number) {
-    const route = await this.routeRepository.findOne(id);
-    if (!route) throw new NotFoundException(ROUTE_NOT_EXISTS);
-    const data = await this.routeRepository.delete(id);
-    return data;
-}
+    async remove(id: number) {
+        const route = await this.routeRepository.findOne(id);
+        if (!route) throw new NotFoundException(ROUTE_NOT_EXISTS);
+        const data = await this.routeRepository.delete(id);
+        return data;
+    }
 }

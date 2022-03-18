@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { IsString, Length } from "class-validator";
+import { IsString, Length } from 'class-validator';
 
 export class CreateTruckDto {
     @IsString()

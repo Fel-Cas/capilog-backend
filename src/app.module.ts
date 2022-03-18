@@ -48,6 +48,9 @@ import { RouteOrdersModule } from './route-orders/route-orders.module';
 })
 export class AppModule implements NestModule {
     configure(consumer: MiddlewareConsumer) {
-        consumer.apply(VerifyTokenMiddleware).exclude({path:'auth/login', method: RequestMethod.POST}).forRoutes('*');
+        consumer
+            .apply(VerifyTokenMiddleware)
+            .exclude({ path: 'auth/login', method: RequestMethod.POST })
+            .forRoutes('*');
     }
 }
