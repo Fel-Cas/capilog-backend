@@ -1,9 +1,9 @@
+/* eslint-disable prettier/prettier */
 import {
     Controller,
     Get,
     Post,
     Body,
-    Patch,
     Param,
     Delete,
     DefaultValuePipe,
@@ -23,6 +23,7 @@ import { JwtAuthGuard } from 'src/auth/guards';
 import { AbilitiesGuard } from 'src/ability/guards/abilities.guard';
 import { CheckAbilities } from 'src/common/decorators';
 import { Action } from 'src/ability/enums/actions.enums';
+import { FARM_CREATED, FARM_DELETED, FARM_UPDATED, ONE_FARM } from 'src/common/messages';
 
 @Controller('farms')
 export class FarmsController {
@@ -33,7 +34,7 @@ export class FarmsController {
     @CheckAbilities({ action: Action.Create, subject: Farm })
     async create(@Body() createFarmDto: CreateFarmDto) {
         const farmCreate = await this.farmService.create(createFarmDto);
-        return { data: { ...farmCreate }, meta: { message: 'Farm created' } };
+        return { data: { ...farmCreate }, meta: { message: FARM_CREATED } };
     }
 
     @Get()
@@ -56,7 +57,7 @@ export class FarmsController {
     @CheckAbilities({ action: Action.Read, subject: Farm })
     async getOne(@Param('id') id: number) {
         const farm = await this.farmService.getOne(id);
-        return { data: { ...farm }, meta: { message: 'One farm' } };
+        return { data: { ...farm }, meta: { message: ONE_FARM } };
     }
 
     @Put(':id')
@@ -66,7 +67,7 @@ export class FarmsController {
         const data = this.farmService.getOne(id);
         if (!data) throw new BadRequestException(`Farm with ${id} doesn't exists`);
         const farmUpdate = await this.farmService.update(id, editFarmDto);
-        return { data: { ...farmUpdate }, meta: { message: 'Farm updated' } };
+        return { data: { ...farmUpdate }, meta: { message: FARM_UPDATED } };
     }
 
     @Delete(':id')
@@ -76,6 +77,6 @@ export class FarmsController {
         const data = this.farmService.getOne(id);
         if (!data) throw new BadRequestException(`Farm with ${id} doesn't exists`);
         await this.farmService.remove(id);
-        return { meta: { message: 'Farm deleted' } };
+        return { meta: { message: FARM_DELETED } };
     }
 }
