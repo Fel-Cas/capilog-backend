@@ -5,6 +5,7 @@ import { CreateOrderDto } from './dto/create-order.dto';
 import { UpdateOrderDto } from './dto/update-order.dto';
 import { User } from 'src/common/decorators';
 import { JwtAuthGuard } from 'src/auth/guards';
+import { ONE_ORDER, ORDER_CREATED, ORDER_DELETED, ORDER_UPDATED } from 'src/common/messages';
 
 @Controller('orders')
 export class OrdersController {
@@ -14,7 +15,7 @@ export class OrdersController {
   @UseGuards(JwtAuthGuard)
   async create(@Body() createOrderDto: CreateOrderDto, @User() user) {
     const data= await this.ordersService.create(createOrderDto, user);
-    return {meta:{message:'order created'}, data:{...data}};
+    return {meta:{message:ORDER_CREATED}, data:{...data}};
   }
 
   @Get()
@@ -32,42 +33,42 @@ export class OrdersController {
   @Get(':id')
   async findOne(@Param('id', ParseIntPipe) id: number) {
     const data= await this.findOne(id)
-    return {meta:{message:'one order'}, data:{...data}};
+    return {meta:{message:ONE_ORDER}, data:{...data}};
   }
 
   @Put(':id')
   async update(@Param('id', ParseIntPipe) id: number, @Body() updateOrderDto: UpdateOrderDto) {
     const data= await this.ordersService.update(id, updateOrderDto);
-    return {meta:{message:'order updated'}, data:{...data}};
+    return {meta:{message: ORDER_UPDATED}, data:{...data}};
   }
 
   @Put('trucks/:id')
   async updateTrucks(@Param('id', ParseIntPipe) id: number, @Body() updateOrderDto: UpdateOrderDto) {
     const data= await this.ordersService.updateTruck(id, updateOrderDto);
-    return {meta:{message:'order updated'}, data:{...data}};
+    return {meta:{message:ORDER_UPDATED}, data:{...data}};
   }
 
   @Put('farms/:id')
   async updateFarm(@Param('id', ParseIntPipe) id: number, @Body() updateOrderDto: UpdateOrderDto) {
     const data= await this.ordersService.updateFarm(id, updateOrderDto);
-    return {meta:{message:'order updated'}, data:{...data}};
+    return {meta:{message:ORDER_UPDATED}, data:{...data}};
   }
 
   @Put('statements/:id')
   async updateStatement(@Param('id', ParseIntPipe) id: number, @Body() updateOrderDto: UpdateOrderDto) {
     const data= await this.ordersService.updateStatement(id, updateOrderDto);
-    return {meta:{message:'order updated'}, data:{...data}};
+    return {meta:{message:ORDER_UPDATED}, data:{...data}};
   }
 
   @Put('type-orders/:id')
   async updateTypeOrder(@Param('id', ParseIntPipe) id: number, @Body() updateOrderDto: UpdateOrderDto) {
     const data= await this.ordersService.updateTypeOrder(id, updateOrderDto);
-    return {meta:{message:'order updated'}, data:{...data}};
+    return {meta:{message: ORDER_UPDATED}, data:{...data}};
   }
 
   @Delete(':id')
   async remove(@Param('id', ParseIntPipe) id: number) {
     await this.ordersService.remove(id);
-    return {meta:{message:'order deleted'}};
+    return {meta:{message: ORDER_DELETED}};
   }
 }

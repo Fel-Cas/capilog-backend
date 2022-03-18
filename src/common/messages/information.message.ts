@@ -28,3 +28,8 @@ export const ORDER_STATEMENT_CREATED='order statement created';
 export const ONE_ORDER_STATEMENT='one order statement';
 export const ORDER_STATEMENT_UPDATED='order statement updated';
 export const ORDER_STATEMENT_DELETED='order statement deleted';
+
+export const ORDER_CREATED='order created';
+export const ONE_ORDER='one order';
+export const ORDER_UPDATED='order updated';
+export const ORDER_DELETED='order deleted';
