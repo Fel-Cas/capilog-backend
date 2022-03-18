@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
@@ -48,6 +48,6 @@ import { RouteOrdersModule } from './route-orders/route-orders.module';
 })
 export class AppModule implements NestModule {
     configure(consumer: MiddlewareConsumer) {
-        consumer.apply(VerifyTokenMiddleware).forRoutes('*');
+        consumer.apply(VerifyTokenMiddleware).exclude({path:'auth/login', method: RequestMethod.POST}).forRoutes('*');
     }
 }

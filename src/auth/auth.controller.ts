@@ -5,7 +5,7 @@ import { User as UserEntity } from '../users/entities/user.entity';
 import { LocalAuthGuard, JwtAuthGuard } from './guards';
 import { User } from 'src/common/decorators';
 import { CacheService } from 'src/cache/cache.service';
-import { LOGIN, LOGOUT, REFRESH_TOKEN } from 'src/common/errors';
+import { LOGIN, LOGOUT, REFRESH_TOKEN } from 'src/common/messages';
 
 @Controller('auth')
 export class AuthController {

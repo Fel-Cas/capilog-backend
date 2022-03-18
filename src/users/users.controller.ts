@@ -9,7 +9,6 @@ import {
     Get,
     Param,
     ParseIntPipe,
-    Patch,
     Post,
     Put,
     Query,
@@ -21,7 +20,7 @@ import { Action } from 'src/ability/enums/actions.enums';
 import { AbilitiesGuard } from 'src/ability/guards/abilities.guard';
 import { JwtAuthGuard } from 'src/auth/guards';
 import { CheckAbilities, User } from 'src/common/decorators';
-import { ONE_USER, USER_CREATED, USER_DELETED, USER_UPDATED } from 'src/common/errors';
+import { ONE_USER, USER_CREATED, USER_DELETED, USER_UPDATED } from 'src/common/messages';
 import { CreateUserDto, EditUserDto } from './dto';
 import { User as UserEntity } from './entities';
 import { UsersService } from './users.service';

@@ -1,6 +1,6 @@
 import { Injectable, NestMiddleware, UnauthorizedException } from '@nestjs/common';
 import { CacheService } from 'src/cache/cache.service';
-import { UNAUTHORIZED } from '../errors';
+import { UNAUTHORIZED } from '../messages';
 
 @Injectable()
 export class VerifyTokenMiddleware implements NestMiddleware {
