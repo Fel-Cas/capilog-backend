@@ -92,4 +92,34 @@ export class OrdersService {
     orderFound.typeOrder=typeOrderFound;
     return await this.orderRepository.save(orderFound);
   }
+
+  async updateArriveDate(id: number){
+    const order= await this.findOne(id);
+    order.arriveDate= new Date(Date.now());
+    return await this.orderRepository.save(order)
+  }
+
+  async updateGetOutDate(id: number){
+    const order= await this.findOne(id);
+    order.exitDate= new Date(Date.now());
+    return await this.orderRepository.save(order)
+  }
+
+  async updateDestinationArriveDate(id: number){
+    const order= await this.findOne(id);
+    order.destinationArriveDate= new Date(Date.now());
+    return await this.orderRepository.save(order)
+  }
+
+  async updateFinishDate(id: number){
+    const order= await this.findOne(id);
+    order.finishDate= new Date(Date.now());
+    return await this.orderRepository.save(order)
+  }
+
+  async updateBill(id: number){
+    const order= await this.findOne(id);
+    order.isBill= true;
+    return await this.orderRepository.save(order)
+  }
 }

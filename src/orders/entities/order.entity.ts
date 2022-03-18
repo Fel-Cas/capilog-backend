@@ -22,14 +22,8 @@ export class Order {
     @Column({ type: 'timestamp'})
     startDate: Date;
 
-    @Column({ type: 'int'})
-    quantity: number;
-
     @Column({ type: 'varchar'})
     description: string;
-
-    @Column({ type: 'varchar', nullable:true})
-    securitySeal: string;
 
     @Column({ type: 'timestamp', nullable:true})
     arriveDate: Date;
@@ -58,7 +52,7 @@ export class Order {
     @ManyToOne(()=> TypeOrder, typeOrder=> typeOrder, { cascade:true,eager:true})
     typeOrder: TypeOrder;
 
-    @Column({ type: 'bool', nullable:true})
+    @Column({ type: 'bool', nullable:true, default: false})
     isBill: boolean;
 
 }
