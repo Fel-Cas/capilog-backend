@@ -4,7 +4,7 @@ import { CanActivate, ExecutionContext, ForbiddenException, Injectable } from '@
 import { Reflector } from '@nestjs/core';
 import { RequiredRule } from 'src/common/interfaces';
 import { CHECK_ABILITY } from 'src/config/constants';
-import { AbilityFactory } from '../ability.factory';
+import { AbilityFactory } from '../abilities/ability.factory';
 
 @Injectable()
 export class AbilitiesGuard implements CanActivate {

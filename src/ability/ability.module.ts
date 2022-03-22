@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { AbilityFactory } from './ability.factory';
+import { AbilityFactory } from './abilities/ability.factory';
 
 @Module({
     providers: [AbilityFactory],

@@ -18,7 +18,7 @@ import { CreateFarmDto } from './dto';
 import { EditFarmDto } from './dto';
 import { Pagination } from 'nestjs-typeorm-paginate';
 import { Farm, Farm as FarmEntity } from './entities';
-import { AbilityFactory } from '../ability/ability.factory';
+import { AbilityFactory } from '../ability/abilities/ability.factory';
 import { JwtAuthGuard } from 'src/auth/guards';
 import { AbilitiesGuard } from 'src/ability/guards/abilities.guard';
 import { CheckAbilities } from 'src/common/decorators';

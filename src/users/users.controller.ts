@@ -15,7 +15,7 @@ import {
     UseGuards,
 } from '@nestjs/common';
 import { Pagination } from 'nestjs-typeorm-paginate';
-import { AbilityFactory } from 'src/ability/ability.factory';
+import { AbilityFactory } from 'src/ability/abilities/ability.factory';
 import { Action } from 'src/ability/enums/actions.enums';
 import { AbilitiesGuard } from 'src/ability/guards/abilities.guard';
 import { JwtAuthGuard } from 'src/auth/guards';
