@@ -1,4 +1,5 @@
-import { IsString } from 'class-validator';
+import { IsArray, IsString } from 'class-validator';
+import { Route } from 'src/routes/entities';
 
 export class CreateFarmDto {
     @IsString()

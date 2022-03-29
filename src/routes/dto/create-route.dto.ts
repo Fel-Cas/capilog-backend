@@ -1,4 +1,5 @@
-import { IsString } from 'class-validator';
+import { IsArray, IsString } from 'class-validator';
+import { Farm } from 'src/farms/entities';
 
 export class CreateRouteDto {
     @IsString()
@@ -6,4 +7,8 @@ export class CreateRouteDto {
 
     @IsString()
     observations: string;
+
+    @IsString({each: true})
+    farms: string[];
+
 }

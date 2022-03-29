@@ -1,11 +1,9 @@
 import { Type } from 'class-transformer';
-import { IsBoolean, IsDate, IsOptional, IsString } from 'class-validator';
+import { IsBoolean, IsDate, IsNumber, IsOptional, IsString } from 'class-validator';
 import { Route } from 'src/routes/entities';
 import { Truck } from 'src/trucks/entities';
 
 export class CreateRouteOrderDto {
-    @IsString()
-    route: Route;
 
     @IsOptional()
     @Type(() => Date)
@@ -21,9 +19,12 @@ export class CreateRouteOrderDto {
     state: string;
 
     @IsString()
-    truck: Truck;
+    truck: string;
 
     @IsOptional()
     @IsBoolean()
     isBill: boolean;
+
+    @IsString()
+    route: string;
 }

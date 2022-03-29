@@ -3,6 +3,8 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { IPaginationOptions, paginate, Pagination } from 'nestjs-typeorm-paginate';
 import { ROUTE_ORDER_NOT_EXISTS } from 'src/common/messages';
+import { RoutesService } from 'src/routes/routes.service';
+import { TrucksService } from 'src/trucks/trucks.service';
 import { Repository } from 'typeorm';
 import { CreateRouteOrderDto } from './dto/create-route-order.dto';
 import { UpdateRouteOrderDto } from './dto/update-route-order.dto';
@@ -12,11 +14,20 @@ import { RouteOrder } from './entities';
 export class RouteOrdersService {
     constructor(
         @InjectRepository(RouteOrder)
-        private readonly routeOrderRepository: Repository<RouteOrder>
+        private readonly routeOrderRepository: Repository<RouteOrder>,
+        private readonly routeService: RoutesService,
+        private readonly truckService: TrucksService
     ) {}
 
     async create(createRouteOrderDto: CreateRouteOrderDto) {
-        const routeOrder = this.routeOrderRepository.create(createRouteOrderDto);
+        const routeOrder = new RouteOrder()
+        routeOrder.route=[];
+        routeOrder.route.push(await this.routeService.findByName(createRouteOrderDto.route));
+        routeOrder.truck= await this.truckService.findOne(createRouteOrderDto.truck);
+        routeOrder.startDate=createRouteOrderDto.startDate;
+        routeOrder.finishDate=createRouteOrderDto.finishDate;
+        routeOrder.state=createRouteOrderDto.state;
+
 
         return await this.routeOrderRepository.save(routeOrder);
     }

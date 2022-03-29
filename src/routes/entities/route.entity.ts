@@ -1,4 +1,6 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Farm } from '../../farms/entities';
+import { Column, CreateDateColumn, Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { RouteOrder } from '../../route-orders/entities';
 
 @Entity('routes')
 export class Route {
@@ -10,6 +12,12 @@ export class Route {
 
     @Column({ type: 'varchar', length: 200, nullable: true })
     observations: string;
+
+    @ManyToMany(() => Farm, (farm) => farm.routes, {eager:true})
+    farms: Farm[];
+
+    @ManyToOne(() => RouteOrder, (RouteOrder) => RouteOrder.route)
+    routeOrder: RouteOrder;
 
     @CreateDateColumn()
     createdAt: Date;

@@ -6,12 +6,12 @@
   "password": "root",
   "database": "capilog_database",
   "entities": [
-    "C:\\Users\\Andres\\Documents\\proyecto_integrador\\capilog-backend\\dist\\**\\**\\*entity{.ts,.js}"
+    "C:\\Users\\Santiago\\Documents\\GitHub\\capilog-backend\\dist\\**\\**\\*entity{.ts,.js}"
   ],
   "autoLoadEntities": true,
   "migrationsRun": false,
   "migrations": [
-    "C:\\Users\\Andres\\Documents\\proyecto_integrador\\capilog-backend\\dist\\migration\\**\\*{.ts,.js}"
+    "C:\\Users\\Santiago\\Documents\\GitHub\\capilog-backend\\dist\\migration\\**\\*{.ts,.js}"
   ],
   "migrationsTableName": "migrations_typeorm",
   "cli": {

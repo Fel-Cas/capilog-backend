@@ -17,7 +17,6 @@ export class FarmsService {
 
     async create(createFarmDto: CreateFarmDto) {
         const farm = this.farmRepository.create(createFarmDto);
-
         return await this.farmRepository.save(farm);
     }
 

@@ -3,6 +3,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { IPaginationOptions, paginate, Pagination } from 'nestjs-typeorm-paginate';
 import { ROUTE_NOT_EXISTS } from 'src/common/messages';
+import { FarmsService } from 'src/farms/farms.service';
 import { Repository } from 'typeorm';
 import { CreateRouteDto } from './dto/create-route.dto';
 import { UpdateRouteDto } from './dto/update-route.dto';
@@ -12,12 +13,21 @@ import { Route } from './entities';
 export class RoutesService {
     constructor(
         @InjectRepository(Route)
-        private readonly routeRepository: Repository<Route>
+        private readonly routeRepository: Repository<Route>,
+        private readonly farmService: FarmsService
     ) {}
 
     async create(createRouteDto: CreateRouteDto) {
-        const route = this.routeRepository.create(createRouteDto);
-
+        const farms = createRouteDto.farms;
+        const route = new Route();
+        route.name= createRouteDto.name;
+        route.observations=createRouteDto.observations;
+        const routeFarms=[];
+         for(const element of farms) {
+            const farm=await this.farmService.findByName(element);
+            routeFarms.push(farm);
+        }; 
+        route.farms=routeFarms;
         return await this.routeRepository.save(route);
     }
 

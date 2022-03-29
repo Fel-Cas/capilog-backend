@@ -1,10 +1,11 @@
-import { Route } from 'src/routes/entities';
-import { Truck } from 'src/trucks/entities';
+import { Route } from '../../routes/entities';
+import { Truck } from '../../trucks/entities';
 import {
     Column,
     CreateDateColumn,
     Entity,
     JoinColumn,
+    OneToMany,
     OneToOne,
     PrimaryGeneratedColumn,
     UpdateDateColumn,
@@ -14,10 +15,6 @@ import {
 export class RouteOrder {
     @PrimaryGeneratedColumn('increment')
     idrouteOrder: number;
-
-    @OneToOne(() => Route)
-    @JoinColumn()
-    route: Route;
 
     @Column({ type: 'timestamp', nullable: true })
     startDate: Date;
@@ -32,8 +29,11 @@ export class RouteOrder {
     @JoinColumn()
     truck: Truck;
 
-    @Column({ type: 'boolean', nullable: true })
+    @Column({ type: 'boolean', nullable: true, default:false })
     isBill: boolean;
+
+    @OneToMany(() => Route, (Route) => Route.routeOrder, {eager:true})
+    route: Route[];
 
     @CreateDateColumn()
     createdAt: Date;

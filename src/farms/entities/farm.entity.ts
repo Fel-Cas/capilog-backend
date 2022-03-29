@@ -1,7 +1,8 @@
 /* eslint-disable prettier/prettier */
 import { User } from '../../users/entities';
-import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 import { Order } from '../../orders/entities';
+import { Route } from '../../routes/entities';
 
 @Entity('farms')
 export class Farm {
@@ -22,6 +23,10 @@ export class Farm {
 
     @OneToMany(() => Order, (order) => order.lastFarm)
     lastFarmOrder: Order;
+
+    @ManyToMany(() => Route, (route) => route.farms )
+    @JoinTable({ name: 'routes_farms' })
+    routes: Route[];
 
     @CreateDateColumn()
     createdAt: Date;
