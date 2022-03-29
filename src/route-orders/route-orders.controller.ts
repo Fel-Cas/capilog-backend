@@ -16,30 +16,29 @@ import {
 import { RouteOrdersService } from './route-orders.service';
 import { CreateRouteOrderDto } from './dto/create-route-order.dto';
 import { UpdateRouteOrderDto } from './dto/update-route-order.dto';
-import { AbilityFactory } from 'src/ability/ability.factory';
+import { AbilityFactory } from 'src/ability/abilities/ability.factory';
 import { JwtAuthGuard } from 'src/auth/guards';
-import { AbilitiesGuard } from 'src/ability/guards/abilities.guard';
 import { CheckAbilities } from 'src/common/decorators';
 import { Action } from 'src/ability/enums/actions.enums';
-import { User as UserEntity } from '../users/entities';
 import { Pagination } from 'nestjs-typeorm-paginate';
 import { RouteOrder as RouteOrderEntity } from './entities';
 import { ONE_ROUTE_ORDER, ROUTE_ORDER_CREATED, ROUTE_ORDER_DELETED, ROUTE_ORDER_UPDATED } from 'src/common/messages';
+import { RouteOrderGuard } from 'src/ability/guards/route.order.abilities.guard';
 @Controller('route-orders')
 export class RouteOrdersController {
     constructor(private readonly routeOrderService: RouteOrdersService, private abilityFactory: AbilityFactory) {}
 
     @Post()
-    @UseGuards(JwtAuthGuard, AbilitiesGuard)
-    @CheckAbilities({ action: Action.Create, subject: UserEntity })
+    @UseGuards(JwtAuthGuard, RouteOrderGuard)
+    @CheckAbilities({ action: Action.Create, subject: RouteOrderEntity })
     async create(@Body() createRouteOrderDto: CreateRouteOrderDto) {
         const routeOrderCreated = await this.routeOrderService.create(createRouteOrderDto);
         return { data: { ...routeOrderCreated }, meta: { message: ROUTE_ORDER_CREATED } };
     }
 
     @Get()
-    @UseGuards(JwtAuthGuard, AbilitiesGuard)
-    @CheckAbilities({ action: Action.Read, subject: UserEntity })
+    @UseGuards(JwtAuthGuard, RouteOrderGuard)
+    @CheckAbilities({ action: Action.Read, subject: RouteOrderEntity })
     async getAll(
         @Query('page', new DefaultValuePipe(1), ParseIntPipe) page = 1,
         @Query('limit', new DefaultValuePipe(10), ParseIntPipe) _limit = 3
@@ -53,16 +52,16 @@ export class RouteOrdersController {
     }
 
     @Get(':id')
-    @UseGuards(JwtAuthGuard, AbilitiesGuard)
-    @CheckAbilities({ action: Action.Read, subject: UserEntity })
+    @UseGuards(JwtAuthGuard, RouteOrderGuard)
+    @CheckAbilities({ action: Action.Read, subject: RouteOrderEntity })
     async getOne(@Param('id') id: number) {
         const routeOrder = await this.routeOrderService.getOne(id);
         return { data: { ...routeOrder }, meta: { message: ONE_ROUTE_ORDER } };
     }
 
     @Patch(':id')
-    @UseGuards(JwtAuthGuard, AbilitiesGuard)
-    @CheckAbilities({ action: Action.Update, subject: UserEntity })
+    @UseGuards(JwtAuthGuard, RouteOrderGuard)
+    @CheckAbilities({ action: Action.Update, subject: RouteOrderEntity })
     async update(@Param('id') id: number, @Body() editRouteOrderDto: UpdateRouteOrderDto) {
         const data = this.routeOrderService.getOne(id);
         if (!data) throw new BadRequestException(`Route Order with ${id} doesn't exists`);
@@ -71,8 +70,8 @@ export class RouteOrdersController {
     }
 
     @Delete(':id')
-    @UseGuards(JwtAuthGuard, AbilitiesGuard)
-    @CheckAbilities({ action: Action.Delete, subject: UserEntity })
+    @UseGuards(JwtAuthGuard, RouteOrderGuard)
+    @CheckAbilities({ action: Action.Delete, subject: RouteOrderEntity })
     async remove(@Param('id') id: number) {
         const data = this.routeOrderService.getOne(id);
         if (!data) throw new BadRequestException(`Route Order with ${id} doesn't exists`);
