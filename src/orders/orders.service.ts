@@ -43,6 +43,21 @@ export class OrdersService {
         return paginate(this.orderRepository, options);
     }
 
+    async findAllStartFarm(options: IPaginationOptions,startFarm: string): Promise<Pagination<Order>>{
+        const farm = await this.farmsService.findByName(startFarm);
+        if(!farm) throw new NotFoundException;
+        console.log(farm.idFarm)
+        const queryBuilder=this.orderRepository.createQueryBuilder('orders').where("orders.first_farm = :first_Farm", {first_Farm: farm.idFarm})
+        return paginate(queryBuilder,options);
+    }
+
+    async findAllLastFarm(options: IPaginationOptions, lastFarm: string){
+        const farm = await this.farmsService.findByName(lastFarm);
+        if(!farm) throw new NotFoundException;
+        const queryBuilder= this.orderRepository.createQueryBuilder('orders').where("orders.first_farm = :first_Farm", {first_Farm: farm.idFarm})
+        return paginate(queryBuilder,options);
+    }
+
     async findOne(id: number) {
         const orderFound = await this.orderRepository.findOne(id);
         if (!orderFound) throw new NotFoundException();

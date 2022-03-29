@@ -11,6 +11,7 @@ import {
     ParseIntPipe,
     Put,
     UseGuards,
+    BadRequestException,
 } from '@nestjs/common';
 import { OrdersService } from './orders.service';
 import { CreateOrderDto } from './dto/create-order.dto';
@@ -46,6 +47,38 @@ export class OrdersController {
             limit,
             route: 'http://localhost:8000/orders',
         });
+    }
+
+    @Get('start-farm')
+    @UseGuards(JwtAuthGuard, OrderGuard)
+    @CheckAbilities({ action: Action.Read, subject: Order })
+    async findAllStartFarm(
+        @Query('page', new DefaultValuePipe(1), ParseIntPipe) page = 1,
+        @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit = 10,
+        @Query('farm') farm
+    ) {
+        if(typeof farm !== 'string') throw new BadRequestException('Debes incluir el nombre de la finca');
+        return await this.ordersService.findAllStartFarm({
+            page,
+            limit,
+            route: 'http://localhost:8000/orders/start-farm',
+        },farm.toLocaleUpperCase());
+    }
+
+    @Get('last-farm')
+    @UseGuards(JwtAuthGuard, OrderGuard)
+    @CheckAbilities({ action: Action.Read, subject: Order })
+    async findAllLastFarm(
+        @Query('page', new DefaultValuePipe(1), ParseIntPipe) page = 1,
+        @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit = 10,
+        @Query('farm') farm
+    ) {
+        if(typeof farm !== 'string') throw new BadRequestException('Debes incluir el nombre de la finca');
+        return await this.ordersService.findAllLastFarm({
+            page,
+            limit,
+            route: 'http://localhost:8000/orders/start-farm',
+        },farm.toLocaleUpperCase());
     }
 
     @Get(':id')
