@@ -1,5 +1,6 @@
 import { Order } from '../../orders/entities';
 import { Column, CreateDateColumn, Entity, OneToMany, PrimaryColumn, UpdateDateColumn } from 'typeorm';
+import { RouteOrder } from '../../route-orders/entities';
 
 @Entity('trucks')
 export class Truck {
@@ -15,6 +16,9 @@ export class Truck {
     @OneToMany(() => Order, (order) => order.truck)
     order: Order;
 
+    @OneToMany(() => RouteOrder, (RouteOrder) => RouteOrder.route)
+    routeOrder: RouteOrder;
+    
     @CreateDateColumn()
     createdAt: Date;
 

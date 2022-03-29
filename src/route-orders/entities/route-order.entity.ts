@@ -5,6 +5,7 @@ import {
     CreateDateColumn,
     Entity,
     JoinColumn,
+    ManyToOne,
     OneToMany,
     OneToOne,
     PrimaryGeneratedColumn,
@@ -25,15 +26,14 @@ export class RouteOrder {
     @Column({ type: 'varchar', length: 45, nullable: false })
     state: string;
 
-    @OneToOne(() => Truck)
-    @JoinColumn()
+    @ManyToOne(() => Truck, (Truck) => Truck.routeOrder, {eager:true})
     truck: Truck;
+
+    @ManyToOne(() => Route, (Route) => Route.routeOrder, {eager:true})
+    route: Route;
 
     @Column({ type: 'boolean', nullable: true, default:false })
     isBill: boolean;
-
-    @OneToMany(() => Route, (Route) => Route.routeOrder, {eager:true})
-    route: Route[];
 
     @CreateDateColumn()
     createdAt: Date;

@@ -2,7 +2,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { IPaginationOptions, paginate, Pagination } from 'nestjs-typeorm-paginate';
-import { ROUTE_ORDER_NOT_EXISTS } from 'src/common/messages';
+import { ROLE_NOT_EXISTS, ROUTE_NOT_EXISTS, ROUTE_ORDER_NOT_EXISTS, TRUCK_NOT_EXISTS } from 'src/common/messages';
 import { RoutesService } from 'src/routes/routes.service';
 import { TrucksService } from 'src/trucks/trucks.service';
 import { Repository } from 'typeorm';
@@ -21,13 +21,21 @@ export class RouteOrdersService {
 
     async create(createRouteOrderDto: CreateRouteOrderDto) {
         const routeOrder = new RouteOrder()
-        routeOrder.route=[];
-        routeOrder.route.push(await this.routeService.findByName(createRouteOrderDto.route));
-        routeOrder.truck= await this.truckService.findOne(createRouteOrderDto.truck);
         routeOrder.startDate=createRouteOrderDto.startDate;
         routeOrder.finishDate=createRouteOrderDto.finishDate;
         routeOrder.state=createRouteOrderDto.state;
+        routeOrder.isBill=createRouteOrderDto.isBill;
 
+        const truckFound = await this.truckService.findOne(createRouteOrderDto.truck);
+        if (!truckFound) throw new NotFoundException(TRUCK_NOT_EXISTS);
+
+        const routeFound = await this.routeService.findByName(createRouteOrderDto.route);
+        if (!routeFound) {
+            throw new NotFoundException(ROUTE_NOT_EXISTS);
+        }
+
+        routeOrder.route=routeFound;
+        routeOrder.truck=truckFound;
 
         return await this.routeOrderRepository.save(routeOrder);
     }

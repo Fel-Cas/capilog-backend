@@ -18,16 +18,10 @@ export class RoutesService {
     ) {}
 
     async create(createRouteDto: CreateRouteDto) {
-        const farms = createRouteDto.farms;
         const route = new Route();
         route.name= createRouteDto.name;
         route.observations=createRouteDto.observations;
-        const routeFarms=[];
-         for(const element of farms) {
-            const farm=await this.farmService.findByName(element);
-            routeFarms.push(farm);
-        }; 
-        route.farms=routeFarms;
+
         return await this.routeRepository.save(route);
     }
 

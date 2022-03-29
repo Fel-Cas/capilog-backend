@@ -1,5 +1,5 @@
 import { Farm } from '../../farms/entities';
-import { Column, CreateDateColumn, Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 import { RouteOrder } from '../../route-orders/entities';
 
 @Entity('routes')
@@ -16,7 +16,7 @@ export class Route {
     @ManyToMany(() => Farm, (farm) => farm.routes, {eager:true})
     farms: Farm[];
 
-    @ManyToOne(() => RouteOrder, (RouteOrder) => RouteOrder.route)
+    @OneToMany(() => RouteOrder, (RouteOrder) => RouteOrder.route)
     routeOrder: RouteOrder;
 
     @CreateDateColumn()
