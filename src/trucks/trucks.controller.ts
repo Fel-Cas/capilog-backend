@@ -28,7 +28,7 @@ export class TrucksController {
 
     @Post()
     @UseGuards(JwtAuthGuard, TruckGuard)
-    @CheckAbilities({action: Action.Create, subject: Truck})
+    @CheckAbilities({ action: Action.Create, subject: Truck })
     async create(@Body() createTruckDto: CreateTruckDto) {
         createTruckDto.license = createTruckDto.license.toLocaleUpperCase();
         const data = await this.trucksService.create(createTruckDto);
@@ -37,7 +37,7 @@ export class TrucksController {
 
     @Get()
     @UseGuards(JwtAuthGuard, TruckGuard)
-    @CheckAbilities({action: Action.Read, subject: Truck})
+    @CheckAbilities({ action: Action.Read, subject: Truck })
     async findAll(
         @Query('page', new DefaultValuePipe(1), ParseIntPipe) page = 1,
         @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit = 10
@@ -51,7 +51,7 @@ export class TrucksController {
 
     @Get(':id')
     @UseGuards(JwtAuthGuard, TruckGuard)
-    @CheckAbilities({action: Action.ReadOne, subject: Truck})
+    @CheckAbilities({ action: Action.ReadOne, subject: Truck })
     async findOne(@Param('id') id: string) {
         const data = await this.trucksService.findOne(id);
         return { meta: { message: ONE_TRUCK }, data: { ...data } };
@@ -59,7 +59,7 @@ export class TrucksController {
 
     @Put(':id')
     @UseGuards(JwtAuthGuard, TruckGuard)
-    @CheckAbilities({action: Action.Update, subject: Truck})
+    @CheckAbilities({ action: Action.Update, subject: Truck })
     async update(@Param('id') id: string, @Body() updateTruckDto: UpdateTruckDto) {
         const data = await this.trucksService.update(id, updateTruckDto);
         return { meta: { message: TRUCK_UPDATED }, data: { ...data } };
@@ -67,7 +67,7 @@ export class TrucksController {
 
     @Delete(':id')
     @UseGuards(JwtAuthGuard, TruckGuard)
-    @CheckAbilities({action: Action.Delete, subject: Truck})
+    @CheckAbilities({ action: Action.Delete, subject: Truck })
     async remove(@Param('id') id: string) {
         await this.trucksService.remove(id);
         return { meta: { message: TRUCK_DELETED } };

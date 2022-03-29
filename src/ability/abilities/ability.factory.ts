@@ -5,15 +5,13 @@ import { FARM_PERMISSONS, USER_PERMISSONS } from 'src/common/messages';
 import { User } from 'src/users/entities';
 import { Action } from '../enums/actions.enums';
 import { AppAbility, Subjects } from '../subjects';
-import { Farm } from "src/farms/entities";
-import { OrderStatement } from "src/order-statements/entities";
-import { Order } from "src/orders/entities";
-import { RouteOrder } from "src/route-orders/entities";
-import { Route } from "src/routes/entities";
-import { Truck } from "src/trucks/entities";
+import { Farm } from 'src/farms/entities';
+import { OrderStatement } from 'src/order-statements/entities';
+import { Order } from 'src/orders/entities';
+import { RouteOrder } from 'src/route-orders/entities';
+import { Route } from 'src/routes/entities';
+import { Truck } from 'src/trucks/entities';
 import { TypeOrder } from 'src/type-orders/entities';
-
-
 
 @Injectable()
 export class AbilityFactory {
@@ -23,7 +21,7 @@ export class AbilityFactory {
         if (user.role.role === 'ADMIN') {
             can(Action.Manage, 'all');
         }
-        if(user.role.role !== 'ADMIN'){
+        if (user.role.role !== 'ADMIN') {
             can(Action.ReadOne, User, { dni: { $eq: user.dni } });
             can(Action.Update, User, { dni: { $eq: user.dni } });
             cannot(Action.Read, User).because(USER_PERMISSONS);
@@ -36,18 +34,18 @@ export class AbilityFactory {
             cannot(Action.Update, Farm).because(FARM_PERMISSONS);
             cannot(Action.Delete, Farm).because(FARM_PERMISSONS);
         }
-        
+
         return build({
             detectSubjectType: (item) => item.constructor as ExtractSubjectType<Subjects>,
         });
     }
 
-    TypeOrderAbility(user: User){
+    TypeOrderAbility(user: User) {
         const { can, cannot, build } = new AbilityBuilder(Ability as AbilityClass<AppAbility>);
-        if(user.role.role==='ADMIN'){
+        if (user.role.role === 'ADMIN') {
             can(Action.Manage, 'all');
         }
-        if(user.role.role === 'COORDINADOR DE TRANSPORTE' || user.role.role === 'COORDINADOR DE FINCA' ){
+        if (user.role.role === 'COORDINADOR DE TRANSPORTE' || user.role.role === 'COORDINADOR DE FINCA') {
             can(Action.Read, TypeOrder);
             can(Action.ReadOne, TypeOrder);
         }
@@ -57,14 +55,14 @@ export class AbilityFactory {
         });
     }
 
-    OrderAbility(user: User){
+    OrderAbility(user: User) {
         const { can, cannot, build } = new AbilityBuilder(Ability as AbilityClass<AppAbility>);
-        if(user.role.role==='ADMIN'){
+        if (user.role.role === 'ADMIN') {
             can(Action.Manage, 'all');
-        };
-        if(user.role.role==='COORDINADOR DE FINCA'){
-            can(Action.Create, Order);            
-        }        
+        }
+        if (user.role.role === 'COORDINADOR DE FINCA') {
+            can(Action.Create, Order);
+        }
         can(Action.Read, Order);
         can(Action.ReadOne, Order);
         can(Action.Update, Order);
@@ -72,16 +70,14 @@ export class AbilityFactory {
         return build({
             detectSubjectType: (item) => item.constructor as ExtractSubjectType<Subjects>,
         });
-    
     }
 
-    OrderStatement(user:User){
+    OrderStatement(user: User) {
         const { can, cannot, build } = new AbilityBuilder(Ability as AbilityClass<AppAbility>);
         if (user.role.role === 'ADMIN') {
             can(Action.Manage, 'all');
         }
-        if(user.role.role === 'COORDINADOR DE TRANSPORTE'){
-
+        if (user.role.role === 'COORDINADOR DE TRANSPORTE') {
             can(Action.Read, OrderStatement);
             can(Action.ReadOne, OrderStatement);
         }
@@ -90,12 +86,12 @@ export class AbilityFactory {
         });
     }
 
-    FarmAbility( user: User){
+    FarmAbility(user: User) {
         const { can, cannot, build } = new AbilityBuilder(Ability as AbilityClass<AppAbility>);
         if (user.role.role === 'ADMIN') {
             can(Action.Manage, 'all');
         }
-        if(user.role.role === 'COORDINADOR DE TRANSPORTE' || user.role.role === 'COORDINADOR DE FINCA'){
+        if (user.role.role === 'COORDINADOR DE TRANSPORTE' || user.role.role === 'COORDINADOR DE FINCA') {
             can(Action.Read, Farm);
             can(Action.ReadOne, Farm);
         }
@@ -105,12 +101,12 @@ export class AbilityFactory {
         });
     }
 
-    RouteAbility( user: User){
+    RouteAbility(user: User) {
         const { can, cannot, build } = new AbilityBuilder(Ability as AbilityClass<AppAbility>);
         if (user.role.role === 'ADMIN') {
             can(Action.Manage, 'all');
         }
-        if(user.role.role === 'COORDINADOR DE TRANSPORTE'){
+        if (user.role.role === 'COORDINADOR DE TRANSPORTE') {
             can(Action.Read, Route);
             can(Action.ReadOne, Route);
             can(Action.Update, Route);
@@ -121,12 +117,12 @@ export class AbilityFactory {
         });
     }
 
-    RouteOrderAbility(user:User){
+    RouteOrderAbility(user: User) {
         const { can, cannot, build } = new AbilityBuilder(Ability as AbilityClass<AppAbility>);
         if (user.role.role === 'ADMIN') {
             can(Action.Manage, 'all');
         }
-        if(user.role.role === 'COORDINADOR DE TRANSPORTE'){
+        if (user.role.role === 'COORDINADOR DE TRANSPORTE') {
             can(Action.Read, RouteOrder);
             can(Action.ReadOne, RouteOrder);
             can(Action.Update, RouteOrder);
@@ -135,15 +131,15 @@ export class AbilityFactory {
         return build({
             detectSubjectType: (item) => item.constructor as ExtractSubjectType<Subjects>,
         });
-    }  
-    
-    TruckAbility(user: User){
+    }
+
+    TruckAbility(user: User) {
         const { can, cannot, build } = new AbilityBuilder(Ability as AbilityClass<AppAbility>);
         if (user.role.role === 'ADMIN') {
             can(Action.Manage, 'all');
         }
 
-        if (user.role.role === 'PORTERO' || user.role.role === 'COORDINADOR DE TRANSPORTE'){
+        if (user.role.role === 'PORTERO' || user.role.role === 'COORDINADOR DE TRANSPORTE') {
             can(Action.Read, Truck);
             can(Action.ReadOne, Truck);
             can(Action.Update, Truck);

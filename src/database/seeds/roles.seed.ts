@@ -11,7 +11,7 @@ export default class CreateRoles implements Seeder {
                 { role: 'Admin'.toUpperCase() },
                 { role: 'Portero'.toUpperCase() },
                 { role: 'Coordinador de finca'.toUpperCase() },
-                { role: 'Coordinador de transporte'.toUpperCase() }
+                { role: 'Coordinador de transporte'.toUpperCase() },
             ])
             .execute();
     }
