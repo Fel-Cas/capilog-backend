@@ -18,16 +18,16 @@ import { UpdateOrderDto } from './dto/update-order.dto';
 import { CheckAbilities, User } from 'src/common/decorators';
 import { JwtAuthGuard } from 'src/auth/guards';
 import { ONE_ORDER, ORDER_CREATED, ORDER_DELETED, ORDER_UPDATED } from 'src/common/messages';
-import { AbilitiesGuard } from 'src/ability/guards/abilities.guard';
 import { Action } from 'src/ability/enums/actions.enums';
 import { Order } from './entities';
+import { OrderGuard } from 'src/ability/guards/order.abilities.guard';
 
 @Controller('orders')
 export class OrdersController {
     constructor(private readonly ordersService: OrdersService) {}
 
     @Post()
-    @UseGuards(JwtAuthGuard, AbilitiesGuard)
+    @UseGuards(JwtAuthGuard, OrderGuard)
     @CheckAbilities({action: Action.Create, subject: Order})
     async create(@Body() createOrderDto: CreateOrderDto, @User() user) {
         const data = await this.ordersService.create(createOrderDto, user);
@@ -35,7 +35,7 @@ export class OrdersController {
     }
 
     @Get()
-    @UseGuards(JwtAuthGuard, AbilitiesGuard)
+    @UseGuards(JwtAuthGuard, OrderGuard)
     @CheckAbilities({action: Action.Read, subject: Order})
     findAll(
         @Query('page', new DefaultValuePipe(1), ParseIntPipe) page = 1,
@@ -49,7 +49,7 @@ export class OrdersController {
     }
 
     @Get(':id')
-    @UseGuards(JwtAuthGuard, AbilitiesGuard)
+    @UseGuards(JwtAuthGuard, OrderGuard)
     @CheckAbilities({action: Action.ReadOne, subject: Order})
     async findOne(@Param('id', ParseIntPipe) id: number) {
         const data = await this.findOne(id);
@@ -57,7 +57,7 @@ export class OrdersController {
     }
 
     @Put(':id')
-    @UseGuards(JwtAuthGuard, AbilitiesGuard)
+    @UseGuards(JwtAuthGuard, OrderGuard)
     @CheckAbilities({action: Action.Update, subject: Order})
     async update(@Param('id', ParseIntPipe) id: number, @Body() updateOrderDto: UpdateOrderDto) {
         const data = await this.ordersService.update(id, updateOrderDto);
@@ -65,7 +65,7 @@ export class OrdersController {
     }
 
     @Put('trucks/:id')
-    @UseGuards(JwtAuthGuard, AbilitiesGuard)
+    @UseGuards(JwtAuthGuard, OrderGuard)
     @CheckAbilities({action: Action.Update, subject: Order})
     async updateTrucks(@Param('id', ParseIntPipe) id: number, @Body() updateOrderDto: UpdateOrderDto) {
         const data = await this.ordersService.updateTruck(id, updateOrderDto);
@@ -73,7 +73,7 @@ export class OrdersController {
     }
 
     @Put('farms/:id')
-    @UseGuards(JwtAuthGuard, AbilitiesGuard)
+    @UseGuards(JwtAuthGuard, OrderGuard)
     @CheckAbilities({action: Action.Update, subject: Order})
     async updateFarm(@Param('id', ParseIntPipe) id: number, @Body() updateOrderDto: UpdateOrderDto) {
         const data = await this.ordersService.updateFarm(id, updateOrderDto);
@@ -81,7 +81,7 @@ export class OrdersController {
     }
 
     @Put('statements/:id')
-    @UseGuards(JwtAuthGuard, AbilitiesGuard)
+    @UseGuards(JwtAuthGuard, OrderGuard)
     @CheckAbilities({action: Action.Update, subject: Order})
     async updateStatement(@Param('id', ParseIntPipe) id: number, @Body() updateOrderDto: UpdateOrderDto) {
         const data = await this.ordersService.updateStatement(id, updateOrderDto);
@@ -89,7 +89,7 @@ export class OrdersController {
     }
 
     @Put('type-orders/:id')
-    @UseGuards(JwtAuthGuard, AbilitiesGuard)
+    @UseGuards(JwtAuthGuard, OrderGuard)
     @CheckAbilities({action: Action.Update, subject: Order})
     async updateTypeOrder(@Param('id', ParseIntPipe) id: number, @Body() updateOrderDto: UpdateOrderDto) {
         const data = await this.ordersService.updateTypeOrder(id, updateOrderDto);
@@ -97,7 +97,7 @@ export class OrdersController {
     }
 
     @Put('arrive-date/:id')
-    @UseGuards(JwtAuthGuard, AbilitiesGuard)
+    @UseGuards(JwtAuthGuard, OrderGuard)
     @CheckAbilities({action: Action.Update, subject: Order})
     async updateArriveDate(@Param('id', ParseIntPipe) id: number) {
         const data = await this.updateArriveDate(id);
@@ -105,7 +105,7 @@ export class OrdersController {
     }
 
     @Put('exit-date/:id')
-    @UseGuards(JwtAuthGuard, AbilitiesGuard)
+    @UseGuards(JwtAuthGuard, OrderGuard)
     @CheckAbilities({action: Action.Update, subject: Order})
     async updateGetOutDate(@Param('id', ParseIntPipe) id: number) {
         const data = await this.updateGetOutDate(id);
@@ -113,7 +113,7 @@ export class OrdersController {
     }
 
     @Put('destination-arrive-date/:id')
-    @UseGuards(JwtAuthGuard, AbilitiesGuard)
+    @UseGuards(JwtAuthGuard, OrderGuard)
     @CheckAbilities({action: Action.Update, subject: Order})
     async updateDestinationArriveDate(@Param('id', ParseIntPipe) id: number) {
         const data = await this.updateDestinationArriveDate(id);
@@ -121,7 +121,7 @@ export class OrdersController {
     }
 
     @Put('finish-date/:id')
-    @UseGuards(JwtAuthGuard, AbilitiesGuard)
+    @UseGuards(JwtAuthGuard, OrderGuard)
     @CheckAbilities({action: Action.Update, subject: Order})
     async updateFinishDate(@Param('id', ParseIntPipe) id: number) {
         const data = await this.updateFinishDate(id);
@@ -129,7 +129,7 @@ export class OrdersController {
     }
 
     @Put('bill/:id')
-    @UseGuards(JwtAuthGuard, AbilitiesGuard)
+    @UseGuards(JwtAuthGuard, OrderGuard)
     @CheckAbilities({action: Action.Update, subject: Order})
     async updateBill(@Param('id', ParseIntPipe) id: number) {
         const data = await this.updateBill(id);
@@ -137,7 +137,7 @@ export class OrdersController {
     }
 
     @Delete(':id')
-    @UseGuards(JwtAuthGuard, AbilitiesGuard)
+    @UseGuards(JwtAuthGuard, OrderGuard)
     @CheckAbilities({action: Action.Delete, subject: Order})
     async remove(@Param('id', ParseIntPipe) id: number) {
         await this.ordersService.remove(id);

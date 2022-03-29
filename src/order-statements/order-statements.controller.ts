@@ -22,17 +22,17 @@ import {
     ORDER_STATEMENT_DELETED,
     ORDER_STATEMENT_UPDATED,
 } from 'src/common/messages';
-import { AbilitiesGuard } from 'src/ability/guards/abilities.guard';
 import { CheckAbilities } from 'src/common/decorators';
 import { Action } from 'src/ability/enums/actions.enums';
 import { OrderStatement } from './entities';
+import { OrderStatementGuard } from 'src/ability/guards/order.statement.abilities.guard';
 
 @Controller('order-statements')
 export class OrderStatementsController {
     constructor(private readonly orderStatementsService: OrderStatementsService) {}
 
     @Post()
-    @UseGuards(JwtAuthGuard, AbilitiesGuard)
+    @UseGuards(JwtAuthGuard, OrderStatementGuard)
     @CheckAbilities({ action: Action.Create, subject: OrderStatement })
     async create(@Body() createOrderStatementDto: CreateOrderStatementDto) {
         const data = await this.orderStatementsService.create(createOrderStatementDto);
@@ -40,7 +40,7 @@ export class OrderStatementsController {
     }
 
     @Get()
-    @UseGuards(JwtAuthGuard, AbilitiesGuard)
+    @UseGuards(JwtAuthGuard, OrderStatementGuard)
     @CheckAbilities({ action: Action.Read, subject: OrderStatement })
     async findAll(
         @Query('page', new DefaultValuePipe(1), ParseIntPipe) page = 1,
@@ -54,7 +54,7 @@ export class OrderStatementsController {
     }
 
     @Get(':id')
-    @UseGuards(JwtAuthGuard, AbilitiesGuard)
+    @UseGuards(JwtAuthGuard, OrderStatementGuard)
     @CheckAbilities({ action: Action.ReadOne, subject: OrderStatement })
     async findOne(@Param('id', ParseIntPipe) id: number) {
         const data = await this.orderStatementsService.findOne(id);
@@ -62,7 +62,7 @@ export class OrderStatementsController {
     }
 
     @Put(':id')
-    @UseGuards(JwtAuthGuard, AbilitiesGuard)
+    @UseGuards(JwtAuthGuard, OrderStatementGuard)
     @CheckAbilities({ action: Action.Update, subject: OrderStatement })
     async update(@Param('id', ParseIntPipe) id: number, @Body() updateOrderStatementDto: UpdateOrderStatementDto) {
         const data = await this.orderStatementsService.update(+id, updateOrderStatementDto);
@@ -70,7 +70,7 @@ export class OrderStatementsController {
     }
 
     @Delete(':id')
-    @UseGuards(JwtAuthGuard, AbilitiesGuard)
+    @UseGuards(JwtAuthGuard, OrderStatementGuard)
     @CheckAbilities({ action: Action.Delete, subject: OrderStatement })
     async remove(@Param('id', ParseIntPipe) id: number) {
         await this.orderStatementsService.remove(id);

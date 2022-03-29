@@ -1,8 +1,8 @@
 /* eslint-disable prettier/prettier */
-import { Subjects } from 'src/ability/abilities/ability.factory';
+import { Subjects } from '../subjects';
 import { Action } from 'src/ability/enums/actions.enums';
 
-export interface RequiredRule {
+export interface Rules {
     action: Action;
     subject: Subjects;
 }

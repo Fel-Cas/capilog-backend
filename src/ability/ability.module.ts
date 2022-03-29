@@ -1,5 +1,6 @@
+/* eslint-disable prettier/prettier */
 import { Module } from '@nestjs/common';
-import { AbilityFactory } from './abilities/ability.factory';
+import { AbilityFactory } from './abilities';
 
 @Module({
     providers: [AbilityFactory],

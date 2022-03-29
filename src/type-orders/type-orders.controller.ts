@@ -17,17 +17,17 @@ import { CreateTypeOrderDto } from './dto/create-type-order.dto';
 import { UpdateTypeOrderDto } from './dto/update-type-order.dto';
 import { JwtAuthGuard } from 'src/auth/guards';
 import { TYPE_ORDER, TYPE_ORDER_CREATED, TYPE_ORDER_DELETED, TYPE_ORDER_UPDATED } from 'src/common/messages';
-import { AbilitiesGuard } from 'src/ability/guards/abilities.guard';
 import { CheckAbilities } from 'src/common/decorators';
 import { Action } from 'src/ability/enums/actions.enums';
 import { TypeOrder } from './entities';
+import { TypeOrderGuard } from 'src/ability/guards/typeorder.abilities.guard';
 
 @Controller('type-orders')
 export class TypeOrdersController {
     constructor(private readonly typeOrdersService: TypeOrdersService) {}
 
     @Post()
-    @UseGuards(JwtAuthGuard, AbilitiesGuard)
+    @UseGuards(JwtAuthGuard, TypeOrderGuard)
     @CheckAbilities({ action: Action.Create, subject: TypeOrder })
     async create(@Body() createTypeOrderDto: CreateTypeOrderDto) {
         const data = await this.typeOrdersService.create(createTypeOrderDto);
@@ -35,7 +35,7 @@ export class TypeOrdersController {
     }
 
     @Get()
-    @UseGuards(JwtAuthGuard, AbilitiesGuard)
+    @UseGuards(JwtAuthGuard, TypeOrderGuard)
     @CheckAbilities({ action: Action.Read, subject: TypeOrder })
     findAll(
         @Query('page', new DefaultValuePipe(1), ParseIntPipe) page = 1,
@@ -49,7 +49,7 @@ export class TypeOrdersController {
     }
 
     @Get(':id')
-    @UseGuards(JwtAuthGuard, AbilitiesGuard)
+    @UseGuards(JwtAuthGuard, TypeOrderGuard)
     @CheckAbilities({ action: Action.ReadOne, subject: TypeOrder })
     async findOne(@Param('id', ParseIntPipe) id: number) {
         const data = await this.typeOrdersService.findOne(id);
@@ -57,7 +57,7 @@ export class TypeOrdersController {
     }
 
     @Put(':id')
-    @UseGuards(JwtAuthGuard, AbilitiesGuard)
+    @UseGuards(JwtAuthGuard, TypeOrderGuard)
     @CheckAbilities({ action: Action.Update, subject: TypeOrder })
     async update(@Param('id', ParseIntPipe) id: number, @Body() updateTypeOrderDto: UpdateTypeOrderDto) {
         const data = await this.typeOrdersService.update(id, updateTypeOrderDto);
@@ -65,7 +65,7 @@ export class TypeOrdersController {
     }
 
     @Delete(':id')
-    @UseGuards(JwtAuthGuard, AbilitiesGuard)
+    @UseGuards(JwtAuthGuard, TypeOrderGuard)
     @CheckAbilities({ action: Action.Delete, subject: TypeOrder })
     async remove(@Param('id', ParseIntPipe) id: number) {
         await this.typeOrdersService.remove(id);

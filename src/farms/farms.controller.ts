@@ -20,17 +20,17 @@ import { Pagination } from 'nestjs-typeorm-paginate';
 import { Farm, Farm as FarmEntity } from './entities';
 import { AbilityFactory } from '../ability/abilities/ability.factory';
 import { JwtAuthGuard } from 'src/auth/guards';
-import { AbilitiesGuard } from 'src/ability/guards/abilities.guard';
 import { CheckAbilities } from 'src/common/decorators';
 import { Action } from 'src/ability/enums/actions.enums';
 import { FARM_CREATED, FARM_DELETED, FARM_UPDATED, ONE_FARM } from 'src/common/messages';
+import { FarmGuard } from 'src/ability/guards/farms.abilities.guard';
 
 @Controller('farms')
 export class FarmsController {
     constructor(private readonly farmService: FarmsService, private abilityFactory: AbilityFactory) {}
 
     @Post()
-    @UseGuards(JwtAuthGuard, AbilitiesGuard)
+    @UseGuards(JwtAuthGuard, FarmGuard)
     @CheckAbilities({ action: Action.Create, subject: Farm })
     async create(@Body() createFarmDto: CreateFarmDto) {
         const farmCreate = await this.farmService.create(createFarmDto);
@@ -38,7 +38,7 @@ export class FarmsController {
     }
 
     @Get()
-    @UseGuards(JwtAuthGuard, AbilitiesGuard)
+    @UseGuards(JwtAuthGuard, FarmGuard)
     @CheckAbilities({ action: Action.Read, subject: Farm })
     async getAll(
         @Query('page', new DefaultValuePipe(1), ParseIntPipe) page = 1,
@@ -53,7 +53,7 @@ export class FarmsController {
     }
 
     @Get(':id')
-    @UseGuards(JwtAuthGuard, AbilitiesGuard)
+    @UseGuards(JwtAuthGuard, FarmGuard)
     @CheckAbilities({ action: Action.Read, subject: Farm })
     async getOne(@Param('id') id: number) {
         const farm = await this.farmService.getOne(id);
@@ -61,7 +61,7 @@ export class FarmsController {
     }
 
     @Put(':id')
-    @UseGuards(JwtAuthGuard, AbilitiesGuard)
+    @UseGuards(JwtAuthGuard, FarmGuard)
     @CheckAbilities({ action: Action.Update, subject: Farm })
     async update(@Param('id') id: number, @Body() editFarmDto: EditFarmDto) {
         const data = this.farmService.getOne(id);
@@ -71,7 +71,7 @@ export class FarmsController {
     }
 
     @Delete(':id')
-    @UseGuards(JwtAuthGuard, AbilitiesGuard)
+    @UseGuards(JwtAuthGuard, FarmGuard)
     @CheckAbilities({ action: Action.Delete, subject: Farm })
     async remove(@Param('id') id: number) {
         const data = this.farmService.getOne(id);

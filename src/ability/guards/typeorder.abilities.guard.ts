@@ -4,16 +4,17 @@ import { CanActivate, ExecutionContext, ForbiddenException, Injectable } from '@
 import { Reflector } from '@nestjs/core';
 import { Rules } from 'src/ability/interfaces';
 import { CHECK_ABILITY } from 'src/config/constants';
-import { AbilityFactory } from '../abilities/ability.factory';
+import { AbilityFactory } from '../abilities';
 
 @Injectable()
-export class AbilitiesGuard implements CanActivate {
+export class TypeOrderGuard implements CanActivate {
     constructor(private reflector: Reflector, private caslAbilityFactory: AbilityFactory) {}
 
     async canActivate(context: ExecutionContext): Promise<boolean> {
         const rules = this.reflector.get<Rules[]>(CHECK_ABILITY, context.getHandler()) || [];
         const { user } = context.switchToHttp().getRequest();
-        const ability = this.caslAbilityFactory.defineAbility(user);
+        const ability = this.caslAbilityFactory.TypeOrderAbility(user);
+
         try {
             rules.forEach((rule) => ForbiddenError.from(ability).throwUnlessCan(rule.action, rule.subject));
             return true;
