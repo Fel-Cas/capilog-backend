@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Order } from '../../orders/entities';
 import { Column, CreateDateColumn, Entity, OneToMany, PrimaryColumn, UpdateDateColumn } from 'typeorm';
 import { RouteOrder } from '../../route-orders/entities';
@@ -18,6 +19,9 @@ export class Truck {
 
     @OneToMany(() => RouteOrder, (RouteOrder) => RouteOrder.route)
     routeOrder: RouteOrder;
+
+    @Column({type:'bool'})
+    isExternal:boolean;
     
     @CreateDateColumn()
     createdAt: Date;

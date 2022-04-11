@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { IsString, Length } from 'class-validator';
+import { IsBoolean, IsString, Length } from 'class-validator';
 
 export class CreateTruckDto {
     @IsString()
@@ -11,4 +11,7 @@ export class CreateTruckDto {
 
     @IsString()
     dniDriver: string;
+
+    @IsBoolean()
+    isExternal:boolean;
 }
