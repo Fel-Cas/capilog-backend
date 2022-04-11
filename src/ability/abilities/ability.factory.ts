@@ -11,7 +11,6 @@ import { Order } from 'src/orders/entities';
 import { RouteOrder } from 'src/route-orders/entities';
 import { Route } from 'src/routes/entities';
 import { Truck } from 'src/trucks/entities';
-import { TypeOrder } from 'src/type-orders/entities';
 
 @Injectable()
 export class AbilityFactory {
@@ -40,21 +39,7 @@ export class AbilityFactory {
         });
     }
 
-    TypeOrderAbility(user: User) {
-        const { can, cannot, build } = new AbilityBuilder(Ability as AbilityClass<AppAbility>);
-        if (user.role.role === 'ADMIN') {
-            can(Action.Manage, 'all');
-        }
-        if (user.role.role === 'COORDINADOR DE TRANSPORTE' || user.role.role === 'COORDINADOR DE FINCA') {
-            can(Action.Read, TypeOrder);
-            can(Action.ReadOne, TypeOrder);
-        }
-
-        return build({
-            detectSubjectType: (item) => item.constructor as ExtractSubjectType<Subjects>,
-        });
-    }
-
+    
     OrderAbility(user: User) {
         const { can, cannot, build } = new AbilityBuilder(Ability as AbilityClass<AppAbility>);
         if (user.role.role === 'ADMIN') {

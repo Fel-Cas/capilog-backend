@@ -8,14 +8,12 @@ import { TYPEORM_CONFIG } from './config/constants';
 import { AbilityModule } from './ability/ability.module';
 import { RolesModule } from './roles/roles.module';
 import { FarmsModule } from './farms/farms.module';
-import { ProcessesModule } from './processes/processes.module';
 import { CacheModule } from './cache/cache.module';
 import databaseConfig from './config/database.config';
 import { VerifyTokenMiddleware } from './common/middleware/verify-token.middleware';
 import { OrdersModule } from './orders/orders.module';
 import { OrderStatementsModule } from './order-statements/order-statements.module';
 import { TrucksModule } from './trucks/trucks.module';
-import { TypeOrdersModule } from './type-orders/type-orders.module';
 import { RoutesModule } from './routes/routes.module';
 import { RouteOrdersModule } from './route-orders/route-orders.module';
 
@@ -34,12 +32,10 @@ import { RouteOrdersModule } from './route-orders/route-orders.module';
         AbilityModule,
         RolesModule,
         FarmsModule,
-        ProcessesModule,
         CacheModule,
         OrdersModule,
         OrderStatementsModule,
         TrucksModule,
-        TypeOrdersModule,
         RoutesModule,
         RouteOrdersModule,
     ],

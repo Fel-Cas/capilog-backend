@@ -3,7 +3,7 @@ import { Farm } from '../../farms/entities';
 import { OrderStatement } from '../../order-statements/entities';
 import { Truck } from '../../trucks/entities';
 import { User } from '../../users/entities';
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity()
 export class Order {
@@ -34,7 +34,7 @@ export class Order {
     destinationArriveDate: Date;
 
     @Column({ type: 'timestamp', nullable: true })
-    finishDate: Date;
+    destintionExitDate: Date;
 
     @ManyToOne(() => OrderStatement, (orderStatement) => orderStatement.order, { eager: true })
     @JoinColumn({ name: 'order_statement' })
@@ -50,4 +50,10 @@ export class Order {
 
     @Column({ type: 'bool', nullable: true, default: false })
     isBill: boolean;
+
+    @CreateDateColumn()
+    createdAt: Date;
+
+    @UpdateDateColumn()
+    updatedAt: Date;
 }

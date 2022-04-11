@@ -77,8 +77,24 @@ export class OrdersController {
         return await this.ordersService.findAllLastFarm({
             page,
             limit,
-            route: 'http://localhost:8000/orders/start-farm',
+            route: 'http://localhost:8000/orders/last-farm',
         },farm.toLocaleUpperCase());
+    }
+
+    @Get('statement')
+    @UseGuards(JwtAuthGuard, OrderGuard)
+    @CheckAbilities({ action: Action.Read, subject: Order })
+    async findByStatement(
+        @Query('page', new DefaultValuePipe(1), ParseIntPipe) page = 1,
+        @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit = 10,
+        @Query('statement') statement
+    ) {
+        if(typeof statement !== 'string') throw new BadRequestException('Debes incluir el nombre del estado');
+        return await this.ordersService.findAllLastFarm({
+            page,
+            limit,
+            route: 'http://localhost:8000/orders/last-farm',
+        },statement.toLocaleUpperCase());
     }
 
     @Get(':id')
@@ -118,14 +134,6 @@ export class OrdersController {
     @CheckAbilities({ action: Action.Update, subject: Order })
     async updateStatement(@Param('id', ParseIntPipe) id: number, @Body() updateOrderDto: UpdateOrderDto) {
         const data = await this.ordersService.updateStatement(id, updateOrderDto);
-        return { meta: { message: ORDER_UPDATED }, data: { ...data } };
-    }
-
-    @Put('type-orders/:id')
-    @UseGuards(JwtAuthGuard, OrderGuard)
-    @CheckAbilities({ action: Action.Update, subject: Order })
-    async updateTypeOrder(@Param('id', ParseIntPipe) id: number, @Body() updateOrderDto: UpdateOrderDto) {
-        const data = await this.ordersService.updateTypeOrder(id, updateOrderDto);
         return { meta: { message: ORDER_UPDATED }, data: { ...data } };
     }
 

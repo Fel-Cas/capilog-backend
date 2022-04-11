@@ -5,7 +5,6 @@ import { IPaginationOptions, paginate, Pagination } from 'nestjs-typeorm-paginat
 import { FarmsService } from 'src/farms/farms.service';
 import { OrderStatementsService } from 'src/order-statements/order-statements.service';
 import { TrucksService } from 'src/trucks/trucks.service';
-import { TypeOrdersService } from 'src/type-orders/type-orders.service';
 import { User } from 'src/users/entities';
 import { Repository } from 'typeorm';
 import { CreateOrderDto } from './dto/create-order.dto';
@@ -19,23 +18,22 @@ export class OrdersService {
         private readonly orderRepository: Repository<Order>,
         private trucksService: TrucksService,
         private farmsService: FarmsService,
-        private typeOrdersService: TypeOrdersService,
         private ordersStatementService: OrderStatementsService
     ) {}
 
     async create(createOrderDto: CreateOrderDto, user: User) {
         const firstFarm = await this.farmsService.findByName(createOrderDto.firstFarm);
         const lastFarm = await this.farmsService.findByName(createOrderDto.lastFarm);
-        const state = await this.ordersStatementService.getByName(createOrderDto.state);
-        const typeOrder = await this.typeOrdersService.findByName(createOrderDto.typeOrder);
-        if (!state || !typeOrder) throw new NotFoundException();
+        const state = await this.ordersStatementService.getByName('Pedida');
+        if (!state ) throw new NotFoundException();
+        if(!firstFarm) throw new NotFoundException();
+        if(!lastFarm) throw new NotFoundException();
         let orderCreated = new Order();
         orderCreated = Object.assign(orderCreated, createOrderDto);
         orderCreated.requestUser = user;
         orderCreated.firstFarm = firstFarm;
         orderCreated.lastFarm = lastFarm;
         orderCreated.statement = state;
-        orderCreated.typeOrder = typeOrder;
         return await this.orderRepository.save(orderCreated);
     }
 
@@ -55,6 +53,13 @@ export class OrdersService {
         const farm = await this.farmsService.findByName(lastFarm);
         if(!farm) throw new NotFoundException;
         const queryBuilder= this.orderRepository.createQueryBuilder('orders').where("orders.first_farm = :first_Farm", {first_Farm: farm.idFarm})
+        return paginate(queryBuilder,options);
+    }
+
+    async findByStatement(options: IPaginationOptions, statement: string){
+        const statementFound = await this.ordersStatementService.getByName(statement);
+        if(!statementFound) throw new NotFoundException;
+        const queryBuilder= this.orderRepository.createQueryBuilder('orders').where("orders.order_statement = :order_statement", {order_statement: statementFound.idOrderStatement});
         return paginate(queryBuilder,options);
     }
 
@@ -87,6 +92,7 @@ export class OrdersService {
         const truckFound = await this.trucksService.findOne(updateOrderDto.truck);
         if (!truckFound) throw new NotFoundException();
         const orderFound = await this.findOne(id);
+        if(truckFound.isExternal) orderFound.isBill=true;
         orderFound.truck = truckFound;
         return await this.orderRepository.save(orderFound);
     }
@@ -96,14 +102,6 @@ export class OrdersService {
         if (!farmFound) throw new NotFoundException();
         const orderFound = await this.findOne(id);
         orderFound.lastFarm = farmFound;
-        return await this.orderRepository.save(orderFound);
-    }
-
-    async updateTypeOrder(id: number, updateOrderDto: UpdateOrderDto) {
-        const typeOrderFound = await this.typeOrdersService.findByName(updateOrderDto.typeOrder);
-        if (!typeOrderFound) throw new NotFoundException();
-        const orderFound = await this.findOne(id);
-        orderFound.typeOrder = typeOrderFound;
         return await this.orderRepository.save(orderFound);
     }
 
@@ -127,7 +125,7 @@ export class OrdersService {
 
     async updateFinishDate(id: number) {
         const order = await this.findOne(id);
-        order.finishDate = new Date(Date.now());
+        order.destintionExitDate = new Date(Date.now());
         return await this.orderRepository.save(order);
     }
 

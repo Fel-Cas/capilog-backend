@@ -1,5 +1,4 @@
 /* eslint-disable prettier/prettier */
-import { Process } from 'src/processes/entities';
 import { Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { User } from '../../users/entities';
 
