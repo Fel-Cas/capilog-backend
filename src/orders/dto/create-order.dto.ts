@@ -16,11 +16,10 @@ export class CreateOrderDto {
     @IsString()
     description: string;
 
+    @IsOptional()
     @IsString()
     state: string;
 
-    @IsString()
-    typeOrder: string;
 
     @IsOptional()
     @IsString()

@@ -90,7 +90,7 @@ export class OrdersController {
         @Query('statement') statement
     ) {
         if(typeof statement !== 'string') throw new BadRequestException('Debes incluir el nombre del estado');
-        return await this.ordersService.findAllLastFarm({
+        return await this.ordersService.findByStatement({
             page,
             limit,
             route: 'http://localhost:8000/orders/last-farm',
