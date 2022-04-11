@@ -41,25 +41,26 @@ export class OrdersService {
         return paginate(this.orderRepository, options);
     }
 
-    async findAllStartFarm(options: IPaginationOptions,startFarm: string): Promise<Pagination<Order>>{
+    async findAllStartFarm(startFarm: string){
         const farm = await this.farmsService.findByName(startFarm);
-        if(!farm) throw new NotFoundException;
-        const queryBuilder=this.orderRepository.createQueryBuilder('orders').where("orders.first_farm = :first_Farm", {first_Farm: farm.idFarm})
-        return paginate(queryBuilder,options);
+        if(!farm) throw new NotFoundException();
+        const queryBuilder=this.orderRepository.createQueryBuilder('orders').where("orders.first_farm = :first_Farm", {first_Farm: farm.idFarm}).andWhere("orders.order_statement != :order_statement", {order_statement:2}).andWhere("orders.order_statement != :order_statement", {order_statement:3});
+        return await queryBuilder.getMany();
     }
 
-    async findAllLastFarm(options: IPaginationOptions, lastFarm: string): Promise<Pagination<Order>>{
+    async findAllLastFarm(lastFarm: string){
         const farm = await this.farmsService.findByName(lastFarm);
-        if(!farm) throw new NotFoundException;
-        const queryBuilder= this.orderRepository.createQueryBuilder('orders').where("orders.last_farm = :last_Farm", {last_Farm: farm.idFarm})
-        return paginate(queryBuilder,options);
+        if(!farm) throw new NotFoundException();
+        const queryBuilder= this.orderRepository.createQueryBuilder('orders').where("orders.last_farm = :last_Farm", {last_Farm: farm.idFarm}).andWhere("orders.order_statement != :order_statement", {order_statement:2}).andWhere("orders.order_statement != :order_statement", {order_statement:3});
+        return await queryBuilder.getMany()
     }
 
-    async findByStatement(options: IPaginationOptions, statement: string): Promise<Pagination<Order>>{
+    async findByStatement(statement: string){
         const statementFound = await this.ordersStatementService.getByName(statement);
         if(!statementFound) throw new NotFoundException();
-        const queryBuilder= this.orderRepository.createQueryBuilder('orders').where("orders.order_statement = :order_statement", {order_statement: statementFound.idOrderStatement});
-        return paginate(queryBuilder,options);
+        const queryBuilder= this.orderRepository.createQueryBuilder('orders');
+        queryBuilder.where("orders.order_statement = :order_statement", {order_statement: statementFound.idOrderStatement});
+        return await queryBuilder.getMany();
     }
 
     async findOne(id: number) {

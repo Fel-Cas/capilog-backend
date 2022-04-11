@@ -49,52 +49,37 @@ export class OrdersController {
         });
     }
 
-    @Get('start-farm')
+    @Get('start-farm/:farm')
     @UseGuards(JwtAuthGuard, OrderGuard)
     @CheckAbilities({ action: Action.Read, subject: Order })
     async findAllStartFarm(
-        @Query('page', new DefaultValuePipe(1), ParseIntPipe) page = 1,
-        @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit = 10,
-        @Query('farm') farm
+        @Param('farm') farm: string
     ) {
         if(typeof farm !== 'string') throw new BadRequestException('Debes incluir el nombre de la finca');
-        return await this.ordersService.findAllStartFarm({
-            page,
-            limit,
-            route: 'http://localhost:8000/orders/start-farm',
-        },farm.toLocaleUpperCase());
+        const data=await this.ordersService.findAllStartFarm(farm.toLocaleUpperCase());
+        return{meta:{message:'All orders'}, data};
     }
 
-    @Get('last-farm')
+    @Get('last-farm/:farm')
     @UseGuards(JwtAuthGuard, OrderGuard)
     @CheckAbilities({ action: Action.Read, subject: Order })
     async findAllLastFarm(
-        @Query('page', new DefaultValuePipe(1), ParseIntPipe) page = 1,
-        @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit = 10,
-        @Query('farm') farm
+        @Param('farm') farm: string
     ) {
         if(typeof farm !== 'string') throw new BadRequestException('Debes incluir el nombre de la finca');
-        return await this.ordersService.findAllLastFarm({
-            page,
-            limit,
-            route: 'http://localhost:8000/orders/last-farm',
-        },farm.toLocaleUpperCase());
+        const data = await this.ordersService.findAllLastFarm(farm.toLocaleUpperCase());
+        return{meta:{message:'All orders'}, data}
     }
 
-    @Get('statement')
+    @Get('statement/:statement')
     @UseGuards(JwtAuthGuard, OrderGuard)
     @CheckAbilities({ action: Action.Read, subject: Order })
     async findByStatement(
-        @Query('page', new DefaultValuePipe(1), ParseIntPipe) page = 1,
-        @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit = 10,
-        @Query('statement') statement
+        @Param('statement') statement: string
     ) {
         if(typeof statement !== 'string') throw new BadRequestException('Debes incluir el nombre del estado');
-        return await this.ordersService.findByStatement({
-            page,
-            limit,
-            route: 'http://localhost:8000/orders/last-farm',
-        },statement.toLocaleUpperCase());
+        const data= await this.ordersService.findByStatement(statement.toLocaleUpperCase());
+        return{meta:{message:'All orders'}, data}
     }
 
     @Get(':id')
