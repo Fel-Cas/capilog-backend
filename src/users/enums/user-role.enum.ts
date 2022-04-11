@@ -1,7 +1,6 @@
 export enum UserRole {
     'COORDINADOR DE TRANSPORTE',
-    'COORDINADOR DE PROCESOS',
     'PORTERO',
-    'COORDINADOR DE FINCA',
+    'SUPERVISOR DE FINCA',
     'ADMIN',
 }

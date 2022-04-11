@@ -1,7 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { hash } from 'bcrypt';
 import { Farm } from '../../farms/entities';
-import { Process } from '../../processes/entities';
 import {
     BeforeInsert,
     BeforeUpdate,
@@ -9,8 +8,6 @@ import {
     CreateDateColumn,
     Entity,
     JoinColumn,
-    JoinTable,
-    ManyToMany,
     ManyToOne,
     OneToMany,
     PrimaryColumn,
@@ -46,10 +43,6 @@ export class User {
     @ManyToOne(() => Farm, (farm) => farm.user, { eager: true })
     @JoinColumn({ name: 'farm' })
     farm: Farm;
-
-    @ManyToMany(() => Process, (process) => process.users, { eager: true })
-    @JoinTable({ name: 'processes_users' })
-    processes: Process[];
 
     @OneToMany(() => Order, (order) => order.requestUser)
     order: Order;

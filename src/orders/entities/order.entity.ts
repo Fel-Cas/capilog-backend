@@ -2,7 +2,6 @@
 import { Farm } from '../../farms/entities';
 import { OrderStatement } from '../../order-statements/entities';
 import { Truck } from '../../trucks/entities';
-import { TypeOrder } from '../../type-orders/entities';
 import { User } from '../../users/entities';
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
@@ -48,9 +47,6 @@ export class Order {
     @ManyToOne(() => Truck, (truck) => truck.order, { eager: true })
     @JoinColumn({ name: 'truck' })
     truck: Truck;
-
-    @ManyToOne(() => TypeOrder, (typeOrder) => typeOrder, { eager: true })
-    typeOrder: TypeOrder;
 
     @Column({ type: 'bool', nullable: true, default: false })
     isBill: boolean;
