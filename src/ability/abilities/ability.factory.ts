@@ -45,7 +45,7 @@ export class AbilityFactory {
         if (user.role.role === 'ADMIN') {
             can(Action.Manage, 'all');
         }
-        if (user.role.role === 'COORDINADOR DE FINCA') {
+        if (user.role.role === 'SUPERVISOR DE FINCA') {
             can(Action.Create, Order);
         }
         can(Action.Read, Order);
@@ -76,7 +76,7 @@ export class AbilityFactory {
         if (user.role.role === 'ADMIN') {
             can(Action.Manage, 'all');
         }
-        if (user.role.role === 'COORDINADOR DE TRANSPORTE' || user.role.role === 'COORDINADOR DE FINCA') {
+        if (user.role.role === 'COORDINADOR DE TRANSPORTE' || user.role.role === 'SUPERVISOR DE FINCA') {
             can(Action.Read, Farm);
             can(Action.ReadOne, Farm);
         }

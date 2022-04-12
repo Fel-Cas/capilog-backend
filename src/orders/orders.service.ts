@@ -92,7 +92,8 @@ export class OrdersService {
         const truckFound = await this.trucksService.findOne(updateOrderDto.truck);
         if (!truckFound) throw new NotFoundException();
         const orderFound = await this.findOne(id);
-        if(truckFound.isExternal) orderFound.isBill=true;
+        if(truckFound.isExternal) orderFound.isBill = true;
+        else orderFound.isBill = false;
         orderFound.truck = truckFound;
         return await this.orderRepository.save(orderFound);
     }

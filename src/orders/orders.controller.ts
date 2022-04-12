@@ -86,7 +86,7 @@ export class OrdersController {
     @UseGuards(JwtAuthGuard, OrderGuard)
     @CheckAbilities({ action: Action.ReadOne, subject: Order })
     async findOne(@Param('id', ParseIntPipe) id: number) {
-        const data = await this.findOne(id);
+        const data = await this.ordersService.findOne(id);
         return { meta: { message: ONE_ORDER }, data: { ...data } };
     }
 
@@ -126,7 +126,7 @@ export class OrdersController {
     @UseGuards(JwtAuthGuard, OrderGuard)
     @CheckAbilities({ action: Action.Update, subject: Order })
     async updateArriveDate(@Param('id', ParseIntPipe) id: number) {
-        const data = await this.updateArriveDate(id);
+        const data = await this.ordersService.updateArriveDate(id);
         return { meta: { message: ORDER_UPDATED }, data: { ...data } };
     }
 
@@ -134,7 +134,7 @@ export class OrdersController {
     @UseGuards(JwtAuthGuard, OrderGuard)
     @CheckAbilities({ action: Action.Update, subject: Order })
     async updateGetOutDate(@Param('id', ParseIntPipe) id: number) {
-        const data = await this.updateGetOutDate(id);
+        const data = await this.ordersService.updateGetOutDate(id);
         return { meta: { message: ORDER_UPDATED }, data: { ...data } };
     }
 
@@ -142,7 +142,7 @@ export class OrdersController {
     @UseGuards(JwtAuthGuard, OrderGuard)
     @CheckAbilities({ action: Action.Update, subject: Order })
     async updateDestinationArriveDate(@Param('id', ParseIntPipe) id: number) {
-        const data = await this.updateDestinationArriveDate(id);
+        const data = await this.ordersService.updateDestinationArriveDate(id);
         return { meta: { message: ORDER_UPDATED }, data: { ...data } };
     }
 
@@ -150,7 +150,7 @@ export class OrdersController {
     @UseGuards(JwtAuthGuard, OrderGuard)
     @CheckAbilities({ action: Action.Update, subject: Order })
     async updateFinishDate(@Param('id', ParseIntPipe) id: number) {
-        const data = await this.updateFinishDate(id);
+        const data = await this.ordersService.updateFinishDate(id);
         return { meta: { message: ORDER_UPDATED }, data: { ...data } };
     }
 
@@ -158,7 +158,7 @@ export class OrdersController {
     @UseGuards(JwtAuthGuard, OrderGuard)
     @CheckAbilities({ action: Action.Update, subject: Order })
     async updateBill(@Param('id', ParseIntPipe) id: number) {
-        const data = await this.updateBill(id);
+        const data = await this.ordersService.updateBill(id);
         return { meta: { message: ORDER_UPDATED }, data: { ...data } };
     }
 
