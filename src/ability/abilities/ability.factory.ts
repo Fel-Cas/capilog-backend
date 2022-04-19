@@ -47,6 +47,9 @@ export class AbilityFactory {
         }
         if (user.role.role === 'SUPERVISOR DE FINCA') {
             can(Action.Create, Order);
+            can(Action.Read, Order);
+            can(Action.ReadOne, Order);
+            can(Action.Update, Order);
         }
         can(Action.Read, Order);
         can(Action.ReadOne, Order);

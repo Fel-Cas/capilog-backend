@@ -44,6 +44,32 @@ export class OrdersController {
         });
     }
 
+    @Get('today-orders')
+    @UseGuards(JwtAuthGuard, OrderGuard)
+    @CheckAbilities({ action: Action.Read, subject: Order })
+    async findTodayOrders(          
+    @Query('page', new DefaultValuePipe(1), ParseIntPipe) page = 1,
+    @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit = 10, ) {
+        return this.ordersService.findTodayOrders({
+            page,
+            limit,
+            route: 'http://localhost:8000/orders/today-orders',
+        });
+    }
+
+    @Get('pastdays-orders')
+    @UseGuards(JwtAuthGuard, OrderGuard)
+    @CheckAbilities({ action: Action.Read, subject: Order })
+    async findPastDaysOrders(          
+    @Query('page', new DefaultValuePipe(1), ParseIntPipe) page = 1,
+    @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit = 10, ) {
+        return this.ordersService.findPastDaysOrders({
+            page,
+            limit,
+            route: 'http://localhost:8000/orders/pastdays-orders',
+        });
+    }
+
     @Post()
     @UseGuards(JwtAuthGuard, OrderGuard)
     @CheckAbilities({ action: Action.Create, subject: Order })

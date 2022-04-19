@@ -27,6 +27,30 @@ export class OrdersService {
         return paginate(queryBuilder, options);
     }
 
+    async findTodayOrders(options: IPaginationOptions):Promise<Pagination<Order>>{
+        let date = new Date();
+        let today=`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()} 0:00:00`
+        date=new Date(today);
+        
+        const today1 = new Date()
+        const tomorrow = new Date(today1)
+        tomorrow.setDate(tomorrow.getDate() + 1)
+        
+        const queryBuilder= this.orderRepository.createQueryBuilder('orders');
+        queryBuilder.where("orders.startDate >= :date", {date}).andWhere("orders.startDate < :tomorrow", {tomorrow})
+        return paginate(queryBuilder, options);
+        }
+
+    async findPastDaysOrders(options: IPaginationOptions):Promise<Pagination<Order>>{
+        let date = new Date();
+        let today=`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()} 0:00:00`
+        date=new Date(today);
+        
+        const queryBuilder= this.orderRepository.createQueryBuilder('orders');
+        queryBuilder.where("orders.startDate < :date", {date});
+        return paginate(queryBuilder, options);
+    }
+
     async create(createOrderDto: CreateOrderDto, user: User) {
         const firstFarm = await this.farmsService.findByName(createOrderDto.firstFarm);
         const lastFarm = await this.farmsService.findByName(createOrderDto.lastFarm);
