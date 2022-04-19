@@ -21,6 +21,12 @@ export class OrdersService {
         private ordersStatementService: OrderStatementsService
     ) {}
 
+    async getMyOrders(id: string, options: IPaginationOptions):Promise<Pagination<Order>>{
+        const queryBuilder= this.orderRepository.createQueryBuilder('orders');
+        queryBuilder.where("orders.user = :user", {user:id});
+        return paginate(queryBuilder, options);
+    }
+
     async create(createOrderDto: CreateOrderDto, user: User) {
         const firstFarm = await this.farmsService.findByName(createOrderDto.firstFarm);
         const lastFarm = await this.farmsService.findByName(createOrderDto.lastFarm);
@@ -41,26 +47,26 @@ export class OrdersService {
         return paginate(this.orderRepository, options);
     }
 
-    async findAllStartFarm(startFarm: string){
+    async findAllStartFarm(startFarm: string, options: IPaginationOptions): Promise<Pagination<Order>> {
         const farm = await this.farmsService.findByName(startFarm);
         if(!farm) throw new NotFoundException();
         const queryBuilder=this.orderRepository.createQueryBuilder('orders').where("orders.first_farm = :first_Farm", {first_Farm: farm.idFarm}).andWhere("orders.order_statement != :order_statement", {order_statement:2}).andWhere("orders.order_statement != :order_statement", {order_statement:3});
-        return await queryBuilder.getMany();
+        return paginate(queryBuilder, options);
     }
 
-    async findAllLastFarm(lastFarm: string){
+    async findAllLastFarm(lastFarm: string, options: IPaginationOptions): Promise<Pagination<Order>>{
         const farm = await this.farmsService.findByName(lastFarm);
         if(!farm) throw new NotFoundException();
         const queryBuilder= this.orderRepository.createQueryBuilder('orders').where("orders.last_farm = :last_Farm", {last_Farm: farm.idFarm}).andWhere("orders.order_statement != :order_statement", {order_statement:2}).andWhere("orders.order_statement != :order_statement", {order_statement:3});
-        return await queryBuilder.getMany()
+        return paginate(queryBuilder, options);
     }
 
-    async findByStatement(statement: string){
+    async findByStatement(statement: string, options: IPaginationOptions): Promise<Pagination<Order>>{
         const statementFound = await this.ordersStatementService.getByName(statement);
         if(!statementFound) throw new NotFoundException();
         const queryBuilder= this.orderRepository.createQueryBuilder('orders');
         queryBuilder.where("orders.order_statement = :order_statement", {order_statement: statementFound.idOrderStatement});
-        return await queryBuilder.getMany();
+        return paginate(queryBuilder, options);
     }
 
     async findOne(id: number) {
@@ -126,7 +132,7 @@ export class OrdersService {
 
     async updateFinishDate(id: number) {
         const order = await this.findOne(id);
-        order.destintionExitDate = new Date(Date.now());
+        order.destinationExitDate = new Date(Date.now());
         return await this.orderRepository.save(order);
     }
 

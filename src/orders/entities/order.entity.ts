@@ -34,7 +34,7 @@ export class Order {
     destinationArriveDate: Date;
 
     @Column({ type: 'timestamp', nullable: true })
-    destintionExitDate: Date;
+    destinationExitDate: Date;
 
     @ManyToOne(() => OrderStatement, (orderStatement) => orderStatement.order, { eager: true })
     @JoinColumn({ name: 'order_statement' })

@@ -17,15 +17,32 @@ import { OrdersService } from './orders.service';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { UpdateOrderDto } from './dto/update-order.dto';
 import { CheckAbilities, User } from 'src/common/decorators';
+import { User as UserEntity} from './../users/entities/user.entity'; 
 import { JwtAuthGuard } from 'src/auth/guards';
 import { ONE_ORDER, ORDER_CREATED, ORDER_DELETED, ORDER_UPDATED } from 'src/common/messages';
 import { Action } from 'src/ability/enums/actions.enums';
 import { Order } from './entities';
 import { OrderGuard } from 'src/ability/guards/order.abilities.guard';
+import { Farm } from 'src/farms/entities';
 
 @Controller('orders')
 export class OrdersController {
     constructor(private readonly ordersService: OrdersService) {}
+
+    @Get('my-orders')
+    @UseGuards(JwtAuthGuard, OrderGuard)
+    @CheckAbilities({ action: Action.Read, subject: Order })
+    async findMyOrders(
+        @Query('page', new DefaultValuePipe(1), ParseIntPipe) page = 1,
+        @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit = 10,
+        @User() user: UserEntity,
+    ) {
+        return this.ordersService.getMyOrders(user.dni,{
+            page,
+            limit,
+            route: 'http://localhost:8000/orders/my-orders',
+        });
+    }
 
     @Post()
     @UseGuards(JwtAuthGuard, OrderGuard)
@@ -49,36 +66,54 @@ export class OrdersController {
         });
     }
 
-    @Get('start-farm/:farm')
+    @Get('start-farm')
     @UseGuards(JwtAuthGuard, OrderGuard)
     @CheckAbilities({ action: Action.Read, subject: Order })
     async findAllStartFarm(
-        @Param('farm') farm: string
+        @Query('page', new DefaultValuePipe(1), ParseIntPipe) page = 1,
+        @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit = 10,
+        @Query('farm') farm:string
     ) {
         if(typeof farm !== 'string') throw new BadRequestException('Debes incluir el nombre de la finca');
-        const data=await this.ordersService.findAllStartFarm(farm.toLocaleUpperCase());
+        const data=await this.ordersService.findAllStartFarm(farm.toLocaleUpperCase(),{
+            page,
+            limit,
+            route: 'http://localhost:8000/orders/start-farm',
+        });
         return{meta:{message:'All orders'}, data};
     }
 
-    @Get('last-farm/:farm')
+    @Get('last-farm')
     @UseGuards(JwtAuthGuard, OrderGuard)
     @CheckAbilities({ action: Action.Read, subject: Order })
     async findAllLastFarm(
-        @Param('farm') farm: string
+        @Query('page', new DefaultValuePipe(1), ParseIntPipe) page = 1,
+        @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit = 10,
+        @Query('farm') farm:string
     ) {
         if(typeof farm !== 'string') throw new BadRequestException('Debes incluir el nombre de la finca');
-        const data = await this.ordersService.findAllLastFarm(farm.toLocaleUpperCase());
+        const data = await this.ordersService.findAllLastFarm(farm.toLocaleUpperCase(),{
+            page,
+            limit,
+            route: 'http://localhost:8000/orders/last-farm',
+        });
         return{meta:{message:'All orders'}, data}
     }
 
-    @Get('statement/:statement')
+    @Get('statement')
     @UseGuards(JwtAuthGuard, OrderGuard)
     @CheckAbilities({ action: Action.Read, subject: Order })
     async findByStatement(
-        @Param('statement') statement: string
+        @Query('page', new DefaultValuePipe(1), ParseIntPipe) page = 1,
+        @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit = 10,
+        @Query('statement') statement:string
     ) {
         if(typeof statement !== 'string') throw new BadRequestException('Debes incluir el nombre del estado');
-        const data= await this.ordersService.findByStatement(statement.toLocaleUpperCase());
+        const data= await this.ordersService.findByStatement(statement.toLocaleUpperCase(),{
+            page,
+            limit,
+            route: 'http://localhost:8000/orders/statement',
+        });
         return{meta:{message:'All orders'}, data}
     }
 
