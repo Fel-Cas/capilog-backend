@@ -24,7 +24,7 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Backend de la aplicación "Capilog", creada para gestionar los envíos de productos y materiales de la empresa floricultora "Capiro".
 
 ## Installation
 
